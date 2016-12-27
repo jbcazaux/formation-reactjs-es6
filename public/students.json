@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "lastname": "red",
+    "firstname": "john",
+    "grades": [4,5,8,3]
+  },
+  {
+    "id": 2,
+    "lastname": "red",
+    "firstname": "mary",
+    "grades": [7,6,8,3]
+  },
+  {
+    "id": 3,
+    "lastname": "yellow",
+    "firstname": "ethan",
+    "grades": [1,4,3,3]
+  },
+  {
+    "id": 4,
+    "lastname": "rose",
+    "firstname": "ashley",
+    "grades": [7,9,8,8]
+  }
+]

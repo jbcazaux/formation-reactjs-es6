@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "label": "pain",
+    "price": 0.95
+  },
+  {
+    "id": 2,
+    "label": "gel douche",
+    "price": 2.85
+  },
+  {
+    "id": 3,
+    "label": "cahier à spirales",
+    "price": 1.20
+  }
+]

@@ -271,12 +271,11 @@ layout: true
 ---
 
 #Hello world
-index.jsx
+index.js
 ```javascript
 import React from "react";
 import ReactDOM from "react-dom";
 import Hello from "./Hello";
-import "./index.css";
 
 ReactDOM.render(
     <Hello name="econsulting"/>,
@@ -286,10 +285,9 @@ ReactDOM.render(
 ```
 hello.js
 ```javascript
-import React, {Component} from "react";
-import "./App.css";
+import React from "react";
 
-class Hello extends Component {
+class Hello extends React.Component {
 
     render() {
         return (
@@ -299,7 +297,6 @@ class Hello extends Component {
         );
     }
 }
-
 export default Hello;
 ```
 ---
@@ -583,7 +580,7 @@ class ButtonApp extends React.Component {
 }
 ```
 ```javascript
-const Button = ({title, children}: ButtonProps) => (
+const Button = ({title, children}) => (
     <button title={title}>
         {children}
     </button>
@@ -597,7 +594,7 @@ layout: false
 1. Installer react-bootstrap
 2. Afficher un champ texte qui permet de filtrer les éléments d'un tableau
 3. Afficher le nom de l'étudiant sur lequel on a cliqué, ou un message si aucun n'est sélectionné
-4. Bonus ES6: Calculer de façon élégante la moyenne des notes d'un élève (reduce)
+4. Bonus ES6: Calculer de façon élégante la note max d'un élève (reduce)
 ---
 
 # Rappels
@@ -664,17 +661,11 @@ layout: true
 {type: 'ADD_TODO', text: 'Acheter du pain'}
 {type: 'SET_USER', user: new User(1, 'toto')}
 ```
-### Interface
-```javascript
-export interface CounterAction {
-    type: string;
-    inc: number;
-}
-```
+
 ### Action Creator
 ```javascript
-export const incrementor = (inc: number): CounterAction => {
-    return {type: 'INCREMENT', inc: inc};
+export const incrementor = (inc) => {
+    return {type: 'INCREMENT', inc};
 };
 ```
 
@@ -684,7 +675,7 @@ export const incrementor = (inc: number): CounterAction => {
 # Reducer
 ```javascript
 export const display =
-(state: number = 0, action: CounterAction) => {
+(state = 0, action) => {
     switch (action.type) {
         case 'INCREMENT':
            return state + action.inc;
@@ -700,8 +691,8 @@ Le *state* est en read-only !
 ---
 
 # Store
-
-```javascript
+(Attention, ceci n'est pas de l'ES6)
+```typescript
 interface Store<S> {
     dispatch: Dispatch<S>;
     getState(): S;
@@ -731,10 +722,9 @@ layout: true
 
 # Composition de reducers - Approche naïve
 ```javascript
-interface State = {readonly user: string; readonly counter: number;};
 const initialState = {user: '', counter: 0};
 export const myreducer =
-(state = initialState, action: any) => {
+(state = initialState, action) => {
     switch (action.type) {
         case 'SET_USER':
            return Object.assign({}, state, {user: action.user});
@@ -754,7 +744,7 @@ Ca peut faire lourd...!
 # Composition de reducers - Découpage
 ```javascript
 export const user =
-(state: string = '', action: UserAction) => {
+(state = '', action) => {
     switch (action.type) {
         case 'SET_USER':
            return action.user;
@@ -763,7 +753,7 @@ export const user =
     }
 };
 export const counter =
-(state: number = 0, action: CounterAction) => {
+(state = 0, action) => {
     switch (action.type) {
         case 'INCREMENT':
            return state + 1;
@@ -778,10 +768,9 @@ export const counter =
 
 # Composition de reducers - Effet Waouh
 ```javascript
-interface State = {readonly user: string; readonly counter: number;};
 const initialState = {user: 'nobody', counter: 0};
 export const myreducer =
-(state = initialState, action: any) => {
+(state = initialState, action) => {
     return {
         user: user(state.user, action),
         counter: counter(state.counter, action)
@@ -864,26 +853,17 @@ export const SelectCodePostal_ = ({cps, currentCp, onSelectCp}: Props) => (
 
 ## Conteneur
 ```javascript
-interface StateProps {
-    readonly cps: ReadonlyArray<number>;
-    readonly currentCp: number;
-}
-interface DispatchProps {
-    onSelectCp: (e: Event) => void;
-}
-type Props = StateProps & DispatchProps;
-
-const mapStateToProps = (state: State): StateProps => {
+const mapStateToProps = (state) => {
     const cpsOfAgence = state.codesPostaux
         .map((cp: CodePostal) => cp.id);
     return {cps: cpsOfAgence, currentCp: state.codePostal.id};
 };
 
-const mapDispatchToProps = (dispatch: Function): DispatchProps => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        onSelectCp: (e: Event) => {
+        onSelectCp: (event) => {
             let codePostalId =
-                new CodePostalId(parseInt((e.target as any).value));
+                new CodePostalId(parseInt(event.target.value));
             dispatch(setCodePostalId(codePostalId));
         }
     };
@@ -897,8 +877,8 @@ export const SelectCodePostal =
 
 Tous les conteneurs de l'application doivent avoir accès au store.
 ```javascript
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import {reducer, State} from './reducers/index';
@@ -918,7 +898,7 @@ layout: false
 
 #TP-04
 ## Liste de courses - bis
-1. Installer les packages redux et react-redux, ainsi que leurs '@types'
+1. Installer les packages redux et react-redux
 2. Reprendre le TP-02 mais en utilisant le *state* du store plutot que le *state* du composant,
 et en initialisant la liste sans chargement asynchrone (liste en dur).
  * Créer l'interface **State** du *state* du *store* (la liste d'items)

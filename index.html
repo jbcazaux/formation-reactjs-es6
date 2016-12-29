@@ -354,11 +354,39 @@ layout: false
 2. Implémenter la méthode render()
 
 ---
-
 template: default
 layout: true
 
 ### React.Component
+---
+
+# Type checking
+
+On peut ne **rien** faire, utiliser **Typescript** ou utiliser les **PropTypes**.
+```javascript
+class Hello extends React.Component {
+
+    static propTypes = {
+        name: React.PropTypes.string.isRequired,
+        truc: React.PropTypes.bool
+    };
+
+    render() {
+        return (
+            <h1>Hello {this.props.name}!</h1>
+        );
+    }
+}
+
+Hello.propTypes = {
+    name: React.PropTypes.string.isRequired,
+    truc: React.PropTypes.boolean
+}
+```
+Au choix: array, bool, func, number, object, string, symbol, node, instanceOf(MyObject),
+oneOf['News', 'Photos'], oneOfType([...]), arrayOf(), objectOf()...
+
+[https://facebook.github.io/react/docs/typechecking-with-proptypes.html](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
 
 ---
 
@@ -376,6 +404,7 @@ layout: true
 * **componentWillUnmount()**: bye bye !
 
 ---
+
 # State
 
 * Définir l'état par défaut
@@ -395,6 +424,7 @@ this.state
 ```
 
 ---
+
 # Props vs State
 * Props
     * Les données passées par les parents
@@ -408,6 +438,7 @@ this.state
         * Des composants
 
 ---
+
 #Stateless component
 ```javascript
 import React from "react";
@@ -480,6 +511,7 @@ layout: true
 ### Callbacks
 
 ---
+
 # Passer des fonctions dans Props
 ```javascript
 class ShoppingList extends React.Component {
@@ -517,6 +549,7 @@ layout: true
 ### Avec du style
 
 ---
+
 #inline style vs css
 
 Pourquoi pas du inline ?
@@ -923,7 +956,6 @@ layout: true
 * Redux ne permet que de dispatcher des objets
 * **redux-thunk** permet de passer une fonction, et donc des actions asynchrones ou des actions avec conditions.
 C'est un **middleware**.
-* Avec **javascript** on se fait quelques noeuds au cerveau ;)
 * C'est plus élégant que les actions retournent des **promesses**
 
 ---
@@ -946,16 +978,16 @@ const store = createStore(
 ## Promesses
 
 ```javascript
-const getItemsId: (() => Promise<number[]>) =
-    () => axios.get<Item[]>('src/items.json')
+const getItemsId =
+    () => axios.get('src/items.json')
         .then(resp => resp.data)
-        .then((items: Item[]) => items.map(item => item.id))
-        .catch((error: any) => console.log(error.toString()))
+        .then(items => items.map(item => item.id))
+        .catch(error => console.log(error.toString()))
 ```
 
 ---
 
-## Sans javascript
+## ThunkActionCreator
 ```javascript
 const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 
@@ -979,29 +1011,14 @@ function incrementAsyncCreator(inc) {
 
 ---
 
-## Avec javascript
+## En 2 mots
 
 Une **ThunkAction** est une fonction qui reçoit en entrée les méthodes *dispatch()* et *getState()*, et retourne le
 résultat de **dispatch()**
-```javascript
-export type ThunkAction<R, S, E> =
-        (dispatch: Dispatch<S>, getState: () => S, extraArgument: E) => R;
-
-	export interface Dispatch<S> {
-		<R, E>(asyncAction: ThunkAction<R, S, E>): R;
-	}
-
-```
-Dans le code, on va écrire des **ThunkActionCreator**
-```javascript
-type ThunkAction2<R> = ThunkAction<R, State, void>;
-export type ThunkActionCreator<R> = (...args: any[]) => ThunkAction2<R>;
-// Ou en une ligne
-export type ThunkActionCreator<R> = (...args: any[]) => ThunkAction<R, State, void>;
-```
+---
 
 ```javascript
-export const fetchItems: ThunkActionCreator<void> = () =>
+export const fetchItems = () =>
     (dispatch, getState) => getItems(getState().userId)
         .then(items => {
             dispatch(setItems(items));
@@ -1016,7 +1033,7 @@ layout: false
 
 #TP-05
 ## Liste de courses - ter
-1. Installer redux-thunk et le '@types'
+1. Installer redux-thunk
 2. Reprendre le TP-04 mais faisant un appel asynchrone (http) pour charger la liste d'items
 3. Bonus: Faire une action qui avant d'ajouter l'item au store, applique la TVA sur le prix lors d'un ajout d'item par le formulaire
 

@@ -1068,16 +1068,15 @@ La doc par d'**experimental API** !
 
 ## PropTypes
 
-* Nécessaires pour faire fonctionner le *context*
 * Permet de décrire (typer, rendre obligatoire, ...) des propriétés
-* Pas vraiment utile quand on fait du javascript !
+* Nécessaires pour faire fonctionner le *context*
 
 ---
 
 ## Utilisation
 Dans le composant parent, il faut implémenter *getChildContext()*
 ```javascript
-getChildContext(): MyContext  {
+getChildContext() {
     return {color: 'purple', user: new User(0, 'admin')};
 }
 ```
@@ -1095,9 +1094,9 @@ static childContextTypes = {
 Dans le composant enfant, on peut typer le *context*, il faut déclarer les *contextTypes*, et là on
 a accès au context dans le composant.
 ```javascript
-class Child extends React.Component<void, void> {
+class Child extends React.Component {
 
-    context: MyContext;
+    context;
 
     static contextTypes = {
         color: React.PropTypes.string.isRequired,

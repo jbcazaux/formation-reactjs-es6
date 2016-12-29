@@ -497,7 +497,7 @@ const ShoppingListInternal = ({title, items}) => (
         <h2>{title}</h2>
         <ul>
             {
-                items.map(item => <ShoppingItem key={item.id} item={item}/>)
+                items.map(item => <ShoppingItem key={item.id} item={item} />)
             }
         </ul>
     </div>
@@ -559,7 +559,7 @@ render() {
 	const mystyle = {
 		backgroundColor: '#F0ABCD'
 	}
-	return <div style={mystyle}>
+	return <div style={mystyle} />
 }
 ```
 Sinon une CSS globale, ou une CSS par composant (Webpack powered)
@@ -1049,7 +1049,6 @@ layout: false
 
 ---
 
-
 template: default
 layout: true
 
@@ -1119,6 +1118,70 @@ Le but est de passer une couleur et un **User** d'un composant à son composant 
 2. Afficher les informations passées dans le *context* dans le composant petit-fils (Small)
 
 ---
+
+template: default
+layout: true
+
+### Optimisations
+---
+
+## Reconciliation
+
+Le **Virtual DOM** est une réprésentation des composants en mémoire. Quand les propriétés d'un composant changent, le nouveau
+DOM est comparé à l'ancien (celui du Virtual DOM). Si il y a une différence, le 'vrai' DOM est modifié.
+
+Si on sait que le composant n'a pas besoin d'être redessiné, on peut surcharger *shouldComponentUpdate*
+```javascript
+shouldComponentUpdate(nextProps, nextState) {
+  return true;
+}
+```
+
+Faut-il étendre React.PureComponent (shallow equality) ou redéfinir la méthode equals ?
+Dans tous les cas le mieux est de ne pas avoir des données mutables: Object.assign, spread properties, Immutable
+---
+
+
+## Memoization
+
+Permet d'éviter le recalcul d'une propriété dérivée de l'état du store redux. Par exemple le tri d'une liste,
+le caclcul du prix total d'un panier, ...
+
+```javascript
+const shopItemsSelector = state => state.shop.items;
+const taxPercentSelector = state => state.shop.taxPercent;
+
+const subtotalSelector = createSelector(
+  shopItemsSelector,
+  items => items.reduce((acc, item) => acc + item.value, 0)
+)
+
+const taxSelector = createSelector(
+  subtotalSelector,
+  taxPercentSelector,
+  (subtotal, taxPercent) => subtotal * (taxPercent / 100)
+)
+
+export const totalSelector = createSelector(
+  subtotalSelector,
+  taxSelector,
+  (subtotal, tax) => ({ total: subtotal + tax })
+)
+
+```
+
+---
+
+layout: false
+
+#TP-07
+## Optimisation
+Jouer avec la méthode shouldComponentUpdate
+1. Implémenter la méthode shouldComponentUpdate
+2. Installer le plugin React, pour voir si le composant est redessiné
+
+---
+
 
 </textarea>
 <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">

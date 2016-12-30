@@ -29,11 +29,6 @@ export default class Optimisation extends React.Component {
     }
 
     shouldComponentUpdate(nexProps, nextState) {
-        console.log('users:', this.state.user, nextState.user);
-        if (nextState.user !== this.state.user) {
-            console.log('different user !');
-            return true;
-        }
         return false;
     }
 

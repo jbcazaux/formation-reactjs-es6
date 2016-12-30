@@ -139,9 +139,8 @@ class: center, middle, inverse
 ## Versions
 
 ```json
-[...]
 "react": "15.4.1"
-[...]
+"create-react-app": "0.8.4"
 ```
 ---
 
@@ -1122,6 +1121,89 @@ Le but est de passer une couleur et un **User** d'un composant à son composant 
 template: default
 layout: true
 
+### Tests
+
+---
+
+## Jest & Enzyme
+
+L'idée est de tester les composants de *présentation*, avec leurs états et leurs propriétés.
+
+[Jest API](https://facebook.github.io/jest/docs/api.html#content)
+
+[Enzyme API](https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md)
+
+```javascript
+import React from "react";
+import {shallow} from "enzyme";
+
+describe(MyComponent, () => {
+    it('should work !', () => {
+        const component = shallow(<MyComponent />);
+    });
+});
+```
+---
+
+## Quelques exemples
+
+Vérifier que le composant s'affiche avec ses sous composants
+```javascript
+describe(MyComponent, () => {
+    it('renders MyComponent and its sub components', () => {
+        const component = shallow(
+            <MyComponent />
+        );
+        expect(component.find(SubComponent1).exists()).toBeTruthy();
+        expect(component.find(SubComponent2).exists()).toBeTruthy();
+    });
+});
+```
+Vérifier le texte du composant
+```javascript
+expect(component.text()).toContain('mon texte attendu');
+```
+
+Vérifier qu'une méthode a été appelée
+```javascript
+const mockOnChange = jest.fn();
+expect(mockOnChange).toBeCalledWith(myParam);
+```
+---
+
+## Quelques exemples
+
+Simuler un événement
+```javascript
+component.find('button').at(1).simulate('click');
+component.find('input').simulate('change', {target: {value: 'ma valeur'}});
+```
+Appeler une méthode
+```javascript
+component.instance().maMethode();
+```
+Récupérer l'état
+```javascript
+expect(component.state('name')).toEqual('mon nom');
+```
+
+---
+layout: false
+
+#TP-07
+## Les tests
+Le but est de tester complètement le TP-03
+1. Créer un fichier .test.js par composant
+2. *StudentDetails*: Vérifier le texte pour les 2 cas (Student.NULL ou non)
+3. *Filter*: Vérifier que le callback est appelé lors d'un événement *change*
+4. *StudenstTable*: Vérifier le nombre de ligne du tableau suivant le nombre de *Student* passés. Vérifier également le callback.
+5. *StudentsApp*: Vérifier que le composant et ses sous composants sont affichés, puis vérifier l'impact des méthodes *handleSelectStudent()* et
+*handleFilterChange()* sur le *state*. Enfin valider que *filteredStudents()* renvoie les bons éléments pour un filtre donné.
+
+---
+template: default
+layout: true
+
 ### Optimisations
 ---
 
@@ -1174,13 +1256,19 @@ export const totalSelector = createSelector(
 
 layout: false
 
-#TP-07
+#TP-08
 ## Optimisation
 Jouer avec la méthode shouldComponentUpdate
 1. Implémenter la méthode shouldComponentUpdate
 2. Installer le plugin React, pour voir si le composant est redessiné
 
 ---
+class: center, middle, inverse
+
+# Let's do it !
+
+#### help ? [jbcazaux@gmail.com](mailto:jbcazaux@gmail.com)
+#### [http://codox.fr/react-es6-formation](http://codox.fr/react-es6-formation)
 
 
 </textarea>

@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Optimisation from "./Optimisation"
+import StudentsApp from "./StudentsApp"
 
 ReactDOM.render(
-    <Optimisation/>,
-    document.getElementById("root")
+    <StudentsApp/>,
+    document.getElementById('root')
 );

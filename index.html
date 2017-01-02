@@ -122,6 +122,16 @@
         .remark-code, .remark-inline-code {
             font-family: 'Ubuntu Mono';
         }
+
+        @media print {
+            .remark-slide-scaler {
+                width: 100% !important;
+                height: 100% !important;
+                transform: scale(1) !important;
+                top: 0 !important;
+                left: 0 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -171,7 +181,7 @@ layout: true
 ---
 
 # Quelques nouveautés
-* TODO: es6, es2015,...
+* es6, es2015, ...
 * Pas totalement supporté par les navigateurs : [Tableau de compatibilité](http://www.webbrowsercompatibility.com/es6/desktop/)
     * Transpiler
     * Shim

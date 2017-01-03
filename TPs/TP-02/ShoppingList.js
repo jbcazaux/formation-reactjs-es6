@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import ShoppingItem from "./ShoppingItem"
 
 class ShoppingList extends React.Component {
 

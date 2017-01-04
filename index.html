@@ -209,9 +209,26 @@ layout: true
 ```
 * Destructuring
 ```javascript
+    function imc(user) {
+        return user.poids / (user.taille * user.taille);
+    }
+
+    function imc({poids, taille}) {
+        return poids / (taille * taille);
+    }
+    let user = {poids: 100, taille: 1.50, age: 45};
+    imc(user);
+```
+```javascript
     const foo = {a: 1, b: 2, c: 'bar'};
     let {a} = foo;
+    console.log(a); // ??
 ```
+
+---
+
+# Quelques nouveautés
+
 * Shorthand Notation
 ```javascript
     let longer = {
@@ -223,10 +240,6 @@ layout: true
         bar
     }
 ```
-
----
-
-# Quelques nouveautés
 
 * Object.assign
 ```javascript
@@ -483,10 +496,12 @@ layout: false
 
 #TP-02
 ## Liste de courses
-1. Mettre un état par défaut
-2. Afficher un message de log pour chaque moment du cycle de vie
-3. Créer un composant distinct pour les éléments (li) de la liste
-4. Bonus: Utiliser une classe qui encapsule le composant "liste" pour gérer l'appel au serveur, et transmettre les data
+1. Afficher le titre passé par le parent
+2. Mettre un état par défaut
+3. Faire afficher la liste des courses dans des balises <li>
+4. Afficher un message de log pour chaque moment du cycle de vie
+4. Créer un composant distinct pour les éléments (li) de la liste
+5. Bonus: Utiliser une classe qui encapsule le composant "liste" pour gérer l'appel au serveur, et transmettre les data
 en tant que *props*
 ---
 #Bonus TP-02

@@ -470,6 +470,27 @@ import React from "react";
 const Hello = (props) => <h1>Hello {props.name}!</h1>;
 ```
 
+```javascript
+class ButtonApp extends React.Component {
+    render() {
+        return <div>
+            <div>{this.props.title}</div>
+            <button>{this.props.label}</button>
+        </div>
+        }
+}
+const ButtonApp = (props) =>
+    <div>
+        <div>{props.title}</div>
+        <button>{props.label}</button>
+    </div>;
+
+const ButtonApp = ({title, label}) =>
+    <div>
+        <div>{title}</div>
+        <button>{label}</button>
+    </div>;
+````
 ---
 
 template: default
@@ -632,17 +653,20 @@ if-else
 # Children
 
 ```javascript
-class ButtonApp extends React.Component {
-    render() {
-        return <Button {...this.props}>hello world</Button>
-    }
-}
+ReactDOM.render(
+    <ButtonApp title="Mon Application">Press Me! </ButtonApp>,
+    document.getElementById('root')
+);
 ```
 ```javascript
-const Button = ({title, children}) => (
-    <button title={title}>
-        {children}
-    </button>
+export default class ButtonApp extends React.Component {
+    render() {
+        return <div>
+            <div>{this.props.title}</div>
+            <button>{this.props.children}</button>
+        </div>
+    }
+}
 );
 ```
 ---

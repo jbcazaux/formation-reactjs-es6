@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setItems: (items) => dispatch(setItems(items)),
+        onSetItems: (items) => dispatch(setItems(items)),
         onAddItems: (items) => dispatch(addItems(items))
     };
 };

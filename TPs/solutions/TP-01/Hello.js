@@ -12,6 +12,6 @@ export default class Hello extends React.Component {
 }
 
 Hello.propTypes = {
-    name: React.propTypes.string.isRequired,
-    truc: React.propTypes.boolean
-}
+    name: React.PropTypes.string.isRequired,
+    truc: React.PropTypes.boolean
+};

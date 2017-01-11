@@ -36,7 +36,7 @@ class ShoppingList_ extends React.Component {
                         this.props.items.map(item => <ShoppingItem key={item.id} item={item}/>)
                     }
                 </ul>
-                <form onSubmit={this.addItem.bind(this)}>
+                <form onSubmit={this.createNewItem.bind(this)}>
                     <input type="text"
                            placeholder="item"
                            onChange={(e) =>
@@ -54,7 +54,7 @@ class ShoppingList_ extends React.Component {
         );
     }
 
-    addItem(e) {
+    createNewItem(e) {
         e.preventDefault();
         this.setState({newItem: '', newPrice: 0});
     }

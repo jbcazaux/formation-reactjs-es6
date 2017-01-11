@@ -21,9 +21,7 @@ const getItems =
 
 export const fetchItems = () =>
     (dispatch) => getItems()
-        .then(items => {
-            dispatch(setItems(items));
-        })
+        .then(items => dispatch(setItems(items)))
         .catch((error) => {
             console.log(error);
         });

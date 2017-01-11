@@ -1,11 +1,9 @@
 import React from "react";
 
 const ShoppingItem = ({item}) =>
-    (
         <li >
             <span>{item.label}</span>:
             <span>{item.price}€</span>
-        </li>
-    );
+        </li>;
 
 export default ShoppingItem;

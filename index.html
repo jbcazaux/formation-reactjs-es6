@@ -209,9 +209,26 @@ layout: true
 ```
 * Destructuring
 ```javascript
+    function imc(user) {
+        return user.poids / (user.taille * user.taille);
+    }
+
+    function imc({poids, taille}) {
+        return poids / (taille * taille);
+    }
+    let user = {poids: 100, taille: 1.50, age: 45};
+    imc(user);
+```
+```javascript
     const foo = {a: 1, b: 2, c: 'bar'};
     let {a} = foo;
+    console.log(a); // ??
 ```
+
+---
+
+# Quelques nouveautés
+
 * Shorthand Notation
 ```javascript
     let longer = {
@@ -223,10 +240,6 @@ layout: true
         bar
     }
 ```
-
----
-
-# Quelques nouveautés
 
 * Object.assign
 ```javascript
@@ -293,7 +306,7 @@ ReactDOM.render(
 );
 
 ```
-hello.js
+Hello.js
 ```javascript
 import React from "react";
 
@@ -390,7 +403,7 @@ class Hello extends React.Component {
 
 Hello.propTypes = {
     name: React.PropTypes.string.isRequired,
-    truc: React.PropTypes.boolean
+    truc: React.PropTypes.bool
 }
 ```
 Au choix: array, bool, func, number, object, string, symbol, node, instanceOf(MyObject),
@@ -457,6 +470,27 @@ import React from "react";
 const Hello = (props) => <h1>Hello {props.name}!</h1>;
 ```
 
+```javascript
+class ButtonApp extends React.Component {
+    render() {
+        return <div>
+            <div>{this.props.title}</div>
+            <button>{this.props.label}</button>
+        </div>
+        }
+}
+const ButtonApp = (props) =>
+    <div>
+        <div>{props.title}</div>
+        <button>{props.label}</button>
+    </div>;
+
+const ButtonApp = ({title, label}) =>
+    <div>
+        <div>{title}</div>
+        <button>{label}</button>
+    </div>;
+````
 ---
 
 template: default
@@ -483,10 +517,12 @@ layout: false
 
 #TP-02
 ## Liste de courses
-1. Mettre un état par défaut
-2. Afficher un message de log pour chaque moment du cycle de vie
-3. Créer un composant distinct pour les éléments (li) de la liste
-4. Bonus: Utiliser une classe qui encapsule le composant "liste" pour gérer l'appel au serveur, et transmettre les data
+1. Afficher le titre passé par le parent
+2. Mettre un état par défaut
+3. Faire afficher la liste des courses dans des balises <li>
+4. Afficher un message de log pour chaque moment du cycle de vie
+4. Créer un composant distinct pour les éléments (li) de la liste
+5. Bonus: Utiliser une classe qui encapsule le composant "liste" pour gérer l'appel au serveur, et transmettre les data
 en tant que *props*
 ---
 #Bonus TP-02
@@ -508,7 +544,7 @@ const ShoppingListInternal = ({title, items}) => (
         <h2>{title}</h2>
         <ul>
             {
-                items.map(item => <ShoppingItem key={item.id} item={item} />)
+                items.map(item => <ShoppingItem key={item.id} item={item}/>)
             }
         </ul>
     </div>
@@ -570,7 +606,7 @@ render() {
 	const mystyle = {
 		backgroundColor: '#F0ABCD'
 	}
-	return <div style={mystyle} />
+	return <div style={mystyle}/>
 }
 ```
 Sinon une CSS globale, ou une CSS par composant (Webpack powered)
@@ -623,17 +659,20 @@ if-else
 # Children
 
 ```javascript
-class ButtonApp extends React.Component {
-    render() {
-        return <Button {...this.props}>hello world</Button>
-    }
-}
+ReactDOM.render(
+    <ButtonApp title="Mon Application">Press Me! </ButtonApp>,
+    document.getElementById('root')
+);
 ```
 ```javascript
-const Button = ({title, children}) => (
-    <button title={title}>
-        {children}
-    </button>
+export default class ButtonApp extends React.Component {
+    render() {
+        return <div>
+            <div>{this.props.title}</div>
+            <button>{this.props.children}</button>
+        </div>
+    }
+}
 );
 ```
 ---
@@ -951,13 +990,11 @@ layout: false
 1. Installer les packages redux et react-redux
 2. Reprendre le TP-02 mais en utilisant le *state* du store plutot que le *state* du composant,
 et en initialisant la liste sans chargement asynchrone (liste en dur).
- * Créer l'interface **State** du *state* du *store* (la liste d'items)
- * Creer une interface **ItemsAction**
  * Créer un *action creator* **setItems** qui renvoie une **ItemAction**
  * Créer un reducer **items** qui prend une **ItemAction** en entrée
  * Créer un reducer global à l'aide de **combineReducer**
  * Créer le *contener* et le *presentational component*
- * Passer un titre dans les ownProps (et donc créer l'interface **OwnProps**)
+ * Passer un titre dans les ownProps
 3. Bonus: Créer un bouton qui permet d'ajouter des items au store.
 
 ---
@@ -1040,7 +1077,7 @@ export const fetchItems = () =>
         .then(items => {
             dispatch(setItems(items));
         })
-        .catch((error: any) => {
+        .catch((error) => {
             console.log(error);
         });
 ```
@@ -1058,7 +1095,7 @@ layout: false
 
 # Bravo !
 * C'était la partie la plus compliquée
-* On sait créer des compostants et leur passer des propriétés
+* On sait créer des composants et leur passer des propriétés
  * Depuis leur composant parent
  * Depuis depuis un l'état 'local' (**LocalState**)
  * Depuis l'état du **store** (**State**)
@@ -1157,7 +1194,7 @@ import {shallow} from "enzyme";
 
 describe(MyComponent, () => {
     it('should work !', () => {
-        const component = shallow(<MyComponent />);
+        const component = shallow(<MyComponent/>);
     });
 });
 ```
@@ -1170,7 +1207,7 @@ Vérifier que le composant s'affiche avec ses sous composants
 describe(MyComponent, () => {
     it('renders MyComponent and its sub components', () => {
         const component = shallow(
-            <MyComponent />
+            <MyComponent/>
         );
         expect(component.find(SubComponent1).exists()).toBeTruthy();
         expect(component.find(SubComponent2).exists()).toBeTruthy();
@@ -1211,12 +1248,77 @@ layout: false
 #TP-07
 ## Les tests
 Le but est de tester complètement le TP-03
-1. Créer un fichier .test.js par composant
-2. *StudentDetails*: Vérifier le texte pour les 2 cas (Student.NULL ou non)
-3. *Filter*: Vérifier que le callback est appelé lors d'un événement *change*
-4. *StudenstTable*: Vérifier le nombre de ligne du tableau suivant le nombre de *Student* passés. Vérifier également le callback.
-5. *StudentsApp*: Vérifier que le composant et ses sous composants sont affichés, puis vérifier l'impact des méthodes *handleSelectStudent()* et
+1. Installer enzyme et react-addons-test-utils (--save-dev)
+2. Créer un fichier .test.js par composant
+3. *StudentDetails*: Vérifier le texte pour les 2 cas (Student.NULL ou non)
+4. *Filter*: Vérifier que le callback est appelé lors d'un événement *change*
+5. *StudenstTable*: Vérifier le nombre de ligne du tableau suivant le nombre de *Student* passés. Vérifier également le callback.
+6. *StudentsApp*: Vérifier que le composant et ses sous composants sont affichés, puis vérifier l'impact des méthodes *handleSelectStudent()* et
 *handleFilterChange()* sur le *state*. Enfin valider que *filteredStudents()* renvoie les bons éléments pour un filtre donné.
+
+---
+template: default
+layout: true
+
+### Router
+---
+
+## react-router
+
+Il existe plusieurs systèmes de gestion de l'historique de navigation:
+* createMemoryHistory : /
+* hashHistory: /monsite/#/page1
+* browserHistory : /monsite/page1
+
+Pour la dernière il faut modifier le serveur pour rediriger toutes les requêtes vers index.html, sauf les css, js, et appels aux webservices.
+
+---
+
+## react-router
+
+Définir le Router au plus haut niveau dans l'application.
+
+```javascript
+ReactDOM.render(
+    <Router history={hashHistory}>
+        <Route path="/" component={App}/>
+        <Route path="/part1" component={Part1}/>
+        <Route path="/part2" component={Part2}/>
+    </Router>,
+    document.getElementById('root')
+);
+```
+On peut imbriquer les routes !
+```javascript
+ReactDOM.render(
+    <Router history={hashHistory}>
+        <Route path="/" component={App}>
+            <Route path="/part1" component={Part1}/>
+            <Route path="/part2" component={Part2}/>
+        </Route>
+    </Router>,
+    document.getElementById('root')
+);
+```
+
+---
+
+## react-router
+
+On peut générer des liens automatiquement (voir la doc pour les propriétés)
+```javascript
+<Link to="/part1">Partie 1</Link>
+```
+
+---
+layout: false
+
+#TP-08
+## React-router
+Le but est de créer une application avec les routes /part1 et /part2. Une zone commune (App) persiste.
+1. Installer react-router
+2. Utiliser react-router dans l'index.js
+3. react-router-redux ?
 
 ---
 template: default

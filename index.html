@@ -149,8 +149,8 @@ class: center, middle, inverse
 ## Versions
 
 ```json
-"react": "15.4.1"
-"create-react-app": "0.8.4"
+"react": "15.6.1"
+"create-react-app": "1.0.11"
 ```
 ---
 
@@ -519,10 +519,10 @@ layout: false
 ## Liste de courses
 1. Afficher le titre passé par le parent
 2. Mettre un état par défaut
-3. Faire afficher la liste des courses dans des balises <li>
+3. Faire afficher la liste des courses dans des balises < li >
 4. Afficher un message de log pour chaque moment du cycle de vie
-4. Créer un composant distinct pour les éléments (li) de la liste
-5. Bonus: Utiliser une classe qui encapsule le composant "liste" pour gérer l'appel au serveur, et transmettre les data
+5. Créer un composant distinct pour les éléments (li) de la liste
+6. Bonus: Utiliser une classe qui encapsule le composant "liste" pour gérer l'appel au serveur, et transmettre les data
 en tant que *props*
 ---
 #Bonus TP-02
@@ -565,8 +565,8 @@ class ShoppingList extends React.Component {
     // constructor...
     // componentDidMount() {...}
     deleteItem() {
-        let newItems = this.state.items.slice(1);
-        this.setState({items: newItems});
+        const newItems = this.state.items.slice(1);
+        this.setState({...state, items: newItems});
     }
     render() {
         return (<ShoppingListInternal
@@ -723,7 +723,7 @@ layout: true
 ![best practices](images/flux-bestpractice.png)
 
 * On ne met pas à jour directement les autres composants
-* On passe par le store (redux), les stores (flux), les observables (RxJs), ...
+* On passe par le store (redux), les stores (flux), les services (Subject RxJs), ...
 
 ---
 
@@ -816,11 +816,11 @@ export const myreducer =
 (state = initialState, action) => {
     switch (action.type) {
         case 'SET_USER':
-           return Object.assign({}, state, {user: action.user});
+           return {...state, user: action.user};
         case 'INCREMENT':
-           return Object.assign({}, state, {counter: state.counter + 1});
+           return {...state, counter: state.counter + 1};
         case 'DECREMENT':
-           return Object.assign({}, state, {counter: state.counter - 1});
+           return {...state, counter: state.counter - 1};
         default:
            return state;
     }
@@ -1008,13 +1008,13 @@ layout: true
 ## Généralités
 
 * Redux ne permet que de dispatcher des objets
-* **redux-thunk** permet de passer une fonction, et donc des actions asynchrones ou des actions avec conditions.
-C'est un **middleware**.
-* C'est plus élégant que les actions retournent des **promesses**
+* **redux-thunk** ou **redux-saga** permettent de lancer une fonction, et donc des actions asynchrones ou des actions avec conditions.
+Ce sont des **middlewares**.
+* En redux-thunk, c'est plus élégant que les actions retournent des **promesses**
 
 ---
 
-## Middleware
+## redux-thunk
 ```javascript
 import {reducer} from './reducers/index';
 import {createStore, applyMiddleware} from 'redux';

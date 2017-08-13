@@ -44,5 +44,4 @@ describe(StudentsApp, () => {
         expect(result).toHaveLength(1);
         expect(result[0]).toEqual(students[1]);
     });
-
 });

@@ -33,11 +33,11 @@ class StudentsApp extends React.Component {
     }
 
     handleFilterChange(filter) {
-        this.setState(Object.assign({}, this.state, {filter}));
+        this.setState({filter});
     }
 
     handleSelectStudent(student) {
-        this.setState(Object.assign({}, this.state, {selectedStudent: student}));
+        this.setState({selectedStudent: student});
     }
 
     filteredStudents() {

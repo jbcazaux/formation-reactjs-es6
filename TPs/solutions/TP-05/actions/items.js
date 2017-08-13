@@ -1,19 +1,15 @@
 import axios from "axios";
 import Item from "../Item";
 
-export const setItems = (items) => {
-  return {
-      type: 'SET_ITEMS',
-      items
-  }
-};
+export const setItems = items => ({
+    type: 'SET_ITEMS',
+    items
+});
 
-export const addItems = (items) => {
-    return {
-        type: 'ADD_ITEMS',
-        items
-    }
-};
+export const addItems = items => ({
+    type: 'ADD_ITEMS',
+    items
+});
 
 const getItems =
     () => axios.get('./items.json')

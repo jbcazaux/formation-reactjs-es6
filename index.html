@@ -672,8 +672,7 @@ export default class ButtonApp extends React.Component {
             <button>{this.props.children}</button>
         </div>
     }
-}
-);
+};
 ```
 ---
 layout: false
@@ -718,7 +717,7 @@ layout: true
 
 ---
 
-# Bien / Pas bien
+# Bad Practice vs. Good Practice
 
 ![best practices](images/flux-bestpractice.png)
 
@@ -780,17 +779,12 @@ Le *state* est en read-only !
 ---
 
 # Store
-(Attention, ceci n'est pas de l'ES6)
-```typescript
-interface Store<S> {
-    dispatch: Dispatch<S>;
-    getState(): S;
-    subscribe(listener: () => void): Unsubscribe;
-    replaceReducer(nextReducer: Reducer<S>): void;
-}
-```
+Deux méthodes importantes dans le store: **dispatch** et **getState**.
+
 * Le *store* garde l'état de l'application. On y accède via *getState()*.
-* ~~setState()~~ !! On modifie l'état en 'dispatchant' une action: *dispatch(filterWarnings(true))*
+* ~~setState()~~ !! On modifie l'état en 'dispatchant' une action: *dispatch(inc(3))*
+
+Il y a aussi **subscribe**
 * On peut être prévenu des changements du store via *subscribe(listener)*
 * On se désenregistre avec la méthode retournée par *subscribe*
 
@@ -812,7 +806,7 @@ layout: true
 # Composition de reducers - Approche naïve
 ```javascript
 const initialState = {user: '', counter: 0};
-export const myreducer =
+export const myGlobalReducer =
 (state = initialState, action) => {
     switch (action.type) {
         case 'SET_USER':
@@ -826,7 +820,7 @@ export const myreducer =
     }
 };
 ```
-Ca peut faire lourd...!
+Ca peut faire lourd sur une grosse appli...!
 
 ---
 
@@ -858,7 +852,7 @@ export const counter =
 # Composition de reducers - Effet Waouh
 ```javascript
 const initialState = {user: 'nobody', counter: 0};
-export const myreducer =
+export const myGlobalReducer =
 (state = initialState, action) => {
     return {
         user: user(state.user, action),
@@ -869,7 +863,7 @@ export const myreducer =
 Et avec un peu de magie...
 ```javascript
 import { combineReducers } from 'redux'
-export const myreducer = combineReducers({
+export const myGlobalReducer = combineReducers({
     user,
     counter
 });
@@ -913,7 +907,7 @@ export const myreducer = combineReducers({
 
 # Connect
 
-* Le composant de présentation est comme les composants simples rencontrés jusque la (sans appels ajax)
+* Le composant de présentation est comme les composants simples rencontrés jusque là (sans appels ajax)
 * Le composant conteneur va être généré automatiquement, ** mais **
     * il faut décrire comment créer les *props* à partir des données du *store*: **mapStateToProps(state: State): StateProps {...}**
     * il faut implémenter les callbacks qui seront injectés dans les *props*: **mapDispatchToProps(dispatch: Function): DispatchProps {...}**
@@ -928,14 +922,12 @@ export const MyComponent =
 
 ## Composant de présentation:
 ```javascript
-export const SelectCodePostal_ = ({cps, currentCp, onSelectCp}: Props) => (
-    <FormControl componentClass="select"
-                 onChange={onSelectCp}
-                 value={currentCp}>
+export const SelectCodePostal_ = ({cps, currentCp, onSelectCp}) => (
+    <select onChange={onSelectCp} value={currentCp}>
         {
-            cps.map((cp: number) => <option key={cp} value={cp}>{cp}</option> )
+            cps.map(cp => <option key={cp} value={cp}>{cp}</option> )
         }
-    </FormControl>
+    </select>
 );
 ```
 ---
@@ -943,15 +935,14 @@ export const SelectCodePostal_ = ({cps, currentCp, onSelectCp}: Props) => (
 ## Conteneur
 ```javascript
 const mapStateToProps = (state) => {
-    const cpsOfAgence = state.codesPostaux
-        .map((cp: CodePostal) => cp.id);
+    const cpsOfAgence = state.codesPostaux.map(cp => cp.id);
     return {cps: cpsOfAgence, currentCp: state.codePostal.id};
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         onSelectCp: (event) => {
-            let codePostalId =
+            const codePostalId =
                 new CodePostalId(parseInt(event.target.value));
             dispatch(setCodePostalId(codePostalId));
         }

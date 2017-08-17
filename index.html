@@ -1084,6 +1084,111 @@ layout: false
 
 ---
 
+## redux-saga
+### Generators
+
+```javascript
+function* fooGenerator() {
+    yield 'a';
+    yield 'b';
+    yield 42;
+    return 'bye';
+}
+
+for (const val of fooGenerator()) {
+    console.log(val);
+}
+```
+
+---
+
+## redux-saga
+### Generators
+
+```javascript
+function* fooGenerator() {
+    yield 'a';
+    yield 'b';
+    yield 42;
+    return 'bye';
+}
+
+for (const val of fooGenerator()) {
+    console.log(val);
+}
+
+const it = fooGenerator();
+console.log(it.next()); // Object {value: "a", done: false}
+console.log(it.next()); // Object {value: "b", done: false}
+console.log(it.next()); // Object {value: 42, done: false}
+console.log(it.next()); // Object {value: "bye", done: true}
+console.log(it.next()); // Object {value: undefined, done: true}
+
+```
+---
+
+## redux-saga
+### Generators
+
+```javascript
+function* barGenerator(x) {
+    const a = yield x + 1;
+    console.log(a);
+    return 'good bye';
+}
+
+const it = barGenerator(5);
+console.log(it.next()); // Object {value: 6, done: false}
+console.log(it.next(100)); // ?
+
+```
+---
+
+## redux-saga
+### Generators
+
+```javascript
+function* barGenerator(x) {
+    const a = yield x + 1;
+    console.log(a);
+    return 'good bye';
+}
+
+const it = barGenerator(5);
+console.log(it.next()); // Object {value: 6, done: false}
+console.log(it.next(100)); // 100 - Object {value: "good bye", done: true}
+```
+---
+
+## redux-saga
+### Sagas
+
+```javascript
+
+export function* loadItems() {
+  const iems = yield call(fetchItems);
+  yield put(setItems(items);
+}
+
+```
+
+```javascript
+
+export function* loadCharts() {
+  const user = yield call(fetchUser);
+  if (user.isPremium()) {
+    const data = yield fetchPremiumChartsData();
+    yield put(setChartsData(data));
+  }
+  else {
+    const data = yield fetchBasicChartsData();
+    yield put(setChartsData(data));
+  }
+}
+
+```
+---
+
 # Bravo !
 * C'était la partie la plus compliquée
 * On sait créer des composants et leur passer des propriétés

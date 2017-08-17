@@ -18,3 +18,22 @@ export default function* rootSaga() {
         takeEvery('ADD_WITH_TVA', addItemsWithTVA)
     ])
 }
+
+
+function* loadUser(action) {
+    const user = yield call(fetchUser, action.userId);
+    yield put(setUser(user));
+}
+
+const loadAgencies = function* (action) {
+    const agencies = yield call(fetchAgencies, action.userId);
+    const agenciesIds = agencies.map(a => a.id);
+    yield put(setAgenciesIds(agenciesIds));
+};
+
+export default function* rootSaga() {
+    yield all([
+        takeEvery('LOAD_USER', loadUser),
+        takeEvery('LOAD_AGENCIES', loadAgencies)
+    ])
+}

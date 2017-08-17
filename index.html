@@ -1005,7 +1005,13 @@ Ce sont des **middlewares**.
 
 ---
 
-## redux-thunk
+template: default
+layout: true
+
+### redux-thunk
+---
+
+## Configuration
 ```javascript
 import {reducer} from './reducers/index';
 import {createStore, applyMiddleware} from 'redux';
@@ -1084,8 +1090,13 @@ layout: false
 
 ---
 
-## redux-saga
-### Generators
+template: default
+layout: true
+
+### redux-saga
+---
+
+## Generators
 
 ```javascript
 function* fooGenerator() {
@@ -1102,8 +1113,7 @@ for (const val of fooGenerator()) {
 
 ---
 
-## redux-saga
-### Generators
+## Generators
 
 ```javascript
 function* fooGenerator() {
@@ -1127,8 +1137,7 @@ console.log(it.next()); // Object {value: undefined, done: true}
 ```
 ---
 
-## redux-saga
-### Generators
+## Generators
 
 ```javascript
 function* barGenerator(x) {
@@ -1144,8 +1153,7 @@ console.log(it.next(100)); // ?
 ```
 ---
 
-## redux-saga
-### Generators
+## Generators
 
 ```javascript
 function* barGenerator(x) {
@@ -1160,14 +1168,13 @@ console.log(it.next(100)); // 100 - Object {value: "good bye", done: true}
 ```
 ---
 
-## redux-saga
-### Sagas
+## Sagas
 
 ```javascript
 
 export function* loadItems() {
-  const iems = yield call(fetchItems);
-  yield put(setItems(items);
+  const iems = yield call(fetchItems); // fetchItems: Promise<Array<Item>>
+  yield put(setItems(items); // setItems est un actionCreator classique
 }
 
 ```
@@ -1175,18 +1182,78 @@ export function* loadItems() {
 ```javascript
 
 export function* loadCharts() {
-  const user = yield call(fetchUser);
+  const user = yield call(fetchUser); // fetchUser: Promise<User>
   if (user.isPremium()) {
-    const data = yield fetchPremiumChartsData();
-    yield put(setChartsData(data));
+    const data = yield fetchPremiumChartsData(); // Promise<PremiumData>
+    yield put(setChartsData(data)); // actionCreator simple
   }
   else {
-    const data = yield fetchBasicChartsData();
-    yield put(setChartsData(data));
+    const data = yield fetchBasicChartsData(); // Promise<BasicData>
+    yield put(setChartsData(data)); // actionCreator simple
   }
 }
 
 ```
+---
+
+## Watch Sagas
+
+```javascript
+function* loadUser(action) {
+    const user = yield call(fetchUser, action.userId);
+    yield put(setUser(user));
+}
+
+const loadAgencies = function* (action) {
+    const agencies = yield call(fetchAgencies, action.userId);
+    const agenciesIds = agencies.map(a => a.id);
+    yield put(setAgenciesIds(agenciesIds));
+};
+
+export default function* rootSaga() {
+    yield all([
+        takeEvery('LOAD_USER', loadUser),
+        takeEvery('LOAD_AGENCIES', loadAgencies)
+    ])
+}
+```
+---
+
+## Configuration
+
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import {Provider} from 'react-redux';
+import {applyMiddleware, createStore} from 'redux';
+import createSagaMiddleware from 'redux-saga'
+import {reducer} from './reducers/index';
+import ShoppingList from './ShoppingList';
+import rootSaga from './sagas/items';
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(rootSaga); // GO !
+
+ReactDOM.render(
+    <Provider store={store}>
+        <ShoppingList title="liste de courses"/>
+    </Provider>,
+    document.getElementById("root")
+);
+```
+
+---
+
+layout: false
+
+#TP-05-02
+## Liste de courses - ter
+1. Installer redux-saga
+2. Reprendre le TP-04 mais faisant un appel asynchrone (http) pour charger la liste d'items
+3. Faire une saga qui avant d'ajouter l'item au store, applique la TVA sur le prix lors d'un ajout d'item par le formulaire
+
 ---
 
 # Bravo !
@@ -1195,7 +1262,7 @@ export function* loadCharts() {
  * Depuis leur composant parent
  * Depuis depuis un l'état 'local' (**LocalState**)
  * Depuis l'état du **store** (**State**)
- * Depuis un composant (grand)n-parent par le context... ou pas !
+ * Depuis un composant grand(n)-parent par le context... ou pas !
 
 ---
 

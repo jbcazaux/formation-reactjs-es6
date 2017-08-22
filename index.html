@@ -145,7 +145,17 @@ class: center, middle, inverse
 #### [@jbcazaux](http://twitter.com/jbcazaux)
 #### [http://codox.fr/formation-reactjs-es6](http://codox.fr/formation-reactjs-es6)
 
+
 ---
+# Les présentations
+![who are you](images/whoru.gif)
+![me?](images/me.gif)
+---
+# La logistique
+![coffee](images/coffee.gif)
+![hours](images/hours.gif)
+---
+
 ## Versions
 
 ```json
@@ -528,6 +538,11 @@ layout: true
 ### Intro
 ---
 
+# Tout est composant
+
+![components](images/components.png)
+---
+
 #Hello world
 index.js
 ```javascript
@@ -536,7 +551,7 @@ import ReactDOM from "react-dom";
 import Hello from "./Hello";
 
 ReactDOM.render(
-    <Hello name="econsulting"/>,
+    <Hello name="cnrs"/>,
     document.getElementById('root')
 );
 
@@ -620,7 +635,7 @@ layout: true
 
 # Type checking
 
-On peut ne **rien** faire, utiliser **Typescript** ou utiliser les **PropTypes**.
+On peut ne **rien** faire, utiliser **Typescript**, **Flow** ou les **PropTypes**.
 ```javascript
 class Hello extends React.Component {
 
@@ -649,17 +664,19 @@ oneOf['News', 'Photos'], oneOfType([...]), arrayOf(), objectOf()...
 ---
 
 #Composant et Cycle de vie
-* seule **render()** est obligatoire
-* **getInitialState()**: invoqué une seule fois à la création du composant
-* **getDefaultProps()**: invoqué une seule fois aussi
-* **propTypes**, **mixins**, **statics**: plus tard... ;)
-* **componentWillMount()**: J'arrive !
-* **componentDidMount()**: Je suis là !
-* **componentWillReceiveProps(**nextProps: Object**)**
-* **shouldComponentUpdate(**nextProps, nextState**)**: Qu'est ce qu'on fait, chef ?
-* **componentWillUpdate(**nextProps, nextState**)**: A l'attaque !
-* **componentDidUpdate(**nextProps, nextState**)**: job done
-* **componentWillUnmount()**: bye bye !
+Les incontournables
+* **render()**
+* **componentWillMount()**
+* **componentDidMount()**
+* **componentWillUnmount()**
+
+Les autres:
+* **componentWillReceiveProps(**nextProps**)**
+* **componentWillUpdate(**nextProps, nextState**)**
+* **componentDidUpdate(**nextProps, nextState**)**
+* **getInitialState()**
+* **getDefaultProps()**
+* **shouldComponentUpdate(**nextProps, nextState**)**
 
 ---
 

@@ -147,13 +147,15 @@ class: center, middle, inverse
 
 
 ---
-# Les présentations
-![who are you](images/whoru.gif)
-![me?](images/me.gif)
+# Hello !
+![mynameis](images/mynameis.jpg)
 ---
-# La logistique
+# Coffee breaks
 ![coffee](images/coffee.gif)
 ![hours](images/hours.gif)
+---
+# Objectifs personnels
+![postits](images/postits.jpg)
 ---
 
 ## Versions
@@ -455,9 +457,7 @@ const uniq = new Set([1, 2, 3, 1, 2, 3]);
 uniq.length // ?
 ```
 ---
-# Rappels
-
-* currying
+# Rappels - currying
 
 ```javascript
 let add = function(x) {
@@ -468,9 +468,7 @@ let add = function(x) {
 add(2)(3) // ???
 ```
 ---
-# Rappels
-
-* currying
+# Rappels - currying
 
 ```javascript
 let add = function(x) {
@@ -485,9 +483,7 @@ add2(3); // = ?
 ```
 
 ---
-# Rappels
-
-* currying
+# Rappels - currying
 
 ```javascript
 let add = function(x) {
@@ -498,9 +494,7 @@ let add = function(x) {
 let add = x => y => x + y // WTF ?!
 ```
 ---
-# Rappels
-
-* currying
+# Rappels - currying
 
 ```javascript
 let add = function(x) {
@@ -516,9 +510,7 @@ let add = x =>
 ```
 
 ---
-# Rappels
-
-* this
+# Rappels - this
 ```javascript
 function f() {
     this.foo; // what is this ?
@@ -1008,6 +1000,9 @@ export const incrementor = (inc) => {
     return {type: 'INCREMENT', inc};
 };
 ```
+```javascript
+export const incrementor = (inc) => ({type: 'INCREMENT', inc});
+```
 
 ![redux](images/redux.png)
 ---
@@ -1425,7 +1420,7 @@ console.log(it.next(100)); // 100 - Object {value: "good bye", done: true}
 ```javascript
 
 export function* loadItems() {
-  const iems = yield call(fetchItems); // fetchItems: Promise<Array<Item>>
+  const items = yield call(fetchItems); // fetchItems: Promise<Array<Item>>
   yield put(setItems(items); // setItems est un actionCreator classique
 }
 
@@ -1456,7 +1451,7 @@ function* loadUser(action) {
     yield put(setUser(user));
 }
 
-const loadAgencies = function* (action) {
+const loadAgencies = function* (action) { // une autre façon d'écrire !
     const agencies = yield call(fetchAgencies, action.userId);
     const agenciesIds = agencies.map(a => a.id);
     yield put(setAgenciesIds(agenciesIds));
@@ -1467,6 +1462,33 @@ export default function* rootSaga() {
         takeEvery('LOAD_USER', loadUser),
         takeEvery('LOAD_AGENCIES', loadAgencies)
     ])
+}
+```
+---
+
+## Watch Sagas
+
+```javascript
+function* loadUser(action) {...}
+function* loadAgencies(action) {...};
+
+function* watchLoadUser() {
+    while (true) {
+        const action = yield take('LOAD_USERS');
+        yield call(loadUser, action);
+    }
+}
+
+function* watchLoadAgencies() {
+    while (true) {
+        const action = yield take('LOAD_AGENCIES');
+        yield call(loadAgencies, action);
+    }
+}
+
+export default function* rootSaga() {
+    yield fork(watchLoadUser);
+    yield fork(watchLoadAgencies);
 }
 ```
 ---
@@ -1497,6 +1519,55 @@ ReactDOM.render(
 ```
 
 ---
+
+## Utilisations avancées
+
+La course
+```javascript
+function* fetchPostsWithTimeout() {
+  const {posts, timeout} = yield race({
+    posts: call(fetch, '/posts', {method: 'get'}),
+    timeout: call(delay, 1000)
+  })
+
+  if (posts) {
+    put({type: 'SET_POSTS', posts});
+  } else {
+    put({type: 'TIMEOUT_ERROR'});
+  }
+}
+```
+---
+
+## Utilisations avancées
+
+Annuler une tâche
+```javascript
+function* main() {
+  while ( yield take('START_DATE_SYNC')) {
+    const task = yield fork(dateSync);
+    yield take('STOP_DATE_SYNC')
+    yield cancel(bgSyncTask)
+  } // recommence à écouter 'START_DATE_SYNC'
+}
+
+function* dateSync() {
+  try {
+    while (true) {
+      const d = yield call(fetchDate);
+      yield put(setCurrentDate(d));
+      yield call(delay, 1000);
+    }
+  } finally {
+    if (yield cancelled()) {
+      yield put(setCurrentDate(0));
+    }
+  }
+}
+```
+---
+
+
 
 layout: false
 

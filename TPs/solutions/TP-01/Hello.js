@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Hello extends React.Component {
 
@@ -12,6 +13,6 @@ export default class Hello extends React.Component {
 }
 
 Hello.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    truc: React.PropTypes.boolean
+    name: PropTypes.string.isRequired,
+    truc: PropTypes.bool
 };

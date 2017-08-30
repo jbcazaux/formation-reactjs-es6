@@ -632,8 +632,8 @@ On peut ne **rien** faire, utiliser **Typescript**, **Flow** ou les **PropTypes*
 class Hello extends React.Component {
 
     static propTypes = {
-        name: React.PropTypes.string.isRequired,
-        truc: React.PropTypes.bool
+        name: PropTypes.string.isRequired,
+        truc: PropTypes.bool
     };
 
     render() {
@@ -644,8 +644,8 @@ class Hello extends React.Component {
 }
 
 Hello.propTypes = {
-    name: React.PropTypes.string.isRequired,
-    truc: React.PropTypes.bool
+    name: PropTypes.string.isRequired,
+    truc: PropTypes.bool
 }
 ```
 Au choix: array, bool, func, number, object, string, symbol, node, instanceOf(MyObject),
@@ -1622,8 +1622,8 @@ getChildContext() {
 Puis définir les *childContextTypes*, toujours dans le composant parent
 ```javascript
 static childContextTypes = {
-    color: React.PropTypes.string.isRequired,
-    user: React.PropTypes.object.isRequired
+    color: PropTypes.string.isRequired,
+    user: PropTypes.object.isRequired
 };
 ```
 
@@ -1638,8 +1638,8 @@ class Child extends React.Component {
     context;
 
     static contextTypes = {
-        color: React.PropTypes.string.isRequired,
-        user: React.PropTypes.object.isRequired
+        color: PropTypes.string.isRequired,
+        user: PropTypes.object.isRequired
     };
 
     render() {

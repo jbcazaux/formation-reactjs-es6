@@ -1431,12 +1431,12 @@ export function* loadItems() {
 export function* loadCharts(action) {
   const user = yield call(fetch, '/user/' + action.userId);
   if (user.isPremium()) {
-    const data = yield fetchPremiumChartsData();
-    yield put(setChartsData(data));
+    const data = yield call(fetchPremiumChartsData);
+    yield put({type: 'SET_CHARTS_DATA', data: data});
   }
   else {
-    const data = yield fetchBasicChartsData();
-    yield put(setChartsData(data));
+    const data = yield call(fetchBasicChartsData);
+    yield put({type: 'SET_CHARTS_DATA', data});
   }
 }
 

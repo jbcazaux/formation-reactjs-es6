@@ -1387,13 +1387,32 @@ console.log(it.next()); // Object {value: undefined, done: true}
 ## Generators
 
 ```javascript
-function* barGenerator(x) {
+function* barGenerator() {
+    const a = yield 'a';
+    console.log('a', a);
+    const b = yield 'b';
+    console.log('b', b);
+    const c = yield 'c';
+    console.log(c);
+    return 'good bye';
+}
+for (const val of barGenerator()) {
+    console.log(val);
+}
+// output ?
+```
+---
+
+## Generators
+
+```javascript
+function* qixGenerator(x) {
     const a = yield x + 1;
     console.log(a);
     return 'good bye';
 }
 
-const it = barGenerator(5);
+const it = qixGenerator(5);
 console.log(it.next()); // Object {value: 6, done: false}
 console.log(it.next(100)); // ?
 
@@ -1403,13 +1422,13 @@ console.log(it.next(100)); // ?
 ## Generators
 
 ```javascript
-function* barGenerator(x) {
+function* qixGenerator(x) {
     const a = yield x + 1;
     console.log(a);
     return 'good bye';
 }
 
-const it = barGenerator(5);
+const it = qixGenerator(5);
 console.log(it.next()); // Object {value: 6, done: false}
 console.log(it.next(100)); // 100 - Object {value: "good bye", done: true}
 ```
@@ -1418,7 +1437,6 @@ console.log(it.next(100)); // 100 - Object {value: "good bye", done: true}
 ## Sagas
 
 ```javascript
-
 export function* loadItems() {
   const items = yield call(fetch, '/items');
   yield put(setItems(items));
@@ -1427,7 +1445,6 @@ export function* loadItems() {
 ```
 
 ```javascript
-
 export function* loadCharts(action) {
   const user = yield call(fetch, '/user/' + action.userId);
   if (user.isPremium()) {
@@ -1441,6 +1458,18 @@ export function* loadCharts(action) {
 }
 
 ```
+```javascript
+export function* loadProducts() {
+  try {
+    const products = yield call(fetchProducts)
+    yield put({ type: 'PRODUCTS_RECEIVED', products })
+  }
+  catch(error) {
+    yield put({ type: 'PRODUCTS_REQUEST_FAILED', error })
+  }
+}
+```
+
 ---
 
 ## Watch Sagas
@@ -1727,6 +1756,11 @@ Récupérer l'état
 ```javascript
 expect(component.state('name')).toEqual('mon nom');
 ```
+---
+## Tests des sagas
+
+
+
 
 ---
 layout: false

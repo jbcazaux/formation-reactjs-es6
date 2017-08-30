@@ -1420,23 +1420,23 @@ console.log(it.next(100)); // 100 - Object {value: "good bye", done: true}
 ```javascript
 
 export function* loadItems() {
-  const items = yield call(fetchItems); // fetchItems: Promise<Array<Item>>
-  yield put(setItems(items); // setItems est un actionCreator classique
+  const items = yield call(fetch, '/items');
+  yield put(setItems(items));
 }
 
 ```
 
 ```javascript
 
-export function* loadCharts() {
-  const user = yield call(fetchUser); // fetchUser: Promise<User>
+export function* loadCharts(action) {
+  const user = yield call(fetch, '/user/' + action.userId);
   if (user.isPremium()) {
-    const data = yield fetchPremiumChartsData(); // Promise<PremiumData>
-    yield put(setChartsData(data)); // actionCreator simple
+    const data = yield fetchPremiumChartsData();
+    yield put(setChartsData(data));
   }
   else {
-    const data = yield fetchBasicChartsData(); // Promise<BasicData>
-    yield put(setChartsData(data)); // actionCreator simple
+    const data = yield fetchBasicChartsData();
+    yield put(setChartsData(data));
   }
 }
 

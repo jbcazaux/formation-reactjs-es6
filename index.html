@@ -1596,7 +1596,17 @@ function* dateSync() {
 ```
 ---
 
+## Utilisations avancées
 
+Récupérer l'état du store
+```javascript
+function* loadFriends() {
+  const currentUser = yield(select('user'));
+  const friends = yield call(fetch, '/users/' + currentUser.id + '/friends');
+  yield put({type: 'SET_FRIENDS', friends};
+}
+```
+---
 
 layout: false
 
@@ -1759,9 +1769,27 @@ expect(component.state('name')).toEqual('mon nom');
 ---
 ## Tests des sagas
 
+L'idée est de tester unitairement les sagas, pas les méthodes appelées.
+* Les embranchements conditionnels
+* Les appels à put, call, fork, ...
 
+```javascript
+function* loadUser(action) {
+    const user = yield call(fetch, '/users/' + action.userId);
+    yield put({type: 'SET_USER', user});
+}
+```
 
+```javascript
+it('load user', () => {
+        const gen = loadUser({userId: 42});
 
+        expect(gen.next().value).toEqual(call(fetch, '/users/42'));
+        const user = {id: 42, name: 'joe'};
+        expect(gen.next(user).value).toEqual({type: 'SET_USER', user: user});
+        expect(gen.next().done).toBeTruthy();
+    });
+```
 ---
 layout: false
 

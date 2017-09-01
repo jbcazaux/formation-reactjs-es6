@@ -1034,6 +1034,7 @@ Deux méthodes importantes dans le store: **dispatch** et **getState**.
 Il y a aussi **subscribe**
 * On peut être prévenu des changements du store via *subscribe(listener)*
 * On se désenregistre avec la méthode retournée par *subscribe*
+* Mais on ne s'en sert jamais ;)
 
 ![redux](images/redux.png)
 
@@ -1282,6 +1283,13 @@ const getItemsId =
         .then(items => items.map(item => item.id))
         .catch(error => console.log(error.toString()))
 ```
+```javascript
+const getItemsId =
+    () => fetch('src/items.json')
+        .then(resp => resp.data)
+        .then(items => items.map(item => item.id))
+        .catch(error => console.log(error.toString()))
+```
 
 ---
 
@@ -1303,8 +1311,6 @@ function incrementAsyncCreator(inc) {
     }, 1000);
   };
 }
-
-
 ```
 
 ---
@@ -1472,13 +1478,13 @@ export function* loadProducts() {
 
 ---
 
-## Watch Sagas
+## Watch Sagas - takeEvery
 
 ```javascript
 function* loadUser(action) {
     const user = yield call(fetchUser, action.userId);
     yield put(setUser(user));
-}
+};
 
 const loadAgencies = function* (action) { // une autre façon d'écrire !
     const agencies = yield call(fetchAgencies, action.userId);
@@ -1491,11 +1497,11 @@ export default function* rootSaga() {
         takeEvery('LOAD_USER', loadUser),
         takeEvery('LOAD_AGENCIES', loadAgencies)
     ])
-}
+};
 ```
 ---
 
-## Watch Sagas
+## Watch Sagas - take
 
 ```javascript
 function* loadUser(action) {...}
@@ -1803,7 +1809,7 @@ Le but est de tester complètement le TP-03
 5. *StudenstTable*: Vérifier le nombre de ligne du tableau suivant le nombre de *Student* passés. Vérifier également le callback.
 6. *StudentsApp*: Vérifier que le composant et ses sous composants sont affichés, puis vérifier l'impact des méthodes *handleSelectStudent()* et
 *handleFilterChange()* sur le *state*. Enfin valider que *filteredStudents()* renvoie les bons éléments pour un filtre donné.
-
+7. (saga) Bonus: Reprendre le TP 05-02 et écrire les tests des sagas.
 ---
 template: default
 layout: true
@@ -1814,12 +1820,11 @@ layout: true
 ## react-router
 
 Il existe plusieurs systèmes de gestion de l'historique de navigation:
-* createMemoryHistory : /
-* hashHistory: /monsite/#/page1
-* browserHistory : /monsite/page1
+* **BrowserRouter** : /monsite/page1/partie2
+* **HashRouter**: /monsite/#/page1/partie2
+* **MemoryRouter** : /
 
-Pour la dernière il faut modifier le serveur pour rediriger toutes les requêtes vers index.html, sauf les css, js, et appels aux webservices.
-
+Pour le BrowserRouter il faut modifier le serveur pour rediriger toutes les requêtes vers index.html, sauf les css, js, et appels aux webservices.
 ---
 
 ## react-router
@@ -1827,37 +1832,51 @@ Pour la dernière il faut modifier le serveur pour rediriger toutes les requête
 Définir le Router au plus haut niveau dans l'application.
 
 ```javascript
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+
 ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route path="/" component={App}/>
-        <Route path="/part1" component={Part1}/>
-        <Route path="/part2" component={Part2}/>
+    <Router>
+        <Route exact path="/" component={Home}/>
+        <Route path="/about" component={About}/>
+        <Route path="/admin" component={Admin}/>
     </Router>,
     document.getElementById('root')
 );
 ```
 On peut imbriquer les routes !
 ```javascript
-ReactDOM.render(
-    <Router history={hashHistory}>
-        <Route path="/" component={App}>
-            <Route path="/part1" component={Part1}/>
-            <Route path="/part2" component={Part2}/>
-        </Route>
-    </Router>,
-    document.getElementById('root')
-);
+const Admin = () => (
+    <div>
+        <h2>Administration</h2>
+        <Route path={'/admin/users'} component={UsersAdmin}/>
+        <Route path={'/admin/articles'} component={ArticlesAdmin}/>
+    </div>
+)
 ```
-
 ---
 
 ## react-router
 
 On peut générer des liens automatiquement (voir la doc pour les propriétés)
 ```javascript
-<Link to="/part1">Partie 1</Link>
+<Link to="/admin/users">Administration des utilisateurs</Link>
 ```
 
+---
+
+## react-router
+
+Urls dynamiques
+```javascript
+<Route path={'/admin/users/:userId'} component={UserAdmin}/>
+```
+```javascript
+const UserAdmin = ({match}) => (
+<div>
+    Gérer l'utilisateur {match.params.userId}
+</div>
+)
+```
 ---
 layout: false
 

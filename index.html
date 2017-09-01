@@ -142,20 +142,6 @@ class: center, middle, inverse
 # React
 ### avec ES6
 
-#### [@jbcazaux](http://twitter.com/jbcazaux)
-#### [http://codox.fr/formation-reactjs-es6](http://codox.fr/formation-reactjs-es6)
-
-
----
-# Hello !
-![mynameis](images/mynameis.jpg)
----
-# Coffee breaks
-![coffee](images/coffee.gif)
-![hours](images/hours.gif)
----
-# Objectifs personnels
-![postits](images/postits.jpg)
 ---
 
 ## Versions
@@ -177,6 +163,7 @@ class: center, middle, inverse
     * Etats
     * Redux
     * Tests
+    * Router
     * Optimisations
 ---
 
@@ -189,18 +176,6 @@ template: default
 layout: true
 
 ### EcmaScript 6
-
----
-
-# ~~var~~, let, const
-
-```javascript
-let foo = 'bar';
-const MAX = 10;
-const ttc = addTva(15);
-```
-
-**let** vs. **const** ?
 ---
 
 # ~~var~~, let, const
@@ -239,28 +214,6 @@ user = {name: 'lea'}; // (2)
 const arr = ['a'];
 arr.push('b'); // (3)
 arr = ['a', 'b']; // (4)
-```
----
-
-# Arrow functions
-
-```javascript
-function addOldSchool(a, b) {
-    return a + b;
-}
-```
----
-
-# Arrow functions
-
-```javascript
-function addOldSchool(a, b) {
-    return a + b;
-}
-
-let add = (a, b) => {
-    return a + b;
-}
 ```
 ---
 
@@ -325,7 +278,9 @@ for (let i = 0; i < even.length; i++) {
 }
 console.log(all) // ?
 ```
+
 ---
+
 # Spread operator
 
 ```javascript
@@ -339,7 +294,9 @@ all.push(...even);
 
 console.log(all) // ?
 ```
+
 ---
+
 # Destructuring
 
 ```javascript
@@ -348,42 +305,7 @@ let {a} = foo;
 console.log(a); // ?
 ```
 ---
-# Destructuring
 
-```javascript
-const user = {
-    firstname: 'john',
-    nickname: 'ninja',
-    lastname: 'doe',
-    age: 21
-};
-
-function getUserName(user) {
-    return user.firstname.concat(' ').concat(user.lastname);
-}
-console.log(getUserName(user));
-```
----
-# Destructuring
-
-```javascript
-const user = {
-    firstname: 'john',
-    nickname: 'ninja',
-    lastname: 'doe',
-    age: 21
-};
-
-function getUserName(user) {
-    return user.firstname.concat(' ').concat(user.lastname);
-}
-
-function getUserName({firstname, lastname}) {
-    return firstname.concat(' ').concat(lastname);
-}
-console.log(getUserName(user));
-```
----
 # Destructuring
 
 ```javascript
@@ -408,17 +330,7 @@ const getUserName = ({firstname, lastname}) =>
 console.log(getUserName(user));
 ```
 ---
-# Shorthand Notation
-```javascript
-const foo = 42;
-const bar = 1;
 
-const longer = {
-    foo: foo,
-    bar: bar
-}
-```
----
 # Shorthand Notation
 ```javascript
 const foo = 42;
@@ -457,32 +369,7 @@ const uniq = new Set([1, 2, 3, 1, 2, 3]);
 uniq.length // ?
 ```
 ---
-# Rappels - currying
 
-```javascript
-let add = function(x) {
-    return function(y) {
-        return x + y
-    }
-}
-add(2)(3) // ???
-```
----
-# Rappels - currying
-
-```javascript
-let add = function(x) {
-    return function(y) {
-        return x + y
-    }
-}
-add(2)(3) // 5 !
-
-const add2 = add(2);
-add2(3); // = ?
-```
-
----
 # Rappels - currying
 
 ```javascript
@@ -493,23 +380,9 @@ let add = function(x) {
 }
 let add = x => y => x + y // WTF ?!
 ```
----
-# Rappels - currying
-
-```javascript
-let add = function(x) {
-    return function(y) {
-        return x + y
-    }
-}
-let add = x => y => x + y // WTF ?!
-
-let add = x =>
-    y => (x + y);
-// easy !
-```
 
 ---
+
 # Rappels - this
 ```javascript
 function f() {
@@ -1256,96 +1129,6 @@ Ce sont des **middlewares**.
 template: default
 layout: true
 
-### redux-thunk
----
-
-## Configuration
-```javascript
-import {reducer} from './reducers/index';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-
-const store = createStore(
-    reducer,
-    applyMiddleware(thunk)
-);
-
-```
-
----
-
-## Promesses
-
-```javascript
-const getItemsId =
-    () => axios.get('src/items.json')
-        .then(resp => resp.data)
-        .then(items => items.map(item => item.id))
-        .catch(error => console.log(error.toString()))
-```
-```javascript
-const getItemsId =
-    () => fetch('src/items.json')
-        .then(resp => resp.data)
-        .then(items => items.map(item => item.id))
-        .catch(error => console.log(error.toString()))
-```
-
----
-
-## ThunkActionCreator
-```javascript
-const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
-
-function incrementCreator(inc) {
-  return {
-    type: INCREMENT_COUNTER,
-    inc: inc
-  };
-}
-
-function incrementAsyncCreator(inc) {
-  return dispatch => {
-    setTimeout(() => {
-      dispatch(incrementCreator(inc));
-    }, 1000);
-  };
-}
-```
-
----
-
-## En 2 mots
-
-Une **ThunkAction** est une fonction qui reçoit en entrée les méthodes *dispatch()* et *getState()*, et retourne le
-résultat de **dispatch()**
----
-
-```javascript
-export const fetchItems = () =>
-    (dispatch, getState) => getItems(getState().userId)
-        .then(items => {
-            dispatch(setItems(items));
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-```
-
----
-layout: false
-
-#TP-05
-## Liste de courses - ter
-1. Installer redux-thunk
-2. Reprendre le TP-04 mais faisant un appel asynchrone (http) pour charger la liste d'items
-3. Bonus: Faire une action qui avant d'ajouter l'item au store, applique la TVA sur le prix lors d'un ajout d'item par le formulaire
-
----
-
-template: default
-layout: true
-
 ### redux-saga
 ---
 
@@ -1943,7 +1726,7 @@ export const totalSelector = createSelector(
 
 layout: false
 
-#TP-08
+#TP-09
 ## Optimisation
 Jouer avec la méthode shouldComponentUpdate
 1. Implémenter la méthode shouldComponentUpdate
@@ -1954,7 +1737,7 @@ class: center, middle, inverse
 
 # Let's do it !
 
-#### help ? [jbcazaux@gmail.com](mailto:jbcazaux@gmail.com)
+#### help ? [formation@oxiane.com](mailto:formation@oxiane.com)
 #### [http://codox.fr/formation-reactjs-es6](http://codox.fr/formation-reactjs-es6)
 
 

@@ -1894,6 +1894,12 @@ layout: true
 ### Optimisations
 ---
 
+## On ne redessine que le nécessaire
+shouldComponentUpdate & Virtual-DOM
+
+![update](images/should-component-update.png)
+---
+
 ## Reconciliation
 
 Le **Virtual DOM** est une réprésentation des composants en mémoire. Quand les propriétés d'un composant changent, le nouveau
@@ -1906,10 +1912,9 @@ shouldComponentUpdate(nextProps, nextState) {
 }
 ```
 
-Faut-il étendre React.PureComponent (shallow equality) ou redéfinir la méthode equals ?
+Faut-il étendre React.PureComponent (shallow equality) ou ré-implémenter shouldComponentUpdate() ?
 Dans tous les cas le mieux est de ne pas avoir des données mutables: Object.assign, spread properties, Immutable
 ---
-
 
 ## Memoization
 

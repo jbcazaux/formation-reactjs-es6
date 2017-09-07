@@ -1607,7 +1607,7 @@ function* dateSync() {
 Récupérer l'état du store
 ```javascript
 function* loadFriends() {
-  const currentUser = yield(select('user'));
+  const currentUser = yield(select(state => state.user));
   const friends = yield call(fetch, '/users/' + currentUser.id + '/friends');
   yield put({type: 'SET_FRIENDS', friends};
 }

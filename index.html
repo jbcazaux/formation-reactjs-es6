@@ -1582,7 +1582,7 @@ function* main() {
   while ( yield take('START_DATE_SYNC')) {
     const task = yield fork(dateSync);
     yield take('STOP_DATE_SYNC')
-    yield cancel(bgSyncTask)
+    yield cancel(task)
   } // recommence à écouter 'START_DATE_SYNC'
 }
 

@@ -1076,7 +1076,7 @@ Ca peut faire lourd sur une grosse appli...!
 # Composition de reducers - Découpage
 ```javascript
 export const user =
-(state = '', action) => {
+(state = User.NULL, action) => {
     switch (action.type) {
         case 'SET_USER':
            return action.user;
@@ -1193,7 +1193,7 @@ const mapDispatchToProps = (dispatch) => {
         onSelectCp: (event) => {
             const codePostalId =
                 new CodePostalId(parseInt(event.target.value));
-            dispatch(setCodePostalId(codePostalId));
+            dispatch({type: 'SET_CODE_POSTALID', cpId: codePostalId});
         }
     };
 };

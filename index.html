@@ -1445,7 +1445,7 @@ console.log(it.next(100)); // 100 - Object {value: "good bye", done: true}
 ```javascript
 export function* loadItems() {
   const items = yield call(fetch, '/items');
-  yield put(setItems(items));
+  yield put({type: 'SET_ITEMS', items: items});
 }
 
 ```

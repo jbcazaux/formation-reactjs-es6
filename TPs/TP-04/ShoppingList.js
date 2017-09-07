@@ -40,12 +40,12 @@ class ShoppingList_ extends React.Component {
                     <input type="text"
                            placeholder="item"
                            onChange={(e) =>
-                            this.setState(Object.assign({}, this.state, {newItem: e.target.value}))}
+                            this.setState({newItem: e.target.value})}
                            value={this.state.newItem}
                     />
                     <input type="number"
                            onChange={(e) =>
-                            this.setState(Object.assign({}, this.state, {newPrice: parseFloat(e.target.value)}))}
+                            this.setState({newPrice: parseFloat(e.target.value)})}
                            value={this.state.newPrice}
                     />
                     <button type="submit">add</button>

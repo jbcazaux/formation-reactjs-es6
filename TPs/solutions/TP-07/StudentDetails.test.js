@@ -12,7 +12,7 @@ describe(StudentDetails, () => {
     });
     it('renders with a Student', () => {
         const component = shallow(
-            <StudentDetails student={new Student(1, 'last', 'first', [1, 2])}/>
+            <StudentDetails student={new Student(1, 'last', 'first', [])}/>
         );
         expect(component.text()).toContain('first last');
     });

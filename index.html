@@ -1792,7 +1792,7 @@ it('load user', () => {
 
         expect(gen.next().value).toEqual(call(fetch, '/users/42'));
         const user = {id: 42, name: 'joe'};
-        expect(gen.next(user).value).toEqual({type: 'SET_USER', user: user});
+        expect(gen.next(user).value).toEqual(put({type: 'SET_USER', user: user}));
         expect(gen.next().done).toBeTruthy();
     });
 ```

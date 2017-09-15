@@ -1,9 +1,9 @@
-import React from "react";
-import axios from "axios";
-import Filter from "./StudentFilter";
-import StudentsTable from "./StudentsTable";
-import StudentDetails from "./StudentDetails";
-import Student from "./Student";
+import React from 'react';
+import axios from 'axios';
+import Filter from './StudentFilter';
+import StudentsTable from './StudentsTable';
+import StudentDetails from './StudentDetails';
+import Student from './Student';
 
 class StudentsApp extends React.Component {
 
@@ -42,7 +42,7 @@ class StudentsApp extends React.Component {
 
     filteredStudents() {
         return this.state.students.filter(s =>
-        (s.firstname.indexOf(this.state.filter) > -1) || (s.lastname.indexOf(this.state.filter) > -1))
+            (s.firstname.indexOf(this.state.filter) > -1) || (s.lastname.indexOf(this.state.filter) > -1))
     }
 }
 

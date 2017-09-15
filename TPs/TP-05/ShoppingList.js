@@ -1,7 +1,7 @@
-import React from "react";
-import ShoppingItem from "./ShoppingItem";
-import {fetchItems} from "./actions/items";
-import {connect} from "react-redux";
+import React from 'react';
+import ShoppingItem from './ShoppingItem';
+import {fetchItems} from './actions/items';
+import {connect} from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
     return {

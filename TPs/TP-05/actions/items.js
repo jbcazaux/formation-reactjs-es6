@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const setItems = (items) => {
-  return {
-      type: 'SET_ITEMS',
-      items
-  }
+    return {
+        type: 'SET_ITEMS',
+        items
+    }
 };
 
 export const addItems = (items) => {

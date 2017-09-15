@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const StudentsTable = ({students, selectStudent}) => {
     // TODO: utiliser la Table de bootstrap

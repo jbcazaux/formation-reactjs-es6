@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 class Part2 extends React.Component {
 

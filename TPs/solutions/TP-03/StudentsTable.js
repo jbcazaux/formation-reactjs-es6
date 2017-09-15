@@ -1,5 +1,5 @@
-import React from "react";
-import {Table} from "react-bootstrap";
+import React from 'react';
+import {Table} from 'react-bootstrap';
 
 const StudentsTable = ({students, selectStudent}) => {
     const style = {

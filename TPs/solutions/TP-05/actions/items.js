@@ -1,5 +1,5 @@
-import axios from "axios";
-import Item from "../Item";
+import axios from 'axios';
+import Item from '../Item';
 
 export const setItems = items => ({
     type: 'SET_ITEMS',

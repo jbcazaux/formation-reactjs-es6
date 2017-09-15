@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Large from "./Context"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Large from './Context'
 
 ReactDOM.render(
     <Large/>,
-    document.getElementById("root")
+    document.getElementById('root')
 );

@@ -1,9 +1,8 @@
-import React from "react";
-import axios from "axios";
-import Filter from "./StudentFilter";
-import StudentsTable from "./StudentsTable";
-import StudentDetails from "./StudentDetails";
-import Student from "./Student";
+import React from 'react';
+import axios from 'axios';
+import Filter from './StudentFilter';
+import StudentsTable from './StudentsTable';
+import StudentDetails from './StudentDetails';
 
 class StudentsApp extends React.Component {
 

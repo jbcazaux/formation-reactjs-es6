@@ -42,12 +42,16 @@
         .reveal h3, .reveal h4 {
             text-transform: none;
         }
+
+        .reveal pre code {
+            max-height: 530px;
+        }
     </style>
 </head>
 <body>
 <div class="reveal">
     <div class="slides">
-        <section>
+        <!-- <section>
             <h1><img width="75" height="75" data-src="images/react.svg" alt="react"
                      style="border: none; background: none; box-shadow: none; margin: 0;">React</h1>
             <h3>#ES6</h3>
@@ -533,16 +537,6 @@
             }
             </code></pre>
         </section>
-        <section>
-            <h3>Commentaires</h3>
-            <pre><code data-trim>
-            render() {
-                return &lt;div&gt;
-                    {/* Sans commentaire ;) */}
-                &lt;div&gt;
-            }
-            </code></pre>
-        </section>
         <section data-background="#b5533c">
             <h3>TP-02</h3>
             <h4>Liste de courses</h4>
@@ -579,68 +573,55 @@
             </code></pre>
         </section>
         <section>
-
-            template: default
-            layout: true
-
-            ##<h3>Callbacks</h3>
-
-        </section>
-        <section>
-
             <h3>Passer des fonctions dans Props</h3>
             <pre><code data-trim>
             class ShoppingList extends React.Component {
-            // constructor...
-            // componentDidMount() {...}
-            deleteItem() {
-            const newItems = this.state.items.slice(1);
-            this.setState({...state, items: newItems});
+                // constructor...
+                // componentDidMount() {...}
+                deleteItem() {
+                    const newItems = this.state.items.slice(1);
+                    this.setState(items: newItems);
+                }
+                render() {
+                    return (&lt;ShoppingListInternal
+                            title={this.props.title}
+                            items={this.state.items}
+                            del={this.deleteItem.bind(this)}/&gt;)
+                    }
+                }
             }
-            render() {
-            return (<ShoppingListInternal
-                    title={this.props.title}
-                    items={this.state.items}
-                    del={this.deleteItem.bind(this)}/>)
-            }
-            }
-            const ShoppingListInternal = ({title, items, del}) => (
-            <div>
-                <h2>{title}</h2>
-                <ul>
-                    {items.map(item => {
-                    return (<li onClick={del}>
-                    <span>{item.label}</span>:<span>{item.price}€</span>
-                </li>
-                    )})}
-                </ul>
-            </div>
-            );
             </code></pre>
         </section>
         <section>
-
-            template: default
-            layout: true
-
-            ##<h3>Avec du style</h3>
-
+            <h3>Recevoir des fonctions dans Props</h3>
+            <pre><code data-trim>
+            const ShoppingListInternal = ({title, items, del}) => (
+                &lt;div&gt;
+                    &lt;h2&gt;{title}&lt;/h2&gt;
+                    &lt;ul&gt;
+                        {
+                          items.map(item => (&lt;li onClick={del}&gt;
+                            {item.label}: {item.price}€ &lt;/li&gt;))
+                        }
+                    &lt;/ul&gt;
+                &lt;/div&gt;);
+            </code></pre>
         </section>
         <section>
+            <h3>Avec du style</h3>
+        </section>
+        <section>
+            <h3>inline style vs css</h3>
 
-            #inline style vs css
-
-            Pourquoi pas du inline ?
+            <p>Pourquoi pas du inline ?</p>
 
             <pre><code data-trim>
             render() {
-            const mystyle = {
-            backgroundColor: '#F0ABCD'
+                const mystyle = {backgroundColor: '#F0ABCD'};
+                return &lt;div style={mystyle}/&gt;
             }
-            return <div style={mystyle}/>
-                }
-                </code></pre>
-            Sinon une CSS globale, ou une CSS par composant (Webpack powered)
+            </code></pre>
+            <p>Sinon une CSS globale, ou une CSS par composant (Webpack powered)</p>
 
             <pre><code data-trim>
                 import './MyComponent.css';
@@ -648,27 +629,30 @@
         </section>
         <section>
 
-            #React-bootstrap
-            Adaptation des composants bootstrap à React
-            <pre><code data-trim>
-                <Button bsStyle="primary" onClick={this.handleClick.bind(this)}>Go!</Button>
-                </code></pre>
+            <h3>React-bootstrap</h3>
 
-            La documentation
-            <ul>
-                <li>
-                    [https://react-bootstrap.github.io/components.html](https://react-bootstrap.github.io/components.html)
-                </li>
-                <li>[http://getbootstrap.com/components/](http://getbootstrap.com/components/)</li>
-            </ul>
+            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+                <p>Adaptation des composants bootstrap à React</p>
+            </div>
+            <pre><code data-trim>
+                &lt;Button bsStyle="primary"
+                        onClick={this.handleClick.bind(this)}&gt;Go!&lt;/Button&gt;
+            </code></pre>
+
+            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+                <p>La documentation</p>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://react-bootstrap.github.io/components.html">https://react-bootstrap.github.io/components.html</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://getbootstrap.com/components/">http://getbootstrap.com/components/</a>
+                    </li>
+                </ul>
+            </div>
         </section>
         <section>
-
-            template: default
-            layout: true
-
-            ##<h3>Tips</h3>
-
+            <h3>Trucs et astuces</h3>
         </section>
         <section>
             <h3>Caractères spéciaux</h3>
@@ -677,267 +661,256 @@
                 </code></pre>
         </section>
         <section>
-
             <h3>JSX if (else)</h3>
-            if
+            <p>if</p>
             <pre><code data-trim>
                 {this.state.user && <div>{this.state.user.login}</div>}
-                </code></pre>
-            not
+            </code></pre>
+            <p>not</p>
             <pre><code data-trim>
                 {this.state.user || <div>No User</div>}
-                </code></pre>
-            if-else
+            </code></pre>
+            <p>if-else</p>
             <pre><code data-trim>
-                {this.state.user ? <div>{this.state.user.login}</div> : <div>No User</div>}
-                </code></pre>
+                {this.state.user
+                    ? <div>{this.state.user.login}</div>
+                    : <div>No User</div>}
+            </code></pre>
         </section>
         <section>
-
+            <h3>Commentaires</h3>
+            <pre><code data-trim>
+            render() {
+                return &lt;div&gt;
+                    {/* Sans commentaire ;) */}
+                &lt;div&gt;
+            }
+            </code></pre>
+        </section>
+        <section>
             <h3>Children</h3>
 
             <pre><code data-trim>
-                ReactDOM.render(
-                <ButtonApp title="Mon Application">Press Me! </ButtonApp>,
-                document.getElementById('root')
-                );
-                </code></pre>
+            ReactDOM.render(
+               &lt;ButtonApp title="Mon Application"&gt;Press Me! &lt;/ButtonApp&gt;,
+               document.getElementById('root')
+            );
+            </code></pre>
             <pre><code data-trim>
-                export default class ButtonApp extends React.Component {
-                render() {
-                return <div>
-                <div>{this.props.title}</div>
-                <button>{this.props.children}</button>
-            </div>
+            export default class ButtonApp extends React.Component {
+                render() { return
+                    &lt;div&gt;
+                        &lt;div&gt;{this.props.title}&lt;/div&gt;
+                        &lt;button&gt;{this.props.children}&lt;/button&gt;
+                    &lt;/div&gt;
                 }
-                };
-                </code></pre>
+            };
+            </code></pre>
+        </section>
+        <section data-background="#b5533c">
+            <h3>TP-03</h3>
+            <h4>Liste des étudiants</h4>
+            <ol>
+                <li>Installer react-bootstrap</li>
+                <li>Afficher un champ texte qui permet de filtrer les éléments d'un tableau</li>
+                <li>Afficher le nom de l'étudiant sur lequel on a cliqué, ou un message si aucun n'est sélectionné</li>
+                <li>Bonus ES6: Calculer de façon élégante la note max d'un élève (reduce)</li>
+            </ol>
         </section>
         <section>
-            layout: false
-
-            #TP-03
-            #<h3>Liste des étudiants</h3>
-            1. Installer react-bootstrap
-            2. Afficher un champ texte qui permet de filtrer les éléments d'un tableau
-            3. Afficher le nom de l'étudiant sur lequel on a cliqué, ou un message si aucun n'est sélectionné
-            4. Bonus ES6: Calculer de façon élégante la note max d'un élève (reduce)
-        </section>
-        <section>
-
             <h3>Rappels</h3>
-            * Un composant a des propriétés et des états
-            * Un composant stateless est plus maintenable et testable
-            * On ne peut passer des propriétés qu'aux enfants (ce n'est pas de l'héritage;) )
-
+            <ul>
+                <li>Un composant a des propriétés et des états</li>
+                <li>Un composant stateless est plus maintenable et testable</li>
+                <li>On ne peut passer des propriétés qu'aux enfants</li>
+            </ul>
         </section>
         <section>
-            layout: false
-            class: center, middle, inverse
-
             <h3>Flux & Redux</h3>
         </section>
         <section>
-
-            template: default
-            layout: true
-
-            ##<h3>Flux & Redux</h3>
-
-        </section>
-        <section>
-
             <h3>Flux</h3>
+            <div style="font-size: 30px; text-align: left; margin-left: 15px;">
+                <ul>
+                    <li>Store: Stocker la donnée + Logique</li>
+                    <li>Action: Modifier le modèle</li>
+                    <li>Dispatcher: Répartir les actions dans les stores</li>
+                    <li>View: Les composants UI</li>
+                </ul>
+            </div>
+            <img data-src="images/flux.png" alt="flux">
 
-            * Store: Stocker la donnée + Logique
-            * Action: Modifier le modèle
-            * Dispatcher: Répartir les actions dans les stores
-            * View: Les composants UI
-
-            ![flux acton diagram](images/flux.png)
-
-            **Le flux ne va que dans un seul sens !** (~~2-way binding~~)
+            <p>
+                Le flux ne va que dans <i>un seul sens</i> !
+            (<strike>2-way binding</strike>)</p>
 
         </section>
         <section>
-
             <h3>Bad Practice vs. Good Practice</h3>
 
-            ![best practices](images/flux-bestpractice.png)
-
-            * On ne met pas à jour directement les autres composants
-            * On passe par le store (redux), les stores (flux), les services (Subject RxJs), ...
-
+            <img data-src="images/flux-bestpractice.png" alt="best practices" height="300">
+            <div style="font-size: 30px; text-align: left; margin-left: 15px;">
+                <ul>
+                    <li>On ne met pas à jour directement les autres composants</li>
+                    <li>On passe par le store (redux), les stores (flux), les services (Subject RxJs), ...</li>
+                </ul>
+            </div>
         </section>
         <section>
-
             <h3>Redux</h3>
-
-            * Un store unique (pratique pour l'isomorphisme)
-            * L'état du store est read-only
-            * On émet des *actions* pour modifier l'état
-            * Les actions sont interprétées par des *reducers*
-            * les *reducers* sont des fonctions *pures*
-            * les *reducers* prennent en entrée l'état précédent et une action
-            * ils retournent le nouvel état dans un objet immutable
-
-            ![redux](images/redux.png)
-
         </section>
         <section>
-
             <h3>Actions</h3>
-
-
-            ##<h3>Actions</h3>
             <pre><code data-trim>
                 {type: 'INCREMENT', inc: 3}
                 {type: 'ADD_TODO', text: 'Acheter du pain'}
                 {type: 'SET_USER', user: new User(1, 'toto')}
-                </code></pre>
+            </code></pre>
 
-            ##<h3>Action Creator</h3>
+            <h3>Action Creator</h3>
             <pre><code data-trim>
-                export const incrementor = (inc) => {
+            export const incrementor = (inc) => {
                 return {type: 'INCREMENT', inc};
-                };
-                </code></pre>
+            };
+            </code></pre>
             <pre><code data-trim>
-                export const incrementor = (inc) => ({type: 'INCREMENT', inc});
-                </code></pre>
-
-            ![redux](images/redux.png)
+            export const incrementor =
+                (inc) => ({type: 'INCREMENT', inc});
+            </code></pre>
         </section>
         <section>
+            <h3>Redux</h3>
 
+            <div style="font-size: 30px; text-align: left; margin-left: 15px;">
+                <ul>
+                    <li>Un store unique (pratique pour l'isomorphisme)</li>
+                    <li>L'état du store est read-only</li>
+                    <li>On émet des <b>actions</b> pour modifier l'état</li>
+                    <li class="fragment">Les <b>actions</b> sont interprétées par des <b>reducers</b></li>
+                    <li class="fragment">les <b>reducers</b> sont des fonctions <b>pures</b></li>
+                    <li class="fragment">les <b>reducers</b> prennent en entrée l'état précédent et une action</li>
+                    <li class="fragment">ils retournent le nouvel état dans un objet immutable</li>
+                </ul>
+            </div>
+            <img data-src="images/redux.png" alt="redux" height="200">
+        </section>
+        <section>
             <h3>Reducer</h3>
             <pre><code data-trim>
-                export const display =
-                (state = 0, action) => {
+            export const display = (state = 0, action) => {
                 switch (action.type) {
-                case 'INCREMENT':
-                return state + action.inc;
-                case 'DECREMENT':
-                return state - action.inc;
-                default:
-                return state;
+                    case 'INCREMENT':
+                        return state + action.inc;
+                    case 'DECREMENT':
+                        return state - action.inc;
+                    default:
+                        return state;
                 }
-                };
-                </code></pre>
-            Le *state* est en read-only !
-            ![redux](images/redux.png)
+            };
+            </code></pre>
+            Le <b>state</b> est en read-only !
+            <img data-src="images/redux.png" alt="redux">
         </section>
         <section>
-
             <h3>Store</h3>
-            Deux méthodes importantes dans le store: **dispatch** et **getState**.
+            <div style="font-size: 30px; text-align: left; margin-left: 15px;">
+                <p>Deux méthodes importantes dans le store: <b>dispatch</b> et <b>getState</b>.</p>
+                <ul>
+                    <li>Le <b>store</b> garde l'état de l'application. On y accède via <b>getState()</b>.</li>
+                    <li><strike>setState()</strike> !! On modifie l'état en 'dispatchant' une action: <i>dispatch(inc(3))</i>
+                    </li>
+                </ul>
 
-            * Le *store* garde l'état de l'application. On y accède via *getState()*.
-            * ~~setState()~~ !! On modifie l'état en 'dispatchant' une action: *dispatch(inc(3))*
-
-            Il y a aussi **subscribe**
-            * On peut être prévenu des changements du store via *subscribe(listener)*
-            * On se désenregistre avec la méthode retournée par *subscribe*
-            * Mais on ne s'en sert jamais ;)
-
-            ![redux](images/redux.png)
-
+                <p>Et aussi...</p>
+                <ul class="fragment">
+                    <li>On peut être prévenu des changements du store via <b>subscribe(listener)</b></li>
+                    <li>On se désenregistre avec la méthode retournée par <b>subscribe</b></li>
+                    <li>Mais on ne s'en sert jamais ;)</li>
+                </ul>
+            </div>
+            <img data-src="images/redux.png" alt="redux">
         </section>
         <section>
-            layout: false
-            class: center, middle, inverse
-
             <h3>React & Redux</h3>
         </section>
         <section>
-
-            template: default
-            layout: true
-
-            ##<h3>React & Redux</h3>
-        </section>
-        <section>
-
-            <h3>Composition de reducers - Approche naïve</h3>
+            <h3>Composition de reducers</h3>
+            <h4>Approche naïve</h4>
             <pre><code data-trim>
-                const initialState = {user: '', counter: 0};
-                export const myGlobalReducer =
+            const initialState = {user: '', counter: 0};
+            export const myGlobalReducer =
                 (state = initialState, action) => {
-                switch (action.type) {
-                case 'SET_USER':
-                return {...state, user: action.user};
-                case 'INCREMENT':
-                return {...state, counter: state.counter + 1};
-                case 'DECREMENT':
-                return {...state, counter: state.counter - 1};
-                default:
-                return state;
+                    switch (action.type) {
+                        case 'SET_USER':
+                           return {...state, user: action.user};
+                        case 'INCREMENT':
+                           return {...state, counter: state.counter + 1};
+                        case 'DECREMENT':
+                           return {...state, counter: state.counter - 1};
+                        default:
+                           return state;
                 }
-                };
-                </code></pre>
+            };
+            </code></pre>
             Ca peut faire lourd sur une grosse appli...!
-
         </section>
         <section>
-
-            <h3>Composition de reducers - Découpage</h3>
+            <h3>Composition de reducers</h3>
             <pre><code data-trim>
-                export const user =
+            export const user =
                 (state = User.NULL, action) => {
-                switch (action.type) {
-                case 'SET_USER':
-                return action.user;
-                default:
-                return state;
-                }
+                    switch (action.type) {
+                        case 'SET_USER':
+                            return action.user;
+                        default:
+                            return state;
+                    }
                 };
-                export const counter =
+            export const counter =
                 (state = 0, action) => {
-                switch (action.type) {
-                case 'INCREMENT':
-                return state + 1;
-                case 'DECREMENT':
-                return state - 1;
-                default:
-                return state;
-                }
-                };
-                </code></pre>
+                    switch (action.type) {
+                        case 'INCREMENT':
+                            return state + 1;
+                        case 'DECREMENT':
+                            return state - 1;
+                        default:
+                            return state;
+                    }
+            };
+            </code></pre>
         </section>
         <section>
-
-            <h3>Composition de reducers - Effet Waouh</h3>
+            <h3>Composition de reducers</h3>
+            <h4>Effet Waouh</h4>
             <pre><code data-trim>
-                const initialState = {user: 'nobody', counter: 0};
-                export const myGlobalReducer =
-                (state = initialState, action) => {
-                return {
-                user: user(state.user, action),
-                counter: counter(state.counter, action)
-                }
-                };
-                </code></pre>
-            Et avec un peu de magie...
+            const init = {user: 'nobody', counter: 0};
+            export const myGlobalReducer = (state = init, action) =>
+                ({
+                    user: user(init.user, action),
+                    counter: counter(init.counter, action)
+                });
+            </code></pre>
+            <p>Et avec un peu de magie...</p>
             <pre><code data-trim>
-                import { combineReducers } from 'redux'
-                export const myGlobalReducer = combineReducers({
+            import { combineReducers } from 'redux'
+            export const myGlobalReducer = combineReducers({
                 user,
                 counter
-                });
-                </code></pre>
-        </section>
+            });
+            </code></pre>
+        </section>-->
         <section>
-
             <h3>Récapitulatif</h3>
-
-            - Actions
-            - Reducers
-            - Store
-            - Composants React
-            - Il reste à lier les composants au store !
-
-            ![redux](images/redux.png)
-
+            <div style="font-size: 30px; text-align: left; margin-left: 85px;">
+                <ul>
+                    <li>Actions</li>
+                    <li>Reducers</li>
+                    <li>Store</li>
+                    <li>Composants React</li>
+                    <li>Il reste à lier les composants au store !</li>
+                </ul>
+            </div>
+            <img data-src="images/redux.png" alt="redux">
         </section>
         <section>
 
@@ -1043,19 +1016,19 @@
                 </code></pre>
         </section>
         <section>
-            layout: false
-
-            #TP-04
-            #<h3>Liste de courses - bis</h3>
-            1. Installer les packages redux et react-redux
-            2. Reprendre le TP-02 mais en utilisant le *state* du store plutot que le *state* du composant,
-            et en initialisant la liste sans chargement asynchrone (liste en dur).
-            * Créer un *action creator* **setItems** qui renvoie une **ItemAction**
-            * Créer un reducer **items** qui prend une **ItemAction** en entrée
-            * Créer un reducer global à l'aide de **combineReducer**
-            * Créer le *contener* et le *presentational component*
-            3. Bonus: Créer un bouton qui permet d'ajouter des items au store.
-
+            <h3>TP-03</h3>
+            <h4>Liste de courses - bis</h4>
+            <ul>
+                <ol>Installer les packages redux et react-redux</ol>
+                <ol>Reprendre le TP-02 mais en utilisant le *state* du store plutot que le *state* du composant,
+                    et en initialisant la liste sans chargement asynchrone (liste en dur).
+                </ol>
+                <ol>Créer un *action creator* **setItems** qui renvoie une **ItemAction**</ol>
+                <ol>Créer un reducer **items** qui prend une **ItemAction** en entrée</ol>
+                <ol>Créer un reducer global à l'aide de **combineReducer**</ol>
+                <ol>Créer le *contener* et le *presentational component*</ol>
+                <ol>Bonus: Créer un bouton qui permet d'ajouter des items au store.</ol>
+            </ul>
         </section>
         <section>
 

@@ -1,6 +1,9 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import Enzyme, {shallow} from 'enzyme';
 import Filter from './StudentFilter';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({adapter: new Adapter()});
 
 describe(Filter, () => {
     it('renders Filter and calls passed function when filter text has changed', () => {

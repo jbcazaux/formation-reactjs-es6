@@ -1,7 +1,10 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import Enzyme, {shallow} from 'enzyme';
 import StudenstTable from './StudentsTable';
 import Student from './Student';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({adapter: new Adapter()});
 
 describe(StudenstTable, () => {
     it('renders studentsTable with 2 names', () => {

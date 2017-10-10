@@ -1,10 +1,13 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import Enzyme, {shallow} from 'enzyme';
 import StudentsApp from './StudentsApp';
 import Student from './Student';
 import Filter from './StudentFilter';
 import StudentsTable from './StudentsTable';
 import StudentDetails from './StudentDetails';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({adapter: new Adapter(), disableLifecycleMethods: true});
 
 describe(StudentsApp, () => {
     it('renders studentsApp and its sub components', () => {

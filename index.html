@@ -118,7 +118,19 @@
 
         <section>
             <h3>Hello world</h3>
-            <pre>index.js<code class="jsx" data-trim>
+            <pre>hello.js<code data-trim>
+            import React from "react";
+
+            class Hello extends React.Component {
+                render() {
+                    return (
+                        <div>Hello {this.props.name} !</div>
+                    );
+                }
+            }
+            export default Hello;
+            </code></pre>
+            <pre class="fragment">index.js<code class="jsx" data-trim>
                 import React from "react";
                 import ReactDOM from "react-dom";
                 import Hello from "./Hello";
@@ -128,18 +140,6 @@
                     document.getElementById('root')
                 );
             </code></pre>
-            <pre>hello.js<code data-trim>
-                import React from "react";
-
-                class Hello extends React.Component {
-                    render() {
-                        return (
-                            <div>Hello {this.props.name} !</div>
-                        );
-                    }
-                }
-                export default Hello;
-                </code></pre>
         </section>
         <section>
             <h3>JSX</h3>
@@ -179,11 +179,6 @@
                     return <h1>Hello {this.props.name}!</h1>;
                 }
             }
-
-            Hello.propTypes = {
-                name: PropTypes.string.isRequired,
-                truc: PropTypes.bool
-            }
             </code></pre>
             <p style="font-size: 22px; text-align: left">
                 Au choix: array, bool, func, number, object, string, symbol, node, instanceOf(MyObject),
@@ -217,17 +212,6 @@
             </div>
         </section>
         <section>
-            <h3>State</h3>
-            <pre><code data-trim>
-            {
-                date: new Date(),
-                wishList: [],
-                friends: [],
-                // ...
-            }
-            </code></pre>
-        </section>
-        <section>
             <h3>Stocker des données</h3>
             <ul>
                 <li>Props</li>
@@ -237,18 +221,29 @@
         <section>
             <h3>Props</h3>
             <pre><code data-trim>
-                class UserDetails extends React.Component {
-                    render() {
-                        const rights = {read: true, write: false};
-                
-                        return &lt;div&gt;
-                            &lt;NameDetails firstName="jb" lastName="cazaux"/&gt;
-                            &lt;AuthorisationDetails privileges={rights}/&gt;
-                        &lt;/div&gt;
-                    }
+            class UserDetails extends React.Component {
+                render() {
+                    const rights = {read: true, write: false};
+
+                    return &lt;div&gt;
+                        &lt;NameDetails firstName="jb" lastName="cazaux"/&gt;
+                        &lt;AuthorisationDetails privileges={rights}/&gt;
+                    &lt;/div&gt;
                 }
-                export default UserDetails;
-                </code></pre>
+            }
+            export default UserDetails;
+            </code></pre>
+        </section>
+        <section>
+            <h3>State</h3>
+            <pre><code data-trim>
+            {
+                date: new Date(),
+                wishList: [],
+                friends: [],
+                // ...
+            }
+            </code></pre>
         </section>
         <section>
             <h3>State</h3>

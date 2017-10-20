@@ -312,28 +312,28 @@
         </section>
         <section>
             <h3>Hello world</h3>
-            <pre>index.js<code class="jsx" data-trim>
-                import React from "react";
-                import ReactDOM from "react-dom";
-                import Hello from "./Hello";
-
-                ReactDOM.render(
-                    &lt;Hello name="cnrs"/&gt;,
-                    document.getElementById('root')
-                );
-            </code></pre>
             <pre>hello.js<code data-trim>
-                import React from "react";
+            import React from "react";
 
-                class Hello extends React.Component {
-                    render() {
-                        return (
-                            <div>Hello {this.props.name} !</div>
-                        );
-                    }
+            class Hello extends React.Component {
+                render() {
+                    return (
+                        <div>Hello {this.props.name} !</div>
+                    );
                 }
-                export default Hello;
-                </code></pre>
+            }
+            export default Hello;
+            </code></pre>
+            <pre class="fragment">index.js<code class="jsx" data-trim>
+            import React from "react";
+            import ReactDOM from "react-dom";
+            import Hello from "./Hello";
+
+            ReactDOM.render(
+                &lt;Hello name="cnrs"/&gt;,
+                document.getElementById('root')
+            );
+            </code></pre>
         </section>
         <section>
             <h3>JSX</h3>
@@ -521,10 +521,6 @@
             </code></pre>
         </section>
         <section>
-            <h3>Trucs et astuces</h3>
-            <h4 class="fragment">(Workarounds)</h4>
-        </section>
-        <section>
             <h3>Itérer sur un tableau</h3>
             <pre><code data-trim>
             render() {
@@ -653,12 +649,24 @@
         </section>
         <section>
             <h3>Trucs et astuces</h3>
+            <h4 class="fragment">(Workarounds)</h4>
+        </section>
+        <section>
+            <h3>Render et le tableau d'éléments</h3>
+            <pre><code data-trim>
+            render() {
+                return [
+                &lt;div&gt;Pourquoi &lt;/div&gt,
+                &lt;span&gt;pas ?&lt;/span&gt
+                ];
+            }
+            </code></pre>
         </section>
         <section>
             <h3>Caractères spéciaux</h3>
             <pre><code data-trim>
                 <span> Jet d{String.fromCharCode(39)}eau</span>
-                </code></pre>
+            </code></pre>
         </section>
         <section>
             <h3>JSX if (else)</h3>
@@ -683,7 +691,7 @@
             render() {
                 return &lt;div&gt;
                     {/* Sans commentaire ;) */}
-                &lt;div&gt;
+                &lt;/div&gt;
             }
             </code></pre>
         </section>
@@ -698,8 +706,8 @@
             </code></pre>
             <pre><code data-trim>
             export default class ButtonApp extends React.Component {
-                render() { return
-                    &lt;div&gt;
+                render() {
+                    return &lt;div&gt;
                         &lt;div&gt;{this.props.title}&lt;/div&gt;
                         &lt;button&gt;{this.props.children}&lt;/button&gt;
                     &lt;/div&gt;
@@ -1119,10 +1127,9 @@
         <section>
             <h3>ThunkActionCreator</h3>
             <pre><code data-trim>
-            const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
-                function incrementCreator(inc) {
+            function incrementCreator(inc) {
                 return {
-                    type: INCREMENT_COUNTER,
+                    type: 'INCREMENT_COUNTER',
                     inc: inc
                 };
             }

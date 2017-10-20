@@ -3,31 +3,37 @@ import axios from 'axios';
 import Filter from './StudentFilter';
 import StudentsTable from './StudentsTable';
 import StudentDetails from './StudentDetails';
+import Student from './Student';
 
 class StudentsApp extends React.Component {
 
     constructor(props) {
         super(props);
-        //TODO état par défaut
+        // TODO état par défaut
     }
 
     componentDidMount() {
         axios.get('./students.json')
             .then(resp => resp.data)
             .then(students => {
-                //TODO mettre a jour l etat
+                console.log(students);
+                // TODO mettre a jour l etat
             })
     }
 
     render() {
         return (
             <div>
-                <Filter onChange={}/>
-                <StudentsTable
-                    students={this.filteredStudents()}
-                    selectStudent={}
-                />
-                <StudentDetails student={}/>
+                {/*
+                    <Filter onChange={}/>
+                */}
+                {/*
+                    <StudentsTable
+                        students={this.filteredStudents()}
+                        selectStudent={}
+                    />
+                */}
+                <StudentDetails student={Student.NULL}/>
             </div>)
     }
 

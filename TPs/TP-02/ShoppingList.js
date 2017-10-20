@@ -12,14 +12,17 @@ class ShoppingList extends React.Component {
         axios.get('./items.json')
             .then(resp => resp.data)
             .then(items => {
-                //TODO: mettre le state a jour
+                console.log(items); // TODO: mettre le state a jour
             })
     }
 
     render() {
         return (
             <div>
-
+                <div>Titre</div>
+                <ul>
+                    <li>elements...</li>
+                </ul>
             </div>
         )
     }

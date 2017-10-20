@@ -4,7 +4,7 @@ import ShoppingItem from './ShoppingItem';
 import {setItems, addItems} from './actions/items';
 import {connect} from 'react-redux';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {};
 };
 
@@ -20,11 +20,12 @@ class ShoppingList_ extends React.Component {
     }
 
     componentDidMount() {
-        this.props.onSetItems([
+        // TODO: Provide the 'onSetItems' method in the props
+        /*this.props.onSetItems([
             new Item(1, 'pain', 0.95),
             new Item(2, 'gel douche', 2.85),
             new Item(3, 'cahier à spirales', 1.20)
-        ]);
+        ]);*/
     }
 
     render() {
@@ -33,10 +34,11 @@ class ShoppingList_ extends React.Component {
                 <h2>{this.props.title}</h2>
                 <ul>
                     {
-                        this.props.items.map(item => <ShoppingItem key={item.id} item={item}/>)
+                        // TODO iterate on items
+                        /*this.props.items.map(item => <ShoppingItem key={item.id} item={item}/>)*/
                     }
                 </ul>
-                <form onSubmit={this.createNewItem.bind(this)}>
+                <form onSubmit={this.addItem.bind(this)}>
                     <input type="text"
                            placeholder="item"
                            onChange={(e) =>
@@ -53,7 +55,11 @@ class ShoppingList_ extends React.Component {
             </div>
         );
     }
+
+    addItem(e) {
+        // TODO: call the addItem action creator (the one available in the props)
+    }
 }
 
-const ShoppingList = null; // TODO: connect...
+const ShoppingList = ShoppingList_; // TODO: connect...
 export default ShoppingList;

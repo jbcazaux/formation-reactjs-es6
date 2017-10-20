@@ -4,11 +4,9 @@ import PropTypes from 'prop-types';
 export default class Hello extends React.Component {
 
     render() {
-        return (
-            <div>
-                Hello {this.props.name} !
-            </div>
-        );
+        return <div>
+            Hello {this.props.name} !
+        </div>;
     }
 }
 

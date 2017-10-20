@@ -13,7 +13,7 @@ class Filter extends React.Component {
                 <input id="filterName"
                        type="text"
                        placeholder="Tapez un nom..."
-                       onChange={}
+                       onChange={this.onFilterChange}
                        className="form-control"
                        style={{marginLeft: '5px'}}
                 />

@@ -39,8 +39,7 @@ class ShoppingList_ extends React.Component {
                 <form onSubmit={this.createNewItem.bind(this)}>
                     <input type="text"
                            placeholder="item"
-                           onChange={(e) =>
-                               this.setState(Object.assign({}, this.state, {newItem: e.target.value}))}
+                           onChange={(e) => this.setState({newItem: e.target.value})}
                            value={this.state.newItem}
                     />
                     <input type="number"

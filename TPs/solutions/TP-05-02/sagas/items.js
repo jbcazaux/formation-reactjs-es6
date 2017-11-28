@@ -2,12 +2,12 @@ import {addItems, getItems, setItems} from '../actions/items';
 import {call, fork, put, take} from 'redux-saga/effects';
 import Item from '../Item';
 
-export function* loadItems() {
+function* loadItems() {
     const items = yield call(getItems);
     yield put(setItems(items));
 }
 
-export const addItemsWithTVA = function* (action) {
+const addItemsWithTVA = function* (action) {
     const newItems = action.items.map(item => new Item(item.id, item.label, item.price * 1.20));
     yield put(addItems(newItems));
 };

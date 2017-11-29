@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 class Small extends React.Component {
 
-    context;
-
     static contextTypes = {
         color: PropTypes.string.isRequired,
         user: PropTypes.object.isRequired

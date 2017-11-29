@@ -3,11 +3,9 @@ import User from './User';
 
 class Small extends React.Component {
 
-    context;
-
     render() {
         return <div style={{backgroundColor: this.context.color, height: '125px', width: '33%'}}>
-            Small, user = {this.context.user.id}-{this.context.user.login}
+            Small, user = {this.context.user && this.context.user.id}-{this.context.user && this.context.user.login}
         </div>;
     }
 }

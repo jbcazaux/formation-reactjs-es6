@@ -1457,11 +1457,10 @@
         </section>
         <section>
             <h3>Utilisation</h3>
-            <p>Dans le composant enfant, on peut typer le <i>context</i>, il faut déclarer les <i>contextTypes</i>, et là on
+            <p>Dans le composant enfant, il faut déclarer les <i>contextTypes</i>, et là on
                 a accès au context dans le composant.</p>
             <pre><code data-trim>
             class Child extends React.Component {
-                context;
 
                 static contextTypes = {
                     color: PropTypes.string.isRequired,
@@ -1479,7 +1478,7 @@
             <h4>Contexte</h4>
             <p>Le but est de passer une couleur et un <b>User</b> d'un composant à son composant 'petit-fils'</p>
             <ol>
-                <li>Déclarer un context dans le composant grand parent (Large), avec une couleur et un User.</li>
+                <li>Déclarer un context dans le composant grand-parent (Large), avec une couleur et un User.</li>
                 <li>Afficher les informations passées dans le <i>context</i> dans le composant petit-fils (Small)</li>
             </ol>
         </section>

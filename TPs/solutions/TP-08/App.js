@@ -7,14 +7,14 @@ const App = () => (
             <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
-                <li><Link to="/topics">Topics</Link></li>
+                <li><Link to="/users">Users</Link></li>
             </ul>
 
             <hr/>
 
             <Route exact path="/" component={Home}/>
             <Route path="/about" component={About}/>
-            <Route path="/topics" component={Topics}/>
+            <Route path="/users" component={Users}/>
         </div>
     </Router>
 );
@@ -22,48 +22,44 @@ const App = () => (
 const Home = () => (
     <div>
         <h2>Home</h2>
+        Welcome !
     </div>
 );
 
 const About = () => (
     <div>
         <h2>About</h2>
-        <Route path={'/about/1'} component={Home}/>
-        <Route path={'/about/2'} component={Home}/>
+        About this application...
     </div>
 );
 
-const Topics = ({match}) => (
+const Users = ({match}) => (
     <div>
-        <h2>Topics</h2>
+        <h2>Users</h2>
         <ul>
             <li>
-                <Link to={`${match.url}/rendering`}>
-                    Rendering with React
+                <Link to={`${match.url}/anna`}>
+                    Anna
                 </Link>
             </li>
             <li>
-                <Link to={`${match.url}/components`}>
-                    Components
-                </Link>
-            </li>
-            <li>
-                <Link to={`${match.url}/props-v-state`}>
-                    Props v. State
+                <Link to={`${match.url}/elsa`}>
+                    Elsa
                 </Link>
             </li>
         </ul>
-
-        <Route path={'/topics/:topicId'} component={Topic}/>
+        <hr/>
+        <Route path={'/users/:name'} component={UserDetail}/>
         <Route exact path={match.url} render={() => (
-            <h3>Please select a topic.</h3>
+            <h3>Please select a user.</h3>
         )}/>
     </div>
 );
 
-const Topic = ({match}) => (
+const UserDetail = ({match}) => (
     <div>
-        <h3>{match.params.topicId}</h3>
+        <h3>Details of <b>{match.params.name}</b></h3>
+        <img src={process.env.PUBLIC_URL + '/' + match.params.name + '.jpeg'} alt={match.params.name}/>
     </div>
 );
 

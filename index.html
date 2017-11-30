@@ -1580,14 +1580,14 @@
                 .toEqual(put({type: 'SET_USER', user: user}));
                expect(gen.next().done).toBeTruthy();
             });
-            </code/</pre>
+            </code>/</pre>
         </section>
         <section data-background="#b5533c">
             <h3>TP-07</h3>
             <h4>Les tests</h4>
             <p>Le but est de tester complètement le TP-03<p>
             <ol style="font-size: 32px">
-                <li>Installer enzyme et react-addons-test-utils (--save-dev)</li>
+                <li>Installer enzyme et enzyme-adapter-react-16 (--save-dev)</li>
                 <li>Créer un fichier .test.js par composant</li>
                 <li><i>StudentDetails</i>: Vérifier le texte pour les 2 cas (Student.NULL ou non)</li>
                 <li><i>Filter</i>: Vérifier que le callback est appelé lors d'un événement <i>change</i></li>
@@ -1597,7 +1597,7 @@
                 méthodes <i>handleSelectStudent()</i> et
                 <i>handleFilterChange()</i> sur le <i>state</i>. Enfin valider que <i>filteredStudents()</i> renvoie les bons éléments pour
                 un filtre donné.</li>
-                <li>(saga) Bonus: Reprendre le TP 05-02 et écrire les tests des sagas.
+                <li>Bonus (saga) : Reprendre le TP 05-02 et écrire les tests des sagas.
             </ol>
         </section>
         <section>
@@ -1620,18 +1620,16 @@
 
             <p>Définir le Router au plus haut niveau dans l'application.</p>
             <pre><code data-trim>
-            import
-                {BrowserRouter as Router,
-                Route,
-                Link} from 'react-router-dom';
+            import {BrowserRouter as Router,
+                Route} from 'react-router-dom';
 
             ReactDOM.render(
-            &lt;Router&gt;
-                &lt;Route exact path="/" component={Home} /&gt;
-                &lt;Route path="/about" component={About} /&gt;
-                &lt;Route path="/admin" component={Admin} /&gt;
-            &lt;/Router&gt;,
-            document.getElementById('root')
+              &lt;Router&gt;
+                  &lt;Route exact path="/" component={Home} /&gt;
+                  &lt;Route path="/about" render={() => <h2>About...</h2>} /&gt;
+                  &lt;Route path="/admin" component={Admin} /&gt;
+              &lt;/Router&gt;,
+              document.getElementById('root')
             );
             </code></pre>
         </section>
@@ -1649,9 +1647,9 @@
         </section>
         <section>
             <h3>react-router</h3>
-            <p>On peut générer des liens automatiquement (voir la doc pour les propriétés)</p>
+            <p>On peut générer des liens automatiquement (voir la <a target="_blank" href="https://reacttraining.com/react-router/web/api/NavLink">doc</a> pour les propriétés)</p>
             <pre><code data-trim>
-            <Link to="/admin/users">Administration des utilisateurs</Link>
+            &lt;Link to="/admin/users"&gt;Administration des utilisateurs&lt;/Link&gt;
             </code></pre>
         </section>
         <section>
@@ -1668,14 +1666,36 @@
             )
             </code></pre>
         </section>
+        <section>
+            <h3>match</h3>
+            <p>L'objet match contient les informations qui ont permis a un &lt;Route path&gt; de matcher. On retrouve:</p>
+            <ul>
+                <li><b>params</b>: liste de clé/valeur de l'url (ex: /user/:id)</li>
+                <li><b>url</b>: url matchée</li>
+                <li><b>isExact</b>: vrai si l'url a exactement matché</li>
+                <li><b>path</b>: pattern du match</li>
+            </ul>
+            <pre><code data-trim>
+            const Admin = ({match}) => (
+                &lt;Link to={`${match.url}/users`}&gt;
+                    Users
+                &lt;/Link&gt;
+                &lt;Link to={`${match.url}/articles`}&gt;
+                    Articles
+                &lt;/Link&gt;
+            );
+            </code></pre>
+        </section>
         <section data-background="#b5533c">
             <h3>TP-08</h3>
             <h4>React-router</h4>
-            <p>Le but est de créer une application avec les routes /part1 et /part2. Une zone commune (App) persiste.</p>
+            <p>L'objectif est d'avoir une application avec 3 pages, dont l'une va chercher un identifiant dans l'url.</p>
             <ol>
-                <li>Installer react-router</li>
-                <li>Utiliser react-router dans l'index.js</li>
-                <li>react-router-redux ?</li>
+                <li>Générer les liens vers les pages About et Users</li>
+                <li>Ecrire les routes vers les pages About et Users</li>
+                <li>Générer les liens vers les détails des 2 utilisateurs: /users/elsa et /users/anna</li>
+                <li>Ecrire la route vers le composant UserDetail</li>
+                <li>Générer le lien vers l'image des utilisateurs (elsa.jpeg et anna.jpeg)</li>
             </ol>
         </section>
         <section>

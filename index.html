@@ -214,27 +214,27 @@
         <section>
             <h3>Destructuring</h3>
             <pre><code data-trim>
-                const user = {
-                    firstname: 'john',
-                    nickname: 'ninja',
-                    lastname: 'doe',
-                    age: 21
-                };
+            const user = {
+                firstname: 'john',
+                nickname: 'ninja',
+                lastname: 'doe',
+                age: 21
+            };
 
-                function getUserName(user) {
-                    return user.firstname.concat(' ').concat(user.lastname);
-                }
-                console.log(getUserName(user));
+            function getUserName(user) {
+                return user.firstname.concat(' ').concat(user.lastname);
+            }
+            console.log(getUserName(user));
             </code></pre>
             <pre class="fragment"><code data-trim>
-                    function getUserName({firstname, lastname}) {
-                        return firstname.concat(' ').concat(lastname);
-                    }
+            function getUserName({firstname, lastname}) {
+                return firstname.concat(' ').concat(lastname);
+            }
             </code></pre>
             <pre class="fragment"><code data-trim>
-                    const getUserName = ({firstname, lastname}) =>
-                    firstname.concat(' ').concat(lastname);
-                </code></pre>
+            const getUserName = ({firstname, lastname}) =>
+                firstname.concat(' ').concat(lastname);
+            </code></pre>
         </section>
         <section>
             <h3>Shorthand Notation</h3>
@@ -330,7 +330,7 @@
             import Hello from "./Hello";
 
             ReactDOM.render(
-                &lt;Hello name="cnrs"/&gt;,
+                &lt;Hello name="oxiane"/&gt;,
                 document.getElementById('root')
             );
             </code></pre>
@@ -491,7 +491,7 @@
         </section>
         <section>
             <h3>Stateless component</h3>
-            <pre><code data-trim>
+            <pre class="fragment current-visible"><code data-trim>
                 import React from "react";
                 const Hello = (props) => <h1>Hello {props.name}!</h1>;
             </code></pre>
@@ -661,6 +661,16 @@
                 ];
             }
             </code></pre>
+            <pre class="fragment"><code data-trim>
+            render() {
+                return (
+                &lt;&gt;
+                    &lt;div&gt;Pourquoi &lt;/div&gt,
+                    &lt;span&gt;pas ?&lt;/span&gt
+                &lt;/&gt;
+                );
+            }
+            </code></pre>
         </section>
         <section>
             <h3>Caractères spéciaux</h3>
@@ -795,9 +805,9 @@
                     <li>L'état du store est read-only</li>
                     <li>On émet des <b>actions</b> pour modifier l'état</li>
                     <li class="fragment">Les <b>actions</b> sont interprétées par des <b>reducers</b></li>
-                    <li class="fragment">les <b>reducers</b> sont des fonctions <b>pures</b></li>
-                    <li class="fragment">les <b>reducers</b> prennent en entrée l'état précédent et une action</li>
-                    <li class="fragment">ils retournent le nouvel état dans un objet immutable</li>
+                    <li class="fragment">Les <b>reducers</b> sont des fonctions <b>pures</b></li>
+                    <li class="fragment">Les <b>reducers</b> prennent en entrée l'état précédent et une action</li>
+                    <li class="fragment">Ils retournent le nouvel état dans un objet immutable</li>
                 </ul>
             </div>
             <img data-src="images/redux.png" alt="redux" height="200">
@@ -975,30 +985,28 @@
             </table>
         </section>
         <section>
-
             <h3>Connect</h3>
 
             <p style="font-size: 28px">Le composant de présentation est comme les composants simples rencontrés jusque
                 là (sans appels ajax).</p>
             <p style="font-size: 28px" class="fragment">Le composant conteneur va être généré automatiquement,
                 <b>mais</b>:
+            </p>
             <ul style="font-size: 28px" class="fragment">
-                <li>il faut décrire comment créer les <i>props</i> à partir des données du <i>store</i>: <b>mapStateToProps(state:
-                    State): StateProps {...}</b>
+                <li>il faut décrire comment créer les <i>props</i> à partir des données du <i>store</i>:
+                    <b>mapStateToProps(state) {...}</b>
                 </li>
                 <li>il faut implémenter les callbacks qui seront injectés dans les <i>props</i>:
-                    <b>mapDispatchToProps(dispatch:
-                        Function): DispatchProps {...}</b>
+                    <b>mapDispatchToProps(dispatch) {...}</b>
                 </li>
             </ul>
 
-
             <pre class="fragment"><code data-trim>
-                import {connect} from 'react-redux';
+            import {connect} from 'react-redux';
 
-                export const MyComponent =
-                connect(mapStateToProps, mapDispatchToProps)(MyPresentationalComponent);
-                </code></pre>
+            export const MyComponent =
+            connect(mapStateToProps, mapDispatchToProps)(MyPresentationalComponent);
+            </code></pre>
         </section>
         <section>
             <h3>Composant de présentation:</h3>

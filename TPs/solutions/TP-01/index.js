@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import Hello from './Hello';
 
 ReactDOM.render(
-    <Hello name="cnrs"/>,
+    <Hello name="oxiane"/>,
     document.getElementById('root')
 );

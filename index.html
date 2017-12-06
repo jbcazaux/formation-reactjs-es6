@@ -393,6 +393,7 @@
                                                                                  href="https://www.npmjs.com/package/prop-types">PropTypes</a>
             </p>
             <pre><code data-trim>
+            import PropTypes from 'prop-types';
             class Hello extends React.Component {
                 static propTypes = {
                     name: PropTypes.string.isRequired,
@@ -433,7 +434,6 @@
                     <li>componentWillReceiveProps(<b>nextProps</b>)</li>
                     <li>componentWillUpdate(<b>nextProps</b>, <b>nextState</b>)</li>
                     <li>componentDidUpdate(<b>nextProps</b>, <b>nextState</b>)</li>
-                    <li>getInitialState()</li>
                     <li>getDefaultProps()</li>
                     <li>shouldComponentUpdate(<b>nextProps</b>, <b>nextState</b>)</li>
                 </ul>
@@ -601,6 +601,30 @@
                         }
                     &lt;/ul&gt;
                 &lt;/div&gt;);
+            </code></pre>
+        </section>
+        <section>
+            <h3>Intercepter les événements</h3>
+            <pre><code data-trim>
+            class ClickableApp extends React.Component {
+                render() {
+                    return &lt;div onclick={this.handleClick}&gt;Click me !&lt;/div&gt;
+                }
+
+                handleClick(e) {
+                    console.log('click !', e);
+                }
+            }
+            </code></pre>
+            <pre class="fragment"><code data-trim>
+            class ClickableApp extends React.Component {
+                render() {
+                    return &lt;div
+                        onclick={(e) => console.log('click !', e)}&gt;
+                        Click me !
+                    &lt;/div&gt;
+                }
+            }
             </code></pre>
         </section>
         <section>

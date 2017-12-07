@@ -1442,7 +1442,7 @@
 
             <h3>Bravo !</h3>
             <p>C'était la partie la plus compliquée</p>
-            <p>On sait créer des composants et leur passer des propriétés</p>
+            <p>On sait créer des composants et leurs passer des propriétés</p>
             <ul>
                 <li>Depuis leur composant parent</li>
                 <li>Depuis l'état 'local' (<i>LocalState</i>)</li>
@@ -1527,7 +1527,7 @@
 
             describe(MyComponent, () => {
                 it('should work !', () => {
-                    const component = shallow(<MyComponent/>);
+                    const component = shallow(&lt;MyComponent/&gt;);
                 });
             });
             </code></pre>
@@ -1539,13 +1539,11 @@
             <pre><code data-trim>
             describe(MyComponent, () => {
                 it('renders MyComponent and its sub components', () => {
-                    const component = shallow(
-                    &lt;MyComponent/&gt;
-                );
-                expect(component.find(SubComponent1).exists())
-                    .toBeTruthy();
-                expect(component.find(SubComponent2).exists())
-                    .toBeTruthy();
+                    const component = shallow(&lt;MyComponent/&gt;);
+                    expect(component.find(SubComponent1).exists())
+                        .toBeTruthy();
+                    expect(component.find(SubComponent2).exists())
+                        .toBeTruthy();
                 });
             });
             </code></pre>

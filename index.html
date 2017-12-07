@@ -1147,14 +1147,6 @@
                 .then(items => items.map(item => item.id))
                 .catch(error => console.log(error.toString()))
             </code></pre>
-            <pre><code data-trim>
-                const getItemsId =
-                    () => fetch('src/items.json')
-                    .then(resp => resp.data)
-                    .then(items => items.map(item => item.id))
-                    .catch(error => console.log(error.toString()))
-                </code></pre>
-
         </section>
         <section>
             <h3>ThunkActionCreator</h3>
@@ -1178,13 +1170,20 @@
 
             <p>Une <i>ThunkAction</i> est une fonction qui reçoit en entrée les méthodes <i>dispatch()</i> et
             <i>getState()</i>, et
-            retourne le résultat de <i>dispatch()</i></p>
+            retourne le résultat de <i>dispatch()</i>.</p>
         </section>
         <section>
+            <h3>Exemple complet</h3>
             <pre><code data-trim>
+            const getItems =
+                (userId) => axios.get('users/' + userId + '/items')
+                    .then(resp => resp.data)
+                    .catch(error => console.log(error.toString()))
+            </code></pre>
+            <pre class="fragment"><code data-trim>
             export const fetchItems = () =>
                 (dispatch, getState) => getItems(getState().userId)
-                .then(items => dispatch(setItems(items)))
+                .then(items => dispatch({type: 'SET_ITEMS', items: items}))
             .catch((error) => console.log(error));
             </code></pre>
         </section>

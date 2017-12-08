@@ -456,12 +456,12 @@
             <p>Définir l'état par défaut</p>
             <pre><code data-trim>
             //dans le contructeur
-            this.state = {...}
+            this.state = {counter: 0}
             </code></pre>
             <p>Définir un nouvel état</p>
             <pre><code data-trim>
-            this.setState({...})
-            this.setState(prevState => {...})
+            this.setState({counter: 3})
+            this.setState(prevState => ({counter: prevState.counter + 1}))
             </code></pre>
             <p>Récupérer l'état courant</p>
             <pre><code data-trim>
@@ -1119,6 +1119,9 @@
                 <li class="fragment">En redux-thunk, c'est plus élégant que les actions retournent des <i>promesses</i>
                 </li>
             </ul>
+            <aside class="notes">
+                Les Middlewares interceptent les actions avant qu'elles ne passent dans les reducers.
+            </aside>
         </section>
         <section>
             <h3>redux-thunk</h3>
@@ -1533,6 +1536,9 @@
             </code></pre>
             <p><a href="https://facebook.github.io/jest/docs/api.html#content" target="_blank">Jest API</a></p>
             <p><a href="https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md" target="_blank">Enzyme API</a></p>
+            <aside class="notes">
+                Il existe shallow et mount. Mount fait du full DOM rendering.
+            </aside>
         </section>
         <section>
             <h3>Présence de sous-composants</h3>
@@ -1589,6 +1595,10 @@
                 <li><i>yarn test</i> en ligne de commande</li>
                 <li><i>runner</i> jest dans Webstorm</li>
             </ul>
+            <aside class="notes">
+                File > Settings > JavaScript > Libraries et Download Jest Typescript definition pour
+                ne plus avoir d'erreurs sur 'describe' dans les sources.
+            </aside>
         </section>
         <section>
             <h3>Tests des sagas</h3>

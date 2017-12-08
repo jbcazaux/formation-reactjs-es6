@@ -6,6 +6,6 @@ import Filter from "./StudentFilter";
 import StudentsTable from "./StudentsTable";
 import StudentDetails from "./StudentDetails";
 
-describe(StudentsApp, () => {
+describe('StudentsApp', () => {
     //TODO: it(...
 });

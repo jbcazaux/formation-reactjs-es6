@@ -9,7 +9,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({adapter: new Adapter(), disableLifecycleMethods: true});
 
-describe(StudentsApp, () => {
+describe('StudentsApp', () => {
     it('renders studentsApp and its sub components', () => {
         const component = shallow(
             <StudentsApp/>

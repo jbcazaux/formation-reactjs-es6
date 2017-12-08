@@ -3,6 +3,6 @@ import {shallow} from "enzyme";
 import StudenstTable from "./StudentsTable";
 import Student from "./Student";
 
-describe(StudenstTable, () => {
+describe('StudentsTable', () => {
     //TODO: it(...
 });

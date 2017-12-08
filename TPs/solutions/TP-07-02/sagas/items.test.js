@@ -4,7 +4,7 @@ import Item from '../Item';
 import * as sagas from './items';
 import rootSaga from './items';
 
-describe(sagas, () => {
+describe('sagas', () => {
     it('load items', () => {
         const gen = sagas.loadItems();
 

@@ -6,7 +6,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({adapter: new Adapter()});
 
-describe(StudentDetails, () => {
+describe('StudentDetails', () => {
     it('renders with no Student', () => {
         const component = shallow(
             <StudentDetails student={Student.NULL}/>

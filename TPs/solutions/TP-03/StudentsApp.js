@@ -16,7 +16,7 @@ class StudentsApp extends React.Component {
         axios.get('./students.json')
             .then(resp => resp.data)
             .then(students => {
-                this.setState(Object.assign({}, this.state, {students: students}));
+                this.setState({students: students});
             })
     }
 

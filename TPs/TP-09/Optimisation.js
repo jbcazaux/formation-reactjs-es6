@@ -33,13 +33,13 @@ export default class Optimisation extends React.Component {
     }
 
     setColor(color) {
-        this.setState(Object.assign({}, this.state, {color}))
+        this.setState({color})
     }
 
     setUser(id) {
         if (this.state.user.id === id) {
             this.setState(this.state);
         }
-        this.setState(Object.assign({}, this.state, {user: new User(id, 'user' + id)}))
+        this.setState({user: new User(id, 'user' + id)});
     }
 }

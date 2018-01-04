@@ -340,9 +340,9 @@
             <pre><code data-trim>
                 render: function() {
                     return (
-                      <li className="contact">
-                          <h2 className="contact-name">{this.props.name}</h2>
-                      </li>
+                      &lt;li className="contact"&gt;
+                          &lt;h2 className="contact-name"&gt;{this.props.name}&lt;/h2&gt;
+                      &lt;/li&gt;
                     )
                 }</code></pre>
             <pre><code data-trim>
@@ -500,7 +500,7 @@
                 render() {
                     return &lt;div&gt;
                         &lt;div&gt;{this.props.title}&lt;/div&gt;
-                        &lt;button&gt;this.props.label}&lt;/button&gt;
+                        &lt;button&gt;{this.props.label}&lt;/button&gt;
                     &lt;div&gt;
                 }
             }
@@ -1094,7 +1094,7 @@
             <h3>TP-04</h3>
             <h4>Liste de courses - bis</h4>
             <ol style="font-size: 34px">
-                <li>Installer les packages redux et react-redux</li>
+                <li>Installer le plugin redux, les packages redux et react-redux</li>
                 <li>Comme le TP-02 mais en utilisant le <i>state</i> du store plutôt que le <i>state</i> du composant,
                     et en initialisant la liste sans chargement asynchrone (liste en dur).
                 </li>

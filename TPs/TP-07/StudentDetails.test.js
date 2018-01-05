@@ -8,9 +8,19 @@ Enzyme.configure({adapter: new Adapter()});
 
 describe('StudentDetails', () => {
     it('renders with no Student', () => {
+        // Given
+
+        // When
+
+        // Then
         expect(true).toBeTruthy();
     });
     it('renders with a Student', () => {
+        // Given
+
+        // When
+
+        // Then
         expect(true).toBeTruthy();
     });
 });

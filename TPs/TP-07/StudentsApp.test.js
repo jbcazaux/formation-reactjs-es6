@@ -8,6 +8,11 @@ import StudentDetails from "./StudentDetails";
 
 describe('StudentsApp', () => {
     it('TODO !', () => {
+        // Given
+
+        // When
+
+        // Then
         expect(true).toBeTruthy();
     });
 });

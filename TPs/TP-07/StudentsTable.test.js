@@ -5,6 +5,11 @@ import Student from "./Student";
 
 describe('StudentsTable', () => {
     it('TODO !', () => {
+        // Given
+
+        // When
+
+        // Then
         expect(true).toBeTruthy();
     });
 });

@@ -4,6 +4,11 @@ import Filter from "./StudentFilter";
 
 describe('Filter', () => {
     it('TODO !', () => {
+        // Given
+
+        // When
+
+        // Then
         expect(true).toBeTruthy();
     });
 });

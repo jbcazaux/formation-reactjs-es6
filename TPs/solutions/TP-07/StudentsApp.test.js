@@ -11,39 +11,51 @@ Enzyme.configure({adapter: new Adapter(), disableLifecycleMethods: true});
 
 describe('StudentsApp', () => {
     it('renders studentsApp and its sub components', () => {
+        // Given
         const component = shallow(
             <StudentsApp/>
         );
+
+        // Then
         expect(component.find(Filter).exists()).toBeTruthy();
         expect(component.find(StudentsTable).exists()).toBeTruthy();
         expect(component.find(StudentDetails).exists()).toBeTruthy();
     });
 
     it('updates filter', () => {
-        const component = shallow(
-            <StudentsApp/>
-        );
+        // Given
+        const component = shallow(<StudentsApp/>);
+
+        // When
         component.instance().handleFilterChange('newFilter');
+
+        // Then
         expect(component.state('filter')).toEqual('newFilter');
     });
 
     it('updates selectedStudent', () => {
-        const component = shallow(
-            <StudentsApp/>
-        );
+        // Given
+        const component = shallow(<StudentsApp/>);
         const student = new Student(1, 'last1', 'firt1', []);
         component.setState({students: [], filter: '', selectedStudent: Student.NULL});
+
+        // When
         component.instance().handleSelectStudent(student);
+
+        // Then
         expect(component.state('selectedStudent')).toEqual(student);
     });
 
     it('updates filtered students', () => {
-        const component = shallow(
-            <StudentsApp/>
-        );
+        //Given
+        const component = shallow(<StudentsApp/>);
         const students = [new Student(1, 'last1', 'firt1', []), new Student(2, 'last2', 'firt2', [])];
         component.setState({students, filter: '2', selectedStudent: Student.NULL});
+
+        //when
         const result = component.instance().filteredStudents();
+
+        //then
         expect(result).toHaveLength(1);
         expect(result[0]).toEqual(students[1]);
     });

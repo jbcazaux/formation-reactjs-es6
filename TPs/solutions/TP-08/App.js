@@ -49,7 +49,7 @@ const Users = ({match}) => (
             </li>
         </ul>
         <hr/>
-        <Route path={'/users/:name'} component={UserDetail}/>
+        <Route path={`${match.url}/:name`} component={UserDetail}/>
         <Route exact path={match.url} render={() => (
             <h3>Please select a user.</h3>
         )}/>

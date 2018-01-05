@@ -4,5 +4,7 @@ import StudenstTable from "./StudentsTable";
 import Student from "./Student";
 
 describe('StudentsTable', () => {
-    //TODO: it(...
+    it('TODO !', () => {
+        expect(true).toBeTruthy();
+    });
 });

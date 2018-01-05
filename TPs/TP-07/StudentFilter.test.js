@@ -3,5 +3,7 @@ import {shallow} from "enzyme";
 import Filter from "./StudentFilter";
 
 describe('Filter', () => {
-    //TODO: it(...
+    it('TODO !', () => {
+        expect(true).toBeTruthy();
+    });
 });

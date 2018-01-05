@@ -7,5 +7,7 @@ import StudentsTable from "./StudentsTable";
 import StudentDetails from "./StudentDetails";
 
 describe('StudentsApp', () => {
-    //TODO: it(...
+    it('TODO !', () => {
+        expect(true).toBeTruthy();
+    });
 });

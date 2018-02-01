@@ -1,4 +1,5 @@
 import React from 'react';
+import {Input, InputLabel} from 'material-ui';
 
 class Filter extends React.Component {
 
@@ -9,8 +10,8 @@ class Filter extends React.Component {
     render() {
         return (
             <form className="form-inline">
-                <label htmlFor="filterName" className="control-label">Filtrer:</label>
-                <input id="filterName"
+                <InputLabel htmlFor="filterName" className="control-label">Filtrer:</InputLabel>
+                <Input id="filterName"
                        type="text"
                        placeholder="Tapez un nom..."
                        onChange={this.onFilterChange.bind(this)}

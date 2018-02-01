@@ -656,7 +656,7 @@
             </div>
             <pre><code data-trim>
                 &lt;Button bsStyle="primary"
-                        onClick={this.handleClick.bind(this)}&gt;Go!&lt;/Button&gt;
+                        onClick={this.handleClick}&gt;Go!&lt;/Button&gt;
             </code></pre>
 
             <div style="font-size: 30px; text-align: left; margin-left: 50px;">
@@ -669,6 +669,41 @@
                         <a target="_blank" href="http://getbootstrap.com/components/">http://getbootstrap.com/components/</a>
                     </li>
                 </ul>
+            </div>
+        </section>
+        <section>
+            <h3>Material-UI</h3>
+
+            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+                <p>React components that implement Google's Material Design</p>
+            </div>
+            <pre><code data-trim>
+                &lt;Button onClick={this.handleClick}&gt;Go!&lt;/Button&gt;
+            </code></pre>
+
+            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+                <p>La documentation</p>
+                <p><a href="https://material-ui-next.com/api/button/">https://material-ui-next.com/api/button/</a></p>
+            </div>
+        </section>
+        <section>
+            <h3>Styled-Components</h3>
+
+            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+                <p>Visual primitives for the component age.</p>
+            </div>
+            <pre><code data-trim>
+            const Title = styled.h1`
+                font-size: 1.5em;
+                text-align: center;
+                color: palevioletred;
+            `;
+            <Title>Superbe titre !</Title>
+            </code></pre>
+
+            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+                <p>La documentation</p>
+                <p><a href="https://www.styled-components.com/docs/api">https://www.styled-components.com/docs/api</a></p>
             </div>
         </section>
         <section>
@@ -753,9 +788,10 @@
             <h3>TP-03</h3>
             <h4>Liste des étudiants</h4>
             <ol>
-                <li>Installer react-bootstrap</li>
-                <li>Afficher un champ texte qui permet de filtrer les éléments d'un tableau</li>
+                <li>Installer material-ui</li>
+                <li>Afficher un champ texte "input" qui permet de filtrer les éléments d'un tableau</li>
                 <li>Afficher le nom de l'étudiant sur lequel on a cliqué, ou un message si aucun n'est sélectionné</li>
+                <li>Bonus : Faire une pull request d'une appli jolie ET simple ;)</li>
                 <li>Bonus ES6: Calculer de façon élégante la note max d'un élève (reduce)</li>
             </ol>
         </section>
@@ -784,7 +820,7 @@
 
             <p>
                 Le flux ne va que dans <i>un seul sens</i> !
-            (<strike>2-way binding</strike>)</p>
+                (<strike>2-way binding</strike>)</p>
 
         </section>
         <section>
@@ -969,7 +1005,8 @@
 
             <h3>Présentation et Conteneur</h3>
 
-            <p style="font-size: 28px"> On découpe nos composants (connectés au <i>store</i>) en 2, <i>présentation</i> & <i>conteneur</i></p>
+            <p style="font-size: 28px"> On découpe nos composants (connectés au <i>store</i>) en 2, <i>présentation</i>
+                & <i>conteneur</i></p>
 
             <table style="font-size: 28px">
                 <thead>
@@ -1172,8 +1209,8 @@
             <h3>En 2 mots</h3>
 
             <p>Une <i>ThunkAction</i> est une fonction qui reçoit en entrée les méthodes <i>dispatch()</i> et
-            <i>getState()</i>, et
-            retourne le résultat de <i>dispatch()</i>.</p>
+                <i>getState()</i>, et
+                retourne le résultat de <i>dispatch()</i>.</p>
         </section>
         <section>
             <h3>Exemple complet</h3>
@@ -1460,11 +1497,16 @@
             <h3>Mises en garde</h3>
             <ul>
                 <li>On peut passer des objets à ses composants enfants (n'importe où dans la hiérarchie).</li>
-                <li class="fragment">Des librairies sont basées la dessus, mais ce n'est pas officiellement supporté (le fonctionnement pourra
-                    varier, être supprimé).</li>
+                <li class="fragment">Des librairies sont basées la dessus, mais ce n'est pas officiellement supporté (le
+                    fonctionnement pourra
+                    varier, être supprimé).
+                </li>
                 <li class="fragment">La doc parle d'<b>experimental API</b> !</li>
-                <li class="fragment"><i>react-redux</i> fonctionne grâce à ça (le store est passé à tous les enfants).</li>
-                <li class="fragment"><mark>A n'utiliser qu'en cas d'urgence !</mark></li>
+                <li class="fragment"><i>react-redux</i> fonctionne grâce à ça (le store est passé à tous les enfants).
+                </li>
+                <li class="fragment">
+                    <mark>A n'utiliser qu'en cas d'urgence !</mark>
+                </li>
             </ul>
         </section>
         <section>
@@ -1535,7 +1577,8 @@
             });
             </code></pre>
             <p><a href="https://facebook.github.io/jest/docs/api.html#content" target="_blank">Jest API</a></p>
-            <p><a href="https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md" target="_blank">Enzyme API</a></p>
+            <p><a href="https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md" target="_blank">Enzyme API</a>
+            </p>
             <aside class="notes">
                 Il existe shallow et mount. Mount fait du full DOM rendering.
             </aside>
@@ -1633,18 +1676,24 @@
         <section data-background="#b5533c">
             <h3>TP-07</h3>
             <h4>Les tests</h4>
-            <p>Le but est de tester complètement le TP-03<p>
+            <p>Le but est de tester complètement le TP-03
+            <p>
             <ol style="font-size: 32px">
                 <li>Installer enzyme et enzyme-adapter-react-16 (--save-dev)</li>
                 <li>Créer un fichier .test.js par composant</li>
                 <li><i>StudentDetails</i>: Vérifier le texte pour les 2 cas (Student.NULL ou non)</li>
                 <li><i>Filter</i>: Vérifier que le callback est appelé lors d'un événement <i>change</i></li>
-                <li><i>StudenstTable</i>: Vérifier le nombre de lignes du tableau suivant le nombre de <i>Student</i> passé. Vérifier
-                également le callback.</li>
-                <li><i>StudentsApp</i>: Vérifier que le composant et ses sous composants sont affichés, puis vérifier l'impact des
-                méthodes <i>handleSelectStudent()</i> et
-                <i>handleFilterChange()</i> sur le <i>state</i>. Enfin valider que <i>filteredStudents()</i> renvoie les bons éléments pour
-                un filtre donné.</li>
+                <li><i>StudenstTable</i>: Vérifier le nombre de lignes du tableau suivant le nombre de <i>Student</i>
+                    passé. Vérifier
+                    également le callback.
+                </li>
+                <li><i>StudentsApp</i>: Vérifier que le composant et ses sous composants sont affichés, puis vérifier
+                    l'impact des
+                    méthodes <i>handleSelectStudent()</i> et
+                    <i>handleFilterChange()</i> sur le <i>state</i>. Enfin valider que <i>filteredStudents()</i> renvoie
+                    les bons éléments pour
+                    un filtre donné.
+                </li>
                 <li>Bonus (saga) : Reprendre le TP 05-02 et écrire les tests des sagas.
             </ol>
         </section>
@@ -1660,7 +1709,8 @@
                 <li><b>HashRouter</b>: /monsite/#/page1/partie2</li>
                 <li><b>MemoryRouter</b> : /</li>
             </ul>
-            <p style="font-size: 24px">Pour le BrowserRouter il faut modifier le serveur pour rediriger toutes les requêtes vers index.html, sauf
+            <p style="font-size: 24px">Pour le BrowserRouter il faut modifier le serveur pour rediriger toutes les
+                requêtes vers index.html, sauf
                 les css, js, et appels aux webservices.</p>
         </section>
         <section>
@@ -1695,7 +1745,9 @@
         </section>
         <section>
             <h3>react-router</h3>
-            <p>On peut générer des liens automatiquement (voir la <a target="_blank" href="https://reacttraining.com/react-router/web/api/NavLink">doc</a> pour les propriétés)</p>
+            <p>On peut générer des liens automatiquement (voir la <a target="_blank"
+                                                                     href="https://reacttraining.com/react-router/web/api/NavLink">doc</a>
+                pour les propriétés)</p>
             <pre><code data-trim>
             &lt;Link to="/admin/users"&gt;Administration des utilisateurs&lt;/Link&gt;
             </code></pre>
@@ -1716,7 +1768,8 @@
         </section>
         <section>
             <h3>match</h3>
-            <p>L'objet match contient les informations qui ont permis a un &lt;Route path&gt; de matcher. On retrouve:</p>
+            <p>L'objet match contient les informations qui ont permis a un &lt;Route path&gt; de matcher. On
+                retrouve:</p>
             <ul>
                 <li><b>params</b>: liste de clé/valeur de l'url (ex: /user/:id)</li>
                 <li><b>url</b>: url matchée</li>
@@ -1737,7 +1790,8 @@
         <section data-background="#b5533c">
             <h3>TP-08</h3>
             <h4>React-router</h4>
-            <p>L'objectif est d'avoir une application avec 3 pages, dont l'une va chercher un identifiant dans l'url.</p>
+            <p>L'objectif est d'avoir une application avec 3 pages, dont l'une va chercher un identifiant dans
+                l'url.</p>
             <ol>
                 <li>Générer les liens vers les pages About et Users</li>
                 <li>Ecrire les routes vers les pages About et Users</li>
@@ -1757,16 +1811,19 @@
         <section>
             <h3>Reconciliation</h3>
 
-            <p>Le <b>Virtual DOM</b> est... <span  class="fragment" style="font-size: 24px">une réprésentation des composants en mémoire. Quand les propriétés d'un composant
+            <p>Le <b>Virtual DOM</b> est... <span class="fragment" style="font-size: 24px">une réprésentation des composants en mémoire. Quand les propriétés d'un composant
             changent, le nouveau DOM est comparé à l'ancien (celui du Virtual DOM). Si il y a une différence, le 'vrai' DOM est modifié.
-            Si on sait que le composant n'a pas besoin d'être redessiné, on peut surcharger <i>shouldComponentUpdate</i></span></p>          <pre><code data-trim>
+            Si on sait que le composant n'a pas besoin d'être redessiné, on peut surcharger <i>shouldComponentUpdate</i></span>
+            </p>
+            <pre><code data-trim>
             shouldComponentUpdate(nextProps, nextState) {
                 return true;
             }
             </code></pre>
-            <p class="fragment" style="font-size: 24px">Faut-il étendre React.PureComponent (shallow equality) ou ré-implémenter shouldComponentUpdate() ?
-            Dans tous les cas le mieux est de ne pas avoir des données mutables: Object.assign, spread properties,
-            Immutable.js, ...</p>
+            <p class="fragment" style="font-size: 24px">Faut-il étendre React.PureComponent (shallow equality) ou
+                ré-implémenter shouldComponentUpdate() ?
+                Dans tous les cas le mieux est de ne pas avoir des données mutables: Object.assign, spread properties,
+                Immutable.js, ...</p>
         </section>
         <section>
             <h3>Memoization</h3>
@@ -1831,8 +1888,8 @@
             {src: 'plugin/notes/notes.js', async: true},
             {
                 src: 'plugin/highlight/highlight.js', async: true, callback: function () {
-                hljs.initHighlightingOnLoad();
-            }
+                    hljs.initHighlightingOnLoad();
+                }
             }
         ]
     });

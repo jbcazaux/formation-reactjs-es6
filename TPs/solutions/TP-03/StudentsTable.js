@@ -1,5 +1,5 @@
 import React from 'react';
-import {Table} from 'react-bootstrap';
+import {Table, TableBody, TableCell, TableHead, TableRow} from 'material-ui';
 
 const StudentsTable = ({students, selectStudent}) => {
     const style = {
@@ -8,25 +8,25 @@ const StudentsTable = ({students, selectStudent}) => {
         width: '80%'
     };
     return (
-        <Table striped bordered condensed hover style={style}>
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-            </tr>
-            </thead>
-            <tbody>
+        <Table style={style}>
+            <TableHead>
+            <TableRow>
+                <TableCell>#</TableCell>
+                <TableCell>First Name</TableCell>
+                <TableCell>Last Name</TableCell>
+            </TableRow>
+            </TableHead>
+            <TableBody>
             {
                 students.map(student => (
-                    <tr key={student.id} onClick={() => selectStudent(student)}>
-                        <td>{student.id}</td>
-                        <td>{student.firstname}</td>
-                        <td>{student.lastname}</td>
-                    </tr>
+                    <TableRow key={student.id} onClick={() => selectStudent(student)}>
+                        <TableCell>{student.id}</TableCell>
+                        <TableCell>{student.firstname}</TableCell>
+                        <TableCell>{student.lastname}</TableCell>
+                    </TableRow>
                 ))
             }
-            </tbody>
+            </TableBody>
         </Table>
     )
 };

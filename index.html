@@ -12,7 +12,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css">
 
@@ -724,8 +723,8 @@
             render() {
                 return (
                 &lt;&gt;
-                    &lt;div&gt;Pourquoi &lt;/div&gt,
-                    &lt;span&gt;pas ?&lt;/span&gt
+                    &lt;div&gt;Pourquoi &lt;/div&gt;
+                    &lt;span&gt;pas ?&lt;/span&gt;
                 &lt;/&gt;
                 );
             }
@@ -1570,7 +1569,7 @@
             import React from "react";
             import {shallow} from "enzyme";
 
-            describe(MyComponent, () => {
+            describe('MyComponent', () => {
                 it('should work !', () => {
                     const component = shallow(&lt;MyComponent/&gt;);
                 });
@@ -1586,9 +1585,9 @@
         <section>
             <h3>Présence de sous-composants</h3>
             <pre><code data-trim>
-            describe(MyComponent, () => {
-                it('renders MyComponent and its sub components', () => {
-                    const component = shallow(&lt;MyComponent/&gt;);
+            describe('Hello', () => {
+                it('renders Hello and its sub components', () => {
+                    const component = shallow(&lt;Hello name="world"/&gt;);
                     expect(component.find(SubComponent1).exists())
                         .toBeTruthy();
                     expect(component.find(SubComponent2).exists())

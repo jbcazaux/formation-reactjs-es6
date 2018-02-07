@@ -33,7 +33,7 @@ export default class Optimisation extends React.Component {
     }
 
     setColor(color) {
-        this.setState({color})
+        this.setState({color});
     }
 
     setUser(id) {

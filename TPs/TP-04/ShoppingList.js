@@ -61,5 +61,5 @@ class ShoppingList_ extends React.Component {
     }
 }
 
-const ShoppingList = ShoppingList_; // TODO: connect...
+const ShoppingList = connect(...)()
 export default ShoppingList;

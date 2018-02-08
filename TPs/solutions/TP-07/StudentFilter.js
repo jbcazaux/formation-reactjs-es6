@@ -2,6 +2,11 @@ import React from 'react';
 
 class Filter extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.onFilterChange = this.onFilterChange.bind(this);
+    }
+
     onFilterChange(e) {
         this.props.onChange(e.target.value);
     }
@@ -13,7 +18,7 @@ class Filter extends React.Component {
                 <input id="filterName"
                        type="text"
                        placeholder="Tapez un nom..."
-                       onChange={this.onFilterChange.bind(this)}
+                       onChange={this.onFilterChange}
                        className="form-control"
                        style={{marginLeft: '5px'}}
                 />

@@ -10,6 +10,8 @@ class StudentsApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {students: [], filter: '', selectedStudent: Student.NULL};
+        this.handleFilterChange = this.handleFilterChange.bind(this);
+        this.handleSelectStudent.bind = this.handleSelectStudent.bind(this);
     }
 
     componentDidMount() {
@@ -23,10 +25,10 @@ class StudentsApp extends React.Component {
     render() {
         return (
             <div>
-                <Filter onChange={this.handleFilterChange.bind(this)}/>
+                <Filter onChange={this.handleFilterChange}/>
                 <StudentsTable
                     students={this.filteredStudents()}
-                    selectStudent={this.handleSelectStudent.bind(this)}
+                    selectStudent={this.handleSelectStudent}
                 />
                 <StudentDetails student={this.state.selectedStudent}/>
             </div>)

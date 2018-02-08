@@ -963,8 +963,8 @@
             const init = {user: 'nobody', counter: 0};
             export const myGlobalReducer = (state = init, action) =>
                 ({
-                    user: user(init.user, action),
-                    counter: counter(init.counter, action)
+                    user: user(state.user, action),
+                    counter: counter(state.counter, action)
                 });
             </code></pre>
             <p>Et avec un peu de magie...</p>

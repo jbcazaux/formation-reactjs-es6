@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import createSagaMiddleware from 'redux-saga'
@@ -15,5 +15,5 @@ ReactDOM.render(
     <Provider store={store}>
         <ShoppingList title="liste de courses"/>
     </Provider>,
-    document.getElementById("root")
+    document.getElementById('root')
 );

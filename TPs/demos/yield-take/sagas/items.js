@@ -1,6 +1,6 @@
 import {addItems, getItems, setItems} from '../actions/items';
-import {all, call, put, take, fork, takeEvery} from "redux-saga/effects";
-import Item from "../Item";
+import {all, call, put, take, fork, takeEvery} from 'redux-saga/effects';
+import Item from '../Item';
 
 function* loadItems() {
     const items = yield call(getItems);

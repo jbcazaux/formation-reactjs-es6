@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const setItems = items => ({
     type: 'SET_ITEMS',
@@ -10,7 +10,7 @@ export const addItems = items => ({
     items
 });
 
-export const addItemsWithTVA  = items => ({
+export const addItemsWithTVA = items => ({
     type: 'ADD_WITH_TVA',
     items
 });

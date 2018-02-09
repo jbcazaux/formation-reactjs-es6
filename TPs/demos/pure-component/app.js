@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment} from 'react';
 
 export class App extends React.Component {
 
@@ -16,7 +16,7 @@ export class App extends React.Component {
             </Fragment>);
     }
 
-    addItem(){
+    addItem() {
         this.setState(prevState => {
             prevState.items.push(prevState.items.length);
             return {items: prevState.items};

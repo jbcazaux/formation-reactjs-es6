@@ -1,7 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Hello from "./Hello";
-import addLoggerBehaviour from "./logger";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Hello from './Hello';
+import addLoggerBehaviour from './logger';
 
 const HelloLogger = addLoggerBehaviour(Hello);
 

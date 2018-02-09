@@ -11,7 +11,7 @@ class StudentsApp extends React.Component {
         super(props);
         this.state = {students: [], filter: '', selectedStudent: Student.NULL};
         this.handleFilterChange = this.handleFilterChange.bind(this);
-        this.handleSelectStudent.bind = this.handleSelectStudent.bind(this);
+        this.handleSelectStudent = this.handleSelectStudent.bind(this);
     }
 
     componentDidMount() {

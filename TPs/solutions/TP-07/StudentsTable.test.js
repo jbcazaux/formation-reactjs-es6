@@ -3,6 +3,7 @@ import Enzyme, {shallow} from 'enzyme';
 import StudenstTable from './StudentsTable';
 import Student from './Student';
 import Adapter from 'enzyme-adapter-react-16';
+import {TableBody, TableRow} from 'material-ui';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -16,7 +17,8 @@ describe('StudenstTable', () => {
         );
 
         // Then
-        expect(component.find('tr')).toHaveLength(3);
+
+        expect(component.find(TableBody).find(TableRow)).toHaveLength(2);
     });
     it('callbacks with clicked user', () => {
         // Given
@@ -28,7 +30,7 @@ describe('StudenstTable', () => {
         );
 
         // When
-        component.find('tr').at(1).simulate('click');
+        component.find(TableRow).at(1).simulate('click');
 
         // Then
         expect(onSelectStudent).toBeCalledWith(student);

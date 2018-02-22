@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Large from './Context'
+import App from './App';
 
 ReactDOM.render(
-    <Large/>,
+    <App/>,
     document.getElementById('root')
 );

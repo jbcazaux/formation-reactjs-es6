@@ -68,7 +68,7 @@
         <section>
             <h3>Versions</h3>
             <pre><code data-trim>
-                    "react": "16.2.0"
+                    "react": "16.3.0-alpha.1"
                     "create-react-app": "1.0.17"
                 </code></pre>
         </section>
@@ -1497,8 +1497,7 @@
             <ul>
                 <li>On peut passer des objets à ses composants enfants (n'importe où dans la hiérarchie).</li>
                 <li class="fragment">Des librairies sont basées la dessus, mais ce n'est pas officiellement supporté (le
-                    fonctionnement pourra
-                    varier, être supprimé).
+                    fonctionnement pourra varier, être supprimé).
                 </li>
                 <li class="fragment">La doc parle d'<b>experimental API</b> !</li>
                 <li class="fragment"><i>react-redux</i> fonctionne grâce à ça (le store est passé à tous les enfants).
@@ -1509,43 +1508,30 @@
             </ul>
         </section>
         <section>
-            <h3>PropTypes</h3>
-            <ul>
-                <li>Permet de décrire (typer, rendre obligatoire, ...) des propriétés</li>
-                <li>Nécessaires pour faire fonctionner le <i>context</i></li>
-            </ul>
-        </section>
-        <section>
             <h3>Utilisation</h3>
-            <p>Dans le composant parent, il faut implémenter <i>getChildContext()</i></p>
+            <p>Il faut Créer le <i>Context</i>, puis wrapper l'application avec le <i>&lt;Context.Provider&gt;</i></p>
             <pre><code data-trim>
-            getChildContext() {
-                return {color: 'purple', user: new User(0, 'admin')};
-            }
+                const Context = React.createContext({color: 'green', user: null});
+                export default Context;
             </code></pre>
-            <p>Puis définir les <i>childContextTypes</i>, toujours dans le composant parent</p>
             <pre><code data-trim>
-            static childContextTypes = {
-                color: PropTypes.string.isRequired,
-                user: PropTypes.object.isRequired
-            };
-            </code></pre>
-        </section>
-        <section>
-            <h3>Utilisation</h3>
-            <p>Dans le composant enfant, il faut déclarer les <i>contextTypes</i>, et là on
-                a accès au context dans le composant.</p>
-            <pre><code data-trim>
-            class Child extends React.Component {
-
-                static contextTypes = {
-                    color: PropTypes.string.isRequired,
-                    user: PropTypes.object.isRequired
-                };
-
                 render() {
-                    return <div>user = {this.context.user.login}</div>;
+                    return &lt;Context.Provider value={{color: 'purple', user: new User(1, 'admin')}}&gt;
+                        &lt;App/&gt;
+                    &lt;/Context.Provider&gt;;
                 }
+            </code></pre>
+        </section>
+        <section>
+            <h3>Utilisation</h3>
+            <p>Et enfin récupérer le <i>context</i> là où il est nécessaire. Le <i>context</i> est accessible dans une <i>child function</i> de <i>&lt;Context.Consumer&gt;</i></p>
+            <pre><code data-trim>
+            render() {
+                return &lt;Context.Consumer&gt;
+                    {(context) => &lt;div style={{backgroundColor: context.color}}&gt;
+                        Hello {context.user.id}-{context.user.login}
+                    &lt;/div&gt;}
+                &lt;/Context.Consumer&gt;;
             }
             </code></pre>
         </section>
@@ -1554,7 +1540,7 @@
             <h4>Contexte</h4>
             <p>Le but est de passer une couleur et un <b>User</b> d'un composant à son composant 'petit-fils'</p>
             <ol>
-                <li>Déclarer un context dans le composant grand-parent (Large), avec une couleur et un User.</li>
+                <li>Déclarer un context autour du grand-parent (Large), avec une couleur et un User.</li>
                 <li>Afficher les informations passées dans le <i>context</i> dans le composant petit-fils (Small)</li>
             </ol>
         </section>

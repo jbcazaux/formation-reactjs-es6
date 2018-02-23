@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import NameForm from './NameForm';
 
 ReactDOM.render(
-    <NameForm name="oxiane"/>,
+    <NameForm name="world"/>,
     document.getElementById('root')
 );

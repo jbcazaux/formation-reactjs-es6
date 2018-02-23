@@ -6,6 +6,6 @@ import addLoggerBehaviour from './logger';
 const HelloLogger = addLoggerBehaviour(Hello);
 
 ReactDOM.render(
-    <HelloLogger name="oxiane"/>,
+    <HelloLogger name="world"/>,
     document.getElementById('root')
 );

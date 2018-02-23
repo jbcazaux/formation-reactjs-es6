@@ -422,7 +422,6 @@
                 <p>Les incontournables :</p>
                 <ul>
                     <li>render()</li>
-                    <li>componentWillMount()</li>
                     <li>componentDidMount()</li>
                     <li>componentWillUnmount()</li>
                 </ul>
@@ -430,9 +429,8 @@
             <div class="fragment" style="font-size: 30px; text-align: left; margin-left: 50px">
                 <p>Les autres :</p>
                 <ul>
-                    <li>componentWillReceiveProps(<b>nextProps</b>)</li>
-                    <li>componentWillUpdate(<b>nextProps</b>, <b>nextState</b>)</li>
                     <li>componentDidUpdate(<b>nextProps</b>, <b>nextState</b>)</li>
+                    <li>static getDerivedStateFromProps(<b>nextProps</b>, <b>prevState</b>): State</li>
                     <li>getDefaultProps()</li>
                     <li>shouldComponentUpdate(<b>nextProps</b>, <b>nextState</b>)</li>
                 </ul>
@@ -473,7 +471,7 @@
             <p>Props</p>
             <div style="font-size: 30px; text-align: left; margin-left: 50px;">
                 <ul>
-                    <li>Les données passées par les parents</li>
+                    <li>Les données passées par le parent</li>
                 </ul>
             </div>
 
@@ -483,7 +481,6 @@
                     <li>Les données modifiables par les événements de la UI</li>
                     <li>Le plus possible de composants sans état</li>
                     <li><strike>Des données calculées</strike>(à faire dans render)</li>
-                    <li><strike>Des données dérivées des <i>props</i></strike></li>
                     <li><strike>Des composants</strike></li>
                 </ul>
             </div>

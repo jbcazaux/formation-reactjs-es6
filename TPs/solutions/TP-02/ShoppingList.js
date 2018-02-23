@@ -9,24 +9,17 @@ class ShoppingList extends React.Component {
         this.state = {items: []};
     }
 
-    componentWillMount() {
-        console.log('component will mount');
-    }
-
-    componentWillReceiveProps(nextProps) {
-        console.log('componentWillReceiveProps', nextProps);
-    }
-
-    componentWillUpdate(nextProps, nextState, nextContext) {
-        console.log('component will update', nextProps, nextState, nextContext);
-    }
-
     componentDidUpdate(prevProps, prevState, prevContext) {
         console.log('component did update', prevProps, prevState, prevContext);
     }
 
     componentWillUnmount() {
         console.log('component will unmount');
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log('getDerivedStateFromProps');
+        return null;
     }
 
     componentDidMount() {

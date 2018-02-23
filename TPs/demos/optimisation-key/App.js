@@ -24,8 +24,8 @@ class App extends React.Component {
 
 
 class Component1 extends React.Component {
-    componentWillMount() {
-        console.log('Component1 will mount');
+    componentDidMount() {
+        console.log('Component1 did mount');
     }
     componentWillUnmount() {
         console.log('Component1 will unmount');
@@ -36,8 +36,8 @@ class Component1 extends React.Component {
 }
 
 class Component2 extends React.Component {
-    componentWillMount() {
-        console.log('Component2 will mount');
+    componentDidMount() {
+        console.log('Component2 did mount');
     }
     componentWillUnmount() {
         console.log('Component2 will unmount');

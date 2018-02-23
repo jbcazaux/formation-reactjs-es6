@@ -2,8 +2,8 @@ import React from 'react';
 
 const addLoggerBehaviour = (WrappedComponent) => class extends React.Component {
 
-    componentWillMount() {
-        console.log('component will mount !');
+    componentDidMount() {
+        console.log('component did mount !');
     }
 
     render() {

@@ -236,6 +236,29 @@
             </code></pre>
         </section>
         <section>
+            <h3>Destructuring - nested</h3>
+            <pre><code data-trim>
+            const user = {
+                firstname: 'john',
+                lastname: 'doe',
+                address: {
+                    street: 'avenue des champs élysées',
+                    num: '12'
+                }
+            };
+
+            function getUserAddress(user) {
+                return user.address.num
+                    .concat(' ')
+                    .concat(user.address.street);
+            }
+            </code></pre>
+            <pre class="fragment"><code data-trim>
+            const getUserAddress = ({address: {num, street}}) =>
+                num.concat(' ').concat(street);
+            </code></pre>
+        </section>
+        <section>
             <h3>Shorthand Notation</h3>
             <pre><code data-trim>
                 const foo = 42;
@@ -244,14 +267,14 @@
                 const longer = {
                     foo: foo,
                     bar: bar
-                    }
+                }
             </code></pre>
             <pre class="fragment"><code data-trim>
                 const shorter = {
                     foo,
                     bar
                 }
-                </code></pre>
+            </code></pre>
         </section>
         <section>
             <h3>Bonus</h3>

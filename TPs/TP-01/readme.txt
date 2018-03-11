@@ -1,7 +1,5 @@
 installer:
 
-- webstorm
-- node 8
 - git bash
-- npm install -g create-react-app
-- yarn
+- node [8|9]
+- webstorm EAP

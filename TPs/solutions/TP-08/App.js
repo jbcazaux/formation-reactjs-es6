@@ -59,7 +59,7 @@ const Users = ({match}) => (
 const UserDetail = ({match}) => (
     <div>
         <h3>Details of <b>{match.params.name}</b></h3>
-        <img src={process.env.PUBLIC_URL + '/' + match.params.name + '.jpeg'} alt={match.params.name}/>
+        <img src={'/' + match.params.name + '.jpeg'} alt={match.params.name}/>
     </div>
 );
 

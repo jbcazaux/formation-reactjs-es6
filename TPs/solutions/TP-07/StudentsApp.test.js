@@ -6,10 +6,17 @@ import Filter from './StudentFilter';
 import StudentsTable from './StudentsTable';
 import StudentDetails from './StudentDetails';
 import Adapter from 'enzyme-adapter-react-16';
+import axios from 'axios';
 
-Enzyme.configure({adapter: new Adapter(), disableLifecycleMethods: true});
+// Enzyme.configure({adapter: new Adapter(), disableLifecycleMethods: true});
+Enzyme.configure({adapter: new Adapter()});
 
 describe('StudentsApp', () => {
+
+    beforeEach(() => {
+        axios.get = jest.fn().mockImplementationOnce(() => Promise.resolve({data: []}));
+    });
+
     it('renders studentsApp and its sub components', () => {
         // Given
         const component = shallow(

@@ -6,7 +6,8 @@ class Student {
         this.lastname = lastname;
         this.firstname = firstname;
         this.grades = grades;
-        if (!Student.NULL) {
+        if (Student.NULL !== undefined) {
+            Student.NULL = null;
             Student.NULL = new Student(0, '', '', []);
         }
     };

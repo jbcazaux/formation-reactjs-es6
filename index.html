@@ -58,7 +58,6 @@
             <p style="text-align: center"><a href="http://codox.fr/formation-reactjs-es6">http://codox.fr/formation-reactjs-es6</a>
             </p>
         </section>
-
         <section><img data-src="images/mynameis.jpg" alt="my name is"></section>
         <section><img data-src="images/coffee.gif" alt="coffee break"></section>
         <section>
@@ -1630,7 +1629,37 @@
             <h3>Récupérer l'état</h3>
             <pre><code data-trim>
                 expect(component.state('name')).toEqual('mon nom');
-                </code></pre>
+            </code></pre>
+        </section>
+        <section>
+            <h3>Mocking avancé - fonction</h3>
+            <pre><code data-trim>
+            import * as Maths from './maths';
+
+            describe('Maths', () => {
+              it('should add', () => {
+                Maths.add = jest.fn().mockImplementationOnce(() => 21);
+
+                expect(Maths.add(1,2)).toEqual(21);
+              }
+            });
+            </code></pre>
+        </section>
+        <section>
+            <h3>Mocking avancé - module</h3>
+            <pre><code data-trim>
+                import * as Maths from './maths';
+                import { calculette } from './calculette';
+
+                jest.mock('./maths');
+                describe('calculette', () => {
+                    it('should use maths module to performs add42', () => {
+                        calculette.add42(11);
+
+                        expect(Maths.add).toHaveBeenCalledWith(42, 11);
+                    }
+                });
+            </code></pre>
         </section>
         <section>
             <h3>Lancer les tests</h3>

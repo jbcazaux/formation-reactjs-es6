@@ -67,7 +67,7 @@
         <section>
             <h3>Versions</h3>
             <pre><code data-trim>
-                    "react": "16.4.0"
+                    "react": "16.4.1"
                 </code></pre>
         </section>
         <section>
@@ -363,7 +363,7 @@
                       &lt;li className="contact"&gt;
                           &lt;h2 className="contact-name"&gt;{this.props.name}&lt;/h2&gt;
                       &lt;/li&gt;
-                    )
+                    );
                 }</code></pre>
             <pre><code data-trim>
                 render: function() {
@@ -372,7 +372,7 @@
                         React.createElement('h2',
                             {className: 'contact-name'}, this.props.name)
                       )
-                    )
+                    );
                 }
                 </code></pre>
         </section>
@@ -458,9 +458,29 @@
             </div>
         </section>
         <section>
+            <h3>Variable de classe</h3>
+            <pre><code data-trim>
+            class Count extends React.Component {
+                count = 0;
+
+                constructor(props) {
+                    super(props);
+                    setInterval(() => this.count = this.count + 1, 1000)
+                }
+
+                render() {
+                    return <div>
+                        Count: {this.count}
+                    </div>;
+                }
+            }
+            </code></pre>
+        </section>
+        <section>
             <h3>State</h3>
             <pre><code data-trim>
             {
+                count: 0,
                 date: new Date(),
                 wishList: [],
                 friends: [],
@@ -479,11 +499,33 @@
             <p>Définir un nouvel état</p>
             <pre><code data-trim>
             this.setState({counter: 3})
-            this.setState(prevState => ({counter: prevState.counter + 1}))
+            this.setState(prevState => ({counter: prevState.counter +1}))
             </code></pre>
             <p>Récupérer l'état courant</p>
             <pre><code data-trim>
             this.state
+            </code></pre>
+        </section>
+        <section>
+            <h3>State</h3>
+            <pre><code data-trim>
+            class Count extends React.Component {
+
+                constructor(props) {
+                    super(props);
+                    this.state = {count: 0};
+
+                    setInterval(() => this.setState(
+                        prevState => ({count : prevState.count + 1 })),
+                    1000);
+                }
+
+                render() {
+                    return &lt;div&gt;
+                        Count: {this.state.count}
+                    &lt;/div&gt;;
+                }
+            }
             </code></pre>
         </section>
         <section>
@@ -625,7 +667,7 @@
             <pre><code data-trim>
             class ClickableApp extends React.Component {
                 render() {
-                    return &lt;div onclick={this.handleClick}&gt;Click me !&lt;/div&gt;
+                 return &lt;div onclick={this.handleClick}&gt;Click me !&lt;/div&gt;
                 }
 
                 handleClick(e) {
@@ -1700,7 +1742,7 @@
                 .toEqual(put({type: 'SET_USER', user: user}));
                expect(gen.next().done).toBeTruthy();
             });
-            </code>/</pre>
+            </code></pre>
         </section>
         <section data-background="#b5533c">
             <h3>TP-07</h3>

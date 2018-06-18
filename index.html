@@ -1521,7 +1521,7 @@
             function* loadFriends() {
                 const currentUser = yield(select(state => state.user));
                 const friends =
-                    yield call(fetch, '/users/' + currentUser.id + '/friends');
+                 yield call(fetch, '/users/' + currentUser.id + '/friends');
                 yield put({type: 'SET_FRIENDS', friends};
             }
             </code></pre>
@@ -1572,7 +1572,8 @@
             </code></pre>
             <pre><code data-trim>
                 render() {
-                    return &lt;Context.Provider value={{color: 'purple', user: new User(1, 'admin')}}&gt;
+                    return &lt;Context.Provider
+                                value={{color: 'purple', user: new User(1, 'admin')}}&gt;
                         &lt;App/&gt;
                     &lt;/Context.Provider&gt;;
                 }
@@ -1584,9 +1585,9 @@
             <pre><code data-trim>
             render() {
                 return &lt;Context.Consumer&gt;
-                    {(context) => &lt;div style={{backgroundColor: context.color}}&gt;
-                        Hello {context.user.id}-{context.user.login}
-                    &lt;/div&gt;}
+                 {(context) => &lt;div style={{backgroundColor: context.color}}&gt;
+                    Hello {context.user.id}-{context.user.login}
+                 &lt;/div&gt;}
                 &lt;/Context.Consumer&gt;;
             }
             </code></pre>

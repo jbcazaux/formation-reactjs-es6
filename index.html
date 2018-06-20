@@ -1329,11 +1329,11 @@
             <pre><code data-trim>
             function* barGenerator() {
                 const a = yield 'a';
-                console.log('a', a);
+                console.log('a:', a);
                 const b = yield 'b';
-                console.log('b', b);
+                console.log('b:', b);
                 const c = yield 'c';
-                console.log(c);
+                console.log('c:', c);
                 return 'good bye';
             }
             for (const val of barGenerator()) {
@@ -1345,15 +1345,16 @@
         <section>
             <h3>Generators</h3>
             <pre><code data-trim>
-                function* qixGenerator(x) {
+            function* qixGenerator(x) {
+                console.log('start');
                 const a = yield x + 1;
-                console.log(a);
+                console.log('a:', a);
                 return 'good bye';
-                }
+            }
 
-                const it = qixGenerator(5);
-                console.log(it.next()); // Object {value: 6, done: false}
-                console.log(it.next(100)); // ?
+            const it = qixGenerator(5);
+            console.log(it.next()); // Object {value: 6, done: false}
+            console.log(it.next(100)); // ?
             </code></pre>
             <pre class="fragment"><code data-trim>
                 // 100 - Object {value: "good bye", done: true}

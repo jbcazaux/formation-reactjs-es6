@@ -1,0 +1,5 @@
+- upgrade webpack
+- upgrade babel 7
+- slide promesse
+- es6 ajouter async await ? plutot que des promesses ?
+- ajouter lien if then else en angular

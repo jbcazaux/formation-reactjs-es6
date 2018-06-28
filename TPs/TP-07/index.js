@@ -4,5 +4,4 @@ import StudentsApp from './StudentsApp';
 
 ReactDOM.render(
     <StudentsApp/>,
-    document.getElementById('root')
-);
+    document.getElementById('root'));

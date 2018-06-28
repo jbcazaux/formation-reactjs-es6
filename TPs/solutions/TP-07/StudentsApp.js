@@ -44,7 +44,7 @@ class StudentsApp extends React.Component {
 
     filteredStudents() {
         return this.state.students.filter(s =>
-            (s.firstname.indexOf(this.state.filter) > -1) || (s.lastname.indexOf(this.state.filter) > -1))
+            (s.firstname.includes(this.state.filter)) || (s.lastname.includes(this.state.filter)))
     }
 }
 

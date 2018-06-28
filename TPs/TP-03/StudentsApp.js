@@ -27,14 +27,14 @@ class StudentsApp extends React.Component {
                 {/*
                     <Filter onChange={}/>
                 */}
-                {/*
+                {
                     <StudentsTable
                         students={this.filteredStudents()}
-                        selectStudent={}
+                        selectStudent={this.handleSelectStudent}
                     />
-                */}
-                <StudentDetails student={Student.NULL}/>
-            </div>)
+                }
+                {/*<StudentDetails student={Student.NULL}/>*/}
+            </div>);
     }
 
     handleFilterChange(filter) {

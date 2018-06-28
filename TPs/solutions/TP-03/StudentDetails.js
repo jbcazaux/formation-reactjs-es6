@@ -1,6 +1,6 @@
 import React from 'react';
 import Student from './Student';
-import {FormLabel} from 'material-ui';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const StudentDetails = ({student}) =>
     (<FormLabel>

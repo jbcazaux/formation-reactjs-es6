@@ -1,6 +1,9 @@
 import React from 'react';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 
 class Filter extends React.Component {
+
 
     constructor(props) {
         super(props);
@@ -14,8 +17,8 @@ class Filter extends React.Component {
     render() {
         return (
             <form className="form-inline">
-                <label htmlFor="filterName" className="control-label">Filtrer:</label>
-                <input id="filterName"
+                <InputLabel htmlFor="filterName" className="control-label">Filtrer:</InputLabel>
+                <Input id="filterName"
                        type="text"
                        placeholder="Tapez un nom..."
                        onChange={this.onFilterChange}

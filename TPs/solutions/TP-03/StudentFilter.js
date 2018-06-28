@@ -1,5 +1,6 @@
 import React from 'react';
-import {Input, InputLabel} from 'material-ui';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 
 class Filter extends React.Component {
 

@@ -10,6 +10,8 @@ class StudentsApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {students: [], filter: '', selectedStudent: Student.NULL};
+        this.handleFilterChange = this.handleFilterChange.bind(this);
+        this.handleSelectStudent = this.handleSelectStudent.bind(this);
     }
 
     componentDidMount() {
@@ -23,10 +25,10 @@ class StudentsApp extends React.Component {
     render() {
         return (
             <div>
-                <Filter onChange={this.handleFilterChange.bind(this)}/>
+                <Filter onChange={this.handleFilterChange}/>
                 <StudentsTable
                     students={this.filteredStudents()}
-                    selectStudent={this.handleSelectStudent.bind(this)}
+                    selectStudent={this.handleSelectStudent}
                 />
                 <StudentDetails student={this.state.selectedStudent}/>
             </div>)
@@ -42,7 +44,7 @@ class StudentsApp extends React.Component {
 
     filteredStudents() {
         return this.state.students.filter(s =>
-            (s.firstname.indexOf(this.state.filter) > -1) || (s.lastname.indexOf(this.state.filter) > -1))
+            (s.firstname.includes(this.state.filter)) || (s.lastname.includes(this.state.filter)))
     }
 }
 

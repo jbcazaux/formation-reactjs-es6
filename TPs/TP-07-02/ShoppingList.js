@@ -5,10 +5,9 @@ import * as ItemsActions from './actions/items';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        items: state.items,
-        title: ownProps.title
+        items: state.items
     };
 };
 

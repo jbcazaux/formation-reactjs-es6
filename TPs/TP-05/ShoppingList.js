@@ -3,10 +3,9 @@ import ShoppingItem from './ShoppingItem';
 import {fetchItems} from './actions/items';
 import {connect} from 'react-redux';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        items: state.items,
-        title: ownProps.title
+        items: state.items
     };
 };
 

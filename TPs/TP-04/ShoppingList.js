@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './Item';
 import ShoppingItem from './ShoppingItem';
-import {setItems, addItems} from './actions/items';
+import {setItems, addItem} from './actions/items';
 import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => {

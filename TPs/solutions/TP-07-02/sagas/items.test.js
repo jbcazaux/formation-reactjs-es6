@@ -1,4 +1,4 @@
-import {addItems, getItems, setItems} from '../actions/items';
+import {addItem, getItems, setItems} from '../actions/items';
 import {call, fork, put} from 'redux-saga/effects';
 import Item from '../Item';
 import * as sagas from './items';
@@ -16,9 +16,9 @@ describe('sagas', () => {
 
     it('add items with tva', () => {
         const action = {items: [new Item(null, null, 1)]};
-        const gen = sagas.addItemsWithTVA(action);
+        const gen = sagas.addItemWithTVA(action);
 
-        expect(gen.next().value).toEqual(put(addItems([new Item(null, null, 1.2)])));
+        expect(gen.next().value).toEqual(put(addItem(new Item(null, null, 1.2))));
         expect(gen.next().done).toBeTruthy();
     });
 
@@ -26,7 +26,7 @@ describe('sagas', () => {
         const gen = rootSaga();
 
         expect(gen.next().value).toEqual(fork(sagas.watchLoadItems));
-        expect(gen.next().value).toEqual(fork(sagas.watchAddItemsWithTVA));
+        expect(gen.next().value).toEqual(fork(sagas.watchAddItemWithTVA));
         expect(gen.next().done).toBeTruthy();
     });
 });

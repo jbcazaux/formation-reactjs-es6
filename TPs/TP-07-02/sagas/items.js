@@ -1,4 +1,4 @@
-import {addItems, getItems, setItems} from '../actions/items';
+import {addItem, getItems, setItems} from '../actions/items';
 import {call, fork, put, take} from "redux-saga/effects";
 import Item from "../Item";
 
@@ -7,9 +7,9 @@ export function* loadItems() {
     yield put(setItems(items));
 }
 
-export const addItemsWithTVA = function* (action) {
-    const newItems = action.items.map(item => new Item(item.id, item.label, item.price * 1.20));
-    yield put(addItems(newItems));
+export const addItemWithTVA = function* (action) {
+    const newItem =new Item(action.item.id, action.item.label, action.item.price * 1.20);
+    yield put(addItem(newItem));
 };
 
 export function* watchLoadItems() {
@@ -19,14 +19,14 @@ export function* watchLoadItems() {
     }
 }
 
-export function* watchAddItemsWithTVA() {
+export function* watchAddItemWithTVA() {
     while (true) {
         const action = yield take('ADD_WITH_TVA');
-        yield call(addItemsWithTVA, action);
+        yield call(addItemWithTVA, action);
     }
 }
 
 export default function* rootSaga() {
     yield fork(watchLoadItems);
-    yield fork(watchAddItemsWithTVA);
+    yield fork(watchAddItemWithTVA);
 }

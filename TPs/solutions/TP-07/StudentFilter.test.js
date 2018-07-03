@@ -2,6 +2,7 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Filter from './StudentFilter';
 import Adapter from 'enzyme-adapter-react-16';
+import { Input } from '@material-ui/core';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -12,7 +13,7 @@ describe('Filter', () => {
         const component = shallow(<Filter onChange={mockOnChange}/>);
 
         // When
-        component.find('input').simulate('change', {target: {value: 'name'}});
+        component.find(Input).simulate('change', {target: {value: 'name'}});
 
         // Then
         expect(mockOnChange).toBeCalledWith('name');

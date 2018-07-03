@@ -2,8 +2,8 @@ const items = (state = [], action) => {
     switch (action.type) {
         case 'SET_ITEMS':
             return action.items;
-        case 'ADD_ITEMS':
-            return state.concat(action.items);
+        case 'ADD_ITEM':
+            return state.concat(action.item);
         default:
             return state;
     }

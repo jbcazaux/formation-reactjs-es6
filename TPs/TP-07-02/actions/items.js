@@ -5,14 +5,14 @@ export const setItems = items => ({
     items
 });
 
-export const addItems = items => ({
-    type: 'ADD_ITEMS',
-    items
+export const addItem = item => ({
+    type: 'ADD_ITEM',
+    item
 });
 
-export const addItemsWithTVA  = items => ({
+export const addItemWithTVA  = item => ({
     type: 'ADD_WITH_TVA',
-    items
+    item
 });
 
 export const loadItems = () => ({

@@ -6,9 +6,9 @@ export const setItems = items => ({
     items
 });
 
-export const addItems = items => ({
-    type: 'ADD_ITEMS',
-    items
+export const addItem = item => ({
+    type: 'ADD_ITEM',
+    item
 });
 
 const getItems =
@@ -22,8 +22,8 @@ export const fetchItems = () =>
             console.log(error);
         });
 
-export const addItemsWithTVA = (items) =>
+export const addItemWithTVA = (item) =>
     (dispatch) => {
-        const newItems = items.map(item => new Item(item.id, item.label, item.price * 1.20));
-        return dispatch(addItems(newItems));
+        const newItem = new Item(item.id, item.label, item.price * 1.20);
+        return dispatch(addItem(newItem));
     };

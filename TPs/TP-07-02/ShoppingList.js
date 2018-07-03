@@ -53,8 +53,8 @@ class ShoppingList_ extends React.Component {
 
     createNewItem(e) {
         e.preventDefault();
-        // this.props.addItems([new Item((new Date()).getTime(), this.state.newItem, this.state.newPrice)]);
-        this.props.addItemsWithTVA([new Item((new Date()).getTime(), this.state.newItem, this.state.newPrice)]);
+        // this.props.addItem(new Item((new Date()).getTime(), this.state.newItem, this.state.newPrice));
+        this.props.addItemWithTVA(new Item((new Date()).getTime(), this.state.newItem, this.state.newPrice));
         this.setState({newItem: '', newPrice: 0});
     }
 }

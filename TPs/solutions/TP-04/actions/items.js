@@ -3,7 +3,7 @@ export const setItems = items => ({
     items
 });
 
-export const addItems = items => ({
-    type: 'ADD_ITEMS',
-    items
+export const addItem = item => ({
+    type: 'ADD_ITEM',
+    item
 });

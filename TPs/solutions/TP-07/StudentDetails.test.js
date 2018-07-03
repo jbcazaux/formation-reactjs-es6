@@ -14,7 +14,7 @@ describe('StudentDetails', () => {
         );
 
         // Then
-        expect(component.text()).toContain('Aucun étudiant sélectionné');
+        expect(component.find('div').text()).toContain('Aucun étudiant sélectionné');
     });
     it('renders with a Student', () => {
         // Given
@@ -23,6 +23,6 @@ describe('StudentDetails', () => {
         );
 
         // Then
-        expect(component.text()).toContain('first last');
+        expect(component.find('div').text()).toContain('first last');
     });
 });

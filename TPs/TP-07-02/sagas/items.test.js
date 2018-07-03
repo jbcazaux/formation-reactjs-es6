@@ -1,4 +1,4 @@
-import {addItems, getItems, setItems} from '../actions/items';
+import {addItem, getItems, setItems} from '../actions/items';
 import {call, fork, put} from 'redux-saga/effects';
 import Item from '../Item';
 import * as sagas from './items';

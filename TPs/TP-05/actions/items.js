@@ -7,10 +7,10 @@ export const setItems = (items) => {
     }
 };
 
-export const addItems = (items) => {
+export const addItem = (item) => {
     return {
-        type: 'ADD_ITEMS',
-        items
+        type: 'ADD_ITEM',
+        item
     }
 };
 

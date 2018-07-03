@@ -3,7 +3,7 @@ import Enzyme, {shallow} from 'enzyme';
 import StudenstTable from './StudentsTable';
 import Student from './Student';
 import Adapter from 'enzyme-adapter-react-16';
-import {TableBody, TableRow} from 'material-ui';
+import { TableBody, TableRow } from '@material-ui/core';
 
 Enzyme.configure({adapter: new Adapter()});
 

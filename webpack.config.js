@@ -2,7 +2,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
-module.exports = {
+module.exports = (env, argv) => ({
     entry: {
         bundle: './src/index.js'
     },
@@ -26,16 +26,10 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader'
-            },
-            {
-                enforce: 'pre',
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'source-map-loader'
             }
         ]
     },
-    devtool: 'source-map',
+    devtool: argv.mode === 'development' ? 'source-map' : false,
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         publicPath: '/',
@@ -46,4 +40,4 @@ module.exports = {
         "react": "React",
         "react-dom": "ReactDOM"
     },
-};
+});

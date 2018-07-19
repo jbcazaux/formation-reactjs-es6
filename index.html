@@ -290,12 +290,25 @@
             </code></pre>
         </section>
         <section>
-            <h3>Promesses</h3>
+            <h3>Promesses VS. async - await</h3>
             <pre><code data-trim>
-            const promiseOfItems = axios.get('/users/42/items')
+            axios.get('/users/42/items')
                 .then(resp => resp.data)
                 .then(items => items.map(item => item.id))
+                .then(ids => {/* use the ids */})
                 .catch(error => console.log(error.toString()))
+            </code></pre>
+            <pre class="fragment"><code data-trim>
+            async function fetchItems {
+                try {
+                    const response = await axios.get('/users/42/items');
+                    const items = response.data;
+                    const itemIds = items.map(item => item.id));
+                    /* use the ids */
+                } catch(error){
+                    console.log(error.toString())
+                }
+            }
             </code></pre>
         </section>
         <section>

@@ -201,6 +201,21 @@
                 </code></pre>
         </section>
         <section>
+            <h3>Spread operator</h3>
+            <pre><code data-trim>
+                let user = {
+                    firstname: 'john',
+                    nickname: 'ninja',
+                    lastname: 'doe',
+                    age: 21
+                };
+
+                user = {...user, firstname: 'toto'}
+
+                console.log(user) // ?
+            </code></pre>
+        </section>
+        <section>
             <h3>Destructuring</h3>
             <pre><code data-trim>
                     const foo = {a: 1, b: 2, c: 'bar'};
@@ -275,18 +290,12 @@
             </code></pre>
         </section>
         <section>
-            <h3>Bonus</h3>
+            <h3>Promesses</h3>
             <pre><code data-trim>
-                Object.assign({}, {a: 1, c: 3}, {a: 10, b: 2}); // = ?
-            </code></pre>
-            <pre class="fragment"><code data-trim>
-                const m = new Map();
-                m.set('foo', 2);
-                const bar = m.has('foo') ? m.get('foo') : 0;
-            </code></pre>
-            <pre class="fragment"><code data-trim>
-            const uniq = new Set([1, 2, 3, 1, 2, 3]);
-            uniq.length // ?
+            const promiseOfItems = axios.get('/users/42/items')
+                .then(resp => resp.data)
+                .then(items => items.map(item => item.id))
+                .catch(error => console.log(error.toString()))
             </code></pre>
         </section>
         <section>
@@ -430,10 +439,9 @@
             }
             </code></pre>
             <p style="font-size: 22px; text-align: left">
-                Au choix: array, bool, func, number, object, string, symbol, node, instanceOf(MyObject),
-                oneOf['News', 'Photos'], oneOfType([...]), arrayOf(), objectOf()...
-                <a href="https://www.npmjs.com/package/prop-types">
-                    https://www.npmjs.com/package/prop-types
+                Au choix: array, bool, func, number, object, string, symbol, node, arrayOf(), shape()...
+                <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">
+                    https://reactjs.org/docs/typechecking-with-proptypes.html
                 </a>
             </p>
         </section>
@@ -1242,16 +1250,6 @@
 
                 </code></pre>
 
-        </section>
-        <section>
-            <h3>Promesses</h3>
-            <pre><code data-trim>
-            const getItemsId =
-                () => axios.get('src/items.json')
-                .then(resp => resp.data)
-                .then(items => items.map(item => item.id))
-                .catch(error => console.log(error.toString()))
-            </code></pre>
         </section>
         <section>
             <h3>ThunkActionCreator</h3>

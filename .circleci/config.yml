@@ -1,0 +1,45 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+  - image: circleci/node:10.9.0
+
+jobs:
+  build:
+    <<: *defaults
+
+    steps:
+    - checkout
+
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+
+        - v1-dependencies-
+
+    - run: npm install
+
+    - save_cache:
+        paths:
+        - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+
+    - run: |
+        rm -f ./src/*.js
+        cp ./TPs/solutions/TP-07/* ./src
+
+    - run: npm run test-all
+
+    - persist_to_workspace:
+        root: ~/repo
+        paths: .
+
+workflows:
+  version: 2
+  build-master:
+    jobs:
+    - build:
+        filters:
+          branches:
+            only: master

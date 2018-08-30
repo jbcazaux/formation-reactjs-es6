@@ -1,9 +1,10 @@
-# formation-reactjs-es6
-formation react js avec ES6 
+# Formation react js avec ES6 
 
 Les slides: [http://codox.fr/formation-reactjs-es6/](http://codox.fr/formation-reactjs-es6/)
 
 La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@gmail.com !
+
+[![CircleCI](https://circleci.com/gh/jbcazaux/formation-reactjs-es6/tree/master.svg?style=svg)](https://circleci.com/gh/jbcazaux/formation-reactjs-es6/tree/master) Vérification des TPs.
 
 ## Licence
 

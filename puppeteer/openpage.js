@@ -25,6 +25,8 @@ puppeteer.launch().then(async browser => {
     await page.goto('http://localhost:8080/tp08.html', {waitUntil: 'networkidle0'});
     await page.goto('http://localhost:8080/tp09.html', {waitUntil: 'networkidle0'});
 
+      console.log(await page.content());
+
     if (errors.length) {
       throw new Error(errors.join('\n'));
     }

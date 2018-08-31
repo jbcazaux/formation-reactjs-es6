@@ -25,11 +25,21 @@ jobs:
         - node_modules
         key: v2-dependencies-{{ checksum "package.json" }}
 
-    - run: |
-        rm -f ./src/*.js
-        cp ./TPs/solutions/TP-07/* ./src
+    - run:
+        name: build TPs
+        command: npm run testci
 
-    - run: npm run test-all
+    - run:
+        name: launch http-server
+        command: npm run httpserver
+
+    - run:
+        name: run tests
+        command: node ./puppeteer/openpage.js
+
+    - run:
+        name: kill server
+        command: pkill node
 
     - persist_to_workspace:
         root: ~/repo
@@ -44,4 +54,4 @@ workflows:
           branches:
             only:
               - master
-              - circleci-test
+              - test-ci

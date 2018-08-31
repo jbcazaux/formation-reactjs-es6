@@ -43,7 +43,7 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "testci": "webpack --mode=development --config=./webpack.config.ci.js",
-    "httpserver": "http-server ./build",
+    "httpserver": "http-server ./build &",
     "test": "jest --watch --no-cache",
     "test-all": "jest"
   },

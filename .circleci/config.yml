@@ -6,6 +6,25 @@ defaults: &defaults
   - image: circleci/node:10.9.0-browsers
 
 jobs:
+  ncuu:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - run:
+          name: ncu -u
+          command: npm run ncuu
+  commit:
+      <<: *defaults
+      steps:
+        - run:
+            name: commit
+            command: |
+              git config user.email "jbcazaux@gmail.com"
+              git config user.name "circleci bot"
+              git commit --allow-empty -m "update lib versions"
+              git push -q https://${GITHUB_TOKEN}@github.com/jbcazaux/formation-reactjs-es6.git master
+
   build:
     <<: *defaults
 
@@ -48,7 +67,7 @@ jobs:
 
 workflows:
   version: 2
-  build-master:
+  build-tps:
     jobs:
     - build:
         filters:
@@ -56,3 +75,19 @@ workflows:
             only:
               - master
               - test-ci
+  test-updates:
+    triggers:
+    - schedule:
+        cron: "2 30 * * *"
+        filters:
+          branches:
+            only:
+            - master
+    jobs:
+      - ncuu
+      - build:
+          requires:
+            - ncuu
+      - commit:
+          requires:
+          - build

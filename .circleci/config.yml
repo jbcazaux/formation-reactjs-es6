@@ -3,9 +3,28 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   docker:
-  - image: circleci/node:10.9.0
+  - image: circleci/node:10.9.0-browsers
 
 jobs:
+  ncuu:
+    <<: *defaults
+    steps:
+      - checkout
+
+      - run:
+          name: ncu -u
+          command: npm run ncuu
+  commit:
+      <<: *defaults
+      steps:
+        - run:
+            name: commit
+            command: |
+              git config user.email "jbcazaux@gmail.com"
+              git config user.name "circleci bot"
+              git commit --allow-empty -m "update lib versions"
+              git push -q https://${GITHUB_TOKEN}@github.com/jbcazaux/formation-reactjs-es6.git master
+
   build:
     <<: *defaults
 
@@ -25,11 +44,22 @@ jobs:
         - node_modules
         key: v2-dependencies-{{ checksum "package.json" }}
 
-    - run: |
-        rm -f ./src/*.js
-        cp ./TPs/solutions/TP-07/* ./src
+    - run:
+        name: build TPs
+        command: npm run testci
 
-    - run: npm run test-all
+    - run:
+        name: launch http-server
+        command: npm run httpserver
+        background: true
+
+    - run:
+        name: run tests
+        command: node ./puppeteer/openpage.js
+
+    - run:
+        name: kill server
+        command: pkill node
 
     - persist_to_workspace:
         root: ~/repo
@@ -37,11 +67,27 @@ jobs:
 
 workflows:
   version: 2
-  build-master:
+  build-tps:
     jobs:
     - build:
         filters:
           branches:
             only:
               - master
-              - circleci-test
+              - test-ci
+  test-updates:
+    triggers:
+    - schedule:
+        cron: "2 30 * * *"
+        filters:
+          branches:
+            only:
+            - master
+    jobs:
+      - ncuu
+      - build:
+          requires:
+            - ncuu
+      - commit:
+          requires:
+          - build

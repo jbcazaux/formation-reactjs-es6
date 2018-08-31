@@ -32,6 +32,7 @@ jobs:
     - run:
         name: launch http-server
         command: npm run httpserver
+        background: true
 
     - run:
         name: run tests

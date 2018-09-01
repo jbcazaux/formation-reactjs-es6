@@ -6,39 +6,48 @@ defaults: &defaults
   - image: circleci/node:10.9.0-browsers
 
 jobs:
+  checkout:
+    <<: *defaults
+    steps:
+    - checkout
+    - persist_to_workspace:
+        root: ~/repo
+        path: .
   ncuu:
     <<: *defaults
     steps:
-      - checkout
-
-      - run:
-          name: ncu -u
-          command: npm run ncuu
+    - attach_workspace:
+        at: ~/repo
+    - run:
+        name: ncu -u
+        command: npm run ncuu
+    - persist_to_workspace:
+        root: ~/repo
+        path: .
   commit:
-      <<: *defaults
-      steps:
-        - run:
-            name: commit
-            command: |
-              git config user.email "jbcazaux@gmail.com"
-              git config user.name "circleci bot"
-              git commit --allow-empty -m "update lib versions"
-              git push -q https://${GITHUB_TOKEN}@github.com/jbcazaux/formation-reactjs-es6.git master
+    <<: *defaults
+    steps:
+    - attach_workspace:
+        at: ~/repo
+    - run:
+        name: commit
+        command: |
+          git config user.email "jbcazaux@gmail.com"
+          git config user.name "circleci ncuu bot"
+          git commit --allow-empty -m "update lib versions"
+          git push -q https://${GITHUB_TOKEN}@github.com/jbcazaux/formation-reactjs-es6.git master
 
   build:
     <<: *defaults
-
     steps:
-    - checkout
-
+    - attach_workspace:
+        at: ~/repo
     - restore_cache:
         keys:
         - v2-dependencies-{{ checksum "package.json" }}
-
         - v2-dependencies-
 
     - run: npm install
-
     - save_cache:
         paths:
         - node_modules
@@ -69,12 +78,20 @@ workflows:
   version: 2
   build-tps:
     jobs:
-    - build:
+    - checkout:
         filters:
           branches:
             only:
-              - master
-              - test-ci
+            - master
+            - test-ci
+    - build:
+        requires:
+        - checkout
+        filters:
+          branches:
+            only:
+            - master
+            - test-ci
   test-updates:
     triggers:
     - schedule:
@@ -84,10 +101,13 @@ workflows:
             only:
             - master
     jobs:
-      - ncuu
-      - build:
-          requires:
-            - ncuu
-      - commit:
-          requires:
-          - build
+    - checkout
+    - ncuu:
+        requires:
+        - checkout
+    - build:
+        requires:
+        - ncuu
+    - commit:
+        requires:
+        - build

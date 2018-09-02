@@ -16,8 +16,7 @@ jobs:
   ncuu:
     <<: *defaults
     steps:
-    - attach_workspace:
-        at: ~/repo
+    - checkout
     - run:
         name: ncu -u
         command: npm run ncuu
@@ -36,12 +35,10 @@ jobs:
           git config user.name "circleci ncuu bot"
           git commit --allow-empty -m "update lib versions"
           git push -q https://${GITHUB_TOKEN}@github.com/jbcazaux/formation-reactjs-es6.git master
-
   build:
     <<: *defaults
     steps:
-    - attach_workspace:
-        at: ~/repo
+    - checkout
     - restore_cache:
         keys:
         - v2-dependencies-{{ checksum "package.json" }}
@@ -78,15 +75,7 @@ workflows:
   version: 2
   build-tps:
     jobs:
-    - checkout:
-        filters:
-          branches:
-            only:
-            - master
-            - test-ci
     - build:
-        requires:
-        - checkout
         filters:
           branches:
             only:
@@ -101,10 +90,12 @@ workflows:
             only:
             - master
     jobs:
-    - checkout
     - ncuu:
-        requires:
-        - checkout
+        filters:
+          branches:
+            only:
+            - master
+            - test-ci
     - build:
         requires:
         - ncuu

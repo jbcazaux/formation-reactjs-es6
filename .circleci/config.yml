@@ -84,7 +84,7 @@ workflows:
   test-updates:
     triggers:
     - schedule:
-        cron: "30 * * * *"
+        cron: "30 2 * * *"
         filters:
           branches:
             only:

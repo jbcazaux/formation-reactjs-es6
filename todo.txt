@@ -1,1 +1,80 @@
-- all clear !
+- supprimer la partie sur saga
+- Ajouter le quizz
+/**
+ * Can you explain the differences between all those ways
+ * of passing function to a component?
+ *
+ * What happens when you click each of the buttons?
+ */
+class App extends React.Component {
+
+  constructor() {
+    super();
+    this.name = 'MyComponent';
+
+    this.handleClick2 = this.handleClick1.bind(this);
+  }
+
+  handleClick1() {
+    alert(this.name);
+  }
+
+  handleClick3 = () => alert(this.name);
+render() {
+    return (
+      <div>
+        <button onClick={this.handleClick1()}>click 1</button>
+        <button onClick={this.handleClick1}>click 2</button>
+        <button onClick={this.handleClick2}>click 3</button>
+        <button onClick={this.handleClick3}>click 4</button>
+      </div>
+    );
+  }
+}
+https://github.com/sudheerj/reactjs-interview-questions
+
+There are two common practices for React project file structure.
+
+        Grouping by features or routes:
+
+        One common way to structure projects is locate CSS, JS, and tests together, grouped by feature or route.
+
+        common/
+        ├─ Avatar.js
+        ├─ Avatar.css
+        ├─ APIUtils.js
+        └─ APIUtils.test.js
+        feed/
+        ├─ index.js
+        ├─ Feed.js
+        ├─ Feed.css
+        ├─ FeedStory.js
+        ├─ FeedStory.test.js
+        └─ FeedAPI.js
+        profile/
+        ├─ index.js
+        ├─ Profile.js
+        ├─ ProfileHeader.js
+        ├─ ProfileHeader.css
+        └─ ProfileAPI.js
+        Grouping by file type:
+
+        Another popular way to structure projects is to group similar files together.
+
+        api/
+        ├─ APIUtils.js
+        ├─ APIUtils.test.js
+        ├─ ProfileAPI.js
+        └─ UserAPI.js
+        components/
+        ├─ Avatar.js
+        ├─ Avatar.css
+        ├─ Feed.js
+        ├─ Feed.css
+        ├─ FeedStory.js
+        ├─ FeedStory.test.js
+        ├─ Profile.js
+        ├─ ProfileHeader.js
+        └─ ProfileHeader.css
+
+https://github.com/sudheerj/reactjs-interview-questions

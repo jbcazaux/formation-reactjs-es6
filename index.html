@@ -50,7 +50,7 @@
 <body>
 <div class="reveal">
     <div class="slides">
-       <section>
+        <section>
             <h1><img width="75" height="75" data-src="images/react.svg" alt="react"
                      style="border: none; background: none; box-shadow: none; margin: 0;">React</h1>
             <h3>#ES6</h3>
@@ -788,7 +788,8 @@
 
             <div style="font-size: 30px; text-align: left; margin-left: 50px;">
                 <p>La documentation</p>
-                <p><a href="https://www.styled-components.com/docs/api">https://www.styled-components.com/docs/api</a></p>
+                <p><a href="https://www.styled-components.com/docs/api">https://www.styled-components.com/docs/api</a>
+                </p>
             </div>
         </section>
         <section>
@@ -838,7 +839,8 @@
                     ? <div>{this.state.user.login}</div>
                     : <div>No User</div>}
             </code></pre>
-            <p><a href="https://angular.io/api/common/NgIf#using-non-inlined-then-template" style="font-size: .5em; ">C'est pas mieux en angular :)</a></p>
+            <p><a href="https://angular.io/api/common/NgIf#using-non-inlined-then-template" style="font-size: .5em; ">C'est
+                pas mieux en angular :)</a></p>
         </section>
         <section>
             <h3>Commentaires</h3>
@@ -1333,7 +1335,8 @@
             <h3>new Context API !</h3>
             <ul>
                 <li>On peut passer des objets à ses composants enfants (n'importe où dans la hiérarchie).</li>
-                <li class="fragment">Beaucoup de librairies sont basées la dessus. Ce n'était pas une API officiellement supportée
+                <li class="fragment">Beaucoup de librairies sont basées la dessus. Ce n'était pas une API officiellement
+                    supportée
                     avant react 16.3.0.
                 </li>
                 <li class="fragment"><i>react-redux</i> fonctionne grâce à ça (le store est passé à tous les enfants).
@@ -1358,7 +1361,8 @@
         </section>
         <section>
             <h3>Utilisation</h3>
-            <p>Et enfin récupérer le <i>context</i> là où il est nécessaire. Le <i>context</i> est accessible dans une <i>child function</i> de <i>&lt;Context.Consumer&gt;</i></p>
+            <p>Et enfin récupérer le <i>context</i> là où il est nécessaire. Le <i>context</i> est accessible dans une
+                <i>child function</i> de <i>&lt;Context.Consumer&gt;</i></p>
             <pre><code data-trim>
             render() {
                 return &lt;Context.Consumer&gt;
@@ -1707,7 +1711,7 @@
             {src: 'plugin/markdown/markdown.js'},
             {src: 'plugin/notes/notes.js', async: true},
             {
-                    src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
                     hljs.initHighlightingOnLoad();
                 }
             }

@@ -10,10 +10,8 @@ module.exports = (env, argv) => ({
         tp03: './TPs/solutions/TP-03/index.js',
         tp04: './TPs/solutions/TP-04/index.js',
         tp05: './TPs/solutions/TP-05/index.js',
-        tp0502: './TPs/solutions/TP-05-02/index.js',
         tp06: './TPs/solutions/TP-06/index.js',
         tp07: './TPs/solutions/TP-07/index.js',
-        tp0702: './TPs/solutions/TP-07-02/index.js',
         tp08: './TPs/solutions/TP-08/index.js',
         tp09: './TPs/solutions/TP-09/index.js',
     },
@@ -57,12 +55,6 @@ module.exports = (env, argv) => ({
         new HtmlWebPackPlugin({
           inject: false,
           template: './puppeteer/index.html',
-          chunks: 'tp0502',
-          filename: './tp05-02.html',
-        }),
-        new HtmlWebPackPlugin({
-          inject: false,
-          template: './puppeteer/index.html',
           chunks: 'tp06',
           filename: './tp06.html',
         }),
@@ -71,12 +63,6 @@ module.exports = (env, argv) => ({
           template: './puppeteer/index.html',
           chunks: 'tp07',
           filename: './tp07.html',
-        }),
-        new HtmlWebPackPlugin({
-          inject: false,
-          template: './puppeteer/index.html',
-          chunks: 'tp0702',
-          filename: './tp07-02.html',
         }),
         new HtmlWebPackPlugin({
           inject: false,

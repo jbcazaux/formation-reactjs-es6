@@ -18,10 +18,8 @@ puppeteer.launch().then(async browser => {
         await page.goto('http://localhost:8080/tp03.html', {waitUntil: 'networkidle0'});
         await page.goto('http://localhost:8080/tp04.html', {waitUntil: 'networkidle0'});
         await page.goto('http://localhost:8080/tp05.html', {waitUntil: 'networkidle0'});
-        // await page.goto('http://localhost:8080/tp05-02.html', {waitUntil: 'networkidle0'});
         await page.goto('http://localhost:8080/tp06.html', {waitUntil: 'networkidle0'});
         await page.goto('http://localhost:8080/tp07.html', {waitUntil: 'networkidle0'});
-        // await page.goto('http://localhost:8080/tp07-02.html', {waitUntil: 'networkidle0'});
         await page.goto('http://localhost:8080/tp08.html', {waitUntil: 'networkidle0'});
         await page.goto('http://localhost:8080/tp09.html', {waitUntil: 'networkidle0'});
 

@@ -89,11 +89,5 @@ module.exports = (env, argv) => ({
             }
         ]
     },
-    devtool: false,
-    devServer: {
-        contentBase: path.resolve(__dirname, 'public'),
-        publicPath: '/',
-        open: true,
-        historyApiFallback: true
-    },
+    devtool: false
 });

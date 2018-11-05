@@ -1,4 +1,9 @@
 - supprimer la partie sur saga
+- ajouter eslint
+- changer stateless component par functional component
+- utiliser react hooks + lint
+- circle ci for auto updating packages versions
+- circle ci launching unit tests of TP07
 - Ajouter le quizz
 /**
  * Can you explain the differences between all those ways

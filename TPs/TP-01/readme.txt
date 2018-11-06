@@ -1,5 +1,5 @@
 installer:
 
 - git bash
-- node [8|9]
-- webstorm EAP
+- node [9 | 10 | 11]
+- webstorm EAP / Visual Studio Code

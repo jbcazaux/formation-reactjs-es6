@@ -443,27 +443,6 @@
                 }
                 </code></pre>
         </section>
-        <section>
-            <h3>Create or extends</h3>
-            <pre><code data-trim>
-            const Hello = React.createClass({
-                render: function() {
-                    return (
-                        <h1>Hello {this.props.name}!</h1>
-                    );
-                }
-            });
-            </code></pre>
-            <pre><code data-trim>
-            class Hello extends React.Component {
-                render() {
-                    return (
-                        <h1>Hello {this.props.name}!</h1>
-                    );
-                }
-            }
-            </code></pre>
-        </section>
         <section data-background="#b5533c">
             <h3>TP-01</h3>
             <h4>Hello World</h4>
@@ -620,7 +599,7 @@
             </div>
         </section>
         <section>
-            <h3>Stateless component</h3>
+            <h3>Functional component</h3>
             <pre class="fragment current-visible"><code data-trim>
                 import React from "react";
                 const Hello = (props) => <h1>Hello {props.name}!</h1>;

@@ -3,6 +3,8 @@
 - utiliser react hooks + lint
 - circle ci for auto updating packages versions
 - circle ci launching unit tests of TP07
+- demo suspense
+- demo lazy
 - Ajouter le quizz
 /**
  * Can you explain the differences between all those ways

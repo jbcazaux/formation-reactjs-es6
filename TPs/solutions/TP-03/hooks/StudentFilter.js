@@ -4,7 +4,6 @@ import Input from '@material-ui/core/Input';
 
 export default function Filter({onChange}) {
 
-
     const onFilterChange = (e) => {
         onChange(e.target.value);
     }

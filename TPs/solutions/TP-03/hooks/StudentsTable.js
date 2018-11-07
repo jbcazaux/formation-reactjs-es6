@@ -6,7 +6,6 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
 const StudentsTable = ({students, selectStudent}) => {
-  console.log('render StudentsTable')
   const style = {
     margin: 'auto',
     marginTop: '20px',

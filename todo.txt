@@ -1,3 +1,4 @@
+- react.strictMode
 - ajouter eslint
 - changer stateless component par functional component
 - utiliser react hooks + lint

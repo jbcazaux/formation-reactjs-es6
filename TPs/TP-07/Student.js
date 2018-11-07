@@ -7,7 +7,7 @@ class Student {
         this.grades = grades;
     };
 
-    static NULL = new Student(10, '', '', []);
+    static NULL = new Student(0, '', '', []);
 
 }
 

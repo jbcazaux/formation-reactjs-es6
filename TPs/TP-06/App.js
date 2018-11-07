@@ -2,11 +2,11 @@ import React from 'react';
 
 class Small extends React.Component {
     render() {
-        return ({/*<Context.Consumer> TODO: use context*/}
+        /* TODO: get context */
+        return (
             <div style={{backgroundColor: 'todo', height: '125px', width: '33%'}}>
-                Small, user = {context.user.id}-{context.user.login}
+                Small, user = {ctx.user.id}-{ctx.user.login}
             </div>
-            // </Context.Consumer>;
         );
     }
 }

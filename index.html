@@ -1356,12 +1356,11 @@
             <h3>Context</h3>
         </section>
         <section>
-            <h3>new Context API !</h3>
+            <h3>Context API</h3>
             <ul>
                 <li>On peut passer des objets à ses composants enfants (n'importe où dans la hiérarchie).</li>
                 <li class="fragment">Beaucoup de librairies sont basées la dessus. Ce n'était pas une API officiellement
-                    supportée
-                    avant react 16.3.0.
+                    supportée avant react 16.3.0.
                 </li>
                 <li class="fragment"><i>react-redux</i> fonctionne grâce à ça (le store est passé à tous les enfants).
                 </li>
@@ -1385,15 +1384,25 @@
         </section>
         <section>
             <h3>Utilisation</h3>
-            <p>Et enfin récupérer le <i>context</i> là où il est nécessaire. Le <i>context</i> est accessible dans une
-                <i>child function</i> de <i>&lt;Context.Consumer&gt;</i></p>
+            <p>Et enfin récupérer le <i>context</i> là où il est nécessaire.
             <pre><code data-trim>
-            render() {
-                return &lt;Context.Consumer&gt;
-                 {(context) => &lt;div style={{backgroundColor: context.color}}&gt;
-                    Hello {context.user.id}-{context.user.login}
-                 &lt;/div&gt;}
-                &lt;/Context.Consumer&gt;;
+            import React from 'react'
+            import MyContext from './Context'
+
+            class Small extends React.Component {
+
+              static contextType = MyContext
+
+              render() {
+                const ctx = this.context
+                return &lt;div
+                        style={{backgroundColor: ctx.color,
+                            height: '125px',
+                            width: '33%'}}
+                        &gt;
+                   Small, user = {ctx.user.id}-{ctx.user.login}
+                &lt;/div&gt;
+              }
             }
             </code></pre>
         </section>

@@ -1,4 +1,6 @@
 - react.strictMode
+- selectStudent => onSelectStudent
+- generer les proptypes
 - ajouter eslint
 - changer stateless component par functional component
 - utiliser react hooks + lint

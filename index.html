@@ -896,6 +896,33 @@
             };
             </code></pre>
         </section>
+        <section data-background="#5553AA">
+            <h3>Quizz</h3>
+            <pre><code data-trim>
+            class App extends React.Component {
+              constructor(props) {
+                super(props);
+                this.name = 'MyComponent';
+                this.handleClick2 = this.handleClick1.bind(this);
+              }
+              handleClick1() { alert(this.name);}
+              handleClick3 = () => alert(this.name);
+              render() {
+               return ( &lt;div&gt;
+                 &lt;button onClick={this.handleClick1()}&gt;click 1&lt;/button&gt;
+                 &lt;button onClick={this.handleClick1}&gt;click 2&lt;/button&gt;
+                 &lt;button onClick={this.handleClick2}&gt;click 3&lt;/button&gt;
+                 &lt;button onClick={this.handleClick3}&gt;click 4&lt;/button&gt;
+               &lt;/div&gt; );
+               }
+            }
+            </code></pre>
+            <p style="font-size: 22px; text-align: left">
+                <a href="https://github.com/sudheerj/reactjs-interview-questions" target="_blank">
+                    https://github.com/sudheerj/reactjs-interview-questions
+                </a>
+            </p>
+        </section>
         <section data-background="#b5533c">
             <h3>TP-03</h3>
             <h4>Liste des étudiants</h4>

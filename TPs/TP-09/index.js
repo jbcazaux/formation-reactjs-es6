@@ -1,8 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import Optimisation from './Optimisation'
 
-ReactDOM.render(
-    <Optimisation/>,
-    document.getElementById('root')
-);
+ReactDOM.render(<Optimisation />, document.getElementById('root'))

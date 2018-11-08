@@ -6,33 +6,30 @@ import StudentDetails from './StudentDetails'
 import Student from './Student'
 
 export default function StudentsApp() {
-    const [students, setStudents] = useState([])
-    const [filter, setFilter] = useState('')
-    const [selectedStudent, setSelectedStudent] = useState(Student.NULL)
+  const [students, setStudents] = useState([])
+  const [filter, setFilter] = useState('')
+  const [selectedStudent, setSelectedStudent] = useState(Student.NULL)
 
-    useEffect(() => {
-        axios.get('./students.json')
-            .then(({data: students}) => setStudents(students))
-    }, [])
+  useEffect(() => {
+    axios.get('./students.json').then(({ data: students }) => setStudents(students))
+  }, [])
 
-    const handleFilterChange = (f) => {
-        setFilter(f)
-    }
+  const handleFilterChange = f => {
+    setFilter(f)
+  }
 
-    const handleSelectStudent = (s) => {
-        setSelectedStudent(s)
-    }
+  const handleSelectStudent = s => {
+    setSelectedStudent(s)
+  }
 
-    const filteredStudents = (students, filter) =>
-        students.filter(s => s.firstname.includes(filter) || s.lastname.includes(filter))
+  const filteredStudents = (students, filter) =>
+    students.filter(s => s.firstname.includes(filter) || s.lastname.includes(filter))
 
-    return (
-        <>
-            <Filter onChange={handleFilterChange}/>
-            <StudentsTable
-                students={filteredStudents(students, filter)}
-                selectStudent={handleSelectStudent}
-            />
-            <StudentDetails student={selectedStudent}/>
-        </>)
+  return (
+    <>
+      <Filter onChange={handleFilterChange} />
+      <StudentsTable students={filteredStudents(students, filter)} selectStudent={handleSelectStudent} />
+      <StudentDetails student={selectedStudent} />
+    </>
+  )
 }

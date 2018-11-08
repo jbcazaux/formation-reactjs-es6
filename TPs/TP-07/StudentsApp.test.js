@@ -1,18 +1,18 @@
-import React from 'react';
-import {shallow} from 'enzyme';
-import StudentsApp from './StudentsApp';
-import Student from './Student';
-import Filter from './StudentFilter';
-import StudentsTable from './StudentsTable';
-import StudentDetails from './StudentDetails';
+import React from 'react'
+import { shallow } from 'enzyme'
+import StudentsApp from './StudentsApp'
+import Student from './Student'
+import Filter from './StudentFilter'
+import StudentsTable from './StudentsTable'
+import StudentDetails from './StudentDetails'
 
 describe('StudentsApp', () => {
-    it('TODO !', () => {
-        // Given
+  it('TODO !', () => {
+    // Given
 
-        // When
+    // When
 
-        // Then
-        expect(true).toBeTruthy();
-    });
-});
+    // Then
+    expect(true).toBeTruthy()
+  })
+})

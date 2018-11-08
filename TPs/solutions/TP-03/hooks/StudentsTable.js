@@ -5,11 +5,11 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 
-const StudentsTable = ({students, selectStudent}) => {
+const StudentsTable = ({ students, selectStudent }) => {
   const style = {
     margin: 'auto',
     marginTop: '20px',
-    width: '80%'
+    width: '80%',
   }
   return (
     <Table style={style}>
@@ -21,15 +21,13 @@ const StudentsTable = ({students, selectStudent}) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {
-          students.map(student => (
-            <TableRow key={student.id} onClick={() => selectStudent(student)}>
-              <TableCell>{student.id}</TableCell>
-              <TableCell>{student.firstname}</TableCell>
-              <TableCell>{student.lastname}</TableCell>
-            </TableRow>
-          ))
-        }
+        {students.map(student => (
+          <TableRow key={student.id} onClick={() => selectStudent(student)}>
+            <TableCell>{student.id}</TableCell>
+            <TableCell>{student.firstname}</TableCell>
+            <TableCell>{student.lastname}</TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   )

@@ -1,48 +1,48 @@
-import React from 'react';
-import axios from 'axios';
+import React from 'react'
+import axios from 'axios'
 import ShoppingItem from './ShoppingItem'
 
 class ShoppingList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { items: [] }
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {items: []};
-    }
+  componentDidUpdate(prevProps, prevState, prevContext) {
+    console.log('component did update', prevProps, prevState, prevContext)
+  }
 
-    componentDidUpdate(prevProps, prevState, prevContext) {
-        console.log('component did update', prevProps, prevState, prevContext);
-    }
+  componentWillUnmount() {
+    console.log('component will unmount')
+  }
 
-    componentWillUnmount() {
-        console.log('component will unmount');
-    }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('getDerivedStateFromProps')
+    return null
+  }
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log('getDerivedStateFromProps');
-        return null;
-    }
+  componentDidMount() {
+    console.log('component did mount')
+    axios
+      .get('./items.json')
+      .then(resp => resp.data)
+      .then(items => {
+        this.setState({ items: items })
+      })
+  }
 
-    componentDidMount() {
-        console.log('component did mount');
-        axios.get('./items.json')
-            .then(resp => resp.data)
-            .then(items => {
-                this.setState({items: items});
-            })
-    }
-
-    render() {
-        return (
-            <div>
-                <h2>{this.props.title}</h2>
-                <ul>
-                    {
-                        this.state.items.map(item => <ShoppingItem key={item.id} item={item}/>)
-                    }
-                </ul>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <h2>{this.props.title}</h2>
+        <ul>
+          {this.state.items.map(item => (
+            <ShoppingItem key={item.id} item={item} />
+          ))}
+        </ul>
+      </div>
+    )
+  }
 }
 
-export default ShoppingList;
+export default ShoppingList

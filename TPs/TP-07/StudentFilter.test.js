@@ -1,14 +1,14 @@
-import React from 'react';
-import {shallow} from 'enzyme';
-import Filter from './StudentFilter';
+import React from 'react'
+import { shallow } from 'enzyme'
+import Filter from './StudentFilter'
 
 describe('Filter', () => {
-    it('TODO !', () => {
-        // Given
+  it('TODO !', () => {
+    // Given
 
-        // When
+    // When
 
-        // Then
-        expect(true).toBeTruthy();
-    });
-});
+    // Then
+    expect(true).toBeTruthy()
+  })
+})

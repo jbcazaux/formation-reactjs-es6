@@ -1,15 +1,15 @@
-import React from "react";
-import {shallow} from "enzyme";
-import StudenstTable from "./StudentsTable";
-import Student from "./Student";
+import React from 'react'
+import { shallow } from 'enzyme'
+import StudenstTable from './StudentsTable'
+import Student from './Student'
 
 describe('StudentsTable', () => {
-    it('TODO !', () => {
-        // Given
+  it('TODO !', () => {
+    // Given
 
-        // When
+    // When
 
-        // Then
-        expect(true).toBeTruthy();
-    });
-});
+    // Then
+    expect(true).toBeTruthy()
+  })
+})

@@ -1,7 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import StudentsApp from './StudentsApp';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import StudentsApp from './StudentsApp'
 
-ReactDOM.render(
-    <StudentsApp/>,
-    document.getElementById('root'));
+ReactDOM.render(<StudentsApp />, document.getElementById('root'))

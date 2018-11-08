@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-export default (WrappedComponent) => (props) => (
-    <React.StrictMode>
-        <WrappedComponent {...props} />
-    </React.StrictMode>
-);
+export default WrappedComponent => props => (
+  <React.StrictMode>
+    <WrappedComponent {...props} />
+  </React.StrictMode>
+)

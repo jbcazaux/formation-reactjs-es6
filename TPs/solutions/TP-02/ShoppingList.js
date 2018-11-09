@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import ShoppingItem from './ShoppingItem'
+import PropTypes from 'prop-types'
 
 class ShoppingList extends React.Component {
   constructor(props) {
@@ -46,3 +47,7 @@ class ShoppingList extends React.Component {
 }
 
 export default ShoppingList
+
+ShoppingList.propTypes = {
+  title: PropTypes.string.isRequired,
+}

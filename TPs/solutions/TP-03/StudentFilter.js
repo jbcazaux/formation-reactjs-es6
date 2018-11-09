@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
@@ -32,3 +33,7 @@ class Filter extends React.Component {
 }
 
 export default Filter
+
+Filter.propTypes = {
+  onChange: PropTypes.func.isRequired,
+}

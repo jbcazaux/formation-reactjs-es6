@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import ShoppingItem from './ShoppingItem'
+import PropTypes from 'prop-types'
 
 export default function ShoppingList({ title }) {
   const [items, setItems] = useState([])
@@ -24,4 +25,8 @@ export default function ShoppingList({ title }) {
       </ul>
     </div>
   )
+}
+
+ShoppingList.propTypes = {
+  title: PropTypes.string.isRequired,
 }

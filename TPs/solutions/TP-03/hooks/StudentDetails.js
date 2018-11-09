@@ -1,5 +1,5 @@
 import React from 'react'
-import Student from './Student'
+import Student, { StudentPropTypes } from './Student'
 import FormLabel from '@material-ui/core/FormLabel'
 
 const StudentDetails = ({ student }) => (
@@ -11,5 +11,9 @@ const StudentDetails = ({ student }) => (
     )}
   </FormLabel>
 )
+
+StudentDetails.propTypes = {
+  student: StudentPropTypes.isRequired,
+}
 
 export default StudentDetails

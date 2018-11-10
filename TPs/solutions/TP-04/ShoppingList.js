@@ -4,12 +4,11 @@ import ShoppingItem from './ShoppingItem'
 import * as ItemsActions from './actions/items'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import PropTypes from 'prop-types'
 
-const mapStateToProps = state => {
-  return {
-    items: state.items,
-  }
-}
+const mapStateToProps = state => ({
+  items: state.items,
+})
 
 function mapActionCreatorsToProps(dispatch) {
   return bindActionCreators(ItemsActions, dispatch)
@@ -68,4 +67,9 @@ const ShoppingList = connect(
   mapStateToProps,
   mapActionCreatorsToProps
 )(ShoppingList_)
+
+ShoppingList.propTypes = {
+  title: PropTypes.string.isRequired,
+}
+
 export default ShoppingList

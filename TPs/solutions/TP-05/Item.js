@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export default class Item {
   constructor(id, label, price) {
     this.id = id
@@ -5,3 +7,5 @@ export default class Item {
     this.price = price
   }
 }
+
+export const ItemPropTypes = PropTypes.shape({ label: PropTypes.string.isRequired, price: PropTypes.number.isRequired })

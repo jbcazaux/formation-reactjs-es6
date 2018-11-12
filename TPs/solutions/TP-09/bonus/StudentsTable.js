@@ -4,6 +4,8 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import PropTypes from 'prop-types'
+import { StudentPropTypes } from './Student'
 
 const StudentsTable = ({ students, selectStudent }) => {
   console.log('render StudentsTable')
@@ -32,6 +34,11 @@ const StudentsTable = ({ students, selectStudent }) => {
       </TableBody>
     </Table>
   )
+}
+
+StudentsTable.propTypes = {
+  students: PropTypes.arrayOf(StudentPropTypes).isRequired,
+  selectStudent: PropTypes.func.isRequired,
 }
 
 export default StudentsTable

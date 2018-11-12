@@ -1,8 +1,9 @@
 import React from 'react'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
+import PropTypes from 'prop-types'
 
-export default function Filter({ onChange }) {
+function Filter({ onChange }) {
   console.log('render filter')
 
   const onFilterChange = e => {
@@ -25,3 +26,9 @@ export default function Filter({ onChange }) {
     </form>
   )
 }
+
+Filter.propTypes = {
+  onChange: PropTypes.func.isRequired,
+}
+
+export default Filter

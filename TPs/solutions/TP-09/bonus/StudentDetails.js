@@ -1,7 +1,6 @@
-import React, { Component, PureComponent } from 'react'
-import Student from './Student'
+import React, { PureComponent } from 'react'
+import Student, { StudentPropTypes } from './Student'
 import FormLabel from '@material-ui/core/FormLabel'
-import * as PropTypes from 'prop-types'
 
 class StudentDetails extends PureComponent {
   render() {
@@ -19,6 +18,8 @@ class StudentDetails extends PureComponent {
   }
 }
 
-StudentDetails.propTypes = { student: PropTypes.any }
+StudentDetails.propTypes = {
+  student: StudentPropTypes.isRequired,
+}
 
 export default StudentDetails

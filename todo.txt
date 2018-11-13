@@ -7,3 +7,4 @@
 - circle ci launching unit tests of TP07
 - demo suspense
 - demo lazy
+- reveal 3.7 + refacto

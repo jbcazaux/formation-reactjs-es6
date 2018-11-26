@@ -821,13 +821,15 @@
             <h4 class="fragment">(Workarounds)</h4>
         </section>
         <section>
-            <h3>Render et le tableau d'éléments</h3>
+            <h3>Les fragments</h3>
             <pre><code data-trim>
             render() {
-                return [
-                &lt;div&gt;Pourquoi &lt;/div&gt,
-                &lt;span&gt;pas ?&lt;/span&gt
-                ];
+                return (
+                &lt;React.Fragment&gt;
+                    &lt;div&gt;Pourquoi &lt;/div&gt;
+                    &lt;span&gt;pas ?&lt;/span&gt;
+                &lt;/React.Fragment&gt;
+                )
             }
             </code></pre>
             <pre class="fragment"><code data-trim>
@@ -837,7 +839,7 @@
                     &lt;div&gt;Pourquoi &lt;/div&gt;
                     &lt;span&gt;pas ?&lt;/span&gt;
                 &lt;/&gt;
-                );
+                )
             }
             </code></pre>
         </section>

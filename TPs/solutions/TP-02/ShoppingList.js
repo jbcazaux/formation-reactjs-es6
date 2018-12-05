@@ -33,11 +33,14 @@ class ShoppingList extends React.Component {
   }
 
   render() {
+    const { title } = this.props
+    const { items } = this.state
+
     return (
       <div>
-        <h2>{this.props.title}</h2>
+        <h2>{title}</h2>
         <ul>
-          {this.state.items.map(item => (
+          {items.map(item => (
             <ShoppingItem key={item.id} item={item} />
           ))}
         </ul>

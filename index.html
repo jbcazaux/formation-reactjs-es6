@@ -1240,9 +1240,8 @@
             const mapDispatchToProps = (dispatch) => {
                 return {
                     onSelectCp: (event) => {
-                    const cpId =
-                        new CodePostalId(parseInt(event.target.value))
-                    dispatch({type: 'SET_CODE_POSTALID', cpId: cpId})
+                     const cpId = parseInt(event.target.value)
+                     dispatch({type: 'SET_CODE_POSTALID', cpId: cpId})
                     }
                 }
             }

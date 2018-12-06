@@ -98,9 +98,9 @@
         <section>
             <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
             <pre><code data-trim>
-                let foo = 'bar';
-                const MAX = 10;
-                const ttc = addTva(15);
+                let foo = 'bar'
+                const MAX = 10
+                const ttc = addTva(15)
                 </code></pre>
             <p class="fragment">
                 <span style="color: #8cd0d3">let</span> vs. <span style="color: #cc9393">const</span> ?
@@ -111,33 +111,33 @@
             <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
             <pre><code data-trim>
                 if (true) {
-                    var i = 1;
+                    var i = 1
                 } else {
-                    var j = 2;
+                    var j = 2
                 }
-                console.log(i, j);
+                console.log(i, j)
                 </code></pre>
             <pre class="fragment fade-up"><code data-trim>
-                const user = {};
-                user.name = 'john'; // (1)
-                user = {name: 'lea'}; // (2)
+                const user = {}
+                user.name = 'john' // (1)
+                user = {name: 'lea'} // (2)
                 </code></pre>
             <pre class="fragment fade-up"><code data-trim>
-                const arr = ['a'];
-                arr.push('b'); // (3)
-                arr = ['a', 'b']; // (4)
+                const arr = ['a']
+                arr.push('b') // (3)
+                arr = ['a', 'b'] // (4)
                 </code></pre>
         </section>
         <section>
             <h3>Arrow functions</h3>
             <pre><code data-trim>
                 function addOldSchool(a, b) {
-                    return a + b;
+                    return a + b
                 }
             </code></pre>
             <pre class="fragment"><code data-trim>
                 let add = (a, b) => {
-                    return a + b;
+                    return a + b
                 }
                 </code></pre>
             <pre class="fragment"><code data-trim>
@@ -147,8 +147,8 @@
         <section>
             <h3>Arrow functions</h3>
             <pre><code data-trim>
-                const squares = [0, 1, 2, 3, 4].map(x => x * x);
-                console.log(squares);
+                const squares = [0, 1, 2, 3, 4].map(x => x * x)
+                console.log(squares)
                 </code></pre>
         </section>
         <section>
@@ -164,38 +164,38 @@
         <section>
             <h3>Spread operator</h3>
             <pre class="fragment current-visible"><code data-trim>
-                const odd = [1, 3, 5, 7, 9];
+                const odd = [1, 3, 5, 7, 9]
                 const even = [2, 4, 6, 8]
-                const all = [0];
+                const all = [0]
 
                 // arr.push([element1[, ...[, elementN]]])
-                all.push(odd);
-                all.push(even);
+                all.push(odd)
+                all.push(even)
 
                 console.log(all) // ?
                 </code></pre>
             <pre class="fragment current-visible"><code data-trim>
-                const odd = [1, 3, 5, 7, 9];
+                const odd = [1, 3, 5, 7, 9]
                 const even = [2, 4, 6, 8]
-                const all = [0];
+                const all = [0]
 
                 // arr.push([element1[, ...[, elementN]]])
                 for (let i = 0; i < odd.length; i++) {
-                    all.push(odd[i]);
+                    all.push(odd[i])
                 }
                 for (let i = 0; i < even.length; i++) {
-                    all.push(even[i]);
+                    all.push(even[i])
                 }
                 console.log(all) // ?
                 </code></pre>
             <pre class="fragment current-visible"><code data-trim>
-                    const odd = [1, 3, 5, 7, 9];
+                    const odd = [1, 3, 5, 7, 9]
                     const even = [2, 4, 6, 8]
-                    const all = [0];
+                    const all = [0]
 
                     // arr.push([element1[, ...[, elementN]]])
-                    all.push(...odd);
-                    all.push(...even);
+                    all.push(...odd)
+                    all.push(...even)
 
                     console.log(all) // ?
                 </code></pre>
@@ -208,7 +208,7 @@
                     nickname: 'ninja',
                     lastname: 'doe',
                     age: 21
-                };
+                }
 
                 user = {...user, firstname: 'toto'}
 
@@ -218,9 +218,9 @@
         <section>
             <h3>Destructuring</h3>
             <pre><code data-trim>
-                    const foo = {a: 1, b: 2, c: 'bar'};
-                    let {a} = foo;
-                    console.log(a); // ?
+                    const foo = {a: 1, b: 2, c: 'bar'}
+                    let {a} = foo
+                    console.log(a) // ?
                 </code></pre>
         </section>
         <section>
@@ -231,21 +231,21 @@
                 nickname: 'ninja',
                 lastname: 'doe',
                 age: 21
-            };
+            }
 
             function getUserName(user) {
-                return user.firstname.concat(' ').concat(user.lastname);
+                return `${user.firstname} ${user.lastname}`)
             }
-            console.log(getUserName(user));
+            console.log(getUserName(user))
             </code></pre>
             <pre class="fragment"><code data-trim>
             function getUserName({firstname, lastname}) {
-                return firstname.concat(' ').concat(lastname);
+                return `${firstname} ${lastname}`)
             }
             </code></pre>
             <pre class="fragment"><code data-trim>
             const getUserName = ({firstname, lastname}) =>
-                firstname.concat(' ').concat(lastname);
+                `${user.firstname} ${user.lastname}`
             </code></pre>
         </section>
         <section>
@@ -258,17 +258,15 @@
                     street: 'avenue des champs élysées',
                     num: '12'
                 }
-            };
+            }
 
             function getUserAddress(user) {
-                return user.address.num
-                    .concat(' ')
-                    .concat(user.address.street);
+             return `${user.address.num} ${user.address.street}`
             }
             </code></pre>
             <pre class="fragment"><code data-trim>
             const getUserAddress = ({address: {num, street}}) =>
-                num.concat(' ').concat(street);
+                `${num} ${street}`
             </code></pre>
         </section>
         <section>
@@ -281,26 +279,26 @@
                     street: 'avenue des champs élysées',
                     num: '12'
                 }
-            };
+            }
 
             let getUserAddress = ({address: {num: foo, street: bar}}) =>
-                foo.concat(' ').concat(bar);
+                `${foo} ${bar}`
             </code></pre>
         </section>
         <section>
             <h3>Destructuring - arrays</h3>
             <pre><code data-trim>
-            const maths = [x => x + 1, x => x * x, x => x * x * x];
-            const [plus1, square] = maths;
-            plus1(41); // 42
-            square(12); // 144
+            const maths = [x => x + 1, x => x * x, x => x * x * x]
+            const [plus1, square] = maths
+            plus1(41) // 42
+            square(12) // 144
             </code></pre>
         </section>
         <section>
             <h3>Shorthand Notation</h3>
             <pre><code data-trim>
-                const foo = 42;
-                const bar = 1;
+                const foo = 42
+                const bar = 1
 
                 const longer = {
                     foo: foo,
@@ -326,9 +324,9 @@
             <pre class="fragment"><code data-trim>
             async function fetchItems {
                 try {
-                    const response = await axios.get('/users/42/items');
-                    const items = response.data;
-                    const itemIds = items.map(item => item.id));
+                    const response = await axios.get('/users/42/items')
+                    const items = response.data
+                    const itemIds = items.map(item => item.id))
                     /* use the ids */
                 } catch(error){
                     console.log(error.toString())
@@ -347,8 +345,8 @@
             <pre><code data-trim>
             async function fetchItems {
               try {
-                const {data: items} = await axios.get('/users/42/items');
-                const itemIds = items.map(item => item.id));
+                const {data: items} = await axios.get('/users/42/items')
+                const itemIds = items.map(item => item.id))
                 /* use the ids */
               } catch(error){
                 console.log(error.toString())
@@ -367,15 +365,15 @@
                 add(2)(3) // ???
             </code></pre>
             <pre class="fragment"><code data-trim>
-                const add2 = add(2);
-                add2(3); // = ?
+                const add2 = add(2)
+                add2(3) // = ?
             </code></pre>
             <pre class="fragment"><code data-trim>
                 let add = x => y => x + y // WTF ?!
             </code></pre>
             <pre class="fragment"><code data-trim>
                 let add = x =>
-                    y => (x + y);
+                    y => (x + y)
                 //easy !
             </code></pre>
         </section>
@@ -383,7 +381,7 @@
             <h3>Rappels - this</h3>
             <pre><code data-trim data-noescape>
                 function f() {
-                    this.foo; // what is this ?
+                    this.foo // what is this ?
                 }
             </code></pre>
         </section>
@@ -400,26 +398,26 @@
         <section>
             <h3>Hello world</h3>
             <pre>hello.js<code data-trim>
-            import React from "react";
+            import React from "react"
 
             class Hello extends React.Component {
                 render() {
                     return (
                         <div>Hello {this.props.name} !</div>
-                    );
+                    )
                 }
             }
-            export default Hello;
+            export default Hello
             </code></pre>
             <pre class="fragment">index.js<code class="jsx" data-trim>
-            import React from "react";
-            import ReactDOM from "react-dom";
-            import Hello from "./Hello";
+            import React from "react"
+            import ReactDOM from "react-dom"
+            import Hello from "./Hello"
 
             ReactDOM.render(
                 &lt;Hello name="world"/&gt;,
                 document.getElementById('root')
-            );
+            )
             </code></pre>
         </section>
         <section>
@@ -430,7 +428,7 @@
                       &lt;li className="contact"&gt;
                           &lt;h2 className="contact-name"&gt;{this.props.name}&lt;/h2&gt;
                       &lt;/li&gt;
-                    );
+                    )
                 }</code></pre>
             <pre><code data-trim>
                 render: function() {
@@ -439,7 +437,7 @@
                         React.createElement('h2',
                             {className: 'contact-name'}, this.props.name)
                       )
-                    );
+                    )
                 }
                 </code></pre>
         </section>
@@ -459,14 +457,14 @@
                                                                                  href="https://www.npmjs.com/package/prop-types">PropTypes</a>
             </p>
             <pre><code data-trim>
-            import PropTypes from 'prop-types';
+            import PropTypes from 'prop-types'
             class Hello extends React.Component {
                 static propTypes = {
                     name: PropTypes.string.isRequired,
                     truc: PropTypes.bool
-                };
+                }
                 render() {
-                    return <h1>Hello {this.props.name}!</h1>;
+                    return <h1>Hello {this.props.name}!</h1>
                 }
             }
 
@@ -510,10 +508,10 @@
             <h3>Variable de classe</h3>
             <pre><code data-trim>
             class Count extends React.Component {
-                count = 0;
+                count = 0
 
                 constructor(props) {
-                    super(props);
+                    super(props)
                     setInterval(() => this.count = this.count + 1, 1000)
                 }
 
@@ -562,18 +560,18 @@
             class Count extends React.Component {
 
                 constructor(props) {
-                    super(props);
-                    this.state = {count: 0};
+                    super(props)
+                    this.state = {count: 0}
 
                     setInterval(() => this.setState(
                         prevState => ({count : prevState.count + 1 })),
-                    1000);
+                    1000)
                 }
 
                 render() {
                     return &lt;div&gt;
                         Count: {this.state.count}
-                    &lt;/div&gt;;
+                    &lt;/div&gt;
                 }
             }
             </code></pre>
@@ -601,8 +599,8 @@
         <section>
             <h3>Functional component</h3>
             <pre class="fragment current-visible"><code data-trim>
-                import React from "react";
-                const Hello = (props) => <h1>Hello {props.name}!</h1>;
+                import React from "react"
+                const Hello = (props) => <h1>Hello {props.name}!</h1>
             </code></pre>
             <pre class="fragment current-visible"><code data-trim>
             class ButtonApp extends React.Component {
@@ -619,14 +617,14 @@
                 &lt;div&gt;
                     &lt;div&gt;{props.title}&lt;/div&gt;
                     &lt;button&gt;{props.label}&lt;/button&gt;
-                &lt;/div&gt;;
+                &lt;/div&gt;
             </code></pre>
             <pre class="fragment current-visible"><code data-trim>
             const ButtonApp = ({title, label}) =>
                 &lt;div&gt;
                     &lt;div&gt;{title}&lt;/div&gt;
                     &lt;button&gt;{label}&lt;/button&gt;
-                &lt;/div&gt;;
+                &lt;/div&gt;
             </code></pre>
         </section>
         <section>
@@ -665,7 +663,7 @@
                 // componentDidMount() {...}
                 render() {
                    return &lt;ShoppingListInternal title={this.props.title}
-                            items={this.state.items}/&gt;;
+                            items={this.state.items}/&gt;
                 }
             }
             const ShoppingListInternal = ({title, items}) =>
@@ -684,8 +682,8 @@
                 // constructor...
                 // componentDidMount() {...}
                 deleteItem() {
-                    const newItems = this.state.items.slice(1);
-                    this.setState(items: newItems);
+                    const newItems = this.state.items.slice(1)
+                    this.setState(items: newItems)
                 }
                 render() {
                     return (&lt;ShoppingListInternal
@@ -709,7 +707,7 @@
                             {item.label}: {item.price}€ &lt;/li&gt;))
                         }
                     &lt;/ul&gt;
-                &lt;/div&gt;);
+                &lt;/div&gt;)
             </code></pre>
         </section>
         <section>
@@ -721,7 +719,7 @@
                 }
 
                 handleClick(e) {
-                    console.log('click !', e);
+                    console.log('click !', e)
                 }
             }
             </code></pre>
@@ -746,14 +744,14 @@
 
             <pre><code data-trim>
             render() {
-                const mystyle = {backgroundColor: '#F0ABCD'};
+                const mystyle = {backgroundColor: '#F0ABCD'}
                 return &lt;div style={mystyle}/&gt;
             }
             </code></pre>
             <p>Sinon une CSS globale, ou une CSS par composant (Webpack powered)</p>
 
             <pre><code data-trim>
-                import './MyComponent.css';
+                import './MyComponent.css'
                 </code></pre>
         </section>
         <section>
@@ -806,7 +804,7 @@
                 font-size: 1.5em;
                 text-align: center;
                 color: palevioletred;
-            `;
+            `
             &lt;Title&gt;Superbe titre !&lt;/Title&gt;
             </code></pre>
 
@@ -885,7 +883,7 @@
             ReactDOM.render(
                &lt;ButtonApp title="Mon Application"&gt;Press Me! &lt;/ButtonApp&gt;,
                document.getElementById('root')
-            );
+            )
             </code></pre>
             <pre><code data-trim>
             export default class ButtonApp extends React.Component {
@@ -895,7 +893,7 @@
                         &lt;button&gt;{this.props.children}&lt;/button&gt;
                     &lt;/div&gt;
                 }
-            };
+            }
             </code></pre>
         </section>
         <section data-background="#5553AA">
@@ -903,19 +901,19 @@
             <pre><code data-trim>
             class App extends React.Component {
               constructor(props) {
-                super(props);
-                this.name = 'MyComponent';
-                this.handleClick2 = this.handleClick1.bind(this);
+                super(props)
+                this.name = 'MyComponent'
+                this.handleClick2 = this.handleClick1.bind(this)
               }
               handleClick1() { alert(this.name);}
-              handleClick3 = () => alert(this.name);
+              handleClick3 = () => alert(this.name)
               render() {
                return ( &lt;div&gt;
                  &lt;button onClick={this.handleClick1()}&gt;click 1&lt;/button&gt;
                  &lt;button onClick={this.handleClick1}&gt;click 2&lt;/button&gt;
                  &lt;button onClick={this.handleClick2}&gt;click 3&lt;/button&gt;
                  &lt;button onClick={this.handleClick3}&gt;click 4&lt;/button&gt;
-               &lt;/div&gt; );
+               &lt;/div&gt; )
                }
             }
             </code></pre>
@@ -988,12 +986,12 @@
             <h3>Action Creator</h3>
             <pre><code data-trim>
             export const incrementor = (inc) => {
-                return {type: 'INCREMENT', inc};
-            };
+                return {type: 'INCREMENT', inc}
+            }
             </code></pre>
             <pre><code data-trim>
             export const incrementor =
-                (inc) => ({type: 'INCREMENT', inc});
+                (inc) => ({type: 'INCREMENT', inc})
             </code></pre>
         </section>
         <section>
@@ -1026,13 +1024,13 @@
             export const display = (state = 0, action) => {
                 switch (action.type) {
                     case 'INCREMENT':
-                        return state + action.inc;
+                        return state + action.inc
                     case 'DECREMENT':
-                        return state - action.inc;
+                        return state - action.inc
                     default:
-                        return state;
+                        return state
                 }
-            };
+            }
             </code></pre>
             Le <b>state</b> est en read-only !
             <img data-src="images/redux.png" alt="redux">
@@ -1063,20 +1061,20 @@
             <h3>Composition de reducers</h3>
             <h4>Approche naïve</h4>
             <pre><code data-trim>
-            const initialState = {user: '', counter: 0};
+            const initialState = {user: '', counter: 0}
             export const myGlobalReducer =
                 (state = initialState, action) => {
                     switch (action.type) {
                         case 'SET_USER':
-                           return {...state, user: action.user};
+                           return {...state, user: action.user}
                         case 'INCREMENT':
-                           return {...state, counter: state.counter + 1};
+                           return {...state, counter: state.counter + 1}
                         case 'DECREMENT':
-                           return {...state, counter: state.counter - 1};
+                           return {...state, counter: state.counter - 1}
                         default:
-                           return state;
+                           return state
                 }
-            };
+            }
             </code></pre>
             Ca peut faire lourd sur une grosse appli...!
         </section>
@@ -1087,34 +1085,34 @@
                 (state = User.NULL, action) => {
                     switch (action.type) {
                         case 'SET_USER':
-                            return action.user;
+                            return action.user
                         default:
-                            return state;
+                            return state
                     }
-                };
+                }
             export const counter =
                 (state = 0, action) => {
                     switch (action.type) {
                         case 'INCREMENT':
-                            return state + 1;
+                            return state + 1
                         case 'DECREMENT':
-                            return state - 1;
+                            return state - 1
                         default:
-                            return state;
+                            return state
                     }
-            };
+            }
             </code></pre>
         </section>
         <section>
             <h3>Composition de reducers</h3>
             <h4>Effet Waouh</h4>
             <pre><code data-trim>
-            const init = {user: 'nobody', counter: 0};
+            const init = {user: 'nobody', counter: 0}
             export const myGlobalReducer = (state = init, action) =>
                 ({
                     user: user(state.user, action),
                     counter: counter(state.counter, action)
-                });
+                })
             </code></pre>
             <p>Et avec un peu de magie...</p>
             <pre><code data-trim>
@@ -1122,7 +1120,7 @@
             export const myGlobalReducer = combineReducers({
                 user,
                 counter
-            });
+            })
             </code></pre>
         </section>
         <section>
@@ -1211,10 +1209,10 @@
             </ul>
 
             <pre class="fragment"><code data-trim>
-            import {connect} from 'react-redux';
+            import {connect} from 'react-redux'
 
             export const MyComponent =
-            connect(mapStateToProps, mapDispatchToProps)(MyPresentationalComponent);
+            connect(mapStateToProps, mapDispatchToProps)(MyPresentationalComponent)
             </code></pre>
         </section>
         <section>
@@ -1228,28 +1226,28 @@
                         &lt;option key={cp} value={cp}&gt;{cp}&lt;/option&gt; )
                 }
                 &lt;/select&gt;
-                );
+                )
                 </code></pre>
         </section>
         <section>
             <h3>Conteneur</h3>
             <pre><code data-trim>
             const mapStateToProps = (state) => {
-                const cpsOfAgence = state.codesPostaux.map(cp => cp.id);
-                return {cps: cpsOfAgence, currentCp: state.codePostal.id};
-            };
+                const cpsOfAgence = state.codesPostaux.map(cp => cp.id)
+                return {cps: cpsOfAgence, currentCp: state.codePostal.id}
+            }
 
             const mapDispatchToProps = (dispatch) => {
                 return {
                     onSelectCp: (event) => {
                     const cpId =
-                        new CodePostalId(parseInt(event.target.value));
-                    dispatch({type: 'SET_CODE_POSTALID', cpId: cpId});
+                        new CodePostalId(parseInt(event.target.value))
+                    dispatch({type: 'SET_CODE_POSTALID', cpId: cpId})
                     }
-                };
-            };
+                }
+            }
             export const SelectCodePostal =
-            connect(mapStateToProps, mapDispatchToProps)(SelectCodePostal_);
+            connect(mapStateToProps, mapDispatchToProps)(SelectCodePostal_)
             </code></pre>
         </section>
         <section>
@@ -1258,21 +1256,21 @@
 
             <p>Tous les conteneurs de l'application doivent avoir accès au store.</p>
             <pre><code data-trim>
-                import React from 'react';
-                import ReactDOM from 'react-dom';
-                import {Provider} from 'react-redux';
-                import {createStore} from 'redux';
-                import {reducer} from './reducers/index';
-                import {App} from './components/app';
+                import React from 'react'
+                import ReactDOM from 'react-dom'
+                import {Provider} from 'react-redux'
+                import {createStore} from 'redux'
+                import {reducer} from './reducers/index'
+                import {App} from './components/app'
 
-                const store = createStore(reducer);
+                const store = createStore(reducer)
 
                 ReactDOM.render(
                     &lt;Provider store={store}&gt;
                         &lt;App/&gt;
                     &lt;/Provider&gt;,
                     document.getElementById('app')
-                );
+                )
                 </code></pre>
         </section>
         <section data-background="#b5533c">
@@ -1314,14 +1312,14 @@
         <section>
             <h3>Configuration</h3>
             <pre><code data-trim>
-                import {reducer} from './reducers/index';
-                import {createStore, applyMiddleware} from 'redux';
-                import thunk from 'redux-thunk';
+                import {reducer} from './reducers/index'
+                import {createStore, applyMiddleware} from 'redux'
+                import thunk from 'redux-thunk'
 
                 const store = createStore(
                 reducer,
                 applyMiddleware(thunk)
-                );
+                )
 
                 </code></pre>
 
@@ -1333,13 +1331,13 @@
                 return {
                     type: 'INCREMENT_COUNTER',
                     inc: inc
-                };
+                }
             }
 
             function incrementAsyncCreator(inc) {
                 return dispatch => setTimeout(
                         () => dispatch(incrementCreator(inc)),
-                        1000);
+                        1000)
             }
             </code></pre>
         </section>
@@ -1362,7 +1360,7 @@
             export const fetchItems = () =>
                 (dispatch, getState) => getItems(getState().userId)
                 .then(items => dispatch({type: 'SET_ITEMS', items: items}))
-            .catch((error) => console.log(error));
+            .catch((error) => console.log(error))
             </code></pre>
         </section>
         <section data-background="#b5533c">
@@ -1405,15 +1403,15 @@
             <h3>Utilisation</h3>
             <p>Il faut Créer le <i>Context</i>, puis wrapper l'application avec le <i>&lt;Context.Provider&gt;</i></p>
             <pre><code data-trim>
-                const Context = React.createContext({color: 'green', user: null});
-                export default Context;
+                const Context = React.createContext({color: 'green', user: null})
+                export default Context
             </code></pre>
             <pre><code data-trim>
                 render() {
                     return &lt;Context.Provider
                                 value={{color: 'purple', user: new User(1, 'admin')}}&gt;
                         &lt;App/&gt;
-                    &lt;/Context.Provider&gt;;
+                    &lt;/Context.Provider&gt;
                 }
             </code></pre>
         </section>
@@ -1458,14 +1456,14 @@
             <p>L'idée est de tester les composants de <i>présentation</i>, avec leurs états et leurs propriétés.</p>
 
             <pre><code data-trim>
-            import React from "react";
-            import {shallow} from "enzyme";
+            import React from "react"
+            import {shallow} from "enzyme"
 
             describe('MyComponent', () => {
                 it('should work !', () => {
-                    const component = shallow(&lt;MyComponent/&gt;);
-                });
-            });
+                    const component = shallow(&lt;MyComponent/&gt;)
+                })
+            })
             </code></pre>
             <p><a href="https://facebook.github.io/jest/docs/api.html#content" target="_blank">Jest API</a></p>
             <p><a href="https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md" target="_blank">Enzyme API</a>
@@ -1479,26 +1477,26 @@
             <pre><code data-trim>
             describe('Hello', () => {
                 it('renders Hello and its sub components', () => {
-                    const component = shallow(&lt;Hello name="world"/&gt;);
+                    const component = shallow(&lt;Hello name="world"/&gt;)
                     expect(component.find(SubComponent1).exists())
-                        .toBeTruthy();
+                        .toBeTruthy()
                     expect(component.find(SubComponent2).exists())
-                        .toBeTruthy();
-                });
-            });
+                        .toBeTruthy()
+                })
+            })
             </code></pre>
         </section>
         <section>
             <h3>Texte affiché</h3>
             <pre><code data-trim>
-            expect(component.text()).toContain('mon texte attendu');
+            expect(component.text()).toContain('mon texte attendu')
             </code></pre>
         </section>
         <section>
             <h3>Vérifier qu'une méthode a été appelée</h3>
             <pre><code data-trim>
-            const mockOnChange = jest.fn();
-            expect(mockOnChange).toBeCalledWith(myParam);
+            const mockOnChange = jest.fn()
+            expect(mockOnChange).toBeCalledWith(myParam)
             </code></pre>
         </section>
         <section>
@@ -1506,51 +1504,51 @@
             <pre><code data-trim>
             component.find('button')
                 .at(1)
-                .simulate('click');
+                .simulate('click')
             component.find('input')
-                .simulate('change', {target: {value: 'ma valeur'}});
+                .simulate('change', {target: {value: 'ma valeur'}})
             </code></pre>
         </section>
         <section>
             <h3>Appeler une méthode</h3>
             <pre><code data-trim>
-            component.instance().maMethode();
+            component.instance().maMethode()
             </code></pre>
         </section>
         <section>
             <h3>Récupérer l'état</h3>
             <pre><code data-trim>
-                expect(component.state('name')).toEqual('mon nom');
+                expect(component.state('name')).toEqual('mon nom')
             </code></pre>
         </section>
         <section>
             <h3>Mocking avancé - fonction</h3>
             <pre><code data-trim>
-            import * as Maths from './maths';
+            import * as Maths from './maths'
 
             describe('Maths', () => {
               it('should add', () => {
-                Maths.add = jest.fn().mockImplementationOnce(() => 21);
+                Maths.add = jest.fn().mockImplementationOnce(() => 21)
 
-                expect(Maths.add(1,2)).toEqual(21);
+                expect(Maths.add(1,2)).toEqual(21)
               }
-            });
+            })
             </code></pre>
         </section>
         <section>
             <h3>Mocking avancé - module</h3>
             <pre><code data-trim>
-                import * as Maths from './maths';
-                import { calculette } from './calculette';
+                import * as Maths from './maths'
+                import { calculette } from './calculette'
 
-                jest.mock('./maths');
+                jest.mock('./maths')
                 describe('calculette', () => {
                     it('should use maths module to performs add42', () => {
-                        calculette.add42(11);
+                        calculette.add42(11)
 
-                        expect(Maths.add).toHaveBeenCalledWith(42, 11);
+                        expect(Maths.add).toHaveBeenCalledWith(42, 11)
                     }
-                });
+                })
             </code></pre>
         </section>
         <section>
@@ -1610,7 +1608,7 @@
             <p>Définir le Router au plus haut niveau dans l'application.</p>
             <pre><code data-trim>
             import {BrowserRouter as Router,
-                Route} from 'react-router-dom';
+                Route} from 'react-router-dom'
 
             ReactDOM.render(
               &lt;Router&gt;
@@ -1619,7 +1617,7 @@
                   &lt;Route path="/admin" component={Admin} /&gt;
               &lt;/Router&gt;,
               document.getElementById('root')
-            );
+            )
             </code></pre>
         </section>
         <section>
@@ -1675,7 +1673,7 @@
                 &lt;Link to={`${match.url}/articles`}&gt;
                     Articles
                 &lt;/Link&gt;
-            );
+            )
             </code></pre>
         </section>
         <section data-background="#b5533c">
@@ -1708,7 +1706,7 @@
             </p>
             <pre><code data-trim>
             shouldComponentUpdate(nextProps, nextState) {
-                return true;
+                return true
             }
             </code></pre>
             <p class="fragment" style="font-size: 24px">Faut-il étendre React.PureComponent (shallow equality) ou
@@ -1725,8 +1723,8 @@
         <section>
             <h3>Memoization</h3>
             <pre><code data-trim>
-            const shopItemsSelector = state => state.shop.items;
-            const taxPercentSelector = state => state.shop.taxPercent;
+            const shopItemsSelector = state => state.shop.items
+            const taxPercentSelector = state => state.shop.taxPercent
 
             const subtotalSelector = createSelector(
             shopItemsSelector,

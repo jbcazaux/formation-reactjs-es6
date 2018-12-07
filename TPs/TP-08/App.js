@@ -14,7 +14,7 @@ const App = () => (
 
       <hr />
 
-      <Route exact path="/" component={Home} />
+      <Route path="/" component={Home} />
     </div>
   </Router>
 )

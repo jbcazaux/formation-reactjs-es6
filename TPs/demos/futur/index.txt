@@ -1,0 +1,14 @@
+Hooks:
+Mixins ou HOC => poubelle ! https://cdn-images-1.medium.com/max/1000/1*SU5_ws88Kh_Oio_L4Myhvg.png
+useState https://reactjs.org/docs/hooks-state.html#recap
+useEffect
+    - componentDidMount
+    - componentDidUpdate
+    - (componentWillUnmount) https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1
+        - appelé avant useEffect
+        - appelé avant unmount
+useContext https://reactjs.org/docs/hooks-reference.html#usecontext
+
+
+
+

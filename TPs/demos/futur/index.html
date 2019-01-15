@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+    <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Formation React js, avec ES6"/>
+    <meta name="keywords"
+          content="formation react, formation reactjs, freelance, flux, redux, es6, props, state, jsx"/>
+    <link rel="canonical" href="http://codox.fr/formation-reactjs-es6"/>
+    <title>Formation react js ES6</title>
+    <link href="https://google.com/+JeanBaptisteCazaux" rel="publisher"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../../reveal/css/reveal.css">
+    <link rel="stylesheet" href="../../../reveal/css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../../../reveal/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.type = 'text/css'
+      link.href = window.location.search.match(/print-pdf/gi) ? '../../../reveal/css/print/pdf.css' : '../../../reveal/css/print/paper.css'
+      document.getElementsByTagName('head')[0].appendChild(link)
+    </script>
+    <style type="text/css">
+        p {
+            text-align: left;
+        }
+
+        .fragment.current-visible.visible:not(.current-fragment) {
+            display: none;
+            height: 0px;
+            line-height: 0px;
+            font-size: 0px;
+        }
+
+        .reveal h3, .reveal h4 {
+            text-transform: none;
+        }
+
+        .reveal pre code {
+            max-height: 530px;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1><img width="75" height="75" data-src="../../../images/react.svg" alt="react"
+                     style="border: none; background: none; box-shadow: none; margin: 0;">Future of React</h1>
+            <p style="text-align: center"><a target="_blank" href="http://twitter.com/jbcazaux">@jbcazaux</a></p>
+            <p style="text-align: center"><a href="http://codox.fr/formation-reactjs-es6">http://codox.fr/formation-reactjs-es6</a>
+            </p>
+        </section>
+        <section>
+            <h3>Versions</h3>
+            <pre><code data-trim>
+                    "react": "16.7.0-alpha.2"
+                </code></pre>
+        </section>
+        <section>
+            <h3>Mixins ou HOC => poubelle !</h3>
+        </section>
+        <section><img data-src="https://cdn-images-1.medium.com/max/1000/1*SU5_ws88Kh_Oio_L4Myhvg.png" alt="my name is">
+        </section>
+        <section>
+            <h3>useState - Demo !</h3>
+            <pre><code data-trim>
+            import ReactDOM from 'react-dom'
+            import React, { useState } from 'react'
+
+            const Counter = () => {
+              const [count, setCount] = useState(10)
+              return (
+                &lt;&gt;
+                &lt;div&gt;Compteur : {count} &lt;/div&gt;
+                &lt;button onClick={() =&gt; setCount(c => ++c)}&gt;PLUS&lt;/button&gt;
+                &lt;button onClick={() =&gt; setCount(c => --c)}&gt;MOINS&lt;/button&gt;
+                &lt;/&gt;
+              )
+            }
+
+            ReactDOM.render(&lt;Counter /&gt;, document.getElementById('root'))
+            </code></pre>
+        </section>
+        <section>
+            <h3>useEffect</h3>
+            <ul>
+                <li>componentDidMount</li>
+                <li>componentDidUpdate</li>
+                <li>(componentWillUnmount)</li>
+            </ul>
+            <p style="text-align: center"><a href="https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1">https://reactjs.org/docs/hooks-effect.html#example-using-hooks-1</a>
+        </section>
+        <section>
+            <h3>useContext</h3>
+            <pre><code data-trim>
+            const MyContext = React.createContext(defaultValue);
+            </code></pre>
+            <pre><code data-trim>
+            const context = useContext(MyContext);
+            </code></pre>
+        </section>
+        <section>
+            <h3>custom Hooks !</h3>
+            <ul>
+                <li>use existing hooks !</li>
+                <li>use existing hooks !</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Concurrent React</h3>
+            <ul>
+                <li>Suspense</li>
+                <li>Time slicing</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Suspense</h3>
+            <p>React Suspense is a generic way for components to suspend rendering while they load data from a
+                cache.</p>
+            <p>Suspense is available without React Concurrent.</p>
+        </section>
+        <section>
+            <h3>Suspense</h3>
+            <p>React-cache.</p>
+            <p>React-lazy. Demo !</p>
+        </section>
+        <section>
+            <h3>Time slicing</h3>
+            <p>Time Slicing is a generic way to ensure that high-priority updates don’t get blocked by a low-priority
+                update.</p>
+        </section>
+        <section>
+            <h3>Time slicing</h3>
+            <ul>
+                <li>High Priority: Updates involving user input (e.g. text inputs)</li>
+                <li>Low Priority: Updates involving data loading or expensive calculation</li>
+                <li>Concurrent React sets priorities for you by default (onKeyDown vs onMouseOver).</li>
+            </ul>
+        </section>
+        <section>
+            <h3>What's next ?</h3>
+        </section>
+        <section>
+            <h3>Let's do it !</h3>
+            <h3>help ? <a href="mailto:jbcazaux@gmail.com">jbcazaux@gmail.com</a></h3>
+            <h3><a href="http://codox.fr/formation-reactjs-es6">http://codox.fr/formation-reactjs-es6</a></h3>
+        </section>
+    </div>
+</div>
+
+<script src="../../../reveal/lib/js/head.min.js"></script>
+<script src="../../../reveal/js/reveal.js"></script>
+
+<script>
+  Reveal.initialize({
+    history: true,
+    dependencies: [
+      { src: '../../../reveal/plugin/markdown/marked.js' },
+      { src: '../../../reveal/plugin/markdown/markdown.js' },
+      { src: '../../../reveal/plugin/notes/notes.js', async: true },
+      {
+        src: '../../../reveal/plugin/highlight/highlight.js', async: true, callback: function() {
+          hljs.initHighlightingOnLoad()
+        },
+      },
+    ],
+  })
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react'
+import React, { ConcurrentMode, Suspense, useState } from 'react'
 import ReactDOM from 'react-dom'
 
 const LazyGoodbye = React.lazy(() => import(/* webpackChunkName: "LazyGoodbye" */ './Goodbye'))
@@ -11,7 +11,7 @@ const Button = () => {
       <button onClick={() => setDisplay(true)}>click !</button>
 
       {display && (
-        <Suspense fallback={<div>Loading... !</div>} maxDuration={5000}>
+        <Suspense fallback={<div>Loading... !</div>} maxDuration={10000}>
           <LazyGoodbye name="Docto" />
         </Suspense>
       )}
@@ -20,15 +20,6 @@ const Button = () => {
 }
 
 const Hello = ({ name }) => <div> Hello {name}</div>
-
-/*
-ReactDOM.render((
-  <>
-    <Hello name="Doctolib"/>
-    <Button/>
-  </>
-), document.getElementById('root'))
-*/
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>

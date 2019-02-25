@@ -1,9 +1,8 @@
 import React from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
-import * as ItemsActions from './actions/items'
+import { fetchItems, addItemWithTVA } from './actions/items'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 const mapStateToProps = state => {
   return {
@@ -11,8 +10,9 @@ const mapStateToProps = state => {
   }
 }
 
-function mapActionCreatorsToProps(dispatch) {
-  return bindActionCreators(ItemsActions, dispatch)
+const mapDispatchToProps = {
+  fetchItems,
+  addItemWithTVA,
 }
 
 class ShoppingList_ extends React.Component {
@@ -61,6 +61,6 @@ class ShoppingList_ extends React.Component {
 }
 const ShoppingList = connect(
   mapStateToProps,
-  mapActionCreatorsToProps
+  mapDispatchToProps
 )(ShoppingList_)
 export default ShoppingList

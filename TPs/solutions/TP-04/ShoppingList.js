@@ -1,18 +1,13 @@
 import React from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
-import * as ItemsActions from './actions/items'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
+import { setItems, addItem } from './actions/items'
+import { connect } from 'react-redux'
 
 const mapStateToProps = state => ({
   items: state.items,
 })
-
-function mapActionCreatorsToProps(dispatch) {
-  return bindActionCreators(ItemsActions, dispatch)
-}
 
 class ShoppingList_ extends React.Component {
   constructor(props) {
@@ -65,7 +60,7 @@ class ShoppingList_ extends React.Component {
 
 const ShoppingList = connect(
   mapStateToProps,
-  mapActionCreatorsToProps
+  { setItems, addItem }
 )(ShoppingList_)
 
 ShoppingList.propTypes = {

@@ -1,9 +1,13 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
+import PropTypes from 'prop-types'
 
 const Filter = ({ onChange }) => {
+  const onFilterChange = e => {
+    onChange(e.target.value)
+  }
+
   return (
     <form className="form-inline">
       <InputLabel htmlFor="filterName" className="control-label">
@@ -13,7 +17,7 @@ const Filter = ({ onChange }) => {
         id="filterName"
         type="text"
         placeholder="Tapez un nom..."
-        onChange={e => onChange(e.target.value)}
+        onChange={onFilterChange}
         className="form-control"
         style={{ marginLeft: '5px' }}
       />
@@ -21,8 +25,8 @@ const Filter = ({ onChange }) => {
   )
 }
 
-export default Filter
-
 Filter.propTypes = {
   onChange: PropTypes.func.isRequired,
 }
+
+export default Filter

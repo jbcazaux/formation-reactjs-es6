@@ -1,7 +1,7 @@
 import React from 'react'
 
 const StudentsTable = ({ students, selectStudent }) => {
-  // TODO: utiliser la Table de material-ui
+  // TODO: use Table component from material-ui
   return <table />
 }
 

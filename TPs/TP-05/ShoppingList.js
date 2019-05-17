@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ShoppingItem from './ShoppingItem'
-import { fetchItems } from './actions/items'
+import { fetchItems, addItem } from './actions/items'
 import { connect } from 'react-redux'
+import Item from './Item'
 
 const mapStateToProps = state => {
   return {
@@ -11,51 +12,44 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getItems: () => dispatch(fetchItems()),
+    loadItems: () => {
+      // TODO: dispatch the fetchItems action
+    },
+    addItem: item => dispatch(addItem(item)),
   }
 }
 
-class ShoppingList_ extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { newItem: '', newPrice: 0 }
-  }
+const ShoppingList = ({ title, items, loadItems, addItem }) => {
+  const [newItemLabel, setNewItemLabel] = useState('')
+  const [newItemPrice, setNewItemPrice] = useState(0)
 
-  componentDidMount() {
-    this.props.getItems()
-  }
+  useEffect(() => {
+    // TODO: provide a loadItems function in the props, that dispatches the fetchItems redux action
+    //  loadItems()
+  }, [])
 
-  render() {
-    return (
-      <div>
-        <h2>{this.props.title}</h2>
-        <ul>
-          {this.props.items.map(item => (
-            <ShoppingItem key={item.id} item={item} />
-          ))}
-        </ul>
-        <form onSubmit={this.createNewItem.bind(this)}>
-          <input
-            type="text"
-            placeholder="item"
-            onChange={e => this.setState({ newItem: e.target.value })}
-            value={this.state.newItem}
-          />
-          <input
-            type="number"
-            onChange={e => this.setState({ newPrice: parseFloat(e.target.value) })}
-            value={this.state.newPrice}
-          />
-          <button type="submit">add</button>
-        </form>
-      </div>
-    )
-  }
-
-  createNewItem(e) {
+  const createNewItem = e => {
     e.preventDefault()
-    this.setState({ newItem: '', newPrice: 0 })
+    addItem(new Item(Date.now(), newItemLabel, newItemPrice))
+    setNewItemLabel('')
+    setNewItemPrice(0)
   }
+
+  return (
+    <div>
+      <h2>{title}</h2>
+      <ul>
+        {items.map(item => (
+          <ShoppingItem key={item.id} item={item} />
+        ))}
+      </ul>
+      <form onSubmit={createNewItem}>
+        <input type="text" placeholder="item" onChange={e => setNewItemLabel(e.target.value)} value={newItemLabel} />
+        <input type="number" onChange={e => setNewItemPrice(parseFloat(e.target.value))} value={newItemPrice} />
+        <button type="submit">add</button>
+      </form>
+    </div>
+  )
 }
 
 const ShoppingList = connect(

@@ -1,50 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Filter from './StudentFilter'
 import StudentsTable from './StudentsTable'
 import StudentDetails from './StudentDetails'
 import Student from './Student'
 
-class StudentsApp extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { students: [], filter: '', selectedStudent: Student.NULL }
-    this.handleFilterChange = this.handleFilterChange.bind(this)
-    this.handleSelectStudent = this.handleSelectStudent.bind(this)
+const StudentsApp = () => {
+  const [students, setStudents] = useState([])
+  const [filter, setFilter] = useState('')
+  const [selectedStudent, setSelectedStudent] = useState(Student.NULL)
+
+  useEffect(() => {
+    axios.get('./students.json').then(({ data: students }) => setStudents(students))
+  }, [])
+
+  const handleFilterChange = f => {
+    setFilter(f)
   }
 
-  componentDidMount() {
-    axios
-      .get('./students.json')
-      .then(resp => resp.data)
-      .then(students => {
-        this.setState({ students: students })
-      })
+  const handleSelectStudent = s => {
+    setSelectedStudent(s)
   }
 
-  render() {
-    return (
-      <div>
-        <Filter onChange={this.handleFilterChange} />
-        <StudentsTable students={this.filteredStudents()} selectStudent={this.handleSelectStudent} />
-        <StudentDetails student={this.state.selectedStudent} />
-      </div>
-    )
-  }
+  const filteredStudents = (students, filter) =>
+    students.filter(s => s.firstname.includes(filter) || s.lastname.includes(filter))
 
-  handleFilterChange(filter) {
-    this.setState({ filter })
-  }
-
-  handleSelectStudent(student) {
-    this.setState({ selectedStudent: student })
-  }
-
-  filteredStudents() {
-    return this.state.students.filter(
-      s => s.firstname.includes(this.state.filter) || s.lastname.includes(this.state.filter)
-    )
-  }
+  return (
+    <>
+      <Filter onChange={handleFilterChange} />
+      <StudentsTable students={filteredStudents(students, filter)} selectStudent={handleSelectStudent} />
+      <StudentDetails student={selectedStudent} />
+    </>
+  )
 }
 
 export default StudentsApp

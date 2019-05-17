@@ -19,7 +19,7 @@ const getItems = () => axios.get('./items.json').then(resp => resp.data)
 export const fetchItems = () => dispatch =>
   getItems()
     .then(items => {
-      //TODO !!
+      //TODO: now that we have the items list, we can dispatch the setItems action
     })
     .catch(error => {
       console.log(error)

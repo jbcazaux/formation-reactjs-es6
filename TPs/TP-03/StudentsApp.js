@@ -1,45 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Filter from './StudentFilter'
 import StudentsTable from './StudentsTable'
 import StudentDetails from './StudentDetails'
 import Student from './Student'
 
-class StudentsApp extends React.Component {
-  constructor(props) {
-    super(props)
-    // TODO état par défaut
+const StudentsApp = () => {
+  // TODO define a state to store the students list
+  // TODO define a state to store the filter value
+  // TODO define a state to store the selected Student
+
+  useEffect(() => {
+    axios.get('./students.json').then(({ data: students }) => {
+      // TODO: store the students list received from the web service in the state
+    })
+  }, [])
+
+  const handleFilterChange = f => {
+    // TODO store the new filter value in the state
   }
 
-  componentDidMount() {
-    axios
-      .get('./students.json')
-      .then(resp => resp.data)
-      .then(students => {
-        console.log(students)
-        // TODO mettre a jour l etat
-      })
+  const handleSelectStudent = s => {
+    // TODO store the new selectedStudent in the state
   }
 
-  render() {
-    return (
-      <div>
-        {/*
-                    <Filter onChange={}/>
-                */}
-        {<StudentsTable students={this.filteredStudents()} selectStudent={this.handleSelectStudent} />}
-        {/*<StudentDetails student={Student.NULL}/>*/}
-      </div>
-    )
+  const filteredStudents = (students, filter) => {
+    // TODO: return a filtered list of the students rather than the whole list
+    return students
   }
 
-  handleFilterChange(filter) {}
-
-  handleSelectStudent(student) {}
-
-  filteredStudents() {
-    return this.state.students
-  }
+  return (
+    <>
+      TODO: uncomment the child components one by one
+      {/*<Filter onChange={handleFilterChange} />*/}
+      {/*<StudentsTable students={filteredStudents(students, filter)} selectStudent={handleSelectStudent} />*/}
+      {/*<StudentDetails student={selectedStudent} />*/}
+    </>
+  )
 }
 
 export default StudentsApp

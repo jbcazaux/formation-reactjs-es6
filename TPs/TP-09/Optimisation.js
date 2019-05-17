@@ -1,44 +1,30 @@
 import React from 'react'
 import User from './User'
 
-export default class Optimisation extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      color: 'red',
-      user: new User(1, 'user1'),
+const Optimisation = () => {
+  const [color, setColor] = useState('red')
+  const [user, setUser] = useState(new User(1, 'user1'))
+
+  const selectUser = id => {
+    if (user.id !== id) {
+      setUser({ user: new User(id, 'user' + id) })
     }
   }
 
-  render() {
-    return (
-      <div>
-        <div style={{ backgroundColor: this.state.color }}>
-          {this.state.user.id}-{this.state.user.login}
-        </div>
-        <button onClick={() => this.setColor('blue')}>Bleu</button>
-        <button onClick={() => this.setColor('white')}>Blanc</button>
-        <button onClick={() => this.setColor('red')}>Rouge</button>
-        <br />
-        <button onClick={() => this.setUser(1)}>user 1</button>
-        <button onClick={() => this.setUser(2)}>user 2</button>
-        <button onClick={() => this.setUser(3)}>user 3</button>
+  return (
+    <div>
+      <div style={{ backgroundColor: color }}>
+        {user.id}-{user.login}
       </div>
-    )
-  }
-
-  shouldComponentUpdate(nexProps, nextState) {
-    return false
-  }
-
-  setColor(color) {
-    this.setState({ color })
-  }
-
-  setUser(id) {
-    if (this.state.user.id === id) {
-      this.setState(this.state)
-    }
-    this.setState({ user: new User(id, 'user' + id) })
-  }
+      <button onClick={() => setColor('blue')}>Bleu</button>
+      <button onClick={() => setColor('white')}>Blanc</button>
+      <button onClick={() => setColor('red')}>Rouge</button>
+      <br />
+      <button onClick={() => selectUser(1)}>user 1</button>
+      <button onClick={() => selectUser(2)}>user 2</button>
+      <button onClick={() => selectUser(3)}>user 3</button>
+    </div>
+  )
 }
+
+export default Optimisation

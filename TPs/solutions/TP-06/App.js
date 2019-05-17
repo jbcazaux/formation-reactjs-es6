@@ -1,42 +1,45 @@
-import React from 'react'
-import Context from './Context'
+import React, { useContext } from 'react'
+import { InfosContext } from './Context'
 import User from './User'
 
-class Small extends React.Component {
-  static contextType = Context
+function Small() {
+  const { color, user } = useContext(InfosContext)
 
+  return (
+    <div style={{ backgroundColor: color, height: '125px', width: '33%' }}>
+      Small, user = {user.id}-{user.login}
+    </div>
+  )
+}
+
+class Medium extends React.Component {
   render() {
-    const { color, user } = this.context
     return (
-      <div style={{ backgroundColor: color, height: '125px', width: '33%' }}>
-        Small, user = {user.id}-{user.login}
+      <div style={{ backgroundColor: 'red', height: '250px', width: '50%' }}>
+        Medium
+        <Small />
       </div>
     )
   }
 }
 
-function Medium() {
-  return (
-    <div style={{ backgroundColor: 'red', height: '250px', width: '50%' }}>
-      Medium
-      <Small />
-    </div>
-  )
+class Large extends React.Component {
+  render() {
+    return (
+      <div style={{ backgroundColor: 'blue', color: 'white', height: '300px', width: '75%' }}>
+        Large
+        <Medium />
+      </div>
+    )
+  }
 }
 
-function Large() {
-  return (
-    <div style={{ backgroundColor: 'blue', color: 'white', height: '300px', width: '75%' }}>
-      Large
-      <Medium />
-    </div>
-  )
-}
-
-export default function App() {
-  return (
-    <Context.Provider value={{ color: 'purple', user: new User(1, 'admin') }}>
-      <Large />
-    </Context.Provider>
-  )
+export default class App extends React.Component {
+  render() {
+    return (
+      <InfosContext.Provider value={{ color: 'purple', user: new User(1, 'admin') }}>
+        <Large />
+      </InfosContext.Provider>
+    )
+  }
 }

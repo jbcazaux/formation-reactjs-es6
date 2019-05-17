@@ -5,7 +5,7 @@ import ShoppingList from './ShoppingList'
 import { applyMiddleware, createStore, compose } from 'redux'
 import thunk from 'redux-thunk'
 
-// uncomment to activate redux-dev-tools
+// uncomment those 2 lines to activate redux-dev-tools
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 

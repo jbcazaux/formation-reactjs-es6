@@ -1,7 +1,6 @@
 import React from 'react'
-import Student from './Student'
+import Student, { StudentPropTypes } from './Student'
 import FormLabel from '@material-ui/core/FormLabel'
-import { StudentPropTypes } from './Student'
 
 const StudentDetails = ({ student }) => (
   <FormLabel>

@@ -1,11 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Hello extends React.Component {
-  render() {
-    return <div>Hello {this.props.name} !</div>
-  }
-}
+const Hello = ({ name }) => <div>Hello {name} !</div>
+
+export default Hello
 
 Hello.propTypes = {
   name: PropTypes.string.isRequired,

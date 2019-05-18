@@ -39,9 +39,12 @@ const ShoppingList = ({ title, items, loadItems, addItem }) => {
     <div>
       <h2>{title}</h2>
       <ul>
+        {/*
+        TODO: iterate on items
         {items.map(item => (
           <ShoppingItem key={item.id} item={item} />
         ))}
+        */}
       </ul>
       <form onSubmit={createNewItem}>
         <input type="text" placeholder="item" onChange={e => setNewItemLabel(e.target.value)} value={newItemLabel} />
@@ -52,8 +55,4 @@ const ShoppingList = ({ title, items, loadItems, addItem }) => {
   )
 }
 
-const ShoppingList = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ShoppingList_)
 export default ShoppingList

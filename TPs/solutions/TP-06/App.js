@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { InfosContext } from './Context'
 import User from './User'
 
-function Small() {
+const Small = () => {
   const { color, user } = useContext(InfosContext)
 
   return (
@@ -12,34 +12,24 @@ function Small() {
   )
 }
 
-class Medium extends React.Component {
-  render() {
-    return (
-      <div style={{ backgroundColor: 'red', height: '250px', width: '50%' }}>
-        Medium
-        <Small />
-      </div>
-    )
-  }
-}
+const Medium = () => (
+  <div style={{ backgroundColor: 'red', height: '250px', width: '50%' }}>
+    Medium
+    <Small />
+  </div>
+)
 
-class Large extends React.Component {
-  render() {
-    return (
-      <div style={{ backgroundColor: 'blue', color: 'white', height: '300px', width: '75%' }}>
-        Large
-        <Medium />
-      </div>
-    )
-  }
-}
+const Large = () => (
+  <div style={{ backgroundColor: 'blue', color: 'white', height: '300px', width: '75%' }}>
+    Large
+    <Medium />
+  </div>
+)
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <InfosContext.Provider value={{ color: 'purple', user: new User(1, 'admin') }}>
-        <Large />
-      </InfosContext.Provider>
-    )
-  }
-}
+const App = () => (
+  <InfosContext.Provider value={{ color: 'purple', user: new User(1, 'admin') }}>
+    <Large />
+  </InfosContext.Provider>
+)
+
+export default App

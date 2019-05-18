@@ -1,115 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="description" content="Formation React js, avec ES6"/>
-    <meta name="keywords"
-          content="formation react, formation reactjs, freelance, flux, redux, es6, props, state, jsx"/>
-    <link rel="canonical" href="http://codox.fr/formation-reactjs-es6"/>
+  <head>
+    <meta name="ROBOTS" content="INDEX, FOLLOW" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Formation React js, avec ES6" />
+    <meta
+      name="keywords"
+      content="formation react, formation reactjs, freelance, flux, redux, es6, props, state, jsx"
+    />
+    <link rel="canonical" href="http://codox.fr/formation-reactjs-es6" />
     <title>Formation react js ES6</title>
-    <link href="https://google.com/+JeanBaptisteCazaux" rel="publisher"/>
+    <link href="https://google.com/+JeanBaptisteCazaux" rel="publisher" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <link rel="stylesheet" href="reveal/css/reveal.css">
-    <link rel="stylesheet" href="reveal/css/theme/black.css">
+    <link rel="stylesheet" href="reveal/css/reveal.css" />
+    <link rel="stylesheet" href="reveal/css/theme/black.css" />
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+    <link rel="stylesheet" href="reveal/lib/css/zenburn.css" />
 
     <!-- Printing and PDF exports -->
     <script>
-        var link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = window.location.search.match(/print-pdf/gi) ? 'reveal/css/print/pdf.css' : 'reveal/css/print/paper.css';
-        document.getElementsByTagName('head')[0].appendChild(link);
+      var link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.type = 'text/css'
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? 'reveal/css/print/pdf.css'
+        : 'reveal/css/print/paper.css'
+      document.getElementsByTagName('head')[0].appendChild(link)
     </script>
     <style type="text/css">
-        p {
-            text-align: left;
-        }
+      p {
+        text-align: left;
+      }
 
-        .fragment.current-visible.visible:not(.current-fragment) {
-            display: none;
-            height: 0px;
-            line-height: 0px;
-            font-size: 0px;
-        }
+      .fragment.current-visible.visible:not(.current-fragment) {
+        display: none;
+        height: 0px;
+        line-height: 0px;
+        font-size: 0px;
+      }
 
-        .reveal h3, .reveal h4 {
-            text-transform: none;
-        }
+      .reveal h3,
+      .reveal h4 {
+        text-transform: none;
+      }
 
-        .reveal pre code {
-            max-height: 530px;
-        }
+      .reveal pre code {
+        max-height: 530px;
+      }
     </style>
-</head>
-<body>
-<div class="reveal">
-    <div class="slides">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
         <section>
-            <h1><img width="75" height="75" data-src="images/react.svg" alt="react"
-                     style="border: none; background: none; box-shadow: none; margin: 0;">React</h1>
-            <h3>#ES6</h3>
-            <p style="text-align: center"><a target="_blank" href="http://twitter.com/jbcazaux">@jbcazaux</a></p>
-            <p style="text-align: center"><a href="http://codox.fr/formation-reactjs-es6">http://codox.fr/formation-reactjs-es6</a>
-            </p>
+          <h1>
+            <img
+              width="75"
+              height="75"
+              data-src="images/react.svg"
+              alt="react"
+              style="border: none; background: none; box-shadow: none; margin: 0;"
+            />React
+          </h1>
+          <h3>#ES6</h3>
+          <p style="text-align: center"><a target="_blank" href="http://twitter.com/jbcazaux">@jbcazaux</a></p>
+          <p style="text-align: center">
+            <a href="http://codox.fr/formation-reactjs-es6">http://codox.fr/formation-reactjs-es6</a>
+          </p>
         </section>
-        <section><img data-src="images/mynameis.jpg" alt="my name is"></section>
-        <section><img data-src="images/coffee.gif" alt="coffee break"></section>
+        <section><img data-src="images/mynameis.jpg" alt="my name is" /></section>
+        <section><img data-src="images/coffee.gif" alt="coffee break" /></section>
         <section>
-            <h3>Objectifs</h3>
-            <img data-src="images/postits.jpg" alt="goals">
+          <h3>Goals</h3>
+          <img data-src="images/postits.jpg" alt="goals" />
         </section>
         <section>
-            <h3>Versions</h3>
-            <pre><code data-trim>
-                    "react": "16.8.0-alpha.1"
+          <h3>Versions</h3>
+          <pre><code data-trim>
+                    "react": "16.8.6"
                 </code></pre>
         </section>
         <section>
-            <h3>Contenu</h3>
-            <ul>
-                <li>ES6
-                    <ul>
-                        <li>Quelques nouveautés</li>
-                        <li>Rappels sur la programmation fonctionnelle</li>
-                    </ul>
-                </li>
-                <li>ReactJS
-                    <ul>
-                        <li>Principes</li>
-                        <li>Composants</li>
-                        <li>Etats</li>
-                        <li>Redux</li>
-                        <li>Tests</li>
-                        <li>Router</li>
-                        <li>Optimisations</li>
-                    </ul>
-                </li>
-            </ul>
+          <h3>Content</h3>
+          <ul>
+            <li>
+              ES6
+              <ul>
+                <li>ES6 Features</li>
+                <li>Functional oriented programming</li>
+              </ul>
+            </li>
+            <li>
+              ReactJS
+              <ul>
+                <li>Fundamental</li>
+                <li>Components</li>
+                <li>State</li>
+                <li>Redux</li>
+                <li>Tests</li>
+                <li>Routing</li>
+                <li>Optimizations</li>
+              </ul>
+            </li>
+          </ul>
         </section>
         <section>
-            <h2>EcmaScript 6</h2>
+          <h2>EcmaScript 6</h2>
         </section>
         <section>
-            <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
-            <pre><code data-trim>
+          <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
+          <pre><code data-trim>
                 let foo = 'bar'
                 const MAX = 10
                 const ttc = addTva(15)
                 </code></pre>
-            <p class="fragment">
-                <span style="color: #8cd0d3">let</span> vs. <span style="color: #cc9393">const</span> ?
-                <span class="fragment">0 var, 44 let, 997 const</span>
-            </p>
+          <p class="fragment">
+            <span style="color: #8cd0d3">let</span> vs. <span style="color: #cc9393">const</span> ?
+            <span class="fragment">0 var, 44 let, 997 const</span>
+          </p>
         </section>
         <section>
-            <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
-            <pre><code data-trim>
+          <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
+          <pre><code data-trim>
                 if (true) {
                     var i = 1
                 } else {
@@ -117,53 +132,59 @@
                 }
                 console.log(i, j)
                 </code></pre>
-            <pre class="fragment fade-up"><code data-trim>
+          <pre class="fragment fade-up"><code data-trim>
                 const user = {}
                 user.name = 'john' // (1)
                 user = {name: 'lea'} // (2)
                 </code></pre>
-            <pre class="fragment fade-up"><code data-trim>
+          <pre class="fragment fade-up"><code data-trim>
                 const arr = ['a']
                 arr.push('b') // (3)
                 arr = ['a', 'b'] // (4)
                 </code></pre>
         </section>
         <section>
-            <h3>Arrow functions</h3>
-            <pre><code data-trim>
+          <h3>Arrow functions</h3>
+          <pre><code data-trim>
                 function addOldSchool(a, b) {
                     return a + b
                 }
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
                 let add = (a, b) => {
                     return a + b
                 }
                 </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
                 add = (a, b) => a + b
                 </code></pre>
         </section>
         <section>
-            <h3>Arrow functions</h3>
-            <pre><code data-trim>
+          <h3>Arrow functions</h3>
+          <pre><code data-trim>
                 const squares = [0, 1, 2, 3, 4].map(x => x * x)
                 console.log(squares)
                 </code></pre>
         </section>
         <section>
-            <h3>Attention !</h3>
-            <p><a target="_blank" href="http://www.webbrowsercompatibility.com/es6/desktop/">Pas totalement supporté par
-                les
-                navigateurs</a></p>
-            <ul>
-                <li>Shim (Array.map(), Array.reduce(), ...)</li>
-                <li>Transpiler (=>, let, const, ...)</li>
-            </ul>
+          <h3>Warning !</h3>
+          <p>
+            <a target="_blank" href="http://www.webbrowsercompatibility.com/es6/desktop/"
+              >Not everything is supported yet</a
+            >
+          </p>
+          <ul>
+            <li>Polyfill (Array.flatMap(), Array.reduce(), ...)</li>
+            <li>Transpiler (=>, let, const, ...)</li>
+          </ul>
         </section>
         <section>
-            <h3>Spread operator</h3>
-            <pre class="fragment current-visible"><code data-trim>
+          <h3>Immutability !</h3>
+          <p>Please do not mutate during the training :)</p>
+        </section>
+        <section>
+          <h3>Spread operator</h3>
+          <pre class="fragment current-visible"><code data-trim>
                 const odd = [1, 3, 5, 7, 9]
                 const even = [2, 4, 6, 8]
                 const all = [0]
@@ -174,7 +195,7 @@
 
                 console.log(all) // ?
                 </code></pre>
-            <pre class="fragment current-visible"><code data-trim>
+          <pre class="fragment current-visible"><code data-trim>
                 const odd = [1, 3, 5, 7, 9]
                 const even = [2, 4, 6, 8]
                 const all = [0]
@@ -188,21 +209,15 @@
                 }
                 console.log(all) // ?
                 </code></pre>
-            <pre class="fragment current-visible"><code data-trim>
+          <pre class="fragment current-visible"><code data-trim>
                     const odd = [1, 3, 5, 7, 9]
                     const even = [2, 4, 6, 8]
-                    const all = [0]
-
-                    // arr.push([element1[, ...[, elementN]]])
-                    all.push(...odd)
-                    all.push(...even)
-
-                    console.log(all) // ?
+                    const all = [0, ...odd, ...even]
                 </code></pre>
         </section>
         <section>
-            <h3>Spread operator</h3>
-            <pre><code data-trim>
+          <h3>Spread operator</h3>
+          <pre><code data-trim>
                 let user = {
                     firstname: 'john',
                     nickname: 'ninja',
@@ -216,16 +231,16 @@
             </code></pre>
         </section>
         <section>
-            <h3>Destructuring</h3>
-            <pre><code data-trim>
+          <h3>Destructuring</h3>
+          <pre><code data-trim>
                     const foo = {a: 1, b: 2, c: 'bar'}
                     let {a} = foo
                     console.log(a) // ?
                 </code></pre>
         </section>
         <section>
-            <h3>Destructuring</h3>
-            <pre><code data-trim>
+          <h3>Destructuring</h3>
+          <pre><code data-trim>
             const user = {
                 firstname: 'john',
                 nickname: 'ninja',
@@ -238,19 +253,19 @@
             }
             console.log(getUserName(user))
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
             function getUserName({firstname, lastname}) {
                 return `${firstname} ${lastname}`)
             }
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
             const getUserName = ({firstname, lastname}) =>
                 `${user.firstname} ${user.lastname}`
             </code></pre>
         </section>
         <section>
-            <h3>Destructuring - nested</h3>
-            <pre><code data-trim>
+          <h3>Destructuring - nested</h3>
+          <pre><code data-trim>
             const user = {
                 firstname: 'john',
                 lastname: 'doe',
@@ -264,14 +279,14 @@
              return `${user.address.num} ${user.address.street}`
             }
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
             const getUserAddress = ({address: {num, street}}) =>
                 `${num} ${street}`
             </code></pre>
         </section>
         <section>
-            <h3>Destructuring - alias</h3>
-            <pre><code data-trim>
+          <h3>Destructuring - alias</h3>
+          <pre><code data-trim>
             const user = {
                 firstname: 'john',
                 lastname: 'doe',
@@ -286,8 +301,8 @@
             </code></pre>
         </section>
         <section>
-            <h3>Destructuring - arrays</h3>
-            <pre><code data-trim>
+          <h3>Destructuring - arrays</h3>
+          <pre><code data-trim>
             const maths = [x => x + 1, x => x * x, x => x * x * x]
             const [plus1, square] = maths
             plus1(41) // 42
@@ -295,8 +310,8 @@
             </code></pre>
         </section>
         <section>
-            <h3>Shorthand Notation</h3>
-            <pre><code data-trim>
+          <h3>Shorthand Notation</h3>
+          <pre><code data-trim>
                 const foo = 42
                 const bar = 1
 
@@ -305,7 +320,7 @@
                     bar: bar
                 }
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
                 const shorter = {
                     foo,
                     bar
@@ -313,15 +328,15 @@
             </code></pre>
         </section>
         <section>
-            <h3>Promesses VS. async - await</h3>
-            <pre><code data-trim>
+          <h3>Promises VS. async - await</h3>
+          <pre><code data-trim>
             axios.get('/users/42/items')
                 .then(resp => resp.data)
                 .then(items => items.map(item => item.id))
                 .then(ids => {/* use the ids */})
                 .catch(error => console.log(error.toString()))
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
             async function fetchItems {
                 try {
                     const response = await axios.get('/users/42/items')
@@ -335,14 +350,14 @@
             </code></pre>
         </section>
         <section>
-            <h3>Promesses VS. async - await</h3>
-            <pre><code data-trim>
+          <h3>Promesses VS. async - await</h3>
+          <pre><code data-trim>
             axios.get('/users/42/items')
                 .then(({data : items})) => items.map(item => item.id))
                 .then(ids => {/* use the ids */})
                 .catch(error => console.log(error.toString()))
             </code></pre>
-            <pre><code data-trim>
+          <pre><code data-trim>
             async function fetchItems {
               try {
                 const {data: items} = await axios.get('/users/42/items')
@@ -355,8 +370,8 @@
             </code></pre>
         </section>
         <section>
-            <h3>Rappels - currying</h3>
-            <pre><code data-trim>
+          <h3>Reminder - currying</h3>
+          <pre><code data-trim>
                 let add = function(x) {
                     return function(y) {
                         return x + y
@@ -364,52 +379,52 @@
                 }
                 add(2)(3) // ???
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
                 const add2 = add(2)
                 add2(3) // = ?
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
                 let add = x => y => x + y // WTF ?!
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
                 let add = x =>
                     y => (x + y)
                 //easy !
             </code></pre>
         </section>
         <section>
-            <h3>Rappels - this</h3>
-            <pre><code data-trim data-noescape>
+          <h3>Reminder - this</h3>
+          <pre><code data-trim data-noescape>
                 function f() {
                     this.foo // what is this ?
                 }
             </code></pre>
         </section>
         <section>
-            <h1>
-                <img width="200" height="200" data-src="images/react.svg" alt="react"
-                     style="border: none; background: none; box-shadow: none; margin: 0;">
-            </h1>
+          <h1>
+            <img
+              width="200"
+              height="200"
+              data-src="images/react.svg"
+              alt="react"
+              style="border: none; background: none; box-shadow: none; margin: 0;"
+            />
+          </h1>
         </section>
         <section>
-            <h3>Tout est composant</h3>
-            <img data-src="images/components.png" alt="components" width="90%">
+          <h3>Everything is Component</h3>
+          <img data-src="images/components.png" alt="components" width="90%" />
         </section>
         <section>
-            <h3>Hello world</h3>
-            <pre>hello.js<code data-trim>
+          <h3>Hello world</h3>
+          <pre>hello.js<code data-trim>
             import React from "react"
 
-            class Hello extends React.Component {
-                render() {
-                    return (
-                        <div>Hello {this.props.name} !</div>
-                    )
-                }
-            }
+            const Hello = (props) => <div>Hello {props.name} !</div>
+
             export default Hello
             </code></pre>
-            <pre class="fragment">index.js<code class="jsx" data-trim>
+          <pre class="fragment">index.js<code class="jsx" data-trim>
             import React from "react"
             import ReactDOM from "react-dom"
             import Hello from "./Hello"
@@ -421,250 +436,184 @@
             </code></pre>
         </section>
         <section>
-            <h3>JSX</h3>
-            <pre><code data-trim>
-                render: function() {
-                    return (
-                      &lt;li className="contact"&gt;
-                          &lt;h2 className="contact-name"&gt;{this.props.name}&lt;/h2&gt;
+          <h3>JSX</h3>
+          <pre><code data-trim>
+                (props) => (
+                     &lt;li className="contact"&gt;
+                          &lt;h2 className="contact-name"&gt;{props.name}&lt;/h2&gt;
                       &lt;/li&gt;
                     )
-                }</code></pre>
-            <pre><code data-trim>
-                render: function() {
-                    return (
-                      React.createElement('li', {className: 'contact'},
+                </code></pre>
+          <pre><code data-trim>
+                (props) => React.createElement('li', {className: 'contact'},
                         React.createElement('h2',
                             {className: 'contact-name'}, this.props.name)
-                      )
-                    )
-                }
+                        )
+                )
                 </code></pre>
         </section>
         <section data-background="#b5533c">
-            <h3>TP-01</h3>
-            <h4>Hello World</h4>
-            <ol>
-                <li>Etendre la classe React.Component</li>
-                <li>Implémenter la méthode render()</li>
-            </ol>
+          <h3>TP-01</h3>
+          <h4>Hello World</h4>
+          <ol>
+            <li>Install your environment</li>
+            <li>Write the Hello component/function</li>
+          </ol>
         </section>
         <section>
-            <h3>Type checking</h3>
-            <p style="font-size: 32px">On peut ne <i>rien</i> faire, utiliser <a target="_blank"
-                                                                                 href="https://www.typescriptlang.org/">Typescript</a>
-                , <a target="_blank" href="https://flow.org/">Flow</a> ou les <a target="_blank"
-                                                                                 href="https://www.npmjs.com/package/prop-types">PropTypes</a>
-            </p>
-            <pre><code data-trim>
+          <h3>Type checking</h3>
+          <p style="font-size: 32px">
+            We can do <i>nothing</i>, or use <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a> ,
+            <a target="_blank" href="https://flow.org/">Flow</a>
+            <a target="_blank" href="https://www.npmjs.com/package/prop-types">PropTypes</a>
+          </p>
+          <pre><code data-trim>
             import PropTypes from 'prop-types'
-            class Hello extends React.Component {
-                static propTypes = {
-                    name: PropTypes.string.isRequired,
-                    truc: PropTypes.bool
-                }
-                render() {
-                    return <h1>Hello {this.props.name}!</h1>
-                }
-            }
+            const Hello = ({name}) => <h1>Hello {name}!</h1>
 
             Hello.propTypes = {
                 name: PropTypes.string.isRequired,
                 truc: PropTypes.bool
             }
             </code></pre>
-            <p style="font-size: 22px; text-align: left">
-                Au choix: array, bool, func, number, object, string, symbol, node, arrayOf(), shape()...
-                <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">
-                    https://reactjs.org/docs/typechecking-with-proptypes.html
-                </a>
-            </p>
+          <p style="font-size: 22px; text-align: left">
+            types: array, bool, func, number, object, string, shape, node, arrayOf(), ...
+            <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">
+              https://reactjs.org/docs/typechecking-with-proptypes.html
+            </a>
+          </p>
         </section>
         <section>
-            <h3>Composant et Cycle de vie</h3>
-            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-                <p>Les incontournables :</p>
-                <ul>
-                    <li>render()</li>
-                    <li>componentDidMount()</li>
-                    <li>componentWillUnmount()</li>
-                </ul>
-            </div>
-            <div class="fragment" style="font-size: 30px; text-align: left; margin-left: 50px">
-                <p>Les autres :</p>
-                <ul>
-                    <li>componentDidUpdate(<b>nextProps</b>, <b>nextState</b>)</li>
-                    <li>static getDerivedStateFromProps(<b>nextProps</b>, <b>prevState</b>): State</li>
-                    <li>getDefaultProps()</li>
-                    <li>shouldComponentUpdate(<b>nextProps</b>, <b>nextState</b>)</li>
-                </ul>
-            </div>
-        </section>
-        <section>
-            <h3>Composant et Cycle de vie</h3>
-            <img data-src="images/lifecycle.jpg" alt="lifecycle" width="100%">
-        </section>
-        <section>
-            <h3>Variable de classe</h3>
-            <pre><code data-trim>
-            class Count extends React.Component {
-                count = 0
+          <h3>Component's attributes</h3>
+          <pre><code data-trim>
+            const Counter = () => {
+                let count = 0
 
-                constructor(props) {
-                    super(props)
-                    setInterval(() => this.count = this.count + 1, 1000)
-                }
-
-                render() {
-                    return <div>
-                        Count: {this.count}
-                    </div>;
-                }
+                return &lt;div onClick={() =&gt; count = count + 1}&gt;
+                    Count: {count}
+                &lt;/div&gt;;
             }
             </code></pre>
-            <mark>Don't try this at home !</mark>
+          <mark>Don't try this at home !</mark>
         </section>
         <section>
-            <h3>State</h3>
-            <pre><code data-trim>
-            {
-                count: 0,
-                date: new Date(),
-                wishList: [],
-                friends: [],
-                // ...
-            }
-            </code></pre>
+          <h3>State</h3>
+          <pre><code data-trim>
+           const ComponentWithState = (props) => {
+            const [count, setCount] = useState(0)
+            const [user, setUser] = useState(null)
+            const [color, setColor] = useState('green')
+
+            return ...
+           }
+           </code></pre>
         </section>
 
         <section>
-            <h3>State</h3>
-            <p>Définir l'état par défaut</p>
-            <pre><code data-trim>
-            //dans le contructeur
-            this.state = {counter: 0}
+          <h3>State</h3>
+          <p>Set the default state by passing an argument to useState()</p>
+          <pre><code data-trim>
+            const [count, setCount] = useState(42)
+          </code></pre>
+          <p>Update a state</p>
+          <pre><code data-trim>
+            const [count, setCount] = useState(0)
+            setCount(10)
+            setCount(prevState => prevState + 1)
             </code></pre>
-            <p>Définir un nouvel état</p>
-            <pre><code data-trim>
-            this.setState({counter: 3})
-            this.setState(prevState => ({counter: prevState.counter +1}))
-            </code></pre>
-            <p>Récupérer l'état courant</p>
-            <pre><code data-trim>
-            this.state
-            </code></pre>
+          <p>Get current state</p>
+          <pre><code data-trim>
+            const [count, setCount] = useState(0)
+            count
+          </code></pre>
         </section>
         <section>
-            <h3>State</h3>
-            <pre><code data-trim>
-            class Count extends React.Component {
-
-                constructor(props) {
-                    super(props)
-                    this.state = {count: 0}
-
-                    setInterval(() => this.setState(
-                        prevState => ({count : prevState.count + 1 })),
-                    1000)
-                }
-
-                render() {
-                    return &lt;div&gt;
-                        Count: {this.state.count}
-                    &lt;/div&gt;
-                }
+          <h3>State</h3>
+          <pre><code data-trim>
+            const Counter = () =>  {
+              const [count, setCount] = useState(0)
+              return &lt;div onClick={() => setCount(prev => prev + 1)}&gt;
+                  Count: {count}
+              &lt;/div&gt;
             }
             </code></pre>
         </section>
         <section>
-            <h3>Props vs State</h3>
+          <h3>Props vs State</h3>
 
-            <p>Props</p>
-            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-                <ul>
-                    <li>Les données passées par le parent</li>
-                </ul>
-            </div>
+          <p>Props</p>
+          <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+            <ul>
+              <li>Data from the parent component</li>
+            </ul>
+          </div>
 
-            <p>State</p>
-            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-                <ul>
-                    <li>Les données modifiables par les événements de la UI</li>
-                    <li>Le plus possible de composants sans état</li>
-                    <li><strike>Des données calculées</strike>(à faire dans render)</li>
-                    <li><strike>Des composants</strike></li>
-                </ul>
-            </div>
+          <p>State</p>
+          <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+            <ul>
+              <li>Data that may change on user's interactions (clicks, inputs)</li>
+              <li>Write as many stateless components as possible</li>
+              <li><strike>Data computed from props or state</strike>(do that in the function itself)</li>
+              <li><strike>Components</strike></li>
+            </ul>
+          </div>
         </section>
         <section>
-            <h3>Functional component</h3>
-            <pre class="fragment current-visible"><code data-trim>
-                import React from "react"
-                const Hello = (props) => <h1>Hello {props.name}!</h1>
-            </code></pre>
-            <pre class="fragment current-visible"><code data-trim>
+          <h3>Class components</h3>
+          <pre><code data-trim>
             class ButtonApp extends React.Component {
+                state = {count: 0}
                 render() {
                     return &lt;div&gt;
                         &lt;div&gt;{this.props.title}&lt;/div&gt;
                         &lt;button&gt;{this.props.label}&lt;/button&gt;
+                        &lt;div&gt;{this.state.count}&lt;/div&gt;
                     &lt;/div&gt;
                 }
             }
             </code></pre>
-            <pre class="fragment current-visible"><code data-trim>
-            const ButtonApp = (props) =>
-                &lt;div&gt;
-                    &lt;div&gt;{props.title}&lt;/div&gt;
-                    &lt;button&gt;{props.label}&lt;/button&gt;
-                &lt;/div&gt;
-            </code></pre>
-            <pre class="fragment current-visible"><code data-trim>
-            const ButtonApp = ({title, label}) =>
-                &lt;div&gt;
-                    &lt;div&gt;{title}&lt;/div&gt;
-                    &lt;button&gt;{label}&lt;/button&gt;
-                &lt;/div&gt;
-            </code></pre>
         </section>
         <section>
-            <h3>Itérer sur un tableau</h3>
-            <pre><code data-trim>
-            render() {
-                return &lt;ul&gt;
+          <h3>Iterating over an array</h3>
+          <pre><code data-trim>
+            const MyComponent = (props) => (
+                &lt;ul&gt;
                 {
-                    this.state.items.map(item =>
+                    props.items.map(item =>
                         &lt;li key={item.id}&gt;{item.label}&lt;/li&gt;)
                 }
                 &lt;/ul&gt;
-            }
+            )
             </code></pre>
         </section>
+          <section>
+              <h3>useEffect</h3>
+              <p>It triggers function when props or state change</p>
+                TODO !!!
+          </section>
         <section data-background="#b5533c">
-            <h3>TP-02</h3>
-            <h4>Liste de courses</h4>
-            <ol style="font-size: 34px">
-                <li>Afficher le titre passé par le parent</li>
-                <li>Mettre un état par défaut</li>
-                <li>Faire afficher la liste des courses dans des balises &lt;li&gt;&lt;/li&gt;
-                <li>Afficher un message de log pour chaque moment du cycle de vie</li>
-                <li>Créer un composant distinct pour les éléments &lt;li&gt; de la liste</li>
-                <li>Bonus: Utiliser une classe qui encapsule le composant "liste" pour gérer l'appel au serveur, et
-                    transmettre les data
-                </li>
-                en tant que <i>props</i>
-            </ol>
+          <h3>TP-02</h3>
+          <h4>Shopping list</h4>
+          <ol style="font-size: 34px">
+            <li>Display the title provided by the parent</li>
+            <li>Set a default state (empty list)</li>
+            <li>Set the list of items in the state when webservice has returned</li>
+            <li>Display the list items in &lt;li&gt;&lt;/li&gt; tags</li>
+            <li>Create a dedicated component for the &lt;li&gt; tags</li>
+            <li>
+              Bonus: Create a component that makes the ajax call, and pass the result to a child component that iterates
+                over the list.
+            </li>
+          </ol>
         </section>
         <section>
-            <h3>Bonus TP-02</h3>
-            <pre><code data-trim>
-            class ShoppingList extends React.Component {
-                // constructor...
-                // componentDidMount() {...}
-                render() {
-                   return &lt;ShoppingListInternal title={this.props.title}
-                            items={this.state.items}/&gt;
-                }
+          <h3>Bonus TP-02</h3>
+          <pre><code data-trim>
+            const ShoppingList extends React.Component {
+               const [items, setItems] = useState([])
+               // useEffect({...}, [])
+               return &lt;ShoppingListInternal title={this.props.title}
+                        items={items}/&gt;
             }
             const ShoppingListInternal = ({title, items}) =>
             &lt;div&gt;
@@ -676,28 +625,27 @@
             </code></pre>
         </section>
         <section>
-            <h3>Passer des fonctions dans Props</h3>
-            <pre><code data-trim>
-            class ShoppingList extends React.Component {
-                // constructor...
-                // componentDidMount() {...}
-                deleteItem() {
-                    const newItems = this.state.items.slice(1)
-                    this.setState(items: newItems)
+          <h3>Pass functions into the props</h3>
+          <pre><code data-trim>
+            const ShoppingList = () => {
+                const [items, setItems] = useState([])
+                // useEffect({...}, [])
+
+                const deleteItem = () => {
+                    const newItems = items.slice(1)
+                    setItems(newItems)
                 }
-                render() {
-                    return (&lt;ShoppingListInternal
-                            title={this.props.title}
-                            items={this.state.items}
-                            del={this.deleteItem.bind(this)}/&gt;)
-                    }
+                return (&lt;ShoppingListInternal
+                        title={this.props.title}
+                        items={this.state.items}
+                        del={deleteItem}/&gt;)
                 }
             }
             </code></pre>
         </section>
         <section>
-            <h3>Recevoir des fonctions dans Props</h3>
-            <pre><code data-trim>
+          <h3>Use functions from the props</h3>
+          <pre><code data-trim>
             const ShoppingListInternal = ({title, items, del}) => (
                 &lt;div&gt;
                     &lt;h2&gt;{title}&lt;/h2&gt;
@@ -711,95 +659,91 @@
             </code></pre>
         </section>
         <section>
-            <h3>Intercepter les événements</h3>
-            <pre><code data-trim>
-            class ClickableApp extends React.Component {
-                render() {
-                 return &lt;div onclick={this.handleClick}&gt;Click me !&lt;/div&gt;
-                }
-
+          <h3>Get the JS event</h3>
+          <pre><code data-trim>
+            const ClickableApp = () => {
                 handleClick(e) {
                     console.log('click !', e)
                 }
+                return &lt;div onclick={this.handleClick}&gt;Click me !&lt;/div&gt;
             }
             </code></pre>
-            <pre class="fragment"><code data-trim>
-            class ClickableApp extends React.Component {
-                render() {
-                    return &lt;div
-                        onclick={(e) => console.log('click !', e)}&gt;
-                        Click me !
-                    &lt;/div&gt;
-                }
-            }
+          <pre class="fragment"><code data-trim>
+            const ClickableApp = () => (
+                &lt;div
+                    onclick={(e) => console.log('click !', e)}&gt;
+                    Click me !
+                &lt;/div&gt;
+            )
             </code></pre>
         </section>
         <section>
-            <h3>Avec du style</h3>
+          <h3>Avec du style</h3>
         </section>
         <section>
-            <h3>inline style vs css</h3>
+          <h3>inline style vs css</h3>
 
-            <p>Pourquoi pas du inline ?</p>
+          <p>Pourquoi pas du inline ?</p>
 
-            <pre><code data-trim>
+          <pre><code data-trim>
             render() {
                 const mystyle = {backgroundColor: '#F0ABCD'}
                 return &lt;div style={mystyle}/&gt;
             }
             </code></pre>
-            <p>Sinon une CSS globale, ou une CSS par composant (Webpack powered)</p>
+          <p>Sinon une CSS globale, ou une CSS par composant (Webpack powered)</p>
 
-            <pre><code data-trim>
+          <pre><code data-trim>
                 import './MyComponent.css'
                 </code></pre>
         </section>
         <section>
+          <h3>React-bootstrap</h3>
 
-            <h3>React-bootstrap</h3>
-
-            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-                <p>Adaptation des composants bootstrap à React</p>
-            </div>
-            <pre><code data-trim>
+          <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+            <p>Adaptation des composants bootstrap à React</p>
+          </div>
+          <pre><code data-trim>
                 &lt;Button bsStyle="primary"
                         onClick={this.handleClick}&gt;Go!&lt;/Button&gt;
             </code></pre>
 
-            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-                <p>La documentation</p>
-                <ul>
-                    <li>
-                        <a target="_blank" href="https://react-bootstrap.github.io/components.html">https://react-bootstrap.github.io/components.html</a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="http://getbootstrap.com/components/">http://getbootstrap.com/components/</a>
-                    </li>
-                </ul>
-            </div>
+          <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+            <p>La documentation</p>
+            <ul>
+              <li>
+                <a target="_blank" href="https://react-bootstrap.github.io/components.html"
+                  >https://react-bootstrap.github.io/components.html</a
+                >
+              </li>
+              <li>
+                <a target="_blank" href="http://getbootstrap.com/components/">http://getbootstrap.com/components/</a>
+              </li>
+            </ul>
+          </div>
         </section>
         <section>
-            <h3>Material-UI</h3>
+          <h3>Material-UI</h3>
 
-            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-                <p>React components that implement Google's Material Design</p>
-            </div>
-            <pre><code data-trim>
+          <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+            <p>React components that implement Google's Material Design</p>
+          </div>
+          <pre><code data-trim>
                 &lt;Button onClick={this.handleClick}&gt;Go!&lt;/Button&gt;
             </code></pre>
 
-            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-                <p>La documentation</p>
-                <p><a href="https://material-ui-next.com/api/button/">https://material-ui-next.com/api/button/</a></p>
-            </div>
+          <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+            <p>La documentation</p>
+            <p><a href="https://material-ui-next.com/api/button/">https://material-ui-next.com/api/button/</a></p>
+          </div>
         </section>
         <section>
-            <h3>Styled-Components</h3>
+          <h3>Styled-Components</h3>
 
-            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-                <p>Visual primitives for the component age.</p>
-            </div>
-            <pre><code data-trim>
+          <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+            <p>Visual primitives for the component age.</p>
+          </div>
+          <pre><code data-trim>
             const Title = styled.h1`
                 font-size: 1.5em;
                 text-align: center;
@@ -808,19 +752,18 @@
             &lt;Title&gt;Superbe titre !&lt;/Title&gt;
             </code></pre>
 
-            <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-                <p>La documentation</p>
-                <p><a href="https://www.styled-components.com/docs/api">https://www.styled-components.com/docs/api</a>
-                </p>
-            </div>
+          <div style="font-size: 30px; text-align: left; margin-left: 50px;">
+            <p>La documentation</p>
+            <p><a href="https://www.styled-components.com/docs/api">https://www.styled-components.com/docs/api</a></p>
+          </div>
         </section>
         <section>
-            <h3>Trucs et astuces</h3>
-            <h4 class="fragment">(Workarounds)</h4>
+          <h3>Trucs et astuces</h3>
+          <h4 class="fragment">(Workarounds)</h4>
         </section>
         <section>
-            <h3>Les fragments</h3>
-            <pre><code data-trim>
+          <h3>Les fragments</h3>
+          <pre><code data-trim>
             render() {
                 return (
                 &lt;React.Fragment&gt;
@@ -830,7 +773,7 @@
                 )
             }
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
             render() {
                 return (
                 &lt;&gt;
@@ -842,33 +785,36 @@
             </code></pre>
         </section>
         <section>
-            <h3>Caractères spéciaux</h3>
-            <pre><code data-trim>
+          <h3>Caractères spéciaux</h3>
+          <pre><code data-trim>
                 <span> Jet d{String.fromCharCode(39)}eau</span>
             </code></pre>
         </section>
         <section>
-            <h3>JSX if (else)</h3>
-            <p>if</p>
-            <pre><code data-trim>
+          <h3>JSX if (else)</h3>
+          <p>if</p>
+          <pre><code data-trim>
                 {this.state.user && <div>{this.state.user.login}</div>}
             </code></pre>
-            <p>not</p>
-            <pre><code data-trim>
+          <p>not</p>
+          <pre><code data-trim>
                 {this.state.user || <div>No User</div>}
             </code></pre>
-            <p>if-else</p>
-            <pre><code data-trim>
+          <p>if-else</p>
+          <pre><code data-trim>
                 {this.state.user
                     ? <div>{this.state.user.login}</div>
                     : <div>No User</div>}
             </code></pre>
-            <p><a href="https://angular.io/api/common/NgIf#using-non-inlined-then-template" style="font-size: .5em; ">C'est
-                pas mieux en angular :)</a></p>
+          <p>
+            <a href="https://angular.io/api/common/NgIf#using-non-inlined-then-template" style="font-size: .5em; "
+              >C'est pas mieux en angular :)</a
+            >
+          </p>
         </section>
         <section>
-            <h3>Commentaires</h3>
-            <pre><code data-trim>
+          <h3>Commentaires</h3>
+          <pre><code data-trim>
             render() {
                 return &lt;div&gt;
                     {/* Sans commentaire ;) */}
@@ -877,15 +823,15 @@
             </code></pre>
         </section>
         <section>
-            <h3>Children</h3>
+          <h3>Children</h3>
 
-            <pre><code data-trim>
+          <pre><code data-trim>
             ReactDOM.render(
                &lt;ButtonApp title="Mon Application"&gt;Press Me! &lt;/ButtonApp&gt;,
                document.getElementById('root')
             )
             </code></pre>
-            <pre><code data-trim>
+          <pre><code data-trim>
             export default class ButtonApp extends React.Component {
                 render() {
                     return &lt;div&gt;
@@ -897,8 +843,8 @@
             </code></pre>
         </section>
         <section data-background="#5553AA">
-            <h3>Quizz</h3>
-            <pre><code data-trim>
+          <h3>Quizz</h3>
+          <pre><code data-trim>
             class App extends React.Component {
               constructor(props) {
                 super(props)
@@ -917,110 +863,107 @@
                }
             }
             </code></pre>
-            <p style="font-size: 22px; text-align: left">
-                <a href="https://github.com/sudheerj/reactjs-interview-questions" target="_blank">
-                    https://github.com/sudheerj/reactjs-interview-questions
-                </a>
-            </p>
+          <p style="font-size: 22px; text-align: left">
+            <a href="https://github.com/sudheerj/reactjs-interview-questions" target="_blank">
+              https://github.com/sudheerj/reactjs-interview-questions
+            </a>
+          </p>
         </section>
         <section data-background="#b5533c">
-            <h3>TP-03</h3>
-            <h4>Liste des étudiants</h4>
-            <ol>
-                <li>Afficher un champ texte "input" qui permet de filtrer les éléments d'un tableau</li>
-                <li>Afficher le nom de l'étudiant sur lequel on a cliqué, ou un message si aucun n'est sélectionné</li>
-                <li>Bonus : Faire une pull request d'une appli jolie ET simple ;)</li>
-                <li>Bonus ES6: Calculer de façon élégante la note max d'un élève (reduce)</li>
-            </ol>
+          <h3>TP-03</h3>
+          <h4>Liste des étudiants</h4>
+          <ol>
+            <li>Afficher un champ texte "input" qui permet de filtrer les éléments d'un tableau</li>
+            <li>Afficher le nom de l'étudiant sur lequel on a cliqué, ou un message si aucun n'est sélectionné</li>
+            <li>Bonus : Faire une pull request d'une appli jolie ET simple ;)</li>
+            <li>Bonus ES6: Calculer de façon élégante la note max d'un élève (reduce)</li>
+          </ol>
         </section>
         <section>
-            <h3>Rappels</h3>
+          <h3>Rappels</h3>
+          <ul>
+            <li>Un composant a des propriétés et des états</li>
+            <li>Un composant stateless est plus maintenable et testable</li>
+            <li>On ne peut passer des propriétés qu'aux enfants</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Flux & Redux</h3>
+        </section>
+        <section>
+          <h3>Flux</h3>
+          <div style="font-size: 30px; text-align: left; margin-left: 15px;">
             <ul>
-                <li>Un composant a des propriétés et des états</li>
-                <li>Un composant stateless est plus maintenable et testable</li>
-                <li>On ne peut passer des propriétés qu'aux enfants</li>
+              <li>Store: Stocker la donnée + Logique</li>
+              <li>Action: Modifier le modèle</li>
+              <li>Dispatcher: Répartir les actions dans les stores</li>
+              <li>View: Les composants UI</li>
             </ul>
-        </section>
-        <section>
-            <h3>Flux & Redux</h3>
-        </section>
-        <section>
-            <h3>Flux</h3>
-            <div style="font-size: 30px; text-align: left; margin-left: 15px;">
-                <ul>
-                    <li>Store: Stocker la donnée + Logique</li>
-                    <li>Action: Modifier le modèle</li>
-                    <li>Dispatcher: Répartir les actions dans les stores</li>
-                    <li>View: Les composants UI</li>
-                </ul>
-            </div>
-            <img data-src="images/flux.png" alt="flux">
+          </div>
+          <img data-src="images/flux.png" alt="flux" />
 
-            <p>
-                Le flux ne va que dans <i>un seul sens</i> !
-                (<strike>2-way binding</strike>)</p>
+          <p>Le flux ne va que dans <i>un seul sens</i> ! (<strike>2-way binding</strike>)</p>
+        </section>
+        <section>
+          <h3>Bad Practice vs. Good Practice</h3>
 
+          <img data-src="images/flux-bestpractice.png" alt="best practices" height="300" />
+          <div style="font-size: 30px; text-align: left; margin-left: 15px;">
+            <ul>
+              <li>On ne met pas à jour directement les autres composants</li>
+              <li>On passe par le store (redux), les stores (flux), les services (Subject RxJs), ...</li>
+            </ul>
+          </div>
         </section>
         <section>
-            <h3>Bad Practice vs. Good Practice</h3>
-
-            <img data-src="images/flux-bestpractice.png" alt="best practices" height="300">
-            <div style="font-size: 30px; text-align: left; margin-left: 15px;">
-                <ul>
-                    <li>On ne met pas à jour directement les autres composants</li>
-                    <li>On passe par le store (redux), les stores (flux), les services (Subject RxJs), ...</li>
-                </ul>
-            </div>
+          <h3>Redux</h3>
         </section>
         <section>
-            <h3>Redux</h3>
-        </section>
-        <section>
-            <h3>Actions</h3>
-            <pre><code data-trim>
+          <h3>Actions</h3>
+          <pre><code data-trim>
                 {type: 'INCREMENT', inc: 3}
                 {type: 'ADD_TODO', text: 'Acheter du pain'}
                 {type: 'SET_USER', user: new User(1, 'toto')}
             </code></pre>
 
-            <h3>Action Creator</h3>
-            <pre><code data-trim>
+          <h3>Action Creator</h3>
+          <pre><code data-trim>
             export const incrementor = (inc) => {
                 return {type: 'INCREMENT', inc}
             }
             </code></pre>
-            <pre><code data-trim>
+          <pre><code data-trim>
             export const incrementor =
                 (inc) => ({type: 'INCREMENT', inc})
             </code></pre>
         </section>
         <section>
-            <h3>Redux</h3>
-            <pre><code data-trim>
+          <h3>Redux</h3>
+          <pre><code data-trim>
                 const userId = window.current_account.id
             </code></pre>
-            <p>&laquo;Pourquoi utiliser redux alors qu'on a les variables globales ?&raquo;</p>
-            <p class="fragment">#TROLL</p>
+          <p>&laquo;Pourquoi utiliser redux alors qu'on a les variables globales ?&raquo;</p>
+          <p class="fragment">#TROLL</p>
         </section>
         <section>
-            <h3>Redux</h3>
+          <h3>Redux</h3>
 
-            <div style="font-size: 30px; text-align: left; margin-left: 15px;">
-                <ul>
-                    <li>Un store unique (pratique pour l'isomorphisme)</li>
-                    <li>L'état du store est read-only</li>
-                    <li>On émet des <b>actions</b> pour modifier l'état</li>
-                    <li class="fragment">Les <b>actions</b> sont interprétées par des <b>reducers</b></li>
-                    <li class="fragment">Les <b>reducers</b> sont des fonctions <b>pures</b></li>
-                    <li class="fragment">Les <b>reducers</b> prennent en entrée l'état précédent et une action</li>
-                    <li class="fragment">Ils retournent le nouvel état dans un objet immutable</li>
-                </ul>
-            </div>
-            <img data-src="images/redux.png" alt="redux" height="200">
+          <div style="font-size: 30px; text-align: left; margin-left: 15px;">
+            <ul>
+              <li>Un store unique (pratique pour l'isomorphisme)</li>
+              <li>L'état du store est read-only</li>
+              <li>On émet des <b>actions</b> pour modifier l'état</li>
+              <li class="fragment">Les <b>actions</b> sont interprétées par des <b>reducers</b></li>
+              <li class="fragment">Les <b>reducers</b> sont des fonctions <b>pures</b></li>
+              <li class="fragment">Les <b>reducers</b> prennent en entrée l'état précédent et une action</li>
+              <li class="fragment">Ils retournent le nouvel état dans un objet immutable</li>
+            </ul>
+          </div>
+          <img data-src="images/redux.png" alt="redux" height="200" />
         </section>
         <section>
-            <h3>Reducer</h3>
-            <pre><code data-trim>
+          <h3>Reducer</h3>
+          <pre><code data-trim>
             export const display = (state = 0, action) => {
                 switch (action.type) {
                     case 'INCREMENT':
@@ -1032,35 +975,36 @@
                 }
             }
             </code></pre>
-            Le <b>state</b> est en read-only !
-            <img data-src="images/redux.png" alt="redux">
+          Le <b>state</b> est en read-only !
+          <img data-src="images/redux.png" alt="redux" />
         </section>
         <section>
-            <h3>Store</h3>
-            <div style="font-size: 30px; text-align: left; margin-left: 15px;">
-                <p>Deux méthodes importantes dans le store: <b>dispatch</b> et <b>getState</b>.</p>
-                <ul>
-                    <li>Le <b>store</b> garde l'état de l'application. On y accède via <b>getState()</b>.</li>
-                    <li><strike>setState()</strike> !! On modifie l'état en 'dispatchant' une action: <i>dispatch(inc(3))</i>
-                    </li>
-                </ul>
+          <h3>Store</h3>
+          <div style="font-size: 30px; text-align: left; margin-left: 15px;">
+            <p>Deux méthodes importantes dans le store: <b>dispatch</b> et <b>getState</b>.</p>
+            <ul>
+              <li>Le <b>store</b> garde l'état de l'application. On y accède via <b>getState()</b>.</li>
+              <li>
+                <strike>setState()</strike> !! On modifie l'état en 'dispatchant' une action: <i>dispatch(inc(3))</i>
+              </li>
+            </ul>
 
-                <p>Et aussi...</p>
-                <ul class="fragment">
-                    <li>On peut être prévenu des changements du store via <b>subscribe(listener)</b></li>
-                    <li>On se désenregistre avec la méthode retournée par <b>subscribe</b></li>
-                    <li>Mais on ne s'en sert jamais ;)</li>
-                </ul>
-            </div>
-            <img data-src="images/redux.png" alt="redux">
+            <p>Et aussi...</p>
+            <ul class="fragment">
+              <li>On peut être prévenu des changements du store via <b>subscribe(listener)</b></li>
+              <li>On se désenregistre avec la méthode retournée par <b>subscribe</b></li>
+              <li>Mais on ne s'en sert jamais ;)</li>
+            </ul>
+          </div>
+          <img data-src="images/redux.png" alt="redux" />
         </section>
         <section>
-            <h3>React & Redux</h3>
+          <h3>React & Redux</h3>
         </section>
         <section>
-            <h3>Composition de reducers</h3>
-            <h4>Approche naïve</h4>
-            <pre><code data-trim>
+          <h3>Composition de reducers</h3>
+          <h4>Approche naïve</h4>
+          <pre><code data-trim>
             const initialState = {user: '', counter: 0}
             export const myGlobalReducer =
                 (state = initialState, action) => {
@@ -1076,11 +1020,11 @@
                 }
             }
             </code></pre>
-            Ca peut faire lourd sur une grosse appli...!
+          Ca peut faire lourd sur une grosse appli...!
         </section>
         <section>
-            <h3>Composition de reducers</h3>
-            <pre><code data-trim>
+          <h3>Composition de reducers</h3>
+          <pre><code data-trim>
             export const user =
                 (state = User.NULL, action) => {
                     switch (action.type) {
@@ -1104,9 +1048,9 @@
             </code></pre>
         </section>
         <section>
-            <h3>Composition de reducers</h3>
-            <h4>Effet Waouh</h4>
-            <pre><code data-trim>
+          <h3>Composition de reducers</h3>
+          <h4>Effet Waouh</h4>
+          <pre><code data-trim>
             const init = {user: 'nobody', counter: 0}
             export const myGlobalReducer = (state = init, action) =>
                 ({
@@ -1114,8 +1058,8 @@
                     counter: counter(state.counter, action)
                 })
             </code></pre>
-            <p>Et avec un peu de magie...</p>
-            <pre><code data-trim>
+          <p>Et avec un peu de magie...</p>
+          <pre><code data-trim>
             import { combineReducers } from 'redux'
             export const myGlobalReducer = combineReducers({
                 user,
@@ -1124,91 +1068,92 @@
             </code></pre>
         </section>
         <section>
-            <h3>Récapitulatif</h3>
-            <div style="font-size: 30px; text-align: left; margin-left: 85px;">
-                <ul>
-                    <li>Actions</li>
-                    <li>Reducers</li>
-                    <li>Store</li>
-                    <li>Composants React</li>
-                    <li>Il reste à lier les composants au store !</li>
-                </ul>
-            </div>
-            <img data-src="images/redux.png" alt="redux">
-        </section>
-        <section>
-
-            <h3>Présentation et Conteneur</h3>
+          <h3>Récapitulatif</h3>
+          <div style="font-size: 30px; text-align: left; margin-left: 85px;">
             <ul>
-                <li>Les composants stateless sont simples à maintenir</li>
-                <li>Séparation des responsabilités</li>
+              <li>Actions</li>
+              <li>Reducers</li>
+              <li>Store</li>
+              <li>Composants React</li>
+              <li>Il reste à lier les composants au store !</li>
             </ul>
-
-            <img data-src="images/conteneur-pres.png" alt="conteneur-presentation">
-
+          </div>
+          <img data-src="images/redux.png" alt="redux" />
         </section>
         <section>
+          <h3>Présentation et Conteneur</h3>
+          <ul>
+            <li>Les composants stateless sont simples à maintenir</li>
+            <li>Séparation des responsabilités</li>
+          </ul>
 
-            <h3>Présentation et Conteneur</h3>
-
-            <p style="font-size: 28px"> On découpe nos composants (connectés au <i>store</i>) en 2, <i>présentation</i>
-                & <i>conteneur</i></p>
-
-            <table style="font-size: 28px">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>Presentational Components</th>
-                    <th>Container Components</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Purpose</td>
-                    <td>How things look (markup, styles)</td>
-                    <td>How things work (data fetching, state updates)</td>
-                </tr>
-                <tr>
-                    <td>Aware of Redux</td>
-                    <td>No</td>
-                    <td>Yes</td>
-                </tr>
-                <tr>
-                    <td>To read data</td>
-                    <td>Read data from props</td>
-                    <td>Subscribe to Redux state</td>
-                </tr>
-                <tr>
-                    <td>To change data</td>
-                    <td>Invoke callbacks from props</td>
-                    <td>Dispatch Redux actions</td>
-                </tr>
-                <tr>
-                    <td>Are written</td>
-                    <td>By hand</td>
-                    <td>Usually generated by React Redux</td>
-                </tr>
-                </tbody>
-            </table>
+          <img data-src="images/conteneur-pres.png" alt="conteneur-presentation" />
         </section>
         <section>
-            <h3>Connect</h3>
+          <h3>Présentation et Conteneur</h3>
 
-            <p style="font-size: 28px">Le composant de présentation est comme les composants simples rencontrés jusque
-                là (sans appels ajax).</p>
-            <p style="font-size: 28px" class="fragment">Le composant conteneur va être généré automatiquement,
-                <b>mais</b>:
-            </p>
-            <ul style="font-size: 28px" class="fragment">
-                <li>il faut décrire comment créer les <i>props</i> à partir des données du <i>store</i>:
-                    <b>mapStateToProps(state) {...}</b>
-                </li>
-                <li>il faut implémenter les callbacks qui seront injectés dans les <i>props</i>:
-                    <b>mapDispatchToProps(dispatch) {...}</b>
-                </li>
-            </ul>
+          <p style="font-size: 28px">
+            On découpe nos composants (connectés au <i>store</i>) en 2, <i>présentation</i> & <i>conteneur</i>
+          </p>
 
-            <pre class="fragment"><code data-trim>
+          <table style="font-size: 28px">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Presentational Components</th>
+                <th>Container Components</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Purpose</td>
+                <td>How things look (markup, styles)</td>
+                <td>How things work (data fetching, state updates)</td>
+              </tr>
+              <tr>
+                <td>Aware of Redux</td>
+                <td>No</td>
+                <td>Yes</td>
+              </tr>
+              <tr>
+                <td>To read data</td>
+                <td>Read data from props</td>
+                <td>Subscribe to Redux state</td>
+              </tr>
+              <tr>
+                <td>To change data</td>
+                <td>Invoke callbacks from props</td>
+                <td>Dispatch Redux actions</td>
+              </tr>
+              <tr>
+                <td>Are written</td>
+                <td>By hand</td>
+                <td>Usually generated by React Redux</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <h3>Connect</h3>
+
+          <p style="font-size: 28px">
+            Le composant de présentation est comme les composants simples rencontrés jusque là (sans appels ajax).
+          </p>
+          <p style="font-size: 28px" class="fragment">
+            Le composant conteneur va être généré automatiquement, <b>mais</b>:
+          </p>
+          <ul style="font-size: 28px" class="fragment">
+            <li>
+              il faut décrire comment créer les <i>props</i> à partir des données du <i>store</i>:
+              <b>mapStateToProps(state) {...}</b>
+            </li>
+            <li>
+              il faut implémenter les callbacks qui seront injectés dans les <i>props</i>:
+              <b>mapDispatchToProps(dispatch) {...}</b>
+            </li>
+          </ul>
+
+          <pre class="fragment"><code data-trim>
             import {connect} from 'react-redux'
 
             export const MyComponent =
@@ -1216,8 +1161,8 @@
             </code></pre>
         </section>
         <section>
-            <h3>Composant de présentation:</h3>
-            <pre><code data-trim>
+          <h3>Composant de présentation:</h3>
+          <pre><code data-trim>
                 export const SelectCodePostal_ =
                     ({cps, currentCp, onSelectCp}) => (
                 &lt;select onChange={onSelectCp} value={currentCp}&gt;
@@ -1230,8 +1175,8 @@
                 </code></pre>
         </section>
         <section>
-            <h3>Conteneur</h3>
-            <pre><code data-trim>
+          <h3>Conteneur</h3>
+          <pre><code data-trim>
             const mapStateToProps = (state) => {
                 const cpsOfAgence = state.codesPostaux.map(cp => cp.id)
                 return {cps: cpsOfAgence, currentCp: state.codePostal.id}
@@ -1250,11 +1195,10 @@
             </code></pre>
         </section>
         <section>
+          <h3>Passer le store</h3>
 
-            <h3>Passer le store</h3>
-
-            <p>Tous les conteneurs de l'application doivent avoir accès au store.</p>
-            <pre><code data-trim>
+          <p>Tous les conteneurs de l'application doivent avoir accès au store.</p>
+          <pre><code data-trim>
                 import React from 'react'
                 import ReactDOM from 'react-dom'
                 import {Provider} from 'react-redux'
@@ -1273,44 +1217,44 @@
                 </code></pre>
         </section>
         <section data-background="#b5533c">
-            <h3>TP-04</h3>
-            <h4>Liste de courses - bis</h4>
-            <ol style="font-size: 34px">
-                <li>Installer le plugin redux</li>
-                <li>Comme le TP-02 mais en utilisant le <i>state</i> du store plutôt que le <i>state</i> du composant,
-                    et en initialisant la liste sans chargement asynchrone (liste en dur).
-                </li>
-                <li>Créer un <i>action creator</i> <b>setItems</b> qui renvoie une <b>ItemAction</b></li>
-                <li>Créer un reducer <b>items</b> qui prend une <b>ItemAction</b> en entrée</li>
-                <li>Créer un reducer global à l'aide de <b>combineReducer</b></li>
-                <li>Créer le <i>contener</i> et le <i>presentational component</i></li>
-                <li>Bonus: Créer un bouton qui permet d'ajouter des items au store.</li>
-            </ol>
+          <h3>TP-04</h3>
+          <h4>Liste de courses - bis</h4>
+          <ol style="font-size: 34px">
+            <li>Installer le plugin redux</li>
+            <li>
+              Comme le TP-02 mais en utilisant le <i>state</i> du store plutôt que le <i>state</i> du composant, et en
+              initialisant la liste sans chargement asynchrone (liste en dur).
+            </li>
+            <li>Créer un <i>action creator</i> <b>setItems</b> qui renvoie une <b>ItemAction</b></li>
+            <li>Créer un reducer <b>items</b> qui prend une <b>ItemAction</b> en entrée</li>
+            <li>Créer un reducer global à l'aide de <b>combineReducer</b></li>
+            <li>Créer le <i>contener</i> et le <i>presentational component</i></li>
+            <li>Bonus: Créer un bouton qui permet d'ajouter des items au store.</li>
+          </ol>
         </section>
         <section>
-            <h3>Actions asynchrones</h3>
+          <h3>Actions asynchrones</h3>
         </section>
         <section>
-            <h3>Généralités</h3>
-            <ul>
-                <li> Redux ne permet que de dispatcher des objets</li>
-                <li class="fragment"><b>redux-thunk</b> ou <b>redux-saga</b> permettent de lancer une fonction, et donc
-                    des actions
-                    asynchrones ou des actions avec conditions. Ce sont des <i>middlewares</i>.
-                </li>
-                <li class="fragment">En redux-thunk, c'est plus élégant que les actions retournent des <i>promesses</i>
-                </li>
-            </ul>
-            <aside class="notes">
-                Les Middlewares interceptent les actions avant qu'elles ne passent dans les reducers.
-            </aside>
+          <h3>Généralités</h3>
+          <ul>
+            <li>Redux ne permet que de dispatcher des objets</li>
+            <li class="fragment">
+              <b>redux-thunk</b> ou <b>redux-saga</b> permettent de lancer une fonction, et donc des actions asynchrones
+              ou des actions avec conditions. Ce sont des <i>middlewares</i>.
+            </li>
+            <li class="fragment">En redux-thunk, c'est plus élégant que les actions retournent des <i>promesses</i></li>
+          </ul>
+          <aside class="notes">
+            Les Middlewares interceptent les actions avant qu'elles ne passent dans les reducers.
+          </aside>
         </section>
         <section>
-            <h3>redux-thunk</h3>
+          <h3>redux-thunk</h3>
         </section>
         <section>
-            <h3>Configuration</h3>
-            <pre><code data-trim>
+          <h3>Configuration</h3>
+          <pre><code data-trim>
                 import {reducer} from './reducers/index'
                 import {createStore, applyMiddleware} from 'redux'
                 import thunk from 'redux-thunk'
@@ -1321,11 +1265,10 @@
                 )
 
                 </code></pre>
-
         </section>
         <section>
-            <h3>ThunkActionCreator</h3>
-            <pre><code data-trim>
+          <h3>ThunkActionCreator</h3>
+          <pre><code data-trim>
             function incrementCreator(inc) {
                 return {
                     type: 'INCREMENT_COUNTER',
@@ -1341,21 +1284,22 @@
             </code></pre>
         </section>
         <section>
-            <h3>En 2 mots</h3>
+          <h3>En 2 mots</h3>
 
-            <p>Une <i>ThunkAction</i> est une fonction qui reçoit en entrée les méthodes <i>dispatch()</i> et
-                <i>getState()</i>, et
-                retourne le résultat de <i>dispatch()</i>.</p>
+          <p>
+            Une <i>ThunkAction</i> est une fonction qui reçoit en entrée les méthodes <i>dispatch()</i> et
+            <i>getState()</i>, et retourne le résultat de <i>dispatch()</i>.
+          </p>
         </section>
         <section>
-            <h3>Exemple complet</h3>
-            <pre><code data-trim>
+          <h3>Exemple complet</h3>
+          <pre><code data-trim>
             const getItems =
                 (userId) => axios.get('users/' + userId + '/items')
                     .then(resp => resp.data)
                     .catch(error => console.log(error.toString()))
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
             export const fetchItems = () =>
                 (dispatch, getState) => getItems(getState().userId)
                 .then(items => dispatch({type: 'SET_ITEMS', items: items}))
@@ -1363,49 +1307,50 @@
             </code></pre>
         </section>
         <section data-background="#b5533c">
-            <h3>TP-05</h3>
-            <h4>Liste de courses - ter</h4>
-            <ol>
-                <li>Configurer le Middleware "thunk" dans le index.js</li>
-                <li>Comme le TP-04 mais en faisant un appel asynchrone (http) pour charger la liste d'items</li>
-                <li>Bonus: Faire une action qui avant d'ajouter l'item au store, applique la TVA sur le prix lors d'un
-                    ajout d'item par le formulaire
-                </li>
-            </ol>
+          <h3>TP-05</h3>
+          <h4>Liste de courses - ter</h4>
+          <ol>
+            <li>Configurer le Middleware "thunk" dans le index.js</li>
+            <li>Comme le TP-04 mais en faisant un appel asynchrone (http) pour charger la liste d'items</li>
+            <li>
+              Bonus: Faire une action qui avant d'ajouter l'item au store, applique la TVA sur le prix lors d'un ajout
+              d'item par le formulaire
+            </li>
+          </ol>
         </section>
         <section>
-            <h3>Bravo !</h3>
-            <p>C'était la partie la plus compliquée</p>
-            <p>On sait créer des composants et leurs passer des propriétés</p>
-            <ul>
-                <li>Depuis leur composant parent</li>
-                <li>Depuis l'état 'local' (<i>LocalState</i>)</li>
-                <li>Depuis l'état du <b>store</b> (<i>State</i>)</li>
-                <li>Depuis un composant grand(n)-parent par le context... ou pas !</li>
-            </ul>
+          <h3>Bravo !</h3>
+          <p>C'était la partie la plus compliquée</p>
+          <p>On sait créer des composants et leurs passer des propriétés</p>
+          <ul>
+            <li>Depuis leur composant parent</li>
+            <li>Depuis l'état 'local' (<i>LocalState</i>)</li>
+            <li>Depuis l'état du <b>store</b> (<i>State</i>)</li>
+            <li>Depuis un composant grand(n)-parent par le context... ou pas !</li>
+          </ul>
         </section>
         <section>
-            <h3>Context</h3>
+          <h3>Context</h3>
         </section>
         <section>
-            <h3>Context API</h3>
-            <ul>
-                <li>On peut passer des objets à ses composants enfants (n'importe où dans la hiérarchie).</li>
-                <li class="fragment">Beaucoup de librairies sont basées la dessus. Ce n'était pas une API officiellement
-                    supportée avant react 16.3.0.
-                </li>
-                <li class="fragment"><i>react-redux</i> fonctionne grâce à ça (le store est passé à tous les enfants).
-                </li>
-            </ul>
+          <h3>Context API</h3>
+          <ul>
+            <li>On peut passer des objets à ses composants enfants (n'importe où dans la hiérarchie).</li>
+            <li class="fragment">
+              Beaucoup de librairies sont basées la dessus. Ce n'était pas une API officiellement supportée avant react
+              16.3.0.
+            </li>
+            <li class="fragment"><i>react-redux</i> fonctionne grâce à ça (le store est passé à tous les enfants).</li>
+          </ul>
         </section>
         <section>
-            <h3>Utilisation</h3>
-            <p>Il faut Créer le <i>Context</i>, puis wrapper l'application avec le <i>&lt;Context.Provider&gt;</i></p>
-            <pre><code data-trim>
+          <h3>Utilisation</h3>
+          <p>Il faut Créer le <i>Context</i>, puis wrapper l'application avec le <i>&lt;Context.Provider&gt;</i></p>
+          <pre><code data-trim>
                 const Context = React.createContext({color: 'green', user: null})
                 export default Context
             </code></pre>
-            <pre><code data-trim>
+          <pre><code data-trim>
                 render() {
                     return &lt;Context.Provider
                                 value={{color: 'purple', user: new User(1, 'admin')}}&gt;
@@ -1415,9 +1360,9 @@
             </code></pre>
         </section>
         <section>
-            <h3>Utilisation</h3>
-            <p>Et enfin récupérer le <i>context</i> là où il est nécessaire.
-            <pre><code data-trim>
+          <h3>Utilisation</h3>
+          <p>Et enfin récupérer le <i>context</i> là où il est nécessaire.</p>
+          <pre><code data-trim>
             import React from 'react'
             import MyContext from './Context'
 
@@ -1439,22 +1384,22 @@
             </code></pre>
         </section>
         <section data-background="#b5533c">
-            <h3>TP-06</h3>
-            <h4>Contexte</h4>
-            <p>Le but est de passer une couleur et un <b>User</b> d'un composant à son composant 'petit-fils'</p>
-            <ol>
-                <li>Déclarer un context autour du grand-parent (Large), avec une couleur et un User.</li>
-                <li>Afficher les informations passées dans le <i>context</i> dans le composant petit-fils (Small)</li>
-            </ol>
+          <h3>TP-06</h3>
+          <h4>Contexte</h4>
+          <p>Le but est de passer une couleur et un <b>User</b> d'un composant à son composant 'petit-fils'</p>
+          <ol>
+            <li>Déclarer un context autour du grand-parent (Large), avec une couleur et un User.</li>
+            <li>Afficher les informations passées dans le <i>context</i> dans le composant petit-fils (Small)</li>
+          </ol>
         </section>
         <section>
-            <h3>Tests</h3>
+          <h3>Tests</h3>
         </section>
         <section>
-            <h3>Jest & Enzyme</h3>
-            <p>L'idée est de tester les composants de <i>présentation</i>, avec leurs états et leurs propriétés.</p>
+          <h3>Jest & Enzyme</h3>
+          <p>L'idée est de tester les composants de <i>présentation</i>, avec leurs états et leurs propriétés.</p>
 
-            <pre><code data-trim>
+          <pre><code data-trim>
             import React from "react"
             import {shallow} from "enzyme"
 
@@ -1464,16 +1409,17 @@
                 })
             })
             </code></pre>
-            <p><a href="https://facebook.github.io/jest/docs/api.html#content" target="_blank">Jest API</a></p>
-            <p><a href="https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md" target="_blank">Enzyme API</a>
-            </p>
-            <aside class="notes">
-                Il existe shallow et mount. Mount fait du full DOM rendering.
-            </aside>
+          <p><a href="https://facebook.github.io/jest/docs/api.html#content" target="_blank">Jest API</a></p>
+          <p>
+            <a href="https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md" target="_blank">Enzyme API</a>
+          </p>
+          <aside class="notes">
+            Il existe shallow et mount. Mount fait du full DOM rendering.
+          </aside>
         </section>
         <section>
-            <h3>Présence de sous-composants</h3>
-            <pre><code data-trim>
+          <h3>Présence de sous-composants</h3>
+          <pre><code data-trim>
             describe('Hello', () => {
                 it('renders Hello and its sub components', () => {
                     const component = shallow(&lt;Hello name="world"/&gt;)
@@ -1486,21 +1432,21 @@
             </code></pre>
         </section>
         <section>
-            <h3>Texte affiché</h3>
-            <pre><code data-trim>
+          <h3>Texte affiché</h3>
+          <pre><code data-trim>
             expect(component.text()).toContain('mon texte attendu')
             </code></pre>
         </section>
         <section>
-            <h3>Vérifier qu'une méthode a été appelée</h3>
-            <pre><code data-trim>
+          <h3>Vérifier qu'une méthode a été appelée</h3>
+          <pre><code data-trim>
             const mockOnChange = jest.fn()
             expect(mockOnChange).toBeCalledWith(myParam)
             </code></pre>
         </section>
         <section>
-            <h3>Simulation</h3>
-            <pre><code data-trim>
+          <h3>Simulation</h3>
+          <pre><code data-trim>
             component.find('button')
                 .at(1)
                 .simulate('click')
@@ -1509,20 +1455,20 @@
             </code></pre>
         </section>
         <section>
-            <h3>Appeler une méthode</h3>
-            <pre><code data-trim>
+          <h3>Appeler une méthode</h3>
+          <pre><code data-trim>
             component.instance().maMethode()
             </code></pre>
         </section>
         <section>
-            <h3>Récupérer l'état</h3>
-            <pre><code data-trim>
+          <h3>Récupérer l'état</h3>
+          <pre><code data-trim>
                 expect(component.state('name')).toEqual('mon nom')
             </code></pre>
         </section>
         <section>
-            <h3>Mocking avancé - fonction</h3>
-            <pre><code data-trim>
+          <h3>Mocking avancé - fonction</h3>
+          <pre><code data-trim>
             import * as Maths from './maths'
 
             describe('Maths', () => {
@@ -1535,8 +1481,8 @@
             </code></pre>
         </section>
         <section>
-            <h3>Mocking avancé - module</h3>
-            <pre><code data-trim>
+          <h3>Mocking avancé - module</h3>
+          <pre><code data-trim>
                 import * as Maths from './maths'
                 import { calculette } from './calculette'
 
@@ -1551,61 +1497,60 @@
             </code></pre>
         </section>
         <section>
-            <h3>Lancer les tests</h3>
-            <ul>
-                <li><i>yarn test</i> en ligne de commande</li>
-                <li><i>runner</i> jest dans Webstorm</li>
-                <li><i>--coverage</i> pour la couverture de tests</li>
-            </ul>
-            <aside class="notes">
-                File > Settings > JavaScript > Libraries et Download Jest Typescript definition pour
-                ne plus avoir d'erreurs sur 'describe' dans les sources.
-            </aside>
+          <h3>Lancer les tests</h3>
+          <ul>
+            <li><i>yarn test</i> en ligne de commande</li>
+            <li><i>runner</i> jest dans Webstorm</li>
+            <li><i>--coverage</i> pour la couverture de tests</li>
+          </ul>
+          <aside class="notes">
+            File > Settings > JavaScript > Libraries et Download Jest Typescript definition pour ne plus avoir d'erreurs
+            sur 'describe' dans les sources.
+          </aside>
         </section>
         <section data-background="#b5533c">
-            <h3>TP-07</h3>
-            <h4>Les tests</h4>
-            <p>Le but est de tester complètement le TP-03
-            <p>
-            <ol style="font-size: 32px">
-                <li>Créer un fichier .test.js par composant</li>
-                <li><i>StudentDetails</i>: Vérifier le texte pour les 2 cas (Student.NULL ou non)</li>
-                <li><i>Filter</i>: Vérifier que le callback est appelé lors d'un événement <i>change</i></li>
-                <li><i>StudenstTable</i>: Vérifier le nombre de lignes du tableau suivant le nombre de <i>Student</i>
-                    passé. Vérifier
-                    également le callback.
-                </li>
-                <li><i>StudentsApp</i>: Vérifier que le composant et ses sous composants sont affichés, puis vérifier
-                    l'impact des
-                    méthodes <i>handleSelectStudent()</i> et
-                    <i>handleFilterChange()</i> sur le <i>state</i>. Enfin valider que <i>filteredStudents()</i> renvoie
-                    les bons éléments pour
-                    un filtre donné.
-                </li>
-                <li>Bonus: Essayer les <i>snapshots</i> jest</li>
-            </ol>
+          <h3>TP-07</h3>
+          <h4>Les tests</h4>
+          <p>Le but est de tester complètement le TP-03</p>
+          <p></p>
+          <ol style="font-size: 32px">
+            <li>Créer un fichier .test.js par composant</li>
+            <li><i>StudentDetails</i>: Vérifier le texte pour les 2 cas (Student.NULL ou non)</li>
+            <li><i>Filter</i>: Vérifier que le callback est appelé lors d'un événement <i>change</i></li>
+            <li>
+              <i>StudenstTable</i>: Vérifier le nombre de lignes du tableau suivant le nombre de <i>Student</i>
+              passé. Vérifier également le callback.
+            </li>
+            <li>
+              <i>StudentsApp</i>: Vérifier que le composant et ses sous composants sont affichés, puis vérifier l'impact
+              des méthodes <i>handleSelectStudent()</i> et <i>handleFilterChange()</i> sur le <i>state</i>. Enfin
+              valider que <i>filteredStudents()</i> renvoie les bons éléments pour un filtre donné.
+            </li>
+            <li>Bonus: Essayer les <i>snapshots</i> jest</li>
+          </ol>
         </section>
         <section>
-            <h3>Router</h3>
+          <h3>Router</h3>
         </section>
         <section>
-            <h3>react-router</h3>
+          <h3>react-router</h3>
 
-            <p>Il existe plusieurs systèmes de gestion de l'historique de navigation :</p>
-            <ul>
-                <li><b>BrowserRouter</b> : /monsite/page1/partie2</li>
-                <li><b>HashRouter</b>: /monsite/#/page1/partie2</li>
-                <li><b>MemoryRouter</b> : /</li>
-            </ul>
-            <p style="font-size: 24px">Pour le BrowserRouter il faut modifier le serveur pour rediriger toutes les
-                requêtes vers index.html, sauf
-                les css, js, et appels aux webservices.</p>
+          <p>Il existe plusieurs systèmes de gestion de l'historique de navigation :</p>
+          <ul>
+            <li><b>BrowserRouter</b> : /monsite/page1/partie2</li>
+            <li><b>HashRouter</b>: /monsite/#/page1/partie2</li>
+            <li><b>MemoryRouter</b> : /</li>
+          </ul>
+          <p style="font-size: 24px">
+            Pour le BrowserRouter il faut modifier le serveur pour rediriger toutes les requêtes vers index.html, sauf
+            les css, js, et appels aux webservices.
+          </p>
         </section>
         <section>
-            <h3>react-router</h3>
+          <h3>react-router</h3>
 
-            <p>Définir le Router au plus haut niveau dans l'application.</p>
-            <pre><code data-trim>
+          <p>Définir le Router au plus haut niveau dans l'application.</p>
+          <pre><code data-trim>
             import {BrowserRouter as Router,
                 Route} from 'react-router-dom'
 
@@ -1620,8 +1565,8 @@
             </code></pre>
         </section>
         <section>
-            <p>On peut imbriquer les routes !</p>
-            <pre><code data-trim>
+          <p>On peut imbriquer les routes !</p>
+          <pre><code data-trim>
             const Admin = () => (
             &lt;div&gt;
               &lt;h2&gt;Administration&lt;/h2&gt;
@@ -1632,21 +1577,23 @@
             </code></pre>
         </section>
         <section>
-            <h3>react-router</h3>
-            <p>On peut générer des liens automatiquement (voir la <a target="_blank"
-                                                                     href="https://reacttraining.com/react-router/web/api/NavLink">doc</a>
-                pour les propriétés)</p>
-            <pre><code data-trim>
+          <h3>react-router</h3>
+          <p>
+            On peut générer des liens automatiquement (voir la
+            <a target="_blank" href="https://reacttraining.com/react-router/web/api/NavLink">doc</a> pour les
+            propriétés)
+          </p>
+          <pre><code data-trim>
             &lt;Link to="/admin/users"&gt;Administration des utilisateurs&lt;/Link&gt;
             </code></pre>
         </section>
         <section>
-            <h3>react-router</h3>
-            <p>Urls dynamiques</p>
-            <pre><code data-trim>
+          <h3>react-router</h3>
+          <p>Urls dynamiques</p>
+          <pre><code data-trim>
             &lt;Route path={'/admin/users/:userId'} component={UserAdmin}/&gt;
             </code></pre>
-            <pre><code data-trim>
+          <pre><code data-trim>
             const UserAdmin = ({match}) => (
             &lt;div&gt;
                 Gérer l'utilisateur {match.params.userId}
@@ -1655,16 +1602,15 @@
             </code></pre>
         </section>
         <section>
-            <h3>match</h3>
-            <p>L'objet match contient les informations qui ont permis a un &lt;Route path&gt; de matcher. On
-                retrouve:</p>
-            <ul>
-                <li><b>params</b>: liste de clé/valeur de l'url (ex: /user/:id)</li>
-                <li><b>url</b>: url matchée</li>
-                <li><b>isExact</b>: vrai si l'url a exactement matché</li>
-                <li><b>path</b>: pattern du match</li>
-            </ul>
-            <pre><code data-trim>
+          <h3>match</h3>
+          <p>L'objet match contient les informations qui ont permis a un &lt;Route path&gt; de matcher. On retrouve:</p>
+          <ul>
+            <li><b>params</b>: liste de clé/valeur de l'url (ex: /user/:id)</li>
+            <li><b>url</b>: url matchée</li>
+            <li><b>isExact</b>: vrai si l'url a exactement matché</li>
+            <li><b>path</b>: pattern du match</li>
+          </ul>
+          <pre><code data-trim>
             const Admin = ({match}) => (
                 &lt;Link to={`${match.url}/users`}&gt;
                     Users
@@ -1676,52 +1622,59 @@
             </code></pre>
         </section>
         <section data-background="#b5533c">
-            <h3>TP-08</h3>
-            <h4>React-router</h4>
-            <p>L'objectif est d'avoir une application avec 3 pages, dont l'une va chercher un identifiant dans
-                l'url.</p>
-            <ol>
-                <li>Générer les liens vers les pages About et Users</li>
-                <li>Ecrire les routes vers les pages About et Users</li>
-                <li>Générer les liens vers les détails des 2 utilisateurs: /users/elsa et /users/anna</li>
-                <li>Ecrire la route vers le composant UserDetail</li>
-                <li>Générer le lien vers l'image des utilisateurs (elsa.jpeg et anna.jpeg)</li>
-            </ol>
+          <h3>TP-08</h3>
+          <h4>React-router</h4>
+          <p>L'objectif est d'avoir une application avec 3 pages, dont l'une va chercher un identifiant dans l'url.</p>
+          <ol>
+            <li>Générer les liens vers les pages About et Users</li>
+            <li>Ecrire les routes vers les pages About et Users</li>
+            <li>Générer les liens vers les détails des 2 utilisateurs: /users/elsa et /users/anna</li>
+            <li>Ecrire la route vers le composant UserDetail</li>
+            <li>Générer le lien vers l'image des utilisateurs (elsa.jpeg et anna.jpeg)</li>
+          </ol>
         </section>
         <section>
-            <h3>Optimisations</h3>
+          <h3>Optimisations</h3>
         </section>
         <section>
-            <h3>On ne redessine que le nécessaire</h3>
-            shouldComponentUpdate & Virtual-DOM
-            <img data-src="images/should-component-update.png" alt="update">
+          <h3>On ne redessine que le nécessaire</h3>
+          shouldComponentUpdate & Virtual-DOM
+          <img data-src="images/should-component-update.png" alt="update" />
         </section>
         <section>
-            <h3>Reconciliation</h3>
+          <h3>Reconciliation</h3>
 
-            <p>Le <b>Virtual DOM</b> est... <span class="fragment" style="font-size: 24px">une réprésentation des composants en mémoire. Quand les propriétés d'un composant
-            changent, le nouveau DOM est comparé à l'ancien (celui du Virtual DOM). Si il y a une différence, le 'vrai' DOM est modifié.
-            Si on sait que le composant n'a pas besoin d'être redessiné, on peut surcharger <i>shouldComponentUpdate</i></span>
-            </p>
-            <pre><code data-trim>
+          <p>
+            Le <b>Virtual DOM</b> est...
+            <span class="fragment" style="font-size: 24px"
+              >une réprésentation des composants en mémoire. Quand les propriétés d'un composant changent, le nouveau
+              DOM est comparé à l'ancien (celui du Virtual DOM). Si il y a une différence, le 'vrai' DOM est modifié. Si
+              on sait que le composant n'a pas besoin d'être redessiné, on peut surcharger
+              <i>shouldComponentUpdate</i></span
+            >
+          </p>
+          <pre><code data-trim>
             shouldComponentUpdate(nextProps, nextState) {
                 return true
             }
             </code></pre>
-            <p class="fragment" style="font-size: 24px">Faut-il étendre React.PureComponent (shallow equality) ou
-                ré-implémenter shouldComponentUpdate() ?
-                Dans tous les cas le mieux est de ne pas avoir des données mutables: Object.assign, spread properties,
-                Immutable.js, ...</p>
+          <p class="fragment" style="font-size: 24px">
+            Faut-il étendre React.PureComponent (shallow equality) ou ré-implémenter shouldComponentUpdate() ? Dans tous
+            les cas le mieux est de ne pas avoir des données mutables: Object.assign, spread properties, Immutable.js,
+            ...
+          </p>
         </section>
         <section>
-            <h3>Memoization</h3>
+          <h3>Memoization</h3>
 
-            <p>Permet d'éviter le recalcul d'une propriété dérivée de l'état du store redux. Par exemple le tri d'une
-                liste, le caclcul du prix total d'un panier, ... </p>
+          <p>
+            Permet d'éviter le recalcul d'une propriété dérivée de l'état du store redux. Par exemple le tri d'une
+            liste, le caclcul du prix total d'un panier, ...
+          </p>
         </section>
         <section>
-            <h3>Memoization</h3>
-            <pre><code data-trim>
+          <h3>Memoization</h3>
+          <pre><code data-trim>
             const shopItemsSelector = state => state.shop.items
             const taxPercentSelector = state => state.shop.taxPercent
 
@@ -1742,47 +1695,48 @@
             (subtotal, tax) => ({ total: subtotal + tax })
             )
             </code></pre>
-
         </section>
         <section data-background="#b5533c">
-            <h3>TP-09</h3>
-            <h4>Optimisation</h4>
-            <p>Jouer avec la méthode shouldComponentUpdate</p>
-            <ol>
-                <li>Implémenter la méthode shouldComponentUpdate</li>
-                <li>Installer le plugin React, pour voir si le composant est redessiné</li>
-                <li>Bonus: Reprendre le TP-03 pour limiter les renders inutiles</li>
-            </ol>
-            <aside class="notes">
-                Démo optimisations
-            </aside>
+          <h3>TP-09</h3>
+          <h4>Optimisation</h4>
+          <p>Jouer avec la méthode shouldComponentUpdate</p>
+          <ol>
+            <li>Implémenter la méthode shouldComponentUpdate</li>
+            <li>Installer le plugin React, pour voir si le composant est redessiné</li>
+            <li>Bonus: Reprendre le TP-03 pour limiter les renders inutiles</li>
+          </ol>
+          <aside class="notes">
+            Démo optimisations
+          </aside>
         </section>
         <section>
-            <h3>Let's do it !</h3>
+          <h3>Let's do it !</h3>
 
-            <h3>help ? <a href="mailto:jbcazaux@gmail.com">jbcazaux@gmail.com</a></h3>
-            <h3><a href="http://codox.fr/formation-reactjs-es6">http://codox.fr/formation-reactjs-es6</a></h3>
+          <h3>help ? <a href="mailto:jbcazaux@gmail.com">jbcazaux@gmail.com</a></h3>
+          <h3><a href="http://codox.fr/formation-reactjs-es6">http://codox.fr/formation-reactjs-es6</a></h3>
         </section>
+      </div>
     </div>
-</div>
 
-<script src="reveal/lib/js/head.min.js"></script>
-<script src="reveal/js/reveal.js"></script>
+    <script src="reveal/lib/js/head.min.js"></script>
+    <script src="reveal/js/reveal.js"></script>
 
-<script>
-    Reveal.initialize({
+    <script>
+      Reveal.initialize({
         history: true,
         dependencies: [
-            {src: 'reveal/plugin/markdown/marked.js'},
-            {src: 'reveal/plugin/markdown/markdown.js'},
-            {src: 'reveal/plugin/notes/notes.js', async: true},
-            {
-                src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function () {
-                    hljs.initHighlightingOnLoad();
-                }
-            }
-        ]
-    });
-</script>
-</body>
+          { src: 'reveal/plugin/markdown/marked.js' },
+          { src: 'reveal/plugin/markdown/markdown.js' },
+          { src: 'reveal/plugin/notes/notes.js', async: true },
+          {
+            src: 'reveal/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad()
+            },
+          },
+        ],
+      })
+    </script>
+  </body>
 </html>

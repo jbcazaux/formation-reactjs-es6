@@ -8,6 +8,7 @@ const App = () => (
         <li>
           <Link to="/">Home</Link>
         </li>
+        {/*TODO: create links*/}
         <li>About</li>
         <li>Users</li>
       </ul>

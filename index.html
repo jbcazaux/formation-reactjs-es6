@@ -586,11 +586,22 @@
             )
             </code></pre>
         </section>
-          <section>
-              <h3>useEffect</h3>
-              <p>It triggers function when props or state change</p>
-                TODO !!!
-          </section>
+        <section>
+          <h3>useEffect</h3>
+          <p>It triggers a function when props or state change</p>
+          <pre><code data-trim>
+                const UserDetails = ({userId}) => {
+                 const [details, setDetails] = useState(null)
+
+                 useEffect(() => {
+                  axios.get('/user/' + userId)
+                   .then(({response: {data: details}}) => setDetails(details)
+                 }, [userId, setDetails])
+
+                 return &lt;div&gt;...
+                }
+              </code></pre>
+        </section>
         <section data-background="#b5533c">
           <h3>TP-02</h3>
           <h4>Shopping list</h4>
@@ -602,7 +613,7 @@
             <li>Create a dedicated component for the &lt;li&gt; tags</li>
             <li>
               Bonus: Create a component that makes the ajax call, and pass the result to a child component that iterates
-                over the list.
+              over the list.
             </li>
           </ol>
         </section>
@@ -678,12 +689,12 @@
             </code></pre>
         </section>
         <section>
-          <h3>Avec du style</h3>
+          <h3>With style</h3>
         </section>
         <section>
           <h3>inline style vs css</h3>
 
-          <p>Pourquoi pas du inline ?</p>
+          <p>Why not inlining css into js ?</p>
 
           <pre><code data-trim>
             render() {
@@ -691,17 +702,17 @@
                 return &lt;div style={mystyle}/&gt;
             }
             </code></pre>
-          <p>Sinon une CSS globale, ou une CSS par composant (Webpack powered)</p>
+          <p>Or you can use a global css, or a css per component (css modules with Webpack)</p>
 
           <pre><code data-trim>
                 import './MyComponent.css'
-                </code></pre>
+          </code></pre>
         </section>
         <section>
           <h3>React-bootstrap</h3>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-            <p>Adaptation des composants bootstrap à React</p>
+            <p>Bootstrap components for React</p>
           </div>
           <pre><code data-trim>
                 &lt;Button bsStyle="primary"
@@ -709,11 +720,11 @@
             </code></pre>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-            <p>La documentation</p>
+            <p>Documentation</p>
             <ul>
               <li>
-                <a target="_blank" href="https://react-bootstrap.github.io/components.html"
-                  >https://react-bootstrap.github.io/components.html</a
+                <a target="_blank" href="https://react-bootstrap.github.io/components/alerts/"
+                  >https://react-bootstrap.github.io/components/alerts/</a
                 >
               </li>
               <li>
@@ -733,8 +744,8 @@
             </code></pre>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-            <p>La documentation</p>
-            <p><a href="https://material-ui-next.com/api/button/">https://material-ui-next.com/api/button/</a></p>
+            <p>Documentation</p>
+            <p><a target="_blank" href="https://material-ui.com/api/button/">https://material-ui.com/api/button/</a></p>
           </div>
         </section>
         <section>
@@ -749,20 +760,24 @@
                 text-align: center;
                 color: palevioletred;
             `
-            &lt;Title&gt;Superbe titre !&lt;/Title&gt;
+            &lt;Title&gt;Nice title !&lt;/Title&gt;
             </code></pre>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-            <p>La documentation</p>
-            <p><a href="https://www.styled-components.com/docs/api">https://www.styled-components.com/docs/api</a></p>
+            <p>Documentation</p>
+            <p>
+              <a target="_blank" href="https://www.styled-components.com/docs/api"
+                >https://www.styled-components.com/docs/api</a
+              >
+            </p>
           </div>
         </section>
         <section>
-          <h3>Trucs et astuces</h3>
+          <h3>Tips and tricks</h3>
           <h4 class="fragment">(Workarounds)</h4>
         </section>
         <section>
-          <h3>Les fragments</h3>
+          <h3>Fragments</h3>
           <pre><code data-trim>
             render() {
                 return (
@@ -785,7 +800,7 @@
             </code></pre>
         </section>
         <section>
-          <h3>Caractères spéciaux</h3>
+          <h3>Special chars</h3>
           <pre><code data-trim>
                 <span> Jet d{String.fromCharCode(39)}eau</span>
             </code></pre>
@@ -807,17 +822,16 @@
                     : <div>No User</div>}
             </code></pre>
           <p>
-            <a href="https://angular.io/api/common/NgIf#using-non-inlined-then-template" style="font-size: .5em; "
-              >C'est pas mieux en angular :)</a
-            >
+            <a href="https://angular.io/api/common/NgIf" style="font-size: .5em; ">Not better in angular :)</a>
           </p>
         </section>
         <section>
-          <h3>Commentaires</h3>
+          <h3>Comments</h3>
           <pre><code data-trim>
-            render() {
+            const MyComponent = () => {
+                // comment inside JS
                 return &lt;div&gt;
-                    {/* Sans commentaire ;) */}
+                    {/* Comment inside JSX */}
                 &lt;/div&gt;
             }
             </code></pre>
@@ -827,64 +841,36 @@
 
           <pre><code data-trim>
             ReactDOM.render(
-               &lt;ButtonApp title="Mon Application"&gt;Press Me! &lt;/ButtonApp&gt;,
+               &lt;ButtonApp title="My Application"&gt;Press Me! &lt;/ButtonApp&gt;,
                document.getElementById('root')
             )
             </code></pre>
           <pre><code data-trim>
-            export default class ButtonApp extends React.Component {
-                render() {
-                    return &lt;div&gt;
-                        &lt;div&gt;{this.props.title}&lt;/div&gt;
-                        &lt;button&gt;{this.props.children}&lt;/button&gt;
-                    &lt;/div&gt;
-                }
+            export const ButtonApp = ({title, children}) => {
+                return &lt;div&gt;
+                    &lt;div&gt;{title}&lt;/div&gt;
+                    &lt;button&gt;{children}&lt;/button&gt;
+                &lt;/div&gt;
             }
             </code></pre>
-        </section>
-        <section data-background="#5553AA">
-          <h3>Quizz</h3>
-          <pre><code data-trim>
-            class App extends React.Component {
-              constructor(props) {
-                super(props)
-                this.name = 'MyComponent'
-                this.handleClick2 = this.handleClick1.bind(this)
-              }
-              handleClick1() { alert(this.name);}
-              handleClick3 = () => alert(this.name)
-              render() {
-               return ( &lt;div&gt;
-                 &lt;button onClick={this.handleClick1()}&gt;click 1&lt;/button&gt;
-                 &lt;button onClick={this.handleClick1}&gt;click 2&lt;/button&gt;
-                 &lt;button onClick={this.handleClick2}&gt;click 3&lt;/button&gt;
-                 &lt;button onClick={this.handleClick3}&gt;click 4&lt;/button&gt;
-               &lt;/div&gt; )
-               }
-            }
-            </code></pre>
-          <p style="font-size: 22px; text-align: left">
-            <a href="https://github.com/sudheerj/reactjs-interview-questions" target="_blank">
-              https://github.com/sudheerj/reactjs-interview-questions
-            </a>
-          </p>
         </section>
         <section data-background="#b5533c">
           <h3>TP-03</h3>
-          <h4>Liste des étudiants</h4>
+          <h4>Students List</h4>
           <ol>
-            <li>Afficher un champ texte "input" qui permet de filtrer les éléments d'un tableau</li>
-            <li>Afficher le nom de l'étudiant sur lequel on a cliqué, ou un message si aucun n'est sélectionné</li>
-            <li>Bonus : Faire une pull request d'une appli jolie ET simple ;)</li>
-            <li>Bonus ES6: Calculer de façon élégante la note max d'un élève (reduce)</li>
+            <li>Create an "input" field that filters the elements of a Table</li>
+            <li>
+              Display the name of the selected student (the one which has been clicked on), or a message if not student
+              is selected
+            </li>
+            <li>Bonus : Do a nice Pull Request to make this exercice look beautiful ;)</li>
           </ol>
         </section>
         <section>
-          <h3>Rappels</h3>
+          <h3>What we have seen so far</h3>
           <ul>
-            <li>Un composant a des propriétés et des états</li>
-            <li>Un composant stateless est plus maintenable et testable</li>
-            <li>On ne peut passer des propriétés qu'aux enfants</li>
+            <li>A component has props and states</li>
+            <li>A stateless component is more simple to write and maintain</li>
           </ul>
         </section>
         <section>
@@ -894,15 +880,15 @@
           <h3>Flux</h3>
           <div style="font-size: 30px; text-align: left; margin-left: 15px;">
             <ul>
-              <li>Store: Stocker la donnée + Logique</li>
-              <li>Action: Modifier le modèle</li>
-              <li>Dispatcher: Répartir les actions dans les stores</li>
-              <li>View: Les composants UI</li>
+              <li>Store: Store the data</li>
+              <li>Action: Update model</li>
+              <li>Dispatcher: Dispatch actions into the stores</li>
+              <li>View: UI Components</li>
             </ul>
           </div>
           <img data-src="images/flux.png" alt="flux" />
 
-          <p>Le flux ne va que dans <i>un seul sens</i> ! (<strike>2-way binding</strike>)</p>
+          <p>The flow is <i>unidirectional</i> ! (<strike>2-way binding</strike>)</p>
         </section>
         <section>
           <h3>Bad Practice vs. Good Practice</h3>
@@ -910,8 +896,8 @@
           <img data-src="images/flux-bestpractice.png" alt="best practices" height="300" />
           <div style="font-size: 30px; text-align: left; margin-left: 15px;">
             <ul>
-              <li>On ne met pas à jour directement les autres composants</li>
-              <li>On passe par le store (redux), les stores (flux), les services (Subject RxJs), ...</li>
+              <li>We dont want to update other components directly</li>
+              <li>We can use the store(redux), the stores (flux), services (RxJs Subjects ), ...</li>
             </ul>
           </div>
         </section>
@@ -922,7 +908,7 @@
           <h3>Actions</h3>
           <pre><code data-trim>
                 {type: 'INCREMENT', inc: 3}
-                {type: 'ADD_TODO', text: 'Acheter du pain'}
+                {type: 'ADD_TODO', text: 'Buy bread'}
                 {type: 'SET_USER', user: new User(1, 'toto')}
             </code></pre>
 
@@ -942,7 +928,7 @@
           <pre><code data-trim>
                 const userId = window.current_account.id
             </code></pre>
-          <p>&laquo;Pourquoi utiliser redux alors qu'on a les variables globales ?&raquo;</p>
+          <p>&laquo;Why use redux if we have global variables ?&raquo;</p>
           <p class="fragment">#TROLL</p>
         </section>
         <section>
@@ -950,13 +936,13 @@
 
           <div style="font-size: 30px; text-align: left; margin-left: 15px;">
             <ul>
-              <li>Un store unique (pratique pour l'isomorphisme)</li>
-              <li>L'état du store est read-only</li>
-              <li>On émet des <b>actions</b> pour modifier l'état</li>
-              <li class="fragment">Les <b>actions</b> sont interprétées par des <b>reducers</b></li>
-              <li class="fragment">Les <b>reducers</b> sont des fonctions <b>pures</b></li>
-              <li class="fragment">Les <b>reducers</b> prennent en entrée l'état précédent et une action</li>
-              <li class="fragment">Ils retournent le nouvel état dans un objet immutable</li>
+              <li>Uniq store (isomorphisme is easier)</li>
+              <li>the State of the store is read-only</li>
+              <li>We dispatch <b>actions</b> to update the state (of the store)</li>
+              <li class="fragment"><b>Actions</b> are sent to the <b>reducers</b></li>
+              <li class="fragment"><b>Reducers</b> are <b>pures</b>functions</li>
+              <li class="fragment"><b>Reducers</b> have current state and an action as parameters</li>
+              <li class="fragment">They return new state in an immutable object</li>
             </ul>
           </div>
           <img data-src="images/redux.png" alt="redux" height="200" />
@@ -975,25 +961,25 @@
                 }
             }
             </code></pre>
-          Le <b>state</b> est en read-only !
+          The <b>state</b> is read-only !
           <img data-src="images/redux.png" alt="redux" />
         </section>
         <section>
           <h3>Store</h3>
           <div style="font-size: 30px; text-align: left; margin-left: 15px;">
-            <p>Deux méthodes importantes dans le store: <b>dispatch</b> et <b>getState</b>.</p>
+            <p>2 noticeable methods available in the store: <b>dispatch</b> and <b>getState</b>.</p>
             <ul>
-              <li>Le <b>store</b> garde l'état de l'application. On y accède via <b>getState()</b>.</li>
+              <li>The <b>store</b> keeps the state of the application. We can get it with <b>getState()</b>.</li>
               <li>
-                <strike>setState()</strike> !! On modifie l'état en 'dispatchant' une action: <i>dispatch(inc(3))</i>
+                <strike>setState()</strike> !! We only update state by dispatching an action: <i>dispatch(inc(3))</i>
               </li>
             </ul>
 
-            <p>Et aussi...</p>
+            <p>And also...</p>
             <ul class="fragment">
-              <li>On peut être prévenu des changements du store via <b>subscribe(listener)</b></li>
-              <li>On se désenregistre avec la méthode retournée par <b>subscribe</b></li>
-              <li>Mais on ne s'en sert jamais ;)</li>
+              <li>We can subscribe to state updates<b>subscribe(listener)</b></li>
+              <li>And unscribe thanks to the function returned by <b>subscribe</b></li>
+              <li>But we never use that</li>
             </ul>
           </div>
           <img data-src="images/redux.png" alt="redux" />
@@ -1002,8 +988,8 @@
           <h3>React & Redux</h3>
         </section>
         <section>
-          <h3>Composition de reducers</h3>
-          <h4>Approche naïve</h4>
+          <h3>Reducers composition</h3>
+          <h4>Naive approach</h4>
           <pre><code data-trim>
             const initialState = {user: '', counter: 0}
             export const myGlobalReducer =
@@ -1020,10 +1006,10 @@
                 }
             }
             </code></pre>
-          Ca peut faire lourd sur une grosse appli...!
+          Not really readable on medium/large applications...!
         </section>
         <section>
-          <h3>Composition de reducers</h3>
+          <h3>Reducers composition</h3>
           <pre><code data-trim>
             export const user =
                 (state = User.NULL, action) => {
@@ -1048,8 +1034,8 @@
             </code></pre>
         </section>
         <section>
-          <h3>Composition de reducers</h3>
-          <h4>Effet Waouh</h4>
+          <h3>Reducers composition</h3>
+          <h4>Wow effect</h4>
           <pre><code data-trim>
             const init = {user: 'nobody', counter: 0}
             export const myGlobalReducer = (state = init, action) =>
@@ -1058,7 +1044,7 @@
                     counter: counter(state.counter, action)
                 })
             </code></pre>
-          <p>Et avec un peu de magie...</p>
+          <p>And with a little bit of magic...</p>
           <pre><code data-trim>
             import { combineReducers } from 'redux'
             export const myGlobalReducer = combineReducers({
@@ -1068,14 +1054,14 @@
             </code></pre>
         </section>
         <section>
-          <h3>Récapitulatif</h3>
+          <h3>Reminder</h3>
           <div style="font-size: 30px; text-align: left; margin-left: 85px;">
             <ul>
               <li>Actions</li>
               <li>Reducers</li>
               <li>Store</li>
-              <li>Composants React</li>
-              <li>Il reste à lier les composants au store !</li>
+              <li>React Components</li>
+              <li>Now the components must be linked to the store</li>
             </ul>
           </div>
           <img data-src="images/redux.png" alt="redux" />
@@ -1090,10 +1076,11 @@
           <img data-src="images/conteneur-pres.png" alt="conteneur-presentation" />
         </section>
         <section>
-          <h3>Présentation et Conteneur</h3>
+          <h3>Presentational and Container Components</h3>
 
           <p style="font-size: 28px">
-            On découpe nos composants (connectés au <i>store</i>) en 2, <i>présentation</i> & <i>conteneur</i>
+            There are two kinds of components (those connected to the <i>store</i>), <i>Presentational</i> &
+            <i>Container</i>
           </p>
 
           <table style="font-size: 28px">
@@ -1137,18 +1124,16 @@
           <h3>Connect</h3>
 
           <p style="font-size: 28px">
-            Le composant de présentation est comme les composants simples rencontrés jusque là (sans appels ajax).
+            Presentational Componentsest are what we saw until there (with no ajax calls)
           </p>
-          <p style="font-size: 28px" class="fragment">
-            Le composant conteneur va être généré automatiquement, <b>mais</b>:
-          </p>
+          <p style="font-size: 28px" class="fragment">Container component are generated, <b>but</b>:</p>
           <ul style="font-size: 28px" class="fragment">
             <li>
-              il faut décrire comment créer les <i>props</i> à partir des données du <i>store</i>:
+              We must describe how to generate <i>props</i> from the <i>store</i>:
               <b>mapStateToProps(state) {...}</b>
             </li>
             <li>
-              il faut implémenter les callbacks qui seront injectés dans les <i>props</i>:
+              We must implement the methods that will dispatch the actions and pass them in the <i>props</i>:
               <b>mapDispatchToProps(dispatch) {...}</b>
             </li>
           </ul>
@@ -1161,43 +1146,43 @@
             </code></pre>
         </section>
         <section>
-          <h3>Composant de présentation:</h3>
+          <h3>Presentational Components</h3>
           <pre><code data-trim>
-                export const SelectCodePostal_ =
-                    ({cps, currentCp, onSelectCp}) => (
-                &lt;select onChange={onSelectCp} value={currentCp}&gt;
+                export const SelectPostalCode =
+                    ({pcs, currentPc, onSelectPc}) => (
+                &lt;select onChange={onSelectPc} value={currentPc}&gt;
                 {
-                    cps.map(cp =>
-                        &lt;option key={cp} value={cp}&gt;{cp}&lt;/option&gt; )
+                    pcs.map(pc =>
+                        &lt;option key={pc} value={pc}&gt;{pc}&lt;/option&gt; )
                 }
                 &lt;/select&gt;
                 )
                 </code></pre>
         </section>
         <section>
-          <h3>Conteneur</h3>
+          <h3>Container</h3>
           <pre><code data-trim>
             const mapStateToProps = (state) => {
-                const cpsOfAgence = state.codesPostaux.map(cp => cp.id)
-                return {cps: cpsOfAgence, currentCp: state.codePostal.id}
+                const pcsOfAgence = state.postalCodes.map(pc => pc.id)
+                return {pcs: cpsOfAgence, currentCp: state.postalCode.id}
             }
 
             const mapDispatchToProps = (dispatch) => {
                 return {
-                    onSelectCp: (event) => {
-                     const cpId = parseInt(event.target.value)
-                     dispatch({type: 'SET_CODE_POSTALID', cpId: cpId})
+                    onSelectPc: (event) => {
+                     const pcId = parseInt(event.target.value)
+                     dispatch({type: 'SET_POSTAL_CODE_ID', pcId: pcId})
                     }
                 }
             }
-            export const SelectCodePostal =
-            connect(mapStateToProps, mapDispatchToProps)(SelectCodePostal_)
+            export const
+            connect(mapStateToProps, mapDispatchToProps)(SelectPostalCode)
             </code></pre>
         </section>
         <section>
-          <h3>Passer le store</h3>
+          <h3>Pass the store to the whole application</h3>
 
-          <p>Tous les conteneurs de l'application doivent avoir accès au store.</p>
+          <p>All container components of the application must have access to the store.</p>
           <pre><code data-trim>
                 import React from 'react'
                 import ReactDOM from 'react-dom'
@@ -1218,35 +1203,34 @@
         </section>
         <section data-background="#b5533c">
           <h3>TP-04</h3>
-          <h4>Liste de courses - bis</h4>
+          <h4>Shopping list - bis</h4>
           <ol style="font-size: 34px">
-            <li>Installer le plugin redux</li>
+            <li>Install redux-dev-tools</li>
             <li>
-              Comme le TP-02 mais en utilisant le <i>state</i> du store plutôt que le <i>state</i> du composant, et en
-              initialisant la liste sans chargement asynchrone (liste en dur).
+              Like TP-02, but use the <i>state</i> of the store rather than the <i>state</i> of the component, and
+              initializing the list (with synchronous call)
             </li>
-            <li>Créer un <i>action creator</i> <b>setItems</b> qui renvoie une <b>ItemAction</b></li>
-            <li>Créer un reducer <b>items</b> qui prend une <b>ItemAction</b> en entrée</li>
-            <li>Créer un reducer global à l'aide de <b>combineReducer</b></li>
-            <li>Créer le <i>contener</i> et le <i>presentational component</i></li>
-            <li>Bonus: Créer un bouton qui permet d'ajouter des items au store.</li>
+            <li>Create an <i>action creator</i> <b>setItems</b> which returns an <b>ItemAction</b></li>
+            <li>Create a reducer <b>items</b> which takes an <b>ItemAction</b> as input</li>
+            <li>Create a global reducer thanks to <b>combineReducer</b></li>
+            <li>Create the <i>container</i> and the <i>presentational component</i></li>
+            <li>Bonus: Create a button that adds a new Item in the list</li>
           </ol>
         </section>
         <section>
-          <h3>Actions asynchrones</h3>
+          <h3>Asynchronous Actions</h3>
         </section>
         <section>
-          <h3>Généralités</h3>
+          <h3>For now</h3>
           <ul>
-            <li>Redux ne permet que de dispatcher des objets</li>
+            <li>Redux allows to dispatch only Objects (actions)</li>
             <li class="fragment">
-              <b>redux-thunk</b> ou <b>redux-saga</b> permettent de lancer une fonction, et donc des actions asynchrones
-              ou des actions avec conditions. Ce sont des <i>middlewares</i>.
+              <b>redux-thunk</b> or <b>redux-saga</b> allow to dispach functions, and so asynchronous actions or actions
+              with conditional statements. They are called <i>middlewares</i>.
             </li>
-            <li class="fragment">En redux-thunk, c'est plus élégant que les actions retournent des <i>promesses</i></li>
           </ul>
           <aside class="notes">
-            Les Middlewares interceptent les actions avant qu'elles ne passent dans les reducers.
+            Middleware intercep action before they are sent to reducers
           </aside>
         </section>
         <section>
@@ -1284,15 +1268,15 @@
             </code></pre>
         </section>
         <section>
-          <h3>En 2 mots</h3>
+          <h3>To summarize</h3>
 
           <p>
-            Une <i>ThunkAction</i> est une fonction qui reçoit en entrée les méthodes <i>dispatch()</i> et
-            <i>getState()</i>, et retourne le résultat de <i>dispatch()</i>.
+            A <i>ThunkAction</i> is a function that gets <i>dispatch()</i> and <i>getState()</i> as parameters, and
+            returns the result of the call to <i>dispatch()</i>.
           </p>
         </section>
         <section>
-          <h3>Exemple complet</h3>
+          <h3>Complete example</h3>
           <pre><code data-trim>
             const getItems =
                 (userId) => axios.get('users/' + userId + '/items')
@@ -1308,25 +1292,24 @@
         </section>
         <section data-background="#b5533c">
           <h3>TP-05</h3>
-          <h4>Liste de courses - ter</h4>
+          <h4>Shopping list- ter</h4>
           <ol>
-            <li>Configurer le Middleware "thunk" dans le index.js</li>
-            <li>Comme le TP-04 mais en faisant un appel asynchrone (http) pour charger la liste d'items</li>
+            <li>Configure the "thunk" Middleware in index.js</li>
+            <li>Like TP-04 but with an asynchronous call (http) to load the items list</li>
             <li>
-              Bonus: Faire une action qui avant d'ajouter l'item au store, applique la TVA sur le prix lors d'un ajout
-              d'item par le formulaire
+              Bonus: Create an action which applies a VTA rate, when adding a new item to the store
             </li>
           </ol>
         </section>
         <section>
           <h3>Bravo !</h3>
-          <p>C'était la partie la plus compliquée</p>
-          <p>On sait créer des composants et leurs passer des propriétés</p>
+          <p>It was the most complicated part</p>
+          <p>We know how to create components and pass data to them</p>
           <ul>
-            <li>Depuis leur composant parent</li>
-            <li>Depuis l'état 'local' (<i>LocalState</i>)</li>
-            <li>Depuis l'état du <b>store</b> (<i>State</i>)</li>
-            <li>Depuis un composant grand(n)-parent par le context... ou pas !</li>
+            <li>From the parent's component</li>
+            <li>From the <i>LocalState</i></li>
+            <li>From the <b>store</b></li>
+            <li>From a grand(n)-parent through the context...</li>
           </ul>
         </section>
         <section>
@@ -1335,49 +1318,41 @@
         <section>
           <h3>Context API</h3>
           <ul>
-            <li>On peut passer des objets à ses composants enfants (n'importe où dans la hiérarchie).</li>
+            <li>We can pass data to child components (everywhere in the hierarchy).</li>
             <li class="fragment">
-              Beaucoup de librairies sont basées la dessus. Ce n'était pas une API officiellement supportée avant react
-              16.3.0.
+              Many librairies are based on it. It was not an official API before react 16.3
             </li>
-            <li class="fragment"><i>react-redux</i> fonctionne grâce à ça (le store est passé à tous les enfants).</li>
+            <li class="fragment"><i>react-redux</i> works with it, the store is passed to all children.</li>
           </ul>
         </section>
         <section>
-          <h3>Utilisation</h3>
-          <p>Il faut Créer le <i>Context</i>, puis wrapper l'application avec le <i>&lt;Context.Provider&gt;</i></p>
+          <h3>How to use</h3>
+          <p>Create the <i>Context</i>, and wrap the application with <i>&lt;Context.Provider&gt;</i></p>
           <pre><code data-trim>
                 const Context = React.createContext({color: 'green', user: null})
                 export default Context
             </code></pre>
           <pre><code data-trim>
-                render() {
-                    return &lt;Context.Provider
-                                value={{color: 'purple', user: new User(1, 'admin')}}&gt;
-                        &lt;App/&gt;
-                    &lt;/Context.Provider&gt;
-                }
+                ...
+                return &lt;Context.Provider
+                            value={{color: 'purple', user: new User(1, 'admin')}}&gt;
+                    &lt;App/&gt;
+                &lt;/Context.Provider&gt;
             </code></pre>
         </section>
         <section>
-          <h3>Utilisation</h3>
-          <p>Et enfin récupérer le <i>context</i> là où il est nécessaire.</p>
+          <h3>How to use</h3>
+          <p>Then get the <i>context</i>where it is used with the <i>useContext()</i> hook</p>
           <pre><code data-trim>
-            import React from 'react'
+            import React, {useContext} from 'react'
             import MyContext from './Context'
 
-            class Small extends React.Component {
-
-              static contextType = MyContext
-
-              render() {
-                const ctx = this.context
+            const MyComponent = () => {
+                const ctx = useContext(MyContext)
                 return &lt;div
-                        style={{backgroundColor: ctx.color,
-                            height: '125px',
-                            width: '33%'}}
+                        style={{backgroundColor: ctx.color}}
                         &gt;
-                   Small, user = {ctx.user.id}-{ctx.user.login}
+                   Some text
                 &lt;/div&gt;
               }
             }
@@ -1385,11 +1360,11 @@
         </section>
         <section data-background="#b5533c">
           <h3>TP-06</h3>
-          <h4>Contexte</h4>
-          <p>Le but est de passer une couleur et un <b>User</b> d'un composant à son composant 'petit-fils'</p>
+          <h4>Context API</h4>
+          <p>The goal is to pass a color and a user from a component to its 'grand-child'</p>
           <ol>
-            <li>Déclarer un context autour du grand-parent (Large), avec une couleur et un User.</li>
-            <li>Afficher les informations passées dans le <i>context</i> dans le composant petit-fils (Small)</li>
+            <li>Wrap a react component into a Context, with a user and a color.</li>
+            <li>Display the data from the <i>context</i> in the grand child component (Small)</li>
           </ol>
         </section>
         <section>
@@ -1397,7 +1372,7 @@
         </section>
         <section>
           <h3>Jest & Enzyme</h3>
-          <p>L'idée est de tester les composants de <i>présentation</i>, avec leurs états et leurs propriétés.</p>
+          <p>The idea is to test <i>presentational components</i>, with their states and props.</p>
 
           <pre><code data-trim>
             import React from "react"
@@ -1414,38 +1389,38 @@
             <a href="https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md" target="_blank">Enzyme API</a>
           </p>
           <aside class="notes">
-            Il existe shallow et mount. Mount fait du full DOM rendering.
+            shallow et mount, Mount is for full DOM rendering.
           </aside>
         </section>
         <section>
-          <h3>Présence de sous-composants</h3>
+          <h3>Test if sub components are loaded</h3>
           <pre><code data-trim>
-            describe('Hello', () => {
+            describe('App', () => {
                 it('renders Hello and its sub components', () => {
                     const component = shallow(&lt;Hello name="world"/&gt;)
-                    expect(component.find(SubComponent1).exists())
+                    expect(component.find(LeftMenu).exists())
                         .toBeTruthy()
-                    expect(component.find(SubComponent2).exists())
+                    expect(component.find(RightMenu).exists())
                         .toBeTruthy()
                 })
             })
             </code></pre>
         </section>
         <section>
-          <h3>Texte affiché</h3>
+          <h3>Displayed text</h3>
           <pre><code data-trim>
             expect(component.text()).toContain('mon texte attendu')
             </code></pre>
         </section>
         <section>
-          <h3>Vérifier qu'une méthode a été appelée</h3>
+          <h3>Assert that a method has been called</h3>
           <pre><code data-trim>
             const mockOnChange = jest.fn()
             expect(mockOnChange).toBeCalledWith(myParam)
             </code></pre>
         </section>
         <section>
-          <h3>Simulation</h3>
+          <h3>Simulate events</h3>
           <pre><code data-trim>
             component.find('button')
                 .at(1)
@@ -1455,16 +1430,16 @@
             </code></pre>
         </section>
         <section>
-          <h3>Appeler une méthode</h3>
+          <h3>TODO Appeler une méthode</h3>
           <pre><code data-trim>
             component.instance().maMethode()
             </code></pre>
         </section>
         <section>
-          <h3>Récupérer l'état</h3>
+          <h3>TODO Récupérer l'état</h3>
           <pre><code data-trim>
                 expect(component.state('name')).toEqual('mon nom')
-            </code></pre>
+          </code></pre>
         </section>
         <section>
           <h3>Mocking avancé - fonction</h3>
@@ -1497,11 +1472,11 @@
             </code></pre>
         </section>
         <section>
-          <h3>Lancer les tests</h3>
+          <h3>Launch tests</h3>
           <ul>
-            <li><i>yarn test</i> en ligne de commande</li>
-            <li><i>runner</i> jest dans Webstorm</li>
-            <li><i>--coverage</i> pour la couverture de tests</li>
+            <li><i>yarn test</i> in command line</li>
+            <li><i>runner</i> jest in Webstorm</li>
+            <li><i>--coverage</i> for test coverage</li>
           </ul>
           <aside class="notes">
             File > Settings > JavaScript > Libraries et Download Jest Typescript definition pour ne plus avoir d'erreurs
@@ -1510,46 +1485,45 @@
         </section>
         <section data-background="#b5533c">
           <h3>TP-07</h3>
-          <h4>Les tests</h4>
-          <p>Le but est de tester complètement le TP-03</p>
+          <h4>Tests</h4>
+          <p>The goal is to test the TP-03</p>
           <p></p>
           <ol style="font-size: 32px">
-            <li>Créer un fichier .test.js par composant</li>
-            <li><i>StudentDetails</i>: Vérifier le texte pour les 2 cas (Student.NULL ou non)</li>
-            <li><i>Filter</i>: Vérifier que le callback est appelé lors d'un événement <i>change</i></li>
+            <li>Create a .test.js file for each component</li>
+            <li><i>StudentDetails</i>: Check to (Student.NULL ou non)</li>
+            <li><i>Filter</i>: Verify that the callback is called when the <i>change</i> event is propagated</li>
             <li>
-              <i>StudenstTable</i>: Vérifier le nombre de lignes du tableau suivant le nombre de <i>Student</i>
-              passé. Vérifier également le callback.
+              <i>StudenstTable</i>: Verify the number of rows in the table, given an input. Veriy the callback too.
             </li>
             <li>
-              <i>StudentsApp</i>: Vérifier que le composant et ses sous composants sont affichés, puis vérifier l'impact
-              des méthodes <i>handleSelectStudent()</i> et <i>handleFilterChange()</i> sur le <i>state</i>. Enfin
-              valider que <i>filteredStudents()</i> renvoie les bons éléments pour un filtre donné.
+              <i>StudentsApp</i>: Verify that the component and its children are displayed. Validate that
+              <i>filteredStudents()</i>
+              returns the correct elements, given an input.
             </li>
-            <li>Bonus: Essayer les <i>snapshots</i> jest</li>
+            <li>Bonus: Create jest <i>snapshots</i></li>
           </ol>
         </section>
         <section>
-          <h3>Router</h3>
+          <h3>Routing</h3>
         </section>
         <section>
           <h3>react-router</h3>
 
-          <p>Il existe plusieurs systèmes de gestion de l'historique de navigation :</p>
+          <p>There are different Router for managing history of navigation and URL:</p>
           <ul>
             <li><b>BrowserRouter</b> : /monsite/page1/partie2</li>
             <li><b>HashRouter</b>: /monsite/#/page1/partie2</li>
             <li><b>MemoryRouter</b> : /</li>
           </ul>
           <p style="font-size: 24px">
-            Pour le BrowserRouter il faut modifier le serveur pour rediriger toutes les requêtes vers index.html, sauf
-            les css, js, et appels aux webservices.
+            For BrowserRouter you have to redirect every requests to index.html, but not .css, .js, calls to
+            webservices.
           </p>
         </section>
         <section>
           <h3>react-router</h3>
 
-          <p>Définir le Router au plus haut niveau dans l'application.</p>
+          <p>Define Router in the root level of the application.</p>
           <pre><code data-trim>
             import {BrowserRouter as Router,
                 Route} from 'react-router-dom'
@@ -1565,7 +1539,7 @@
             </code></pre>
         </section>
         <section>
-          <p>On peut imbriquer les routes !</p>
+          <p>Nested routes !</p>
           <pre><code data-trim>
             const Admin = () => (
             &lt;div&gt;
@@ -1579,9 +1553,8 @@
         <section>
           <h3>react-router</h3>
           <p>
-            On peut générer des liens automatiquement (voir la
-            <a target="_blank" href="https://reacttraining.com/react-router/web/api/NavLink">doc</a> pour les
-            propriétés)
+            Its possible to generate links automatically (see documentation)
+            <a target="_blank" href="https://reacttraining.com/react-router/web/api/NavLink">doc</a> for thr API
           </p>
           <pre><code data-trim>
             &lt;Link to="/admin/users"&gt;Administration des utilisateurs&lt;/Link&gt;
@@ -1596,19 +1569,19 @@
           <pre><code data-trim>
             const UserAdmin = ({match}) => (
             &lt;div&gt;
-                Gérer l'utilisateur {match.params.userId}
+                Manage user {match.params.userId}
             &lt;/div&gt;
             )
             </code></pre>
         </section>
         <section>
           <h3>match</h3>
-          <p>L'objet match contient les informations qui ont permis a un &lt;Route path&gt; de matcher. On retrouve:</p>
+          <p>match contains different data:</p>
           <ul>
-            <li><b>params</b>: liste de clé/valeur de l'url (ex: /user/:id)</li>
-            <li><b>url</b>: url matchée</li>
-            <li><b>isExact</b>: vrai si l'url a exactement matché</li>
-            <li><b>path</b>: pattern du match</li>
+            <li><b>params</b>: keys values for url params (ex: /user/:id)</li>
+            <li><b>url</b>: current matched url/li></li>
+            <li><b>isExact</b>: true if url has perfectly matched</li>
+            <li><b>path</b>: pattern of the match</li>
           </ul>
           <pre><code data-trim>
             const Admin = ({match}) => (
@@ -1624,49 +1597,94 @@
         <section data-background="#b5533c">
           <h3>TP-08</h3>
           <h4>React-router</h4>
-          <p>L'objectif est d'avoir une application avec 3 pages, dont l'une va chercher un identifiant dans l'url.</p>
+          <p>The goal is to provide an application with 3 "pages"</p>
+          <p>Then create an application avec 3 pages, one will have an id in the URLs params</p>
           <ol>
-            <li>Générer les liens vers les pages About et Users</li>
-            <li>Ecrire les routes vers les pages About et Users</li>
-            <li>Générer les liens vers les détails des 2 utilisateurs: /users/elsa et /users/anna</li>
-            <li>Ecrire la route vers le composant UserDetail</li>
-            <li>Générer le lien vers l'image des utilisateurs (elsa.jpeg et anna.jpeg)</li>
+            <li>Create links to /about and /users</li>
+            <li>Create routes for /about and /users</li>
+            <li>Create links to /users/elsa et /users/anna</li>
+            <li>Create the route to UserDetail component</li>
+            <li>Write the link to profile pictures (elsa.jpeg et anna.jpeg)</li>
           </ol>
         </section>
         <section>
-          <h3>Optimisations</h3>
+          <h3>Optimizations</h3>
         </section>
         <section>
           <h3>On ne redessine que le nécessaire</h3>
-          shouldComponentUpdate & Virtual-DOM
+          Virtual-DOM
           <img data-src="images/should-component-update.png" alt="update" />
         </section>
         <section>
           <h3>Reconciliation</h3>
-
           <p>
-            Le <b>Virtual DOM</b> est...
-            <span class="fragment" style="font-size: 24px"
-              >une réprésentation des composants en mémoire. Quand les propriétés d'un composant changent, le nouveau
-              DOM est comparé à l'ancien (celui du Virtual DOM). Si il y a une différence, le 'vrai' DOM est modifié. Si
-              on sait que le composant n'a pas besoin d'être redessiné, on peut surcharger
-              <i>shouldComponentUpdate</i></span
-            >
-          </p>
-          <pre><code data-trim>
-            shouldComponentUpdate(nextProps, nextState) {
-                return true
-            }
-            </code></pre>
-          <p class="fragment" style="font-size: 24px">
-            Faut-il étendre React.PureComponent (shallow equality) ou ré-implémenter shouldComponentUpdate() ? Dans tous
-            les cas le mieux est de ne pas avoir des données mutables: Object.assign, spread properties, Immutable.js,
-            ...
+            <b>Virtual DOM</b> is...
+            <span class="fragment" style="font-size: 24px">
+              a memory image of the components. When a component is rendered, the new V-DOM is compared to the old
+              V-DOM. If there is a difference, The DOM of the browser is partially updated.
+            </span>
           </p>
         </section>
         <section>
-          <h3>Memoization</h3>
+          <h3>Too many re-rendering</h3>
+          <ul>
+            <li>Memoization</li>
+            <li>useCallback()</li>
+            <li>useMemo()</li>
+          </ul>
+        </section>
+        <section>
+          <h3>useCallback()</h3>
+          <pre class="fragment current-visible"><code data-trim>
+            const MyInput = () => {
+                const [value, setValue] = useState('')
+                &lt;input value={value} onChange={e => setValue(e.target.value)} /&gt;
+            }
+            </code></pre>
+          <pre class="fragment current-visible"><code data-trim>
+            const MyInput = () => {
+                const [value, setValue] = useState('')
+                const handleInput = e => setValue(e.target.value)
 
+                &lt;input value={value} onChange={handleInput} /&gt;
+            }
+            </code></pre>
+          <pre class="fragment current-visible"><code data-trim>
+            const MyInput = () => {
+                const [value, setValue] = useState('')
+                const handleInput = useCallback(e => setValue(e.target.value), [setValue])
+
+                &lt;input value={value} onChange={handleInput} /&gt;
+            }
+            </code></pre>
+        </section>
+        <section>
+          <h3>useMemo</h3>
+          <pre class="fragment current-visible"><code data-trim>
+            const MyList = () => {
+                const [value, setValue] = useState('')
+                &lt;input value={value} onChange={e => setValue(e.target.value)} /&gt;
+            }
+            </code></pre>
+          <pre class="fragment current-visible"><code data-trim>
+            const MyInput = () => {
+                const [value, setValue] = useState('')
+                const handleInput = e => setValue(e.target.value)
+
+                &lt;input value={value} onChange={handleInput} /&gt;
+            }
+            </code></pre>
+          <pre class="fragment current-visible"><code data-trim>
+            const MyInput = () => {
+                const [value, setValue] = useState('')
+                const handleInput = useCallback(e => setValue(e.target.value), [setValue])
+
+                &lt;input value={value} onChange={handleInput} /&gt;
+            }
+            </code></pre>
+        </section>
+        <section>
+          <h3>Memoization</h3>
           <p>
             Permet d'éviter le recalcul d'une propriété dérivée de l'état du store redux. Par exemple le tri d'une
             liste, le caclcul du prix total d'un panier, ...

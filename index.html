@@ -456,15 +456,15 @@
           <h3>TP-01</h3>
           <h4>Hello World</h4>
           <ol>
-            <li>Install your environment</li>
+            <li>Setup your environment</li>
             <li>Write the Hello component/function</li>
           </ol>
         </section>
         <section>
           <h3>Type checking</h3>
           <p style="font-size: 32px">
-            We can do <i>nothing</i>, or use <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a> ,
-            <a target="_blank" href="https://flow.org/">Flow</a>
+            We can do <i>nothing</i>, use <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a> ,
+            <a target="_blank" href="https://flow.org/">Flow</a>, or
             <a target="_blank" href="https://www.npmjs.com/package/prop-types">PropTypes</a>
           </p>
           <pre><code data-trim>
@@ -596,7 +596,7 @@
                  useEffect(() => {
                   axios.get('/user/' + userId)
                    .then(({response: {data: details}}) => setDetails(details)
-                 }, [userId, setDetails])
+                 }, [userId])
 
                  return &lt;div&gt;...
                 }
@@ -860,7 +860,7 @@
           <ol>
             <li>Create an "input" field that filters the elements of a Table</li>
             <li>
-              Display the name of the selected student (the one which has been clicked on), or a message if not student
+              Display the name of the selected student (the one which has been clicked on), or a message if no student
               is selected
             </li>
             <li>Bonus : Do a nice Pull Request to make this exercice look beautiful ;)</li>
@@ -870,7 +870,7 @@
           <h3>What we have seen so far</h3>
           <ul>
             <li>A component has props and states</li>
-            <li>A stateless component is more simple to write and maintain</li>
+            <li>A stateless component is simpler to write and maintain</li>
           </ul>
         </section>
         <section>
@@ -1124,7 +1124,7 @@
           <h3>Connect</h3>
 
           <p style="font-size: 28px">
-            Presentational Componentsest are what we saw until there (with no ajax calls)
+            Presentational Components are what we saw until there (with no ajax calls)
           </p>
           <p style="font-size: 28px" class="fragment">Container component are generated, <b>but</b>:</p>
           <ul style="font-size: 28px" class="fragment">

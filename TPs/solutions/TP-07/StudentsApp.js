@@ -5,6 +5,18 @@ import StudentsTable from './StudentsTable'
 import StudentDetails from './StudentDetails'
 import Student from './Student'
 
+export const filteredStudents = (students, filter) =>
+  students.filter(s => s.firstname.includes(filter) || s.lastname.includes(filter))
+
+export const Gum = () => {
+  const [id, setId] = useState(42)
+  useEffect(() => {
+    setId(42)
+  })
+
+  return <div>{id}</div>
+}
+
 export default function StudentsApp() {
   const [students, setStudents] = useState([])
   const [filter, setFilter] = useState('')
@@ -21,9 +33,6 @@ export default function StudentsApp() {
   const handleSelectStudent = s => {
     setSelectedStudent(s)
   }
-
-  const filteredStudents = (students, filter) =>
-    students.filter(s => s.firstname.includes(filter) || s.lastname.includes(filter))
 
   return (
     <>

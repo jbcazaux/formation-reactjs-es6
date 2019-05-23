@@ -17,6 +17,7 @@ export default function Filter({ onChange }) {
         id="filterName"
         type="text"
         placeholder="Tapez un nom..."
+        onClick={onFilterChange}
         onChange={onFilterChange}
         className="form-control"
         style={{ marginLeft: '5px' }}

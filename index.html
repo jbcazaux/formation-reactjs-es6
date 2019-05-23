@@ -1067,10 +1067,10 @@
           <img data-src="images/redux.png" alt="redux" />
         </section>
         <section>
-          <h3>Présentation et Conteneur</h3>
+          <h3>Presentational and Container Components</h3>
           <ul>
-            <li>Les composants stateless sont simples à maintenir</li>
-            <li>Séparation des responsabilités</li>
+            <li>Stateless components are easier to maintain</li>
+            <li>Separation of concerns</li>
           </ul>
 
           <img data-src="images/conteneur-pres.png" alt="conteneur-presentation" />
@@ -1221,7 +1221,7 @@
           <h3>Asynchronous Actions</h3>
         </section>
         <section>
-          <h3>For now</h3>
+          <h3>Until now</h3>
           <ul>
             <li>Redux allows to dispatch only Objects (actions)</li>
             <li class="fragment">
@@ -1371,8 +1371,17 @@
           <h3>Tests</h3>
         </section>
         <section>
-          <h3>Jest & Enzyme</h3>
+          <h3>Jest, Enzyme, React Test Renderer, React Testing Library, ...</h3>
           <p>The idea is to test <i>presentational components</i>, with their states and props.</p>
+          <p>Again Hooks were a game changer.</p>
+          <ul>
+            <li>Enzyme: Hooks are not yet fully supported</li>
+            <li>React test renderer: No event simulation</li>
+            <li>React testing library: Too complex ?</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Render Components</h3>
 
           <pre><code data-trim>
             import React from "react"
@@ -1388,40 +1397,86 @@
           <p>
             <a href="https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md" target="_blank">Enzyme API</a>
           </p>
-          <aside class="notes">
-            shallow et mount, Mount is for full DOM rendering.
-          </aside>
+        </section>
+        <section>
+          <h3>Render Components</h3>
+
+          <pre><code data-trim>
+            import React from "react"
+            import renderer from 'react-test-renderer'
+
+            describe('MyComponent', () => {
+                it('should work !', () => {
+                    const component = renderer.create(&lt;MyComponent/&gt;)
+                })
+            })
+            </code></pre>
+          <p><a href="https://facebook.github.io/jest/docs/api.html#content" target="_blank">Jest API</a></p>
+          <p>
+            <a href="https://reactjs.org/docs/test-renderer.html" target="_blank">React Test Renderer</a>
+          </p>
         </section>
         <section>
           <h3>Test if sub components are loaded</h3>
           <pre><code data-trim>
-            describe('App', () => {
-                it('renders Hello and its sub components', () => {
-                    const component = shallow(&lt;Hello name="world"/&gt;)
-                    expect(component.find(LeftMenu).exists())
-                        .toBeTruthy()
-                    expect(component.find(RightMenu).exists())
-                        .toBeTruthy()
-                })
+            it('renders App and its sub components', () => {
+                const component = shallow(&lt;App/&gt;)
+                expect(component.find(LeftMenu).exists())
+                    .toBeTruthy()
+                expect(component.find(RightMenu).exists())
+                    .toBeTruthy()
+            })
+            </code></pre>
+          <pre><code data-trim>
+            it('renders App and its sub components', () => {
+                const component = renderer.create(&lt;App/&gt;)
+                expect(component.root.findByType(LeftMenu)).toBeTruthy()
+                expect(component.root.findByType(RightMenu)).toBeTruthy()
             })
             </code></pre>
         </section>
         <section>
+          <h3>Snapshots</h3>
+          <pre><code data-trim>
+          it('renders the same', () => {
+            const component = shallow(&lt;App/&gt;)
+            expect(component).toMatchSnapshot()
+          })
+          </code></pre>
+          <pre><code data-trim>
+          it('renders the same', () => {
+            const component = renderer.create(&lt;App/&gt;)
+            expect(component.toJSON()).toMatchSnapshot()
+          })
+          </code></pre>
+        </section>
+        <section>
           <h3>Displayed text</h3>
           <pre><code data-trim>
+          it('renders a text', () => {
+            const component = shallow(&lt;App/&gt;)
             expect(component.text()).toContain('mon texte attendu')
-            </code></pre>
+          })
+          </code></pre>
+          <pre><code data-trim>
+          it('renders a text', () => {
+            const component = renderer.create(&lt;App/&gt;)
+            expect(component.root.props.children)
+              .toContain('mon texte attendu')
+          })
+          </code></pre>
         </section>
         <section>
           <h3>Assert that a method has been called</h3>
           <pre><code data-trim>
             const mockOnChange = jest.fn()
             expect(mockOnChange).toBeCalledWith(myParam)
-            </code></pre>
+          </code></pre>
         </section>
         <section>
           <h3>Simulate events</h3>
           <pre><code data-trim>
+            //with an enzyme component
             component.find('button')
                 .at(1)
                 .simulate('click')
@@ -1430,19 +1485,43 @@
             </code></pre>
         </section>
         <section>
-          <h3>TODO Appeler une méthode</h3>
+          <h3>Advanced testing - hooks</h3>
           <pre><code data-trim>
-            component.instance().maMethode()
-            </code></pre>
+          export const MyComponent = () => {
+              const [id, setId] = useState(0)
+              useEffect(() => {
+                setId(42)
+              }, [])
+
+              return <div>{id}</div>
+         }
+        </code></pre>
         </section>
         <section>
-          <h3>TODO Récupérer l'état</h3>
+          <h3>Advanced testing - hooks</h3>
           <pre><code data-trim>
-                expect(component.state('name')).toEqual('mon nom')
+          const mockSetState = jest.fn()
+          jest.mock('react', () => ({
+            ...jest.requireActual('react'),
+            useState: jest.fn().mockImplementation(
+              (s) => [s, mockSetState]
+            ),
+          }))
+          describe('MyComponent', () => {
+            it('uses hooks !', () => {
+              let component
+              act(() => {
+                component = renderer.create(&lt;MyComponent /&gt;)
+              })
+            
+              expect(component.toJSON()).toMatchSnapshot()
+              expect(mockSetState).toHaveBeenCalledWith(42)
+            })    
+          }
           </code></pre>
         </section>
         <section>
-          <h3>Mocking avancé - fonction</h3>
+          <h3>Advanced mocking with Jest - functions</h3>
           <pre><code data-trim>
             import * as Maths from './maths'
 
@@ -1456,7 +1535,7 @@
             </code></pre>
         </section>
         <section>
-          <h3>Mocking avancé - module</h3>
+          <h3>Advanced mocking with Jest - modules</h3>
           <pre><code data-trim>
                 import * as Maths from './maths'
                 import { calculette } from './calculette'
@@ -1472,10 +1551,10 @@
             </code></pre>
         </section>
         <section>
-          <h3>Launch tests</h3>
+          <h3>Run tests</h3>
           <ul>
-            <li><i>yarn test</i> in command line</li>
-            <li><i>runner</i> jest in Webstorm</li>
+            <li><i>npm test</i> in command line</li>
+            <li><i>jest runner</i> in Webstorm</li>
             <li><i>--coverage</i> for test coverage</li>
           </ul>
           <aside class="notes">
@@ -1490,10 +1569,10 @@
           <p></p>
           <ol style="font-size: 32px">
             <li>Create a .test.js file for each component</li>
-            <li><i>StudentDetails</i>: Check to (Student.NULL ou non)</li>
+            <li><i>StudentDetails</i>: Check the text (Student.NULL or a new Student)</li>
             <li><i>Filter</i>: Verify that the callback is called when the <i>change</i> event is propagated</li>
             <li>
-              <i>StudenstTable</i>: Verify the number of rows in the table, given an input. Veriy the callback too.
+              <i>StudenstTable</i>: Verify the number of rows in the table, given an input. Verify the callback too.
             </li>
             <li>
               <i>StudentsApp</i>: Verify that the component and its children are displayed. Validate that
@@ -1509,7 +1588,7 @@
         <section>
           <h3>react-router</h3>
 
-          <p>There are different Router for managing history of navigation and URL:</p>
+          <p>There are different Routers for managing history of navigation and URL:</p>
           <ul>
             <li><b>BrowserRouter</b> : /monsite/page1/partie2</li>
             <li><b>HashRouter</b>: /monsite/#/page1/partie2</li>
@@ -1539,7 +1618,7 @@
             </code></pre>
         </section>
         <section>
-          <p>Nested routes !</p>
+          <h3>Nested routes !</h3>
           <pre><code data-trim>
             const Admin = () => (
             &lt;div&gt;
@@ -1553,7 +1632,7 @@
         <section>
           <h3>react-router</h3>
           <p>
-            Its possible to generate links automatically (see documentation)
+            It is possible to generate links automatically (see documentation)
             <a target="_blank" href="https://reacttraining.com/react-router/web/api/NavLink">doc</a> for thr API
           </p>
           <pre><code data-trim>
@@ -1562,7 +1641,7 @@
         </section>
         <section>
           <h3>react-router</h3>
-          <p>Urls dynamiques</p>
+          <p>Dynamic urls</p>
           <pre><code data-trim>
             &lt;Route path={'/admin/users/:userId'} component={UserAdmin}/&gt;
             </code></pre>
@@ -1604,15 +1683,14 @@
             <li>Create routes for /about and /users</li>
             <li>Create links to /users/elsa et /users/anna</li>
             <li>Create the route to UserDetail component</li>
-            <li>Write the link to profile pictures (elsa.jpeg et anna.jpeg)</li>
+            <li>Write the link to profile pictures (elsa.jpeg and anna.jpeg)</li>
           </ol>
         </section>
         <section>
           <h3>Optimizations</h3>
         </section>
         <section>
-          <h3>On ne redessine que le nécessaire</h3>
-          Virtual-DOM
+          <h3>Re render only what is necessary</h3>
           <img data-src="images/should-component-update.png" alt="update" />
         </section>
         <section>
@@ -1620,8 +1698,8 @@
           <p>
             <b>Virtual DOM</b> is...
             <span class="fragment" style="font-size: 24px">
-              a memory image of the components. When a component is rendered, the new V-DOM is compared to the old
-              V-DOM. If there is a difference, The DOM of the browser is partially updated.
+              a memory representation of the components. When a component is rendered, the new V-DOM is compared to the
+              old V-DOM. If there is a difference, the DOM of the browser is (partially) updated.
             </span>
           </p>
         </section>
@@ -1638,7 +1716,8 @@
           <pre class="fragment current-visible"><code data-trim>
             const MyInput = () => {
                 const [value, setValue] = useState('')
-                &lt;input value={value} onChange={e => setValue(e.target.value)} /&gt;
+                &lt;input value={value}
+                    onChange={e => setValue(e.target.value)} /&gt;
             }
             </code></pre>
           <pre class="fragment current-visible"><code data-trim>
@@ -1652,7 +1731,8 @@
           <pre class="fragment current-visible"><code data-trim>
             const MyInput = () => {
                 const [value, setValue] = useState('')
-                const handleInput = useCallback(e => setValue(e.target.value), [setValue])
+                const handleInput = useCallback(e =>
+                    setValue(e.target.value), [setValue])
 
                 &lt;input value={value} onChange={handleInput} /&gt;
             }
@@ -1660,72 +1740,29 @@
         </section>
         <section>
           <h3>useMemo</h3>
-          <pre class="fragment current-visible"><code data-trim>
-            const MyList = () => {
-                const [value, setValue] = useState('')
-                &lt;input value={value} onChange={e => setValue(e.target.value)} /&gt;
-            }
-            </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
-            const MyInput = () => {
-                const [value, setValue] = useState('')
-                const handleInput = e => setValue(e.target.value)
-
-                &lt;input value={value} onChange={handleInput} /&gt;
-            }
-            </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
-            const MyInput = () => {
-                const [value, setValue] = useState('')
-                const handleInput = useCallback(e => setValue(e.target.value), [setValue])
-
-                &lt;input value={value} onChange={handleInput} /&gt;
-            }
-            </code></pre>
-        </section>
-        <section>
-          <h3>Memoization</h3>
-          <p>
-            Permet d'éviter le recalcul d'une propriété dérivée de l'état du store redux. Par exemple le tri d'une
-            liste, le caclcul du prix total d'un panier, ...
-          </p>
-        </section>
-        <section>
-          <h3>Memoization</h3>
           <pre><code data-trim>
-            const shopItemsSelector = state => state.shop.items
-            const taxPercentSelector = state => state.shop.taxPercent
-
-            const subtotalSelector = createSelector(
-            shopItemsSelector,
-            items => items.reduce((acc, item) => acc + item.value, 0)
-            )
-
-            const taxSelector = createSelector(
-            subtotalSelector,
-            taxPercentSelector,
-            (subtotal, taxPercent) => subtotal * (taxPercent / 100)
-            )
-
-            export const totalSelector = createSelector(
-            subtotalSelector,
-            taxSelector,
-            (subtotal, tax) => ({ total: subtotal + tax })
-            )
-            </code></pre>
+            const User = ({user}) =>  &lt;div&gt;{user.name}&lt;/div&gt;
+          </code></pre>
+          <pre class="fragment current-visible"><code data-trim>
+            const MemoizedUser = ({user}) => {
+                return  useMemo(() => &lt;User user={user}&gt;, [user.id])
+            }
+           </code></pre>
+          <pre class="fragment current-visible"><code data-trim>
+            // inside a component
+            const memoizedUser = useMemo(() => &lt;User user={user} /&gt;,
+              [user.id])
+            return {memoizedUser}
+          </code></pre>
+          <pre class="fragment current-visible"><code data-trim>
+            const MemoizedUser = React.memo(({ user }) =>
+              &lt;User user={user} /&gt;)
+          </code></pre>
         </section>
         <section data-background="#b5533c">
           <h3>TP-09</h3>
-          <h4>Optimisation</h4>
-          <p>Jouer avec la méthode shouldComponentUpdate</p>
-          <ol>
-            <li>Implémenter la méthode shouldComponentUpdate</li>
-            <li>Installer le plugin React, pour voir si le composant est redessiné</li>
-            <li>Bonus: Reprendre le TP-03 pour limiter les renders inutiles</li>
-          </ol>
-          <aside class="notes">
-            Démo optimisations
-          </aside>
+          <h4>Optimization</h4>
+          <p>Try different kind of memoization with memo, useMemo and useCallback</p>
         </section>
         <section>
           <h3>Let's do it !</h3>

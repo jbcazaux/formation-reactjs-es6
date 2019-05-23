@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <link rel="stylesheet" href="reveal/css/reveal.css" />
-    <link rel="stylesheet" href="reveal/css/theme/black.css" />
+    <link rel="stylesheet" href="reveal/css/theme/white.css" />
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal/lib/css/zenburn.css" />
@@ -67,12 +67,8 @@
           </h1>
           <h3>#ES6</h3>
           <p style="text-align: center"><a target="_blank" href="http://twitter.com/jbcazaux">@jbcazaux</a></p>
-          <p style="text-align: center">
-            <a href="http://codox.fr/formation-reactjs-es6">http://codox.fr/formation-reactjs-es6</a>
-          </p>
+            <p style="text-align: center"><a target="_blank" href="mailto:formation@oxiane.com">formation@oxiane.com</a></p>
         </section>
-        <section><img data-src="images/mynameis.jpg" alt="my name is" /></section>
-        <section><img data-src="images/coffee.gif" alt="coffee break" /></section>
         <section>
           <h3>Goals</h3>
           <img data-src="images/postits.jpg" alt="goals" />
@@ -117,9 +113,9 @@
                 const MAX = 10
                 const ttc = addTva(15)
                 </code></pre>
-          <p class="fragment">
+          <p class="">
             <span style="color: #8cd0d3">let</span> vs. <span style="color: #cc9393">const</span> ?
-            <span class="fragment">0 var, 44 let, 997 const</span>
+            <span class="">0 var, 44 let, 997 const</span>
           </p>
         </section>
         <section>
@@ -150,12 +146,12 @@
                     return a + b
                 }
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
                 let add = (a, b) => {
                     return a + b
                 }
                 </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
                 add = (a, b) => a + b
                 </code></pre>
         </section>
@@ -184,32 +180,7 @@
         </section>
         <section>
           <h3>Spread operator</h3>
-          <pre class="fragment current-visible"><code data-trim>
-                const odd = [1, 3, 5, 7, 9]
-                const even = [2, 4, 6, 8]
-                const all = [0]
-
-                // arr.push([element1[, ...[, elementN]]])
-                all.push(odd)
-                all.push(even)
-
-                console.log(all) // ?
-                </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
-                const odd = [1, 3, 5, 7, 9]
-                const even = [2, 4, 6, 8]
-                const all = [0]
-
-                // arr.push([element1[, ...[, elementN]]])
-                for (let i = 0; i < odd.length; i++) {
-                    all.push(odd[i])
-                }
-                for (let i = 0; i < even.length; i++) {
-                    all.push(even[i])
-                }
-                console.log(all) // ?
-                </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+          <pre class=""><code data-trim>
                     const odd = [1, 3, 5, 7, 9]
                     const even = [2, 4, 6, 8]
                     const all = [0, ...odd, ...even]
@@ -248,17 +219,9 @@
                 age: 21
             }
 
-            function getUserName(user) {
-                return `${user.firstname} ${user.lastname}`)
-            }
             console.log(getUserName(user))
             </code></pre>
-          <pre class="fragment"><code data-trim>
-            function getUserName({firstname, lastname}) {
-                return `${firstname} ${lastname}`)
-            }
-            </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
             const getUserName = ({firstname, lastname}) =>
                 `${user.firstname} ${user.lastname}`
             </code></pre>
@@ -279,7 +242,7 @@
              return `${user.address.num} ${user.address.street}`
             }
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
             const getUserAddress = ({address: {num, street}}) =>
                 `${num} ${street}`
             </code></pre>
@@ -320,7 +283,7 @@
                     bar: bar
                 }
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
                 const shorter = {
                     foo,
                     bar
@@ -336,7 +299,7 @@
                 .then(ids => {/* use the ids */})
                 .catch(error => console.log(error.toString()))
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
             async function fetchItems {
                 try {
                     const response = await axios.get('/users/42/items')
@@ -379,14 +342,14 @@
                 }
                 add(2)(3) // ???
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
                 const add2 = add(2)
                 add2(3) // = ?
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
                 let add = x => y => x + y // WTF ?!
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
                 let add = x =>
                     y => (x + y)
                 //easy !
@@ -424,7 +387,7 @@
 
             export default Hello
             </code></pre>
-          <pre class="fragment">index.js<code class="jsx" data-trim>
+          <pre class="">index.js<code class="jsx" data-trim>
             import React from "react"
             import ReactDOM from "react-dom"
             import Hello from "./Hello"
@@ -679,7 +642,7 @@
                 return &lt;div onclick={this.handleClick}&gt;Click me !&lt;/div&gt;
             }
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
             const ClickableApp = () => (
                 &lt;div
                     onclick={(e) => console.log('click !', e)}&gt;
@@ -774,7 +737,7 @@
         </section>
         <section>
           <h3>Tips and tricks</h3>
-          <h4 class="fragment">(Workarounds)</h4>
+          <h4 class="">(Workarounds)</h4>
         </section>
         <section>
           <h3>Fragments</h3>
@@ -788,7 +751,7 @@
                 )
             }
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
             render() {
                 return (
                 &lt;&gt;
@@ -929,7 +892,6 @@
                 const userId = window.current_account.id
             </code></pre>
           <p>&laquo;Why use redux if we have global variables ?&raquo;</p>
-          <p class="fragment">#TROLL</p>
         </section>
         <section>
           <h3>Redux</h3>
@@ -939,10 +901,10 @@
               <li>Uniq store (isomorphisme is easier)</li>
               <li>the State of the store is read-only</li>
               <li>We dispatch <b>actions</b> to update the state (of the store)</li>
-              <li class="fragment"><b>Actions</b> are sent to the <b>reducers</b></li>
-              <li class="fragment"><b>Reducers</b> are <b>pures</b>functions</li>
-              <li class="fragment"><b>Reducers</b> have current state and an action as parameters</li>
-              <li class="fragment">They return new state in an immutable object</li>
+              <li class=""><b>Actions</b> are sent to the <b>reducers</b></li>
+              <li class=""><b>Reducers</b> are <b>pures</b>functions</li>
+              <li class=""><b>Reducers</b> have current state and an action as parameters</li>
+              <li class="">They return new state in an immutable object</li>
             </ul>
           </div>
           <img data-src="images/redux.png" alt="redux" height="200" />
@@ -976,7 +938,7 @@
             </ul>
 
             <p>And also...</p>
-            <ul class="fragment">
+            <ul class="">
               <li>We can subscribe to state updates<b>subscribe(listener)</b></li>
               <li>And unscribe thanks to the function returned by <b>subscribe</b></li>
               <li>But we never use that</li>
@@ -1126,8 +1088,8 @@
           <p style="font-size: 28px">
             Presentational Components are what we saw until there (with no ajax calls)
           </p>
-          <p style="font-size: 28px" class="fragment">Container component are generated, <b>but</b>:</p>
-          <ul style="font-size: 28px" class="fragment">
+          <p style="font-size: 28px" class="">Container component are generated, <b>but</b>:</p>
+          <ul style="font-size: 28px" class="">
             <li>
               We must describe how to generate <i>props</i> from the <i>store</i>:
               <b>mapStateToProps(state) {...}</b>
@@ -1138,7 +1100,7 @@
             </li>
           </ul>
 
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
             import {connect} from 'react-redux'
 
             export const MyComponent =
@@ -1224,7 +1186,7 @@
           <h3>Until now</h3>
           <ul>
             <li>Redux allows to dispatch only Objects (actions)</li>
-            <li class="fragment">
+            <li class="">
               <b>redux-thunk</b> or <b>redux-saga</b> allow to dispach functions, and so asynchronous actions or actions
               with conditional statements. They are called <i>middlewares</i>.
             </li>
@@ -1283,7 +1245,7 @@
                     .then(resp => resp.data)
                     .catch(error => console.log(error.toString()))
             </code></pre>
-          <pre class="fragment"><code data-trim>
+          <pre class=""><code data-trim>
             export const fetchItems = () =>
                 (dispatch, getState) => getItems(getState().userId)
                 .then(items => dispatch({type: 'SET_ITEMS', items: items}))
@@ -1313,23 +1275,21 @@
           </ul>
         </section>
         <section>
-          <h3>Context</h3>
-        </section>
-        <section>
           <h3>Context API</h3>
           <ul>
             <li>We can pass data to child components (everywhere in the hierarchy).</li>
-            <li class="fragment">
+            <li class="">
               Many librairies are based on it. It was not an official API before react 16.3
             </li>
-            <li class="fragment"><i>react-redux</i> works with it, the store is passed to all children.</li>
+            <li class=""><i>react-redux</i> works with it, the store is passed to all children.</li>
           </ul>
         </section>
         <section>
           <h3>How to use</h3>
           <p>Create the <i>Context</i>, and wrap the application with <i>&lt;Context.Provider&gt;</i></p>
           <pre><code data-trim>
-                const Context = React.createContext({color: 'green', user: null})
+                const Context = React.createContext({color: 'green',
+                    user: null})
                 export default Context
             </code></pre>
           <pre><code data-trim>
@@ -1697,7 +1657,7 @@
           <h3>Reconciliation</h3>
           <p>
             <b>Virtual DOM</b> is...
-            <span class="fragment" style="font-size: 24px">
+            <span class="" style="font-size: 24px">
               a memory representation of the components. When a component is rendered, the new V-DOM is compared to the
               old V-DOM. If there is a difference, the DOM of the browser is (partially) updated.
             </span>
@@ -1713,22 +1673,7 @@
         </section>
         <section>
           <h3>useCallback()</h3>
-          <pre class="fragment current-visible"><code data-trim>
-            const MyInput = () => {
-                const [value, setValue] = useState('')
-                &lt;input value={value}
-                    onChange={e => setValue(e.target.value)} /&gt;
-            }
-            </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
-            const MyInput = () => {
-                const [value, setValue] = useState('')
-                const handleInput = e => setValue(e.target.value)
-
-                &lt;input value={value} onChange={handleInput} /&gt;
-            }
-            </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+          <pre class=""><code data-trim>
             const MyInput = () => {
                 const [value, setValue] = useState('')
                 const handleInput = useCallback(e =>
@@ -1743,18 +1688,18 @@
           <pre><code data-trim>
             const User = ({user}) =>  &lt;div&gt;{user.name}&lt;/div&gt;
           </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+          <pre class=""><code data-trim>
             const MemoizedUser = ({user}) => {
                 return  useMemo(() => &lt;User user={user}&gt;, [user.id])
             }
            </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+          <pre class=""><code data-trim>
             // inside a component
             const memoizedUser = useMemo(() => &lt;User user={user} /&gt;,
               [user.id])
             return {memoizedUser}
           </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+          <pre class=""><code data-trim>
             const MemoizedUser = React.memo(({ user }) =>
               &lt;User user={user} /&gt;)
           </code></pre>
@@ -1767,8 +1712,7 @@
         <section>
           <h3>Let's do it !</h3>
 
-          <h3>help ? <a href="mailto:jbcazaux@gmail.com">jbcazaux@gmail.com</a></h3>
-          <h3><a href="http://codox.fr/formation-reactjs-es6">http://codox.fr/formation-reactjs-es6</a></h3>
+          <h3>help ? <a href="mailto:formation@oxiane.com">formation@oxiane.com</a></h3>
         </section>
       </div>
     </div>

@@ -464,7 +464,7 @@
           <h3>Type checking</h3>
           <p style="font-size: 32px">
             We can do <i>nothing</i>, use <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a> ,
-            <a target="_blank" href="https://flow.org/">Flow</a>, or
+            <a target="_blank" href="https://flow.org/">Flow</a>, <a target="_blank" href="https://reasonml.github.io/reason-react/">Reason</a>, or
             <a target="_blank" href="https://www.npmjs.com/package/prop-types">PropTypes</a>
           </p>
           <pre><code data-trim>
@@ -620,7 +620,7 @@
         <section>
           <h3>Bonus TP-02</h3>
           <pre><code data-trim>
-            const ShoppingList extends React.Component {
+            const ShoppingList = ({title}) => {
                const [items, setItems] = useState([])
                // useEffect({...}, [])
                return &lt;ShoppingListInternal title={this.props.title}
@@ -638,7 +638,7 @@
         <section>
           <h3>Pass functions into the props</h3>
           <pre><code data-trim>
-            const ShoppingList = () => {
+            const ShoppingList = ({title}) => {
                 const [items, setItems] = useState([])
                 // useEffect({...}, [])
 
@@ -647,8 +647,8 @@
                     setItems(newItems)
                 }
                 return (&lt;ShoppingListInternal
-                        title={this.props.title}
-                        items={this.state.items}
+                        title={title}
+                        items={items}
                         del={deleteItem}/&gt;)
                 }
             }
@@ -809,16 +809,16 @@
           <h3>JSX if (else)</h3>
           <p>if</p>
           <pre><code data-trim>
-                {this.state.user && <div>{this.state.user.login}</div>}
+                {user && <div>{user.login}</div>}
             </code></pre>
           <p>not</p>
           <pre><code data-trim>
-                {this.state.user || <div>No User</div>}
+                {user || <div>No User</div>}
             </code></pre>
           <p>if-else</p>
           <pre><code data-trim>
-                {this.state.user
-                    ? <div>{this.state.user.login}</div>
+                {user
+                    ? <div>{user.login}</div>
                     : <div>No User</div>}
             </code></pre>
           <p>

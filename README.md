@@ -24,11 +24,11 @@ La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@g
 
 **objectif** : comprendre l'intérêt de react par rapport a ses concurents et la façon dont il a été pensé. 
 
-#### Composants (classe, stateless component, High Order Component) 
+#### Composants (functionnal components, useEffect) 
 
-**objectif** : les composants sont les éléments de base de la librairie. Apprendre à les écrire et découper sa page en composants réutilisables.  
+**objectif** : les composants sont les éléments de base de la librairie. Apprendre à les écrire et découper sa page en composants réutilisables. 
 
-#### Etats des composants (data)  
+#### Etats des composants (data, useState)  
 
 **objectif** : comment garder de la donnée au sein d'un composant ou l'échanger entre composants
 

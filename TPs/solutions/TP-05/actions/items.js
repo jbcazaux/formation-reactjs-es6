@@ -23,7 +23,7 @@ export const fetchItems = () => dispatch =>
       console.log(error)
     })
 
-export const addItemWithTVA = item => dispatch => {
+export const addItemWithVTA = item => dispatch => {
   const newItem = new Item(item.id, item.label, item.price * 1.2)
   return dispatch(addItem(newItem))
 }

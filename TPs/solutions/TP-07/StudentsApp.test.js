@@ -27,16 +27,6 @@ describe('StudentsApp', () => {
     expect(component.root.findByType(StudentDetails)).toBeTruthy()
   })
 
-  it('Gum', () => {
-    let component
-    act(() => {
-      component = renderer.create(<Gum />)
-    })
-
-    expect(component.toJSON()).toMatchSnapshot()
-    expect(mockSetState).toHaveBeenCalledWith(42)
-  })
-
   it('updates filtered students', () => {
     //Given
     const students = [new Student(1, 'last1', 'firt1', []), new Student(2, 'last2', 'firt2', [])]

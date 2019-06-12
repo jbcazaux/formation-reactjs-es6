@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
-import { fetchItems, addItemWithTVA } from './actions/items'
+import { fetchItems, addItemWithVTA } from './actions/items'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-const ShoppingList = ({ title, items, fetchItems, addItemWithTVA }) => {
+export const ShoppingList = ({ title, items, fetchItems, addItemWithTVA }) => {
   const [newItemLabel, setNewItemLabel] = useState('')
   const [newItemPrice, setNewItemPrice] = useState(0)
 
@@ -37,15 +37,13 @@ const ShoppingList = ({ title, items, fetchItems, addItemWithTVA }) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    items: state.items,
-  }
-}
+const mapStateToProps = state => ({
+  items: state.items,
+})
 
 const mapDispatchToProps = {
   fetchItems,
-  addItemWithTVA,
+  addItemWithVTA,
 }
 
 export default connect(

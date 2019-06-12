@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
-import { setItems, addItem } from './actions/items'
+import { setItems } from './actions/items'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => {
   return {}
 }
 
-const ShoppingList = ({ title, items, addItem, setItems }) => {
+const ShoppingList = ({ title, items, setItems }) => {
   const [newItemLabel, setNewItemLabel] = useState('')
   const [newItemPrice, setNewItemPrice] = useState(0)
 

@@ -447,7 +447,7 @@
           <pre><code data-trim>
                 (props) => React.createElement('li', {className: 'contact'},
                         React.createElement('h2',
-                            {className: 'contact-name'}, this.props.name)
+                            {className: 'contact-name'}, props.name)
                         )
                 )
                 </code></pre>
@@ -623,7 +623,7 @@
             const ShoppingList = ({title}) => {
                const [items, setItems] = useState([])
                // useEffect({...}, [])
-               return &lt;ShoppingListInternal title={this.props.title}
+               return &lt;ShoppingListInternal title={title}
                         items={items}/&gt;
             }
             const ShoppingListInternal = ({title, items}) =>
@@ -673,16 +673,16 @@
           <h3>Get the JS event</h3>
           <pre><code data-trim>
             const ClickableApp = () => {
-                handleClick(e) {
+                const handleClick = e => {
                     console.log('click !', e)
                 }
-                return &lt;div onclick={this.handleClick}&gt;Click me !&lt;/div&gt;
+                return &lt;div onClick={handleClick}&gt;Click me !&lt;/div&gt;
             }
             </code></pre>
           <pre class="fragment"><code data-trim>
             const ClickableApp = () => (
                 &lt;div
-                    onclick={(e) => console.log('click !', e)}&gt;
+                    onClick={(e) => console.log('click !', e)}&gt;
                     Click me !
                 &lt;/div&gt;
             )
@@ -697,7 +697,7 @@
           <p>Why not inlining css into js ?</p>
 
           <pre><code data-trim>
-            render() {
+            MyComponent = () => {
                 const mystyle = {backgroundColor: '#F0ABCD'}
                 return &lt;div style={mystyle}/&gt;
             }
@@ -716,7 +716,7 @@
           </div>
           <pre><code data-trim>
                 &lt;Button bsStyle="primary"
-                        onClick={this.handleClick}&gt;Go!&lt;/Button&gt;
+                        onClick={handleCdlick}&gt;Go!&lt;/Button&gt;
             </code></pre>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
@@ -740,7 +740,7 @@
             <p>React components that implement Google's Material Design</p>
           </div>
           <pre><code data-trim>
-                &lt;Button onClick={this.handleClick}&gt;Go!&lt;/Button&gt;
+                &lt;Button onClick={handleClick}&gt;Go!&lt;/Button&gt;
             </code></pre>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">

@@ -2,20 +2,22 @@ import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
 import { fetchItems, addItemWithVTA } from './actions/items'
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
-export const ShoppingList = ({ title, items, fetchItems, addItemWithTVA }) => {
+export const ShoppingList = ({ title }) => {
   const [newItemLabel, setNewItemLabel] = useState('')
   const [newItemPrice, setNewItemPrice] = useState(0)
+  const dispatch = useDispatch()
+  const items = useSelector(state => state.items)
 
   useEffect(() => {
-    fetchItems()
+    dispatch(fetchItems())
   }, [])
 
   const createNewItem = e => {
     e.preventDefault()
-    addItemWithTVA(new Item(new Date().getTime(), newItemLabel, newItemPrice))
+    dispatch(addItemWithVTA(new Item(Date.now(), newItemLabel, newItemPrice)))
     setNewItemLabel('')
     setNewItemPrice(0)
   }

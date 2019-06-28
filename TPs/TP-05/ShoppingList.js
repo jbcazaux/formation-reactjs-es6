@@ -1,36 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import ShoppingItem from './ShoppingItem'
 import { fetchItems, addItem } from './actions/items'
-import { connect } from 'react-redux'
 import Item from './Item'
 
-const mapStateToProps = state => {
-  return {
-    items: state.items,
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    loadItems: () => {
-      // TODO: dispatch the fetchItems action
-    },
-    addItem: item => dispatch(addItem(item)),
-  }
-}
-
-const ShoppingList = ({ title, items, loadItems, addItem }) => {
+const ShoppingList = ({ title }) => {
   const [newItemLabel, setNewItemLabel] = useState('')
   const [newItemPrice, setNewItemPrice] = useState(0)
 
   useEffect(() => {
-    // TODO: provide a loadItems function in the props, that dispatches the fetchItems redux action
-    //  loadItems()
+    // TODO: dispatch the fetchItems redux action
   }, [])
 
   const createNewItem = e => {
     e.preventDefault()
-    addItem(new Item(Date.now(), newItemLabel, newItemPrice))
+    const action = addItem(new Item(Date.now(), newItemLabel, newItemPrice))
+    // TODO : dispatch the action
     setNewItemLabel('')
     setNewItemPrice(0)
   }

@@ -1,30 +1,23 @@
 import React from 'react'
-import StudentsApp, { filteredStudents, Gum } from './StudentsApp'
-import renderer, { act } from 'react-test-renderer'
+import StudentsApp, { filteredStudents } from './StudentsApp'
+import { render, act, waitForElement } from '@testing-library/react'
 import axios from 'axios'
-import Filter from './StudentFilter'
-import StudentsTable from './StudentsTable'
-import StudentDetails from './StudentDetails'
 import Student from './Student'
 
-const mockSetState = jest.fn()
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useState: jest.fn().mockImplementation(s => [s, mockSetState]),
-}))
 describe('StudentsApp', () => {
   beforeEach(() => {
-    axios.get = jest.fn().mockImplementationOnce(() => Promise.resolve({ data: [] }))
+    axios.get = jest
+      .fn()
+      .mockImplementationOnce(() => Promise.resolve({ data: [new Student(1, 'last1', 'first1', [])] }))
   })
 
-  it('renders studentsApp and its sub components', () => {
+  it('renders studentsApp and its sub components', async () => {
     // Given
-    const component = renderer.create(<StudentsApp />)
+    let { container, getByTestId } = render(<StudentsApp />)
+    await waitForElement(() => getByTestId('student-row'), container)
 
     // Then
-    expect(component.root.findByType(Filter)).toBeTruthy()
-    expect(component.root.findByType(StudentsTable)).toBeTruthy()
-    expect(component.root.findByType(StudentDetails)).toBeTruthy()
+    expect(container).toMatchSnapshot()
   })
 
   it('updates filtered students', () => {

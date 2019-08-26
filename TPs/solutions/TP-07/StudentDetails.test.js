@@ -1,22 +1,22 @@
 import React from 'react'
 import StudentDetails from './StudentDetails'
-import renderer from 'react-test-renderer'
+import { render, fireEvent } from '@testing-library/react'
 import Student from './Student'
 
 describe('StudentDetails', () => {
   it('renders with no Student', () => {
     // Given
-    const component = renderer.create(<StudentDetails student={Student.NULL} />)
+    const { container, getByText } = render(<StudentDetails student={Student.NULL} />)
 
     // Then
-    expect(component.root.findByType('div').props.children).toContain('Aucun étudiant sélectionné')
+    expect(getByText('Aucun étudiant sélectionné !')).toBeTruthy()
   })
 
   it('renders with a Student', () => {
     // Given
-    const component = renderer.create(<StudentDetails student={new Student(1, 'last', 'first', [])} />)
+    const { container, getByText } = render(<StudentDetails student={new Student(1, 'last', 'first', [])} />)
 
     // Then
-    expect(component.root.findByType('div').props.children.join('')).toContain('first last')
+    expect(getByText('first last')).toBeTruthy()
   })
 })

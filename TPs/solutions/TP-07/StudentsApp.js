@@ -28,7 +28,7 @@ export default function StudentsApp() {
   return (
     <>
       <Filter onChange={handleFilterChange} />
-      <StudentsTable students={filteredStudents(students, filter)} selectStudent={handleSelectStudent} />
+      <StudentsTable students={students} selectStudent={handleSelectStudent} />
       <StudentDetails student={selectedStudent} />
     </>
   )

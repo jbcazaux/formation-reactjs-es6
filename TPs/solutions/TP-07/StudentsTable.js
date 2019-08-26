@@ -24,7 +24,7 @@ const StudentsTable = ({ students, selectStudent }) => {
       </TableHead>
       <TableBody>
         {students.map(student => (
-          <TableRow key={student.id} onClick={() => selectStudent(student)}>
+          <TableRow key={student.id} onClick={() => selectStudent(student)} data-testid="student-row">
             <TableCell>{student.id}</TableCell>
             <TableCell>{student.firstname}</TableCell>
             <TableCell>{student.lastname}</TableCell>

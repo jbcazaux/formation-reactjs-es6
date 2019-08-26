@@ -36,8 +36,4 @@ module.exports = (env, argv = {}) => ({
     open: true,
     historyApiFallback: true,
   },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
 })

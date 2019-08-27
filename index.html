@@ -89,20 +89,20 @@
             <li>
               ES6
               <ul>
-                <li>ES6 Features</li>
-                <li>Functional oriented programming</li>
+                <li>ES6</li>
+                <li>Programmation fonctionnelle</li>
               </ul>
             </li>
             <li>
               ReactJS
               <ul>
-                <li>Fundamental</li>
-                <li>Components</li>
-                <li>State</li>
+                <li>Principes de base</li>
+                <li>Composants</li>
+                <li>Gestion de la donnée</li>
                 <li>Redux</li>
                 <li>Tests</li>
                 <li>Routing</li>
-                <li>Optimizations</li>
+                <li>Optimisations</li>
               </ul>
             </li>
           </ul>
@@ -170,7 +170,7 @@
           <h3>Warning !</h3>
           <p>
             <a target="_blank" href="http://www.webbrowsercompatibility.com/es6/desktop/"
-              >Not everything is supported yet</a
+              >Tout n'est pas encore supporté par les navigateurs</a
             >
           </p>
           <ul>
@@ -179,8 +179,22 @@
           </ul>
         </section>
         <section>
-          <h3>Immutability !</h3>
-          <p>Please do not mutate during the training :)</p>
+          <h3>Immutabilité !</h3>
+          <p>Ne mutez pas pendant la formation, s'il vous plaît.</p>
+        </section>
+        <section>
+            <h3>Spread operator</h3>
+            <pre><code data-trim>
+              let user = {
+                  firstname: 'john',
+                  nickname: 'ninja',
+                  lastname: 'doe',
+                  age: 21
+              }
+
+              user = {...user, firstname: 'toto'}
+              console.log(user) // ?
+            </code></pre>
         </section>
         <section>
           <h3>Spread operator</h3>
@@ -210,33 +224,18 @@
                 console.log(all) // ?
                 </code></pre>
           <pre class="fragment current-visible"><code data-trim>
-                    const odd = [1, 3, 5, 7, 9]
-                    const even = [2, 4, 6, 8]
-                    const all = [0, ...odd, ...even]
-                </code></pre>
-        </section>
-        <section>
-          <h3>Spread operator</h3>
-          <pre><code data-trim>
-                let user = {
-                    firstname: 'john',
-                    nickname: 'ninja',
-                    lastname: 'doe',
-                    age: 21
-                }
-
-                user = {...user, firstname: 'toto'}
-
-                console.log(user) // ?
-            </code></pre>
+                const odd = [1, 3, 5, 7, 9]
+                const even = [2, 4, 6, 8]
+                const all = [0, ...odd, ...even]
+          </code></pre>
         </section>
         <section>
           <h3>Destructuring</h3>
           <pre><code data-trim>
-                    const foo = {a: 1, b: 2, c: 'bar'}
-                    let {a} = foo
-                    console.log(a) // ?
-                </code></pre>
+                const foo = {a: 1, b: 2, c: 'bar'}
+                let {a} = foo
+                console.log(a) // ?
+          </code></pre>
         </section>
         <section>
           <h3>Destructuring</h3>
@@ -328,7 +327,7 @@
             </code></pre>
         </section>
         <section>
-          <h3>Promises VS. async - await</h3>
+          <h3>Promesses VS. async - await</h3>
           <pre><code data-trim>
             axios.get('/users/42/items')
                 .then(resp => resp.data)
@@ -370,15 +369,15 @@
             </code></pre>
         </section>
         <section>
-          <h3>Reminder - currying</h3>
+          <h3>Rappels - currying</h3>
           <pre><code data-trim>
-                let add = function(x) {
-                    return function(y) {
-                        return x + y
-                    }
+            let add = function(x) {
+                return function(y) {
+                    return x + y
                 }
-                add(2)(3) // ???
-            </code></pre>
+            }
+            add(2)(3) // ???
+          </code></pre>
           <pre class="fragment"><code data-trim>
                 const add2 = add(2)
                 add2(3) // = ?
@@ -393,11 +392,11 @@
             </code></pre>
         </section>
         <section>
-          <h3>Reminder - this</h3>
+          <h3>Rappels - this</h3>
           <pre><code data-trim data-noescape>
-                function f() {
-                    this.foo // what is this ?
-                }
+            function f() {
+                this.foo // what is this ?
+            }
             </code></pre>
         </section>
         <section>
@@ -412,7 +411,7 @@
           </h1>
         </section>
         <section>
-          <h3>Everything is Component</h3>
+          <h3>Tout est composant</h3>
           <img data-src="images/components.png" alt="components" width="90%" />
         </section>
         <section>
@@ -438,33 +437,33 @@
         <section>
           <h3>JSX</h3>
           <pre><code data-trim>
-                (props) => (
-                     &lt;li className="contact"&gt;
-                          &lt;h2 className="contact-name"&gt;{props.name}&lt;/h2&gt;
-                      &lt;/li&gt;
-                    )
-                </code></pre>
-          <pre><code data-trim>
-                (props) => React.createElement('li', {className: 'contact'},
-                        React.createElement('h2',
-                            {className: 'contact-name'}, props.name)
-                        )
+            (props) => (
+                 &lt;li className="contact"&gt;
+                      &lt;h2 className="contact-name"&gt;{props.name}&lt;/h2&gt;
+                  &lt;/li&gt;
                 )
-                </code></pre>
+            </code></pre>
+          <pre><code data-trim>
+            (props) => React.createElement('li', {className: 'contact'},
+                    React.createElement('h2',
+                        {className: 'contact-name'}, props.name)
+                    )
+            )
+          </code></pre>
         </section>
         <section data-background="#b5533c">
           <h3>TP-01</h3>
           <h4>Hello World</h4>
           <ol>
-            <li>Setup your environment</li>
-            <li>Write the Hello component/function</li>
+            <li>Installer l'environnement</li>
+            <li>Ecrire le composant Hello</li>
           </ol>
         </section>
         <section>
           <h3>Type checking</h3>
           <p style="font-size: 32px">
-            We can do <i>nothing</i>, use <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a> ,
-            <a target="_blank" href="https://flow.org/">Flow</a>, <a target="_blank" href="https://reasonml.github.io/reason-react/">Reason</a>, or
+            On peut <i>ne rien faire</i>, utiliser <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a> ,
+            <a target="_blank" href="https://flow.org/">Flow</a>, <a target="_blank" href="https://reasonml.github.io/reason-react/">Reason</a>, ou les
             <a target="_blank" href="https://www.npmjs.com/package/prop-types">PropTypes</a>
           </p>
           <pre><code data-trim>
@@ -484,7 +483,7 @@
           </p>
         </section>
         <section>
-          <h3>Component's attributes</h3>
+          <h3>Attributs dans les composants</h3>
           <pre><code data-trim>
             const Counter = () => {
                 let count = 0
@@ -511,17 +510,17 @@
 
         <section>
           <h3>State</h3>
-          <p>Set the default state by passing an argument to useState()</p>
+          <p>Pour mettre un état par défaut, on passe un paramètre à useState()</p>
           <pre><code data-trim>
             const [count, setCount] = useState(42)
           </code></pre>
-          <p>Update a state</p>
+          <p>Mettre à jour un état</p>
           <pre><code data-trim>
             const [count, setCount] = useState(0)
             setCount(10)
             setCount(prevState => prevState + 1)
             </code></pre>
-          <p>Get current state</p>
+          <p>Récupérer l'état courant</p>
           <pre><code data-trim>
             const [count, setCount] = useState(0)
             count
@@ -544,17 +543,17 @@
           <p>Props</p>
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
             <ul>
-              <li>Data from the parent component</li>
+              <li>Data du composant parent</li>
             </ul>
           </div>
 
           <p>State</p>
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
             <ul>
-              <li>Data that may change on user's interactions (clicks, inputs)</li>
-              <li>Write as many stateless components as possible</li>
-              <li><strike>Data computed from props or state</strike>(do that in the function itself)</li>
-              <li><strike>Components</strike></li>
+              <li>Données modifiées par l'utilisateur (clics, saisies, ...)</li>
+              <li>Faire un maximum de composants sans état</li>
+              <li><strike>Données dérivées des props </strike>(Faire ca dans le composant directement)</li>
+              <li><strike>Composants</strike></li>
             </ul>
           </div>
         </section>
@@ -574,7 +573,7 @@
             </code></pre>
         </section>
         <section>
-          <h3>Iterating over an array</h3>
+          <h3>Iterer sur un tableau</h3>
           <pre><code data-trim>
             const MyComponent = (props) => (
                 &lt;ul&gt;
@@ -588,32 +587,31 @@
         </section>
         <section>
           <h3>useEffect</h3>
-          <p>It triggers a function when props or state change</p>
+          <p>Declenche un traitement lorsque des données (issues des props ou des state) change</p>
           <pre><code data-trim>
-                const UserDetails = ({userId}) => {
-                 const [details, setDetails] = useState(null)
+            const UserDetails = ({userId}) => {
+             const [details, setDetails] = useState(null)
 
-                 useEffect(() => {
-                  axios.get('/user/' + userId)
-                   .then(({response: {data: details}}) => setDetails(details)
-                 }, [userId])
+             useEffect(() => {
+              axios.get('/user/' + userId)
+               .then(({response: {data: details}}) => setDetails(details)
+             }, [userId])
 
-                 return &lt;div&gt;...
-                }
-              </code></pre>
+             return &lt;div&gt;...
+            }
+          </code></pre>
         </section>
         <section data-background="#b5533c">
           <h3>TP-02</h3>
           <h4>Shopping list</h4>
           <ol style="font-size: 34px">
-            <li>Display the title provided by the parent</li>
-            <li>Set a default state (empty list)</li>
-            <li>Set the list of items in the state when webservice has returned</li>
-            <li>Display the list items in &lt;li&gt;&lt;/li&gt; tags</li>
-            <li>Create a dedicated component for the &lt;li&gt; tags</li>
+            <li>Afficher le titre passé par le parent</li>
+            <li>Mettre un état par défaut (liste vide)</li>
+            <li>Mettre la liste des items retournée par l'appel au web service</li>
+            <li>Afficher les items dans une liste &lt;ul&gt;&lt;/ul&gt;</li>
+            <li>Créer un composant dédié pour chaque élément de la liste &lt;li&gt;</li>
             <li>
-              Bonus: Create a component that makes the ajax call, and pass the result to a child component that iterates
-              over the list.
+              Bonus: Créer un composant qui fait l'appel ajax, et passe le résultat à un composant enfant, qui lui itère sur la liste.
             </li>
           </ol>
         </section>
@@ -636,7 +634,7 @@
             </code></pre>
         </section>
         <section>
-          <h3>Pass functions into the props</h3>
+          <h3>Passer des fonctions dans les props</h3>
           <pre><code data-trim>
             const ShoppingList = ({title}) => {
                 const [items, setItems] = useState([])
@@ -655,7 +653,7 @@
             </code></pre>
         </section>
         <section>
-          <h3>Use functions from the props</h3>
+          <h3>Utiliser les  fonctions des props</h3>
           <pre><code data-trim>
             const ShoppingListInternal = ({title, items, del}) => (
                 &lt;div&gt;
@@ -670,7 +668,7 @@
             </code></pre>
         </section>
         <section>
-          <h3>Get the JS event</h3>
+          <h3>Récupérer l'évènement JS</h3>
           <pre><code data-trim>
             const ClickableApp = () => {
                 const handleClick = e => {
@@ -681,20 +679,20 @@
             </code></pre>
           <pre class="fragment"><code data-trim>
             const ClickableApp = () => (
-                &lt;div
-                    onClick={(e) => console.log('click !', e)}&gt;
-                    Click me !
-                &lt;/div&gt;
+              &lt;div
+                onClick={e => console.log('click !', e)}&gt;
+                Click me !
+              &lt;/div&gt;
             )
-            </code></pre>
+          </code></pre>
         </section>
         <section>
-          <h3>With style</h3>
+          <h3>Avec du style</h3>
         </section>
         <section>
           <h3>inline style vs css</h3>
 
-          <p>Why not inlining css into js ?</p>
+          <p>Pourquoi ne pas inliner le css dans le js ?</p>
 
           <pre><code data-trim>
             MyComponent = () => {
@@ -702,35 +700,29 @@
                 return &lt;div style={mystyle}/&gt;
             }
             </code></pre>
-          <p>Or you can use a global css, or a css per component (css modules with Webpack)</p>
+          <p>Ou utiliser une css globale, une css par composant (css modules avec Webpack)</p>
 
           <pre><code data-trim>
-                import './MyComponent.css'
+            import './MyComponent.css'
           </code></pre>
         </section>
         <section>
-          <h3>React-bootstrap</h3>
+          <h3>Ant Design</h3>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
-            <p>Bootstrap components for React</p>
+            <p>React Components for desktop applications</p>
           </div>
           <pre><code data-trim>
-                &lt;Button bsStyle="primary"
-                        onClick={handleCdlick}&gt;Go!&lt;/Button&gt;
-            </code></pre>
+            &lt;Button type="primary" onClick={handleCdlick}&gt;Go!&lt;/Button&gt;
+          </code></pre>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
             <p>Documentation</p>
-            <ul>
-              <li>
-                <a target="_blank" href="https://react-bootstrap.github.io/components/alerts/"
-                  >https://react-bootstrap.github.io/components/alerts/</a
-                >
-              </li>
-              <li>
-                <a target="_blank" href="http://getbootstrap.com/components/">http://getbootstrap.com/components/</a>
-              </li>
-            </ul>
+            <p>
+                <a target="_blank" href="https://ant.design/docs/spec/introduce">
+                    https://ant.design/docs/spec/introduce
+                </a>
+            </p>
           </div>
         </section>
         <section>
@@ -741,7 +733,7 @@
           </div>
           <pre><code data-trim>
                 &lt;Button onClick={handleClick}&gt;Go!&lt;/Button&gt;
-            </code></pre>
+          </code></pre>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
             <p>Documentation</p>
@@ -800,10 +792,10 @@
             </code></pre>
         </section>
         <section>
-          <h3>Special chars</h3>
+          <h3>Caractères spéciaux</h3>
           <pre><code data-trim>
-                <span> Jet d{String.fromCharCode(39)}eau</span>
-            </code></pre>
+            <span> Jet d{String.fromCharCode(39)}eau</span>
+           </code></pre>
         </section>
         <section>
           <h3>JSX if (else)</h3>
@@ -822,11 +814,11 @@
                     : <div>No User</div>}
             </code></pre>
           <p>
-            <a href="https://angular.io/api/common/NgIf" style="font-size: .5em; ">Not better in angular :)</a>
+            <a href="https://angular.io/api/common/NgIf" style="font-size: .5em; ">Pas mieux en angular :)</a>
           </p>
         </section>
         <section>
-          <h3>Comments</h3>
+          <h3>Commentaires</h3>
           <pre><code data-trim>
             const MyComponent = () => {
                 // comment inside JS
@@ -856,21 +848,20 @@
         </section>
         <section data-background="#b5533c">
           <h3>TP-03</h3>
-          <h4>Students List</h4>
+          <h4>Liste des étudiants</h4>
           <ol>
-            <li>Create an "input" field that filters the elements of a Table</li>
+            <li>Créer un champ "input" qui filtre les éléments de la table</li>
             <li>
-              Display the name of the selected student (the one which has been clicked on), or a message if no student
-              is selected
+              Afficher le nom de l'étudiant sélectionné (Celui sur lequel on a cliqué), ou un message si aucun étudiant n'est sélectionné (par défaut)
             </li>
-            <li>Bonus : Do a nice Pull Request to make this exercice look beautiful ;)</li>
+            <li>Bonus : Faire une Pull Request pour faire une <b>jolie</b> correction à ce TP ;)</li>
           </ol>
         </section>
         <section>
-          <h3>What we have seen so far</h3>
+          <h3>Ce qu'on a vu jusque là</h3>
           <ul>
-            <li>A component has props and states</li>
-            <li>A stateless component is simpler to write and maintain</li>
+            <li>Un composant a des props et des états (states)</li>
+            <li>Un composant stateless est plus simple à écrire (et donc plus maintenable)</li>
           </ul>
         </section>
         <section>
@@ -880,15 +871,15 @@
           <h3>Flux</h3>
           <div style="font-size: 30px; text-align: left; margin-left: 15px;">
             <ul>
-              <li>Store: Store the data</li>
-              <li>Action: Update model</li>
-              <li>Dispatcher: Dispatch actions into the stores</li>
-              <li>View: UI Components</li>
+              <li>Store: Stocker la donnée</li>
+              <li>Action: Mettre à jour le model</li>
+              <li>Dispatcher: Aiguiller les actions dans les stores</li>
+              <li>View: Composants UI</li>
             </ul>
           </div>
           <img data-src="images/flux.png" alt="flux" />
 
-          <p>The flow is <i>unidirectional</i> ! (<strike>2-way binding</strike>)</p>
+          <p>Le flux est <i>unidirectionel</i> ! (<strike>2-way binding</strike>)</p>
         </section>
         <section>
           <h3>Bad Practice vs. Good Practice</h3>
@@ -896,8 +887,8 @@
           <img data-src="images/flux-bestpractice.png" alt="best practices" height="300" />
           <div style="font-size: 30px; text-align: left; margin-left: 15px;">
             <ul>
-              <li>We dont want to update other components directly</li>
-              <li>We can use the store (redux), the stores (flux), services (RxJs Subjects ), ...</li>
+              <li>On ne met pas à jour les composants directement</li>
+              <li>On peut utiliser le store (redux), les stores (flux), les services (RxJs Subjects ), ...</li>
             </ul>
           </div>
         </section>
@@ -936,13 +927,13 @@
 
           <div style="font-size: 30px; text-align: left; margin-left: 15px;">
             <ul>
-              <li>Unique store (isomorphism is easier)</li>
-              <li>The <b>state</b> of the store is read-only</li>
-              <li>We dispatch <b>actions</b> to update the state (of the store)</li>
-              <li class="fragment"><b>Actions</b> are sent to the <b>reducers</b></li>
-              <li class="fragment"><b>Reducers</b> are <b>pures</b>functions</li>
-              <li class="fragment"><b>Reducers</b> have current state and an action as parameters</li>
-              <li class="fragment">They return a new state in an 'immutable' object</li>
+              <li>Store unique (plus simple pour l'isomorphisme / SSR)</li>
+              <li>Le <b>state</b> du store est read-only</li>
+              <li>On dispatch des <b>actions</b> pour mettre à jour le state (du store)</li>
+              <li class="fragment">Les <b>actions</b> sont envoyées aux <b>reducers</b></li>
+              <li class="fragment">Les <b>reducers</b> sont des fonctions <b>pures</b></li>
+              <li class="fragment">Les <b>Reducers</b> prennent un état et une action en paramètre</li>
+              <li class="fragment">et retournent un nouvel état dans un objet 'immutable'</li>
             </ul>
           </div>
           <img data-src="images/redux.png" alt="redux" height="200" />
@@ -986,13 +977,13 @@
                 }
             }
             </code></pre>
-          Not really readable on medium/large applications...!
+          Pas vraiment lisible pour des applications moyennes ou grosses...!
         </section>
         <section>
-          <h3>Reducers composition</h3>
+          <h3>Composition de reducers</h3>
           <pre><code data-trim>
             export const user =
-                (state = User.NULL, action) => {
+                (state = null, action) => {
                     switch (action.type) {
                         case 'SET_USER':
                             return action.user
@@ -1014,17 +1005,17 @@
             </code></pre>
         </section>
         <section>
-          <h3>Reducers composition</h3>
-          <h4>Wow effect</h4>
+          <h3>Composition de reducers</h3>
+          <h4>Effet Wahou</h4>
           <pre><code data-trim>
             const init = {user: 'nobody', counter: 0}
             export const myGlobalReducer = (state = init, action) =>
-                ({
-                    user: user(state.user, action),
-                    counter: counter(state.counter, action)
-                })
+              ({
+                user: user(state.user, action),
+                counter: counter(state.counter, action)
+              })
             </code></pre>
-          <p>And with a little bit of magic...</p>
+          <p>Et avec un peu de magie...</p>
           <pre><code data-trim>
             import { combineReducers } from 'redux'
             export const myGlobalReducer = combineReducers({
@@ -1034,14 +1025,14 @@
             </code></pre>
         </section>
         <section>
-          <h3>Reminder</h3>
+          <h3>Rappels</h3>
           <div style="font-size: 30px; text-align: left; margin-left: 85px;">
             <ul>
               <li>Actions</li>
               <li>Reducers</li>
               <li>Store</li>
-              <li>React Components</li>
-              <li>Now the components must be linked to the store</li>
+              <li>Composants React</li>
+              <li>Maintenant il fault lier les composants au store</li>
             </ul>
           </div>
           <img data-src="images/redux.png" alt="redux" />
@@ -1049,8 +1040,8 @@
         <section>
           <h3>Hooks and Components</h3>
           <ul>
-            <li>Separation of concerns: UI vs plumbery</li>
-            <li>Reusable technical code goes into the hooks</li>
+            <li>Séparation des responsabilités: UI vs tuyauterie</li>
+            <li>Le code technique est fait dans le hook</li>
           </ul>
         </section>
         <section>
@@ -1106,7 +1097,7 @@
         <section>
           <h3>Pass the store to the whole application</h3>
 
-          <p>All container components of the application must have access to the store.</p>
+          <p>Tous les composants "redux" de application doivent avoir accès au store.</p>
           <pre><code data-trim>
                 import React from 'react'
                 import ReactDOM from 'react-dom'
@@ -1129,33 +1120,30 @@
           <h3>TP-04</h3>
           <h4>Shopping list - bis</h4>
           <ol style="font-size: 34px">
-            <li>Install redux-dev-tools</li>
+            <li>Installer redux-dev-tools</li>
             <li>
-              Like TP-02, but use the <i>state</i> of the store rather than the <i>state</i> of the component, and
-              initializing the list (with synchronous call)
+              Comme le TP-02, mais utiliser le <i>state</i> du store plutot que le <i>state</i> du composant, et initialiser la liste
+              (avec un morceau de code synchrone).
             </li>
-            <li>Create an <i>action creator</i> <b>setItems</b> which returns an <b>ItemAction</b></li>
-            <li>Create a reducer <b>items</b> which takes an <b>ItemAction</b> as input</li>
-            <li>Create a global reducer thanks to <b>combineReducer</b></li>
-            <li>Create the <i>container</i> and the <i>presentational component</i></li>
-            <li>Bonus: Create a button that adds a new Item in the list</li>
+            <li>Creer un <i>action creator</i> <b>setItems</b> qui retourne une <b>ItemAction</b></li>
+            <li>Créer un reducer <b>items</b> qui prend une <b>ItemAction</b> en entrée</li>
+            <li>Créer un global reducer grâce à <b>combineReducer</b></li>
+            <li>Lier le composant au store</i></li>
+            <li>Bonus: Créer un boutton qui ajoute un nouvel item à la liste</li>
           </ol>
         </section>
         <section>
-          <h3>Asynchronous Actions</h3>
+          <h3>Actions asynchrones</h3>
         </section>
         <section>
-          <h3>Until now</h3>
+          <h3>Jusque là</h3>
           <ul>
-            <li>Redux allows to dispatch only Objects (actions)</li>
+            <li>Redux permet de ne dispatcher que des objets (les actions)</li>
             <li class="fragment">
-              <b>redux-thunk</b> or <b>redux-saga</b> allow to dispach functions, and so asynchronous actions or actions
-              with conditional statements. They are called <i>middlewares</i>.
+              <b>redux-thunk</b> or <b>redux-saga</b> permettent de dispacher des fonctions, et donc des actions asynchrones ou des actions
+              avec des conditions. Ces librairies sont des <i>middlewares</i>.
             </li>
           </ul>
-          <aside class="notes">
-            Middleware intercep action before they are sent to reducers
-          </aside>
         </section>
         <section>
           <h3>redux-thunk</h3>
@@ -1192,11 +1180,11 @@
             </code></pre>
         </section>
         <section>
-          <h3>To summarize</h3>
+          <h3>Pour résumer</h3>
 
           <p>
-            A <i>ThunkAction</i> is a function that gets <i>dispatch()</i> and <i>getState()</i> as parameters, and
-            returns the result of the call to <i>dispatch()</i>.
+            Une <i>ThunkAction</i> est une fonction qui prend <i>dispatch()</i> and <i>getState()</i> comme paramètres, et
+            qui retourne le résultat de l'appel à <i>dispatch()</i>.
           </p>
         </section>
         <section>
@@ -1229,24 +1217,24 @@
         </section>
         <section data-background="#b5533c">
           <h3>TP-05</h3>
-          <h4>Shopping list- ter</h4>
+          <h4>Shopping list - ter</h4>
           <ol>
-            <li>Configure the "thunk" Middleware in index.js</li>
-            <li>Like TP-04 but with an asynchronous call (http) to load the items list</li>
+            <li>Configurer le "thunk" Middleware dans index.js</li>
+            <li>Comme le  TP-04 mais avec un appel asynchrone (http) pour charger la liste des items</li>
             <li>
-              Bonus: Create an action which applies a VTA rate, when adding a new item to the store
+              Bonus: Créer une action qui applique un taux de TVA, lorsque l'on ajoute un nouvel élément
             </li>
           </ol>
         </section>
         <section>
           <h3>Bravo !</h3>
-          <p>It was the most complicated part</p>
-          <p>We know how to create components and pass data to them</p>
+          <p>C'était la partie la plus compliquée !</p>
+          <p>On sait créer des composants et leur passer des données</p>
           <ul>
-            <li>From the parent's component</li>
-            <li>From the <i>LocalState</i></li>
-            <li>From the <b>store</b></li>
-            <li>From a grand(n)-parent through the context...</li>
+            <li>Depuis le composant parent</li>
+            <li>Depuis le <i>LocalState</i></li>
+            <li>Depuis le <b>store</b></li>
+            <li>Depuis un grand(n)-parent grâce au context...</li>
           </ul>
         </section>
         <section>
@@ -1255,16 +1243,16 @@
         <section>
           <h3>Context API</h3>
           <ul>
-            <li>We can pass data to child components (everywhere in the hierarchy).</li>
+            <li>On peut passer des données aux composants enfant (partout dans la hiérarchie).</li>
             <li class="fragment">
-              Many librairies are based on it. It was not an official API before react 16.3
+              Beaucoup de librairires sont basées la dessus. Ce n'était pas une API officielle avant Mars 2018.
             </li>
-            <li class="fragment"><i>react-redux</i> works with it, the store is passed to all children.</li>
+            <li class="fragment"><i>react-redux</i> fonctionne grâce à ça, le store est passé à tous les composants.</li>
           </ul>
         </section>
         <section>
-          <h3>How to use</h3>
-          <p>Create the <i>Context</i>, and wrap the application with <i>&lt;Context.Provider&gt;</i></p>
+          <h3>Context API</h3>
+          <p>Créer un <i>Context</i>, and et encapsuler l'application à l'interieur du <i>&lt;Context.Provider&gt;</i></p>
           <pre><code data-trim>
                 const Context = React.createContext({color: 'green', user: null})
                 export default Context
@@ -1278,17 +1266,15 @@
             </code></pre>
         </section>
         <section>
-          <h3>How to use</h3>
-          <p>Then get the <i>context</i>where it is used with the <i>useContext()</i> hook</p>
+          <h3>Context API</h3>
+          <p>Ensuite on récupère le <i>context</i> là ou l'on veut l'utiliser avec le hook <i>useContext()</i></p>
           <pre><code data-trim>
             import React, {useContext} from 'react'
             import MyContext from './Context'
 
             const MyComponent = () => {
                 const ctx = useContext(MyContext)
-                return &lt;div
-                        style={{backgroundColor: ctx.color}}
-                        &gt;
+                return &lt;div style={{backgroundColor: ctx.color}}&gt;
                    Some text
                 &lt;/div&gt;
               }
@@ -1298,10 +1284,10 @@
         <section data-background="#b5533c">
           <h3>TP-06</h3>
           <h4>Context API</h4>
-          <p>The goal is to pass a color and a user from a component to its 'grand-child'</p>
+          <p>L'objectif et de passer une couleur et un utilisateur d'un composant parent à un composant 'petit-fils'</p>
           <ol>
-            <li>Wrap a react component into a Context, with a user and a color.</li>
-            <li>Display the data from the <i>context</i> in the grand child component (Small)</li>
+            <li>Encapsuer un composant React (Large) dans un Context, avec un User et une couleur.</li>
+            <li>Afficher les données du <i>context</i> dans un composant (petit-)enfant (Small)</li>
           </ol>
         </section>
         <section>
@@ -1309,156 +1295,118 @@
         </section>
         <section>
           <h3>Jest, Enzyme, React Test Renderer, React Testing Library, ...</h3>
-          <p>The idea is to test <i>presentational components</i>, with their states and props.</p>
-          <p>Again Hooks were a game changer.</p>
+          <p>L'idées est de tester les <i>composants</i>, avec leurs états et leurs props.</p>
+          <p>L'arrivée des hooks a fait bouger la hiérarchie des outils de test.</p>
           <ul>
-            <li>Enzyme: Hooks are not yet fully supported</li>
-            <li>React test renderer: No event simulation</li>
-            <li>React testing library: Too complex ?</li>
+            <li>Enzyme: les Hooks ne sont pas encore totalement supportés</li>
+            <li>React test renderer: Pas de façon simple de tester les évènements </li>
+            <li>React testing library: Des nouveaux paradigmes sur la façon de tester</li>
           </ul>
         </section>
         <section>
-          <h3>Render Components</h3>
+          <h3>Faire le rendu d'un composant</h3>
 
           <pre><code data-trim>
-            import React from "react"
-            import {shallow} from "enzyme"
-
-            describe('MyComponent', () => {
-                it('should work !', () => {
-                    const component = shallow(&lt;MyComponent/&gt;)
-                })
-            })
-            </code></pre>
-          <p><a href="https://facebook.github.io/jest/docs/api.html#content" target="_blank">Jest API</a></p>
-          <p>
-            <a href="https://github.com/airbnb/enzyme/blob/master/docs/api/shallow.md" target="_blank">Enzyme API</a>
-          </p>
-        </section>
-        <section>
-          <h3>Render Components</h3>
-
-          <pre><code data-trim>
-            import React from "react"
-            import renderer from 'react-test-renderer'
+            import React from 'react'
+            import { render } from '@testing-library/react'
 
             describe('MyComponent', () => {
                 it('should work !', () => {
-                    const component = renderer.create(&lt;MyComponent/&gt;)
+                    render(&lt;MyComponent/&gt;)
                 })
             })
             </code></pre>
-          <p><a href="https://facebook.github.io/jest/docs/api.html#content" target="_blank">Jest API</a></p>
           <p>
-            <a href="https://reactjs.org/docs/test-renderer.html" target="_blank">React Test Renderer</a>
+            <a href="https://testing-library.com/docs/react-testing-library/api#render" target="_blank">React Testing Library</a>
           </p>
         </section>
         <section>
-          <h3>Test if sub components are loaded</h3>
+          <h3>Tester le rendu d'un composant et ses sous-composants, avec les snapshots</h3>
           <pre><code data-trim>
-            it('renders App and its sub components', () => {
-                const component = shallow(&lt;App/&gt;)
-                expect(component.find(LeftMenu).exists())
-                    .toBeTruthy()
-                expect(component.find(RightMenu).exists())
-                    .toBeTruthy()
-            })
-            </code></pre>
-          <pre><code data-trim>
-            it('renders App and its sub components', () => {
-                const component = renderer.create(&lt;App/&gt;)
-                expect(component.root.findByType(LeftMenu)).toBeTruthy()
-                expect(component.root.findByType(RightMenu)).toBeTruthy()
-            })
-            </code></pre>
-        </section>
-        <section>
-          <h3>Snapshots</h3>
-          <pre><code data-trim>
-          it('renders the same', () => {
-            const component = shallow(&lt;App/&gt;)
-            expect(component).toMatchSnapshot()
-          })
-          </code></pre>
-          <pre><code data-trim>
-          it('renders the same', () => {
-            const component = renderer.create(&lt;App/&gt;)
-            expect(component.toJSON()).toMatchSnapshot()
-          })
-          </code></pre>
-        </section>
-        <section>
-          <h3>Displayed text</h3>
-          <pre><code data-trim>
-          it('renders a text', () => {
-            const component = shallow(&lt;App/&gt;)
-            expect(component.text()).toContain('mon texte attendu')
-          })
-          </code></pre>
-          <pre><code data-trim>
-          it('renders a text', () => {
-            const component = renderer.create(&lt;App/&gt;)
-            expect(component.root.props.children)
-              .toContain('mon texte attendu')
-          })
-          </code></pre>
-        </section>
-        <section>
-          <h3>Assert that a method has been called</h3>
-          <pre><code data-trim>
-            const mockOnChange = jest.fn()
-            expect(mockOnChange).toBeCalledWith(myParam)
-          </code></pre>
-        </section>
-        <section>
-          <h3>Simulate events</h3>
-          <pre><code data-trim>
-            //with an enzyme component
-            component.find('button')
-                .at(1)
-                .simulate('click')
-            component.find('input')
-                .simulate('change', {target: {value: 'ma valeur'}})
-            </code></pre>
-        </section>
-        <section>
-          <h3>Advanced testing - hooks</h3>
-          <pre><code data-trim>
-          export const MyComponent = () => {
-              const [id, setId] = useState(0)
-              useEffect(() => {
-                setId(42)
-              }, [])
+            import React from 'react'
+            import { render } from '@testing-library/react'
 
-              return <div>{id}</div>
-         }
-        </code></pre>
+            it('renders App and its sub components', () => {
+                const { container } = render(&lt;App /&gt;)
+
+                expect(container).toMatchSnapshot()
+            })
+            </code></pre>
         </section>
         <section>
-          <h3>Advanced testing - hooks</h3>
+            <h3>Assertions Jest</h3>
+            <pre><code data-trim>
+            it('tests', () => {
+                expect(1 + 1).toEqual(2)
+                expect(['a', 'b']).toHaveLength(2)
+                expect(0 / 2).not.toBeNaN()
+            })
+            </code></pre>
+            <p>.toEqual(value), .toBeNull(), .toBeTruthy(), .toHaveLength(number), .not.toBeNaN(), ...</p>
+            <p><a href="https://jestjs.io/docs/en/expect" target="_blank">Jest</a></p>
+        </section>
+        <section>
+            <h3>Tester le rendu avec des sélecteurs</h3>
+            <pre><code data-trim>
+            it('should display user infos and winner', () => {
+                // Given
+                const { container } = render(&lt;Podium first={player4}
+                                                     second={player16}
+                                                     third={player2} /&gt;)
+                const playerInfos = container.querySelector('.infos')
+                const winner = container.querySelector('#winner')
+
+                // Then
+                expect(playerInfos).toHaveLength(3)
+                expect(winner.textContent).toMatch('player4')
+            })
+            </code></pre>
+        </section>
+        <section>
+          <h3>Rechercher des éléments avec les Query RTL</h3>
           <pre><code data-trim>
-          const mockSetState = jest.fn()
-          jest.mock('react', () => ({
-            ...jest.requireActual('react'),
-            useState: jest.fn().mockImplementation(
-              (s) => [s, mockSetState]
-            ),
-          }))
-          describe('MyComponent', () => {
-            it('uses hooks !', () => {
-              let component
-              act(() => {
-                component = renderer.create(&lt;MyComponent /&gt;)
-              })
-            
-              expect(component.toJSON()).toMatchSnapshot()
-              expect(mockSetState).toHaveBeenCalledWith(42)
-            })    
-          }
+          it('renders a text', () => {
+            const {getByText, getAllByTestId} = render(&lt;App/&gt;)
+            expect(getByText('Menu Alarme')).toBeTruthy()
+            expect(getAllByTestId('alarme')).toHaveLength(2)
+          })
           </code></pre>
         </section>
         <section>
-          <h3>Advanced mocking with Jest - functions</h3>
+          <h3>Vérifier qu'une méthode a été appelée</h3>
+          <pre><code data-trim>
+            const mockFunction = jest.fn()
+            expect(mockFunction).toBeCalledWith(42)
+          </code></pre>
+        </section>
+        <section>
+          <h3>Simuler des événements</h3>
+          <pre><code data-trim>
+          import {render, fireEvent } from '@testing-library/react'
+
+          it('fire events', () => {
+            const {container} = render(&lt;NiceInput /&gt;)
+            const input = container.querySelector('input')
+
+            fireEvent.change(input, {target: {value: 'new text'}})
+          })
+          </code></pre>
+        </section>
+        <section>
+          <h3>Async testing</h3>
+          <pre><code data-trim>
+          import { render, waitForElement } from '@testing-library/react'
+
+           it('loads data on creation', async () => {
+            const { container, getByText } = render(&lt;UserInfo id={12} /&gt;)
+            await waitForElement(() => getByText('Jennifer'), container)
+
+            // expect(...)
+          })
+          </code></pre>
+        </section>
+        <section>
+          <h3>Mocking avancé avec Jest - functions</h3>
           <pre><code data-trim>
             import * as Maths from './maths'
 
@@ -1472,27 +1420,11 @@
             </code></pre>
         </section>
         <section>
-          <h3>Advanced mocking with Jest - modules</h3>
-          <pre><code data-trim>
-                import * as Maths from './maths'
-                import { calculette } from './calculette'
-
-                jest.mock('./maths')
-                describe('calculette', () => {
-                    it('should use maths module to performs add42', () => {
-                        calculette.add42(11)
-
-                        expect(Maths.add).toHaveBeenCalledWith(42, 11)
-                    }
-                })
-            </code></pre>
-        </section>
-        <section>
           <h3>Run tests</h3>
           <ul>
             <li><i>npm test</i> in command line</li>
-            <li><i>jest runner</i> in Webstorm</li>
             <li><i>--coverage</i> for test coverage</li>
+            <li><i>jest runner</i> in Webstorm / IntelliJ</li>
           </ul>
           <aside class="notes">
             File > Settings > JavaScript > Libraries et Download Jest Typescript definition pour ne plus avoir d'erreurs
@@ -1502,21 +1434,19 @@
         <section data-background="#b5533c">
           <h3>TP-07</h3>
           <h4>Tests</h4>
-          <p>The goal is to test the TP-03</p>
+          <p>L'objectif est d'écrire les tests du TP-03</p>
           <p></p>
           <ol style="font-size: 32px">
-            <li>Create a .test.js file for each component</li>
-            <li><i>StudentDetails</i>: Check the text (Student.NULL or a new Student)</li>
-            <li><i>Filter</i>: Verify that the callback is called when the <i>change</i> event is propagated</li>
+            <li>Créer un fichier .test.js pour chaque composant</li>
+            <li><i>StudentDetails</i>: Vérifier les textes (avec Student.NULL ou un Student)</li>
+            <li><i>Filter</i>: Verifier que le callback est appelé quand l'évènement <i>change</i> est propagé</li>
             <li>
-              <i>StudenstTable</i>: Verify the number of rows in the table, given an input. Verify the callback too.
+              <i>StudenstTable</i>: Vérifier le nombre de ligne dans le tableau, suivant le jeu de données. Tester les appels aux callbacks aussi.
             </li>
             <li>
-              <i>StudentsApp</i>: Verify that the component and its children are displayed. Validate that
-              <i>filteredStudents()</i>
-              returns the correct elements, given an input.
+              <i>StudentsApp</i>: Vérifier que les composants sont toujours affichés de la même façon (avec un snapshot) . Tester que
+              <i>filteredStudents()</i> retourne une liste filtrée.
             </li>
-            <li>Bonus: Create jest <i>snapshots</i></li>
           </ol>
         </section>
         <section>
@@ -1525,21 +1455,21 @@
         <section>
           <h3>react-router</h3>
 
-          <p>There are different Routers for managing history of navigation and URL:</p>
+          <p>Il y a différents Routers pour gérer l'historique de la navigation et des URLs:</p>
           <ul>
             <li><b>BrowserRouter</b> : /monsite/page1/partie2</li>
             <li><b>HashRouter</b>: /monsite/#/page1/partie2</li>
             <li><b>MemoryRouter</b> : /</li>
           </ul>
           <p style="font-size: 24px">
-            For BrowserRouter you have to redirect every requests to index.html, but not .css, .js, calls to
+            Pour le BrowserRouter il faut rediriger toutes les requêtes vers index.html, sauf les .css, .js, et les appels aux
             webservices.
           </p>
         </section>
         <section>
           <h3>react-router</h3>
 
-          <p>Define Router in the root level of the application.</p>
+          <p>Il faut définir le routeur à la racine de l'application.</p>
           <pre><code data-trim>
             import {BrowserRouter as Router,
                 Route} from 'react-router-dom'
@@ -1569,8 +1499,8 @@
         <section>
           <h3>react-router</h3>
           <p>
-            It is possible to generate links automatically (see documentation)
-            <a target="_blank" href="https://reacttraining.com/react-router/web/api/NavLink">doc</a> for thr API
+            Il est possible de générer les liens automatiquement (voir la documentation)
+            <a target="_blank" href="https://reacttraining.com/react-router/web/api/NavLink">doc</a> pour l'API
           </p>
           <pre><code data-trim>
             &lt;Link to="/admin/users"&gt;Administration des utilisateurs&lt;/Link&gt;
@@ -1592,12 +1522,12 @@
         </section>
         <section>
           <h3>match</h3>
-          <p>match contains different data:</p>
+          <p>match contient plusieurs données :</p>
           <ul>
-            <li><b>params</b>: keys values for url params (ex: /user/:id)</li>
-            <li><b>url</b>: current matched url/li></li>
-            <li><b>isExact</b>: true if url has perfectly matched</li>
-            <li><b>path</b>: pattern of the match</li>
+            <li><b>params</b>: clé-valeurs des paramètres dans l'url (ex: /user/:id)</li>
+            <li><b>url</b>: l'url qui a matché</li></li>
+            <li><b>isExact</b>: true si l'url a matché de façon exacte (non partielle)</li>
+            <li><b>path</b>: pattern du match</li>
           </ul>
           <pre><code data-trim>
             const Admin = ({match}) => (
@@ -1613,21 +1543,21 @@
         <section data-background="#b5533c">
           <h3>TP-08</h3>
           <h4>React-router</h4>
-          <p>The goal is to provide an application with 3 "pages"</p>
-          <p>Then create an application avec 3 pages, one will have an id in the URLs params</p>
+          <p>L'objectif est de construire une application avec 3 "pages"</p>
+          <p>Une de ces pages aura un id dans les paramètres d'URL</p>
           <ol>
-            <li>Create links to /about and /users</li>
-            <li>Create routes for /about and /users</li>
-            <li>Create links to /users/elsa et /users/anna</li>
-            <li>Create the route to UserDetail component</li>
-            <li>Write the link to profile pictures (elsa.jpeg and anna.jpeg)</li>
+            <li>Créer les liens vers /about et /users</li>
+            <li>Créer les routes pour /about et /users</li>
+            <li>Créer les liens vers /users/elsa et /users/anna</li>
+            <li>Créer la route pour le composant UserDetail</li>
+            <li>Ecrire le lien pour les images de profil (elsa.jpeg and anna.jpeg)</li>
           </ol>
         </section>
         <section>
-          <h3>Optimizations</h3>
+          <h3>Optimisations</h3>
         </section>
         <section>
-          <h3>Re render only what is necessary</h3>
+          <h3>Ne pas faire trop de ré-affichage innutils</h3>
           <img data-src="images/should-component-update.png" alt="update" />
         </section>
         <section>
@@ -1635,13 +1565,13 @@
           <p>
             <b>Virtual DOM</b> is...
             <span class="fragment" style="font-size: 24px">
-              a memory representation of the components. When a component is rendered, the new V-DOM is compared to the
-              old V-DOM. If there is a difference, the DOM of the browser is (partially) updated.
+              Une représentation mémoire des composants. Quand le rendu d'un composant est fait à nouveau, the nouveau V-DOM est comparé à
+              l'ancien V-DOM. Si il y a une différence, le DOM du browser is (partiellement) mis à jour.
             </span>
           </p>
         </section>
         <section>
-          <h3>Too many re-rendering</h3>
+          <h3>Trop de 're-rendering'</h3>
           <ul>
             <li>Memoization</li>
             <li>useCallback()</li>
@@ -1698,8 +1628,8 @@
         </section>
         <section data-background="#b5533c">
           <h3>TP-09</h3>
-          <h4>Optimization</h4>
-          <p>Try different kind of memoization with memo, useMemo and useCallback</p>
+          <h4>Optimisation</h4>
+          <p>Essayer les différentes façons de faire de la memoization avec memo, useMemo and useCallback</p>
         </section>
         <section>
           <h3>Let's do it !</h3>

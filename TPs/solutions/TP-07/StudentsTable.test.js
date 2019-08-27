@@ -7,7 +7,7 @@ describe('StudenstTable', () => {
   it('renders studentsTable with 2 names', () => {
     // Given
     const onSelectStudent = jest.fn()
-    const students = [new Student(1, 'last1', 'firt1', []), new Student(2, 'last2', 'firt2', [])]
+    const students = [new Student(1, 'last1', 'first1', []), new Student(2, 'last2', 'first2', [])]
     const { getAllByTestId } = render(<StudenstTable students={students} selectStudent={onSelectStudent} />)
 
     // Then

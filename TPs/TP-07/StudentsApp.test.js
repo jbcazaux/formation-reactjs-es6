@@ -1,18 +1,28 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import StudentsApp from './StudentsApp'
+import { render } from '@testing-library/react'
+import axios from 'axios'
 import Student from './Student'
-import Filter from './StudentFilter'
-import StudentsTable from './StudentsTable'
-import StudentDetails from './StudentDetails'
 
 describe('StudentsApp', () => {
-  it('TODO !', () => {
-    // Given
+  beforeEach(() => {
+    axios.get = jest.fn().mockImplementationOnce(() => Promise.resolve({ data: [new Student(1, 'last', 'first', [])] }))
+  })
 
-    // When
+  it('renders studentsApp and its sub components', async () => {
+    // Given
+    const { container, getByTestId } = render(<StudentsApp />)
 
     // Then
-    expect(true).toBeTruthy()
+    // TODO: snapshot
+  })
+
+  it('filters students', () => {
+    //Given
+    const students = [new Student(1, 'last1', 'first1', []), new Student(2, 'last2', 'first2', [])]
+
+    //when
+
+    //then
   })
 })

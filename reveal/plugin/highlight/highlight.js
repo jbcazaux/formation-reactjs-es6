@@ -1,82 +1,3 @@
-// START CUSTOM REVEAL.JS INTEGRATION
-;(function() {
-  // Function to perform a better "data-trim" on code snippets
-  // Will slice an indentation amount on each line of the snippet (amount based on the line having the lowest indentation length)
-  function betterTrim(snippetEl) {
-    // Helper functions
-    function trimLeft(val) {
-      // Adapted from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim#Polyfill
-      return val.replace(/^[\s\uFEFF\xA0]+/g, '')
-    }
-    function trimLineBreaks(input) {
-      var lines = input.split('\n')
-
-      // Trim line-breaks from the beginning
-      for (var i = 0; i < lines.length; i++) {
-        if (lines[i].trim() === '') {
-          lines.splice(i--, 1)
-        } else break
-      }
-
-      // Trim line-breaks from the end
-      for (var i = lines.length - 1; i >= 0; i--) {
-        if (lines[i].trim() === '') {
-          lines.splice(i, 1)
-        } else break
-      }
-
-      return lines.join('\n')
-    }
-
-    // Main function for betterTrim()
-    return (function(snippetEl) {
-      var content = trimLineBreaks(snippetEl.innerHTML)
-      var lines = content.split('\n')
-      // Calculate the minimum amount to remove on each line start of the snippet (can be 0)
-      var pad = lines.reduce(function(acc, line) {
-        if (line.length > 0 && trimLeft(line).length > 0 && acc > line.length - trimLeft(line).length) {
-          return line.length - trimLeft(line).length
-        }
-        return acc
-      }, Number.POSITIVE_INFINITY)
-      // Slice each line with this amount
-      return lines
-        .map(function(line, index) {
-          return line.slice(pad)
-        })
-        .join('\n')
-    })(snippetEl)
-  }
-
-  if (typeof window.addEventListener === 'function') {
-    var hljs_nodes = document.querySelectorAll('pre code')
-
-    for (var i = 0, len = hljs_nodes.length; i < len; i++) {
-      var element = hljs_nodes[i]
-
-      // trim whitespace if data-trim attribute is present
-      if (element.hasAttribute('data-trim') && typeof element.innerHTML.trim === 'function') {
-        element.innerHTML = betterTrim(element)
-      }
-
-      // Now escape html unless prevented by author
-      if (!element.hasAttribute('data-noescape')) {
-        element.innerHTML = element.innerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      }
-
-      // re-highlight when focus is lost (for edited code)
-      element.addEventListener(
-        'focusout',
-        function(event) {
-          hljs.highlightBlock(event.currentTarget)
-        },
-        false
-      )
-    }
-  }
-})()
-// END CUSTOM REVEAL.JS INTEGRATION
-
 /*! highlight.js v9.11.0 | BSD3 License | git.io/hljslicense */
 !(function(e) {
   var n = ('object' == typeof window && window) || ('object' == typeof self && self)
@@ -2209,13 +2130,14 @@ hljs.registerLanguage('htmlbars', function(e) {
   var a =
       'action collection component concat debugger each each-in else get hash if input link-to loc log mut outlet partial query-params render textarea unbound unless with yield view',
     t = { i: /\}\}/, b: /[a-zA-Z0-9_]+=/, rB: !0, r: 0, c: [{ cN: 'attr', b: /[a-zA-Z0-9_]+/ }] },
-    i = ({
-      i: /\}\}/,
-      b: /\)/,
-      e: /\)/,
-      c: [{ b: /[a-zA-Z\.\-]+/, k: { built_in: a }, starts: { eW: !0, r: 0, c: [e.QSM] } }],
-    },
-    { eW: !0, r: 0, k: { keyword: 'as', built_in: a }, c: [e.QSM, t, e.NM] })
+    i =
+      ({
+        i: /\}\}/,
+        b: /\)/,
+        e: /\)/,
+        c: [{ b: /[a-zA-Z\.\-]+/, k: { built_in: a }, starts: { eW: !0, r: 0, c: [e.QSM] } }],
+      },
+      { eW: !0, r: 0, k: { keyword: 'as', built_in: a }, c: [e.QSM, t, e.NM] })
   return {
     cI: !0,
     sL: 'xml',
@@ -6005,4 +5927,255 @@ hljs.registerLanguage('coq', function(e) {
     },
     c: [e.QSM, e.C('\\(\\*', '\\*\\)'), e.CNM, { cN: 'type', eB: !0, b: '\\|\\s*', e: '\\w+' }, { b: /[-=]>/ }],
   }
+})
+
+/* highlightjs-line-numbers.js 2.6.0 | (C) 2018 Yauheni Pakala | MIT License | github.com/wcoder/highlightjs-line-numbers.js */
+!(function(n, e) {
+  'use strict'
+  function t() {
+    var n = e.createElement('style')
+    ;(n.type = 'text/css'),
+      (n.innerHTML = g('.{0}{border-collapse:collapse}.{0} td{padding:0}.{1}:before{content:attr({2})}', [v, L, b])),
+      e.getElementsByTagName('head')[0].appendChild(n)
+  }
+  function r(t) {
+    'interactive' === e.readyState || 'complete' === e.readyState
+      ? i(t)
+      : n.addEventListener('DOMContentLoaded', function() {
+          i(t)
+        })
+  }
+  function i(t) {
+    try {
+      var r = e.querySelectorAll('code.hljs,code.nohighlight')
+      for (var i in r) r.hasOwnProperty(i) && l(r[i], t)
+    } catch (o) {
+      n.console.error('LineNumbers error: ', o)
+    }
+  }
+  function l(n, e) {
+    'object' == typeof n &&
+      f(function() {
+        n.innerHTML = s(n, e)
+      })
+  }
+  function o(n, e) {
+    if ('string' == typeof n) {
+      var t = document.createElement('code')
+      return (t.innerHTML = n), s(t, e)
+    }
+  }
+  function s(n, e) {
+    e = e || { singleLine: !1 }
+    var t = e.singleLine ? 0 : 1
+    return c(n), a(n.innerHTML, t)
+  }
+  function a(n, e) {
+    var t = u(n)
+    if (('' === t[t.length - 1].trim() && t.pop(), t.length > e)) {
+      for (var r = '', i = 0, l = t.length; i < l; i++)
+        r += g(
+          '<tr><td class="{0}"><div class="{1} {2}" {3}="{5}"></div></td><td class="{4}"><div class="{1}">{6}</div></td></tr>',
+          [j, m, L, b, p, i + 1, t[i].length > 0 ? t[i] : ' ']
+        )
+      return g('<table class="{0}">{1}</table>', [v, r])
+    }
+    return n
+  }
+  function c(n) {
+    var e = n.childNodes
+    for (var t in e)
+      if (e.hasOwnProperty(t)) {
+        var r = e[t]
+        h(r.textContent) > 0 && (r.childNodes.length > 0 ? c(r) : d(r.parentNode))
+      }
+  }
+  function d(n) {
+    var e = n.className
+    if (/hljs-/.test(e)) {
+      for (var t = u(n.innerHTML), r = 0, i = ''; r < t.length; r++) {
+        var l = t[r].length > 0 ? t[r] : ' '
+        i += g('<span class="{0}">{1}</span>\n', [e, l])
+      }
+      n.innerHTML = i.trim()
+    }
+  }
+  function u(n) {
+    return 0 === n.length ? [] : n.split(y)
+  }
+  function h(n) {
+    return (n.trim().match(y) || []).length
+  }
+  function f(e) {
+    n.setTimeout(e, 0)
+  }
+  function g(n, e) {
+    return n.replace(/\{(\d+)\}/g, function(n, t) {
+      return e[t] ? e[t] : n
+    })
+  }
+  var v = 'hljs-ln',
+    m = 'hljs-ln-line',
+    p = 'hljs-ln-code',
+    j = 'hljs-ln-numbers',
+    L = 'hljs-ln-n',
+    b = 'data-line-number',
+    y = /\r\n|\r|\n/g
+  n.hljs
+    ? ((n.hljs.initLineNumbersOnLoad = r), (n.hljs.lineNumbersBlock = l), (n.hljs.lineNumbersValue = o), t())
+    : n.console.error('highlight.js not detected!')
+})(window, document)
+
+/**
+ * This reveal.js plugin is wrapper around the highlight.js
+ * syntax highlighting library.
+ */
+;(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    root.RevealHighlight = factory()
+  } else if (typeof exports === 'object') {
+    module.exports = factory()
+  } else {
+    // Browser globals (root is window)
+    root.RevealHighlight = factory()
+  }
+})(this, function() {
+  // Function to perform a better "data-trim" on code snippets
+  // Will slice an indentation amount on each line of the snippet (amount based on the line having the lowest indentation length)
+  function betterTrim(snippetEl) {
+    // Helper functions
+    function trimLeft(val) {
+      // Adapted from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim#Polyfill
+      return val.replace(/^[\s\uFEFF\xA0]+/g, '')
+    }
+    function trimLineBreaks(input) {
+      var lines = input.split('\n')
+
+      // Trim line-breaks from the beginning
+      for (var i = 0; i < lines.length; i++) {
+        if (lines[i].trim() === '') {
+          lines.splice(i--, 1)
+        } else break
+      }
+
+      // Trim line-breaks from the end
+      for (var i = lines.length - 1; i >= 0; i--) {
+        if (lines[i].trim() === '') {
+          lines.splice(i, 1)
+        } else break
+      }
+
+      return lines.join('\n')
+    }
+
+    // Main function for betterTrim()
+    return (function(snippetEl) {
+      var content = trimLineBreaks(snippetEl.innerHTML)
+      var lines = content.split('\n')
+      // Calculate the minimum amount to remove on each line start of the snippet (can be 0)
+      var pad = lines.reduce(function(acc, line) {
+        if (line.length > 0 && trimLeft(line).length > 0 && acc > line.length - trimLeft(line).length) {
+          return line.length - trimLeft(line).length
+        }
+        return acc
+      }, Number.POSITIVE_INFINITY)
+      // Slice each line with this amount
+      return lines
+        .map(function(line, index) {
+          return line.slice(pad)
+        })
+        .join('\n')
+    })(snippetEl)
+  }
+
+  var RevealHighlight = {
+    init: function() {
+      // Read the plugin config options and provide fallbacks
+      var config = Reveal.getConfig().highlight || {}
+      config.highlightOnLoad = typeof config.highlightOnLoad === 'boolean' ? config.highlightOnLoad : true
+      config.escapeHTML = typeof config.escapeHTML === 'boolean' ? config.escapeHTML : true
+
+      ;[].slice.call(document.querySelectorAll('.reveal pre code')).forEach(function(block) {
+        // Trim whitespace if the "data-trim" attribute is present
+        if (block.hasAttribute('data-trim') && typeof block.innerHTML.trim === 'function') {
+          block.innerHTML = betterTrim(block)
+        }
+
+        // Escape HTML tags unless the "data-noescape" attrbute is present
+        if (config.escapeHTML && !block.hasAttribute('data-noescape')) {
+          block.innerHTML = block.innerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        }
+
+        // Re-highlight when focus is lost (for contenteditable code)
+        block.addEventListener(
+          'focusout',
+          function(event) {
+            hljs.highlightBlock(event.currentTarget)
+          },
+          false
+        )
+
+        if (config.highlightOnLoad) {
+          RevealHighlight.highlightBlock(block)
+        }
+      })
+    },
+
+    /**
+     * Highlights a code block. If the <code> node has the
+     * 'data-line-numbers' attribute we also generate slide
+     * numbers.
+     */
+    highlightBlock: function(block) {
+      hljs.highlightBlock(block)
+
+      if (block.hasAttribute('data-line-numbers')) {
+        hljs.lineNumbersBlock(block, { singleLine: true })
+
+        // hljs.lineNumbersBlock runs async code on the next cycle,
+        // so we need to do the same to execute after it's done
+        setTimeout(RevealHighlight.highlightLines.bind(this, block), 0)
+      }
+    },
+
+    /**
+     * Visually emphasize specific lines within a code block.
+     * This only works on blocks with line numbering turned on.
+     *
+     * @param {HTMLElement} block a <code> block
+     * @param {String} [linesToHighlight] The lines that should be
+     * highlighted in this format:
+     * "1" 		= highlights line 1
+     * "2,5"	= highlights lines 2 & 5
+     * "2,5-7"	= highlights lines 2, 5, 6 & 7
+     */
+    highlightLines: function(block, linesToHighlight) {
+      linesToHighlight = linesToHighlight || block.getAttribute('data-line-numbers')
+
+      if (typeof linesToHighlight === 'string' && linesToHighlight !== '') {
+        linesToHighlight.split(',').forEach(function(lineNumbers) {
+          // Avoid failures becase of whitespace
+          lineNumbers = lineNumbers.replace(/\s/g, '')
+
+          // Ensure that we looking at a valid slide number (1 or 1-2)
+          if (/^[\d-]+$/.test(lineNumbers)) {
+            lineNumbers = lineNumbers.split('-')
+
+            var lineStart = lineNumbers[0]
+            var lineEnd = lineNumbers[1] || lineStart
+
+            ;[].slice
+              .call(block.querySelectorAll('table tr:nth-child(n+' + lineStart + '):nth-child(-n+' + lineEnd + ')'))
+              .forEach(function(lineElement) {
+                lineElement.classList.add('highlight-line')
+              })
+          }
+        })
+      }
+    },
+  }
+
+  Reveal.registerPlugin('highlight', RevealHighlight)
+
+  return RevealHighlight
 })

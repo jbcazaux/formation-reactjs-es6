@@ -80,7 +80,7 @@
         <section>
           <h3>Versions</h3>
           <pre><code data-trim>
-                    "react": "16.9.0"
+                    "react": "16.11.0"
                 </code></pre>
         </section>
         <section>
@@ -587,7 +587,7 @@
         </section>
         <section>
           <h3>useEffect</h3>
-          <p>Declenche un traitement lorsque des données (issues des props ou des state) change</p>
+          <p>Declenche un traitement lorsque des données (issues des props ou des state) changent</p>
           <pre><code data-trim>
             const UserDetails = ({userId}) => {
              const [details, setDetails] = useState(null)
@@ -790,12 +790,6 @@
                 )
             }
             </code></pre>
-        </section>
-        <section>
-          <h3>Caractères spéciaux</h3>
-          <pre><code data-trim>
-            <span> Jet d{String.fromCharCode(39)}eau</span>
-           </code></pre>
         </section>
         <section>
           <h3>JSX if (else)</h3>
@@ -1095,9 +1089,9 @@
           </code></pre>
         </section>
         <section>
-          <h3>Pass the store to the whole application</h3>
+          <h3>Passer le store à l'application</h3>
 
-          <p>Tous les composants "redux" de application doivent avoir accès au store.</p>
+          <p>Tous les composants "redux" de l'application doivent avoir accès au store.</p>
           <pre><code data-trim>
                 import React from 'react'
                 import ReactDOM from 'react-dom'
@@ -1140,7 +1134,7 @@
           <ul>
             <li>Redux permet de ne dispatcher que des objets (les actions)</li>
             <li class="fragment">
-              <b>redux-thunk</b> or <b>redux-saga</b> permettent de dispacher des fonctions, et donc des actions asynchrones ou des actions
+              <b>redux-thunk</b>, <b>redux-saga</b>, <b>mobx</b> permettent de dispacher des fonctions, et donc des actions asynchrones ou des actions
               avec des conditions. Ces librairies sont des <i>middlewares</i>.
             </li>
           </ul>
@@ -1298,7 +1292,7 @@
           <p>L'idées est de tester les <i>composants</i>, avec leurs états et leurs props.</p>
           <p>L'arrivée des hooks a fait bouger la hiérarchie des outils de test.</p>
           <ul>
-            <li>Enzyme: les Hooks ne sont pas encore totalement supportés</li>
+            <li>Enzyme: les Hooks ont mis un moment à être supportés (</li>
             <li>React test renderer: Pas de façon simple de tester les évènements </li>
             <li>React testing library: Des nouveaux paradigmes sur la façon de tester</li>
           </ul>

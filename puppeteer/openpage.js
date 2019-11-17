@@ -18,7 +18,11 @@ puppeteer.launch().then(async browser => {
       errors.push(pageerr)
     })
 
-    await page.setViewport({ width: 1280, height: 800 })
+    await page.setViewport({
+      width: 1280,
+      height: 800,
+      deviceScaleFactor: 1,
+    })
     for (const tp of ['01', '02', '03', '04', '05', '06', '07', '08', '09']) {
       await verifyPage(page, tp)
     }

@@ -1,33 +1,72 @@
-version: 2
+version: 2.1
 
-defaults: &defaults
-  working_directory: ~/repo
+executors: node_executor
+  working_directory: ~/my_workspace
   docker:
-  - image: circleci/node:10.9.0-browsers
+  - image: circleci/node:13.1.0-browsers
 
 jobs:
-  checkout:
-    <<: *defaults
+  checkout_install:
+    executor: node_executor
     steps:
     - checkout
-    - persist_to_workspace:
-        root: ~/repo
-        path: .
-  ncuu:
-    <<: *defaults
-    steps:
-    - checkout
-    - run:
-        name: ncu -u
-        command: npm run ncuu
-    - persist_to_workspace:
-        root: ~/repo
-        path: .
-  commit:
-    <<: *defaults
+    - attach_workspace:
+        at: ~/my_workspace
+    - restore_cache:
+        keys:
+          - v2-dependencies-{{ checksum "package.json" }}
+          - v2-dependencies-
+    - run: npm install
+    - save_cache:
+        paths:
+          - node_modules
+        key: v2-dependencies-{{ checksum "package.json" }}
+
+  install_updates:
+    executor: node_executor
     steps:
     - attach_workspace:
-        at: ~/repo
+        at: ~/my_workspace
+    - restore_cache:
+        keys:
+          - v2-dependencies-{{ checksum "package.json" }}
+          - v2-dependencies-
+    - run: npm run ncuu
+    - run: npm install
+    - persist_to_workspace:
+        root: ~/my_workspace
+        path: .
+  run_tests:
+    executor: node_executor
+    steps:
+    - attach_workspace:
+      at: ~/my_workspace
+    - run:
+        name: launch http-server
+        command: npm run httpserver
+        background: true
+    - run:
+        name: run tests
+        command: npm run testci
+    - persist_to_workspace:
+        root: ~/my_workspace
+        path: .
+  kill_http_server:
+    executor: node_executor
+    steps:
+      - attach_workspace:
+        at: ~/my_workspace
+    - run:
+        name: kill server
+        command: pkill node
+    - persist_to_workspace:
+        root: ~/my_workspace
+        path: .
+  commit:
+    executor: node_executor
+    steps:
+    - attach_workspace:
+        at: ~/my_workspace
     - run:
         name: commit
         command: |
@@ -35,70 +74,25 @@ jobs:
           git config user.name "circleci ncuu bot"
           git commit --allow-empty -m "update lib versions"
           git push -q https://${GITHUB_TOKEN}@github.com/jbcazaux/formation-reactjs-es6.git master
-  build:
-    <<: *defaults
-    steps:
-    - checkout
-    - restore_cache:
-        keys:
-        - v2-dependencies-{{ checksum "package.json" }}
-        - v2-dependencies-
-
-    - run: npm install
-    - save_cache:
-        paths:
-        - node_modules
-        key: v2-dependencies-{{ checksum "package.json" }}
-
-    - run:
-        name: build TPs
-        command: npm run testci
-
-    - run:
-        name: launch http-server
-        command: npm run httpserver
-        background: true
-
-    - run:
-        name: run tests
-        command: node ./puppeteer/openpage.js
-
-    - run:
-        name: kill server
-        command: pkill node
-
-    - persist_to_workspace:
-        root: ~/repo
-        paths: .
 
 workflows:
   version: 2
-  build-tps:
-    jobs:
-    - build:
-        filters:
-          branches:
-            only:
-            - master
-            - test-ci
   test-updates:
-    triggers:
-    - schedule:
-        cron: "30 2 * * *"
-        filters:
-          branches:
-            only:
-            - master
+    filters:
+      branches:
+        only:
+        - test-ci
     jobs:
-    - ncuu:
-        filters:
-          branches:
-            only:
-            - master
-            - test-ci
-    - build:
+    - checkout_install
+    - install_updates:
         requires:
-        - ncuu
+          - checkout_install
+    - run_tests:
+        requires:
+          - install_updates
+    - kill_http_server:
+        requires:
+        - run_tests
     - commit:
         requires:
-        - build
+        - kill_http_server

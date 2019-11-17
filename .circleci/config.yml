@@ -1,9 +1,10 @@
 version: 2.1
 
-executors: node_executor
-  working_directory: ~/my_workspace
-  docker:
-  - image: circleci/node:13.1.0-browsers
+executors:
+  node_executor:
+    working_directory: ~/my_workspace
+    docker:
+    - image: circleci/node:13.1.0-browsers
 
 jobs:
   checkout_install:
@@ -11,7 +12,7 @@ jobs:
     steps:
     - checkout
     - attach_workspace:
-        at: ~/my_workspace
+        at: .
     - restore_cache:
         keys:
           - v2-dependencies-{{ checksum "package.json" }}
@@ -21,12 +22,14 @@ jobs:
         paths:
           - node_modules
         key: v2-dependencies-{{ checksum "package.json" }}
-
+    - persist_to_workspace:
+        root: .
+        path: .
   install_updates:
     executor: node_executor
     steps:
     - attach_workspace:
-        at: ~/my_workspace
+        at: .
     - restore_cache:
         keys:
           - v2-dependencies-{{ checksum "package.json" }}
@@ -34,39 +37,39 @@ jobs:
     - run: npm run ncuu
     - run: npm install
     - persist_to_workspace:
-        root: ~/my_workspace
+        root: .
         path: .
   run_tests:
     executor: node_executor
     steps:
-    - attach_workspace:
-      at: ~/my_workspace
-    - run:
-        name: launch http-server
-        command: npm run httpserver
-        background: true
-    - run:
-        name: run tests
-        command: npm run testci
-    - persist_to_workspace:
-        root: ~/my_workspace
-        path: .
+      - attach_workspace:
+          at: .
+      - run:
+          name: launch http-server
+          command: npm run httpserver
+          background: true
+      - run:
+          name: run tests
+          command: npm run testci
+      - persist_to_workspace:
+          root: .
+          path: .
   kill_http_server:
     executor: node_executor
     steps:
-      - attach_workspace:
-        at: ~/my_workspace
+    - attach_workspace:
+        at: .
     - run:
         name: kill server
         command: pkill node
     - persist_to_workspace:
-        root: ~/my_workspace
+        root: .
         path: .
   commit:
     executor: node_executor
     steps:
     - attach_workspace:
-        at: ~/my_workspace
+        at: .
     - run:
         name: commit
         command: |
@@ -77,22 +80,18 @@ jobs:
 
 workflows:
   version: 2
-  test-updates:
-    filters:
-      branches:
-        only:
-        - test-ci
+  test_updates:
     jobs:
-    - checkout_install
-    - install_updates:
-        requires:
-          - checkout_install
-    - run_tests:
-        requires:
-          - install_updates
-    - kill_http_server:
-        requires:
-        - run_tests
-    - commit:
-        requires:
-        - kill_http_server
+      - checkout_install
+      - install_updates:
+          requires:
+            - checkout_install
+      - run_tests:
+          requires:
+            - install_updates
+      - kill_http_server:
+          requires:
+          - run_tests
+      - commit:
+          requires:
+          - kill_http_server

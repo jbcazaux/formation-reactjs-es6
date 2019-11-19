@@ -946,7 +946,7 @@
                 }
             }
             </code></pre>
-          The <b>state</b> is read-only !
+          Le <b>state</b> est read-only !
           <img data-src="images/redux.png" alt="redux" />
         </section>
         <section>
@@ -1048,8 +1048,8 @@
             import { useSelector } from 'react-redux'
 
             export const MyComponent = () => {
-              const dataFromTheStore = useSelector(state => state.data)
-              return &lt;div&gt;{data.id} / {data.info} &lt;/div&gt;
+              const foo = useSelector(state => state.foo)
+              return &lt;div&gt;{foo.id} / {foo.info} &lt;/div&gt;
             }
             </code></pre>
             <p style="font-size: 28px">

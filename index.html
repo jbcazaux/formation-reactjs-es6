@@ -79,17 +79,15 @@
         </section>
         <section>
           <h3>Versions</h3>
-          <pre><code data-trim>
-                    "react": "16.12.0"
-                </code></pre>
+          <pre><code data-trim>"react": "17.0.0-rc.0"</code></pre>
         </section>
         <section>
-          <h3>Content</h3>
+          <h3>Le programme !</h3>
           <ul>
             <li>
-              ES6
+              ES6/7
               <ul>
-                <li>ES6</li>
+                <li>ES6/7</li>
                 <li>Programmation fonctionnelle</li>
               </ul>
             </li>
@@ -108,7 +106,7 @@
           </ul>
         </section>
         <section>
-          <h2>EcmaScript 6</h2>
+          <h2>EcmaScript 6/7</h2>
         </section>
         <section>
           <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
@@ -388,7 +386,7 @@
           <pre class="fragment"><code data-trim>
                 let add = x =>
                     y => (x + y)
-                //easy !
+                // easy !
             </code></pre>
         </section>
         <section>
@@ -543,7 +541,7 @@
           <p>Props</p>
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
             <ul>
-              <li>Data du composant parent</li>
+              <li>Données passées par le composant parent</li>
             </ul>
           </div>
 
@@ -573,7 +571,7 @@
             </code></pre>
         </section>
         <section>
-          <h3>Iterer sur un tableau</h3>
+          <h3>Itérer sur un tableau</h3>
           <pre><code data-trim>
             const MyComponent = (props) => (
                 &lt;ul&gt;
@@ -587,7 +585,7 @@
         </section>
         <section>
           <h3>useEffect</h3>
-          <p>Declenche un traitement lorsque des données (issues des props ou des state) changent</p>
+          <p>Déclenche un traitement lorsque des données (issues des props ou des states) changent</p>
           <pre><code data-trim>
             const UserDetails = ({userId}) => {
              const [details, setDetails] = useState(null)
@@ -771,24 +769,12 @@
         <section>
           <h3>Fragments</h3>
           <pre><code data-trim>
-            render() {
-                return (
-                &lt;React.Fragment&gt;
-                    &lt;div&gt;Pourquoi &lt;/div&gt;
-                    &lt;span&gt;pas ?&lt;/span&gt;
-                &lt;/React.Fragment&gt;
-                )
-            }
-            </code></pre>
-          <pre class="fragment"><code data-trim>
-            render() {
-                return (
+            const ComponentWithFragment = () => (
                 &lt;&gt;
-                    &lt;div&gt;Pourquoi &lt;/div&gt;
-                    &lt;span&gt;pas ?&lt;/span&gt;
+                    &lt;div&gt;Les&lt;/div&gt;
+                    &lt;span&gt;fragments&lt;/span&gt;
                 &lt;/&gt;
-                )
-            }
+            )
             </code></pre>
         </section>
         <section>
@@ -855,7 +841,7 @@
           <h3>Ce qu'on a vu jusque là</h3>
           <ul>
             <li>Un composant a des props et des états (states)</li>
-            <li>Un composant stateless est plus simple à écrire (et donc plus maintenable)</li>
+            <li>Un composant sans états est plus simple à écrire (et donc plus maintenable)</li>
           </ul>
         </section>
         <section>
@@ -913,7 +899,7 @@
           <pre><code data-trim>
                 const userId = window.current_account.id
             </code></pre>
-          <p>&laquo;Why use redux if we have global variables ?&raquo;</p>
+          <p>&laquo; Pourquoi utiliser Redux alors qu'on a déjà les variables globales ? &raquo;</p>
           <p class="fragment">#TROLL</p>
         </section>
         <section>
@@ -953,8 +939,8 @@
           <h3>React & Redux</h3>
         </section>
         <section>
-          <h3>Reducers composition</h3>
-          <h4>Naive approach</h4>
+          <h3>Composition de Reducers</h3>
+          <h4>Approche naïve</h4>
           <pre><code data-trim>
             const initialState = {user: '', counter: 0}
             export const myGlobalReducer =
@@ -1032,10 +1018,10 @@
           <img data-src="images/redux.png" alt="redux" />
         </section>
         <section>
-          <h3>Hooks and Components</h3>
+          <h3>Les Hooks redux</h3>
           <ul>
             <li>Séparation des responsabilités: UI vs tuyauterie</li>
-            <li>Le code technique est fait dans le hook</li>
+            <li>Le code technique est fait dans les hooks</li>
           </ul>
         </section>
         <section>
@@ -1060,7 +1046,7 @@
 
             export const MyComponent = () => {
               const dispatch = useDispatch()
-              return &lt;div onClick={() => dispatch({type: 'INC', inc:1})}&gt;
+              return &lt;div onClick={() => dispatch({type: 'INC', inc: 1})}&gt;
                 Click !
               &lt;/div&gt;
             }
@@ -1292,7 +1278,7 @@
           <p>L'idées est de tester les <i>composants</i>, avec leurs états et leurs props.</p>
           <p>L'arrivée des hooks a fait bouger la hiérarchie des outils de test.</p>
           <ul>
-            <li>Enzyme: les Hooks ont mis un moment à être supportés (</li>
+            <li>Enzyme: les Hooks ont mis un moment à être supportés</li>
             <li>React test renderer: Pas de façon simple de tester les évènements </li>
             <li>React testing library: Des nouveaux paradigmes sur la façon de tester</li>
           </ul>
@@ -1359,10 +1345,21 @@
         <section>
           <h3>Rechercher des éléments avec les Query RTL</h3>
           <pre><code data-trim>
+          import {render} from '@testing-library/react'
+
           it('renders a text', () => {
             const {getByText, getAllByTestId} = render(&lt;App/&gt;)
             expect(getByText('Menu Alarme')).toBeTruthy()
             expect(getAllByTestId('alarme')).toHaveLength(2)
+          })
+          </code></pre>
+          <pre><code data-trim>
+          import {render, screen} from '@testing-library/react'
+
+          it('renders a text', () => {
+            render(&lt;App/&gt;)
+            expect(screen.getByText('Menu Alarme')).toBeTruthy()
+            expect(screen.getAllByTestId('alarme')).toHaveLength(2)
           })
           </code></pre>
         </section>
@@ -1389,11 +1386,11 @@
         <section>
           <h3>Async testing</h3>
           <pre><code data-trim>
-          import { render, waitForElement } from '@testing-library/react'
+          import { render, screen } from '@testing-library/react'
 
            it('loads data on creation', async () => {
-            const { container, getByText } = render(&lt;UserInfo id={12} /&gt;)
-            await waitForElement(() => getByText('Jennifer'), container)
+            render(&lt;UserInfo id={42} /&gt;)
+            await screen.getByText('Jennifer')
 
             // expect(...)
           })
@@ -1402,13 +1399,18 @@
         <section>
           <h3>Mocking avancé avec Jest - functions</h3>
           <pre><code data-trim>
-            import * as Maths from './maths'
+            import { render, screen } from '@testing-library/react'
 
-            describe('Maths', () => {
-              it('should add', () => {
-                Maths.add = jest.fn().mockImplementationOnce(() => 21)
+            jest.mock('api/users', () => ({
+              fetchUser: userId =>
+                Promise.resolve(new User(userId, 'Jennifer')),
+            }))
+            describe('UserInfo Component', async () => {
+              it('should display user ', () => {
+                render(&lt;UserInfo id={42} /&gt;)
+                await screen.getByText('Jennifer')
 
-                expect(Maths.add(1,2)).toEqual(21)
+                // expect...
               }
             })
             </code></pre>

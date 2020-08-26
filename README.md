@@ -56,7 +56,7 @@ La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@g
 
 #### Optimisations des applications (vitesse, mémoire, ...)
 
-<ins>objectif</ins> : Avoir en tete le fonctionnement de ReactJS et les premières choses à mettre en place pour éviter des ralentissements. Utiliser des outils pour voir où intervenir dans le code en priorité.
+<ins>objectif</ins> : Avoir en tête le fonctionnement de ReactJS et les premières choses à mettre en place pour éviter des ralentissements. Utiliser des outils pour voir où intervenir dans le code en priorité.
 
 ## Licence
 

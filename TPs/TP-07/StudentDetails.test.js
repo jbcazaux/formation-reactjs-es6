@@ -1,6 +1,6 @@
 import React from 'react'
 import StudentDetails from './StudentDetails'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Student from './Student'
 
 describe('StudentDetails', () => {

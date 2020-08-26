@@ -1,17 +1,17 @@
 import React from 'react'
 import StudenstTable from './StudentsTable'
 import Student from './Student'
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 describe('StudenstTable', () => {
   it('renders studentsTable with 2 names', () => {
     // Given
     const onSelectStudent = jest.fn()
     const students = [new Student(1, 'last1', 'first1', []), new Student(2, 'last2', 'first2', [])]
-    const { getAllByTestId } = render(<StudenstTable students={students} selectStudent={onSelectStudent} />)
+    render(<StudenstTable students={students} selectStudent={onSelectStudent} />)
 
     // Then
-    expect(getAllByTestId('student-row')).toHaveLength(2)
+    expect(screen.getAllByTestId('student-row')).toHaveLength(2)
   })
 
   it('callbacks with clicked user', () => {
@@ -19,10 +19,10 @@ describe('StudenstTable', () => {
     const onSelectStudent = jest.fn()
     let student = new Student(1, 'last1', 'first1', [])
     const students = [student]
-    const { getByTestId } = render(<StudenstTable students={students} selectStudent={onSelectStudent} />)
+    render(<StudenstTable students={students} selectStudent={onSelectStudent} />)
 
     // When
-    fireEvent.click(getByTestId('student-row'))
+    fireEvent.click(screen.getByTestId('student-row'))
 
     // Then
     expect(onSelectStudent).toBeCalledWith(student)

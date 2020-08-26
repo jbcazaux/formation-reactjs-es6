@@ -1373,11 +1373,11 @@
         <section>
           <h3>Simuler des événements</h3>
           <pre><code data-trim>
-          import {render, fireEvent } from '@testing-library/react'
+          import {render, fireEvent, screen } from '@testing-library/react'
 
           it('fire events', () => {
-            const {container} = render(&lt;NiceInput /&gt;)
-            const input = container.querySelector('input')
+            render(&lt;NiceInput /&gt;)
+            const input = screen.getByRole('input')
 
             fireEvent.change(input, {target: {value: 'new text'}})
           })

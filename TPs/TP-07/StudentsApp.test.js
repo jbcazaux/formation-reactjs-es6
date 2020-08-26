@@ -1,6 +1,6 @@
 import React from 'react'
-import StudentsApp from './StudentsApp'
-import { render } from '@testing-library/react'
+import StudentsApp, { filteredStudents } from './StudentsApp'
+import { render, screen } from '@testing-library/react'
 import axios from 'axios'
 import Student from './Student'
 
@@ -11,7 +11,7 @@ describe('StudentsApp', () => {
 
   it('renders studentsApp and its sub components', async () => {
     // Given
-    const { container, getByTestId } = render(<StudentsApp />)
+    const { container } = render(<StudentsApp />)
 
     // Then
     // TODO: snapshot

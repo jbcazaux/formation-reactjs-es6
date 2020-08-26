@@ -1,6 +1,6 @@
 import React from 'react'
 import StudentsApp, { filteredStudents } from './StudentsApp'
-import { render, waitForElement } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import axios from 'axios'
 import Student from './Student'
 
@@ -11,8 +11,8 @@ describe('StudentsApp', () => {
 
   it('renders studentsApp and its sub components', async () => {
     // Given
-    const { container, getByTestId } = render(<StudentsApp />)
-    await waitForElement(() => getByTestId('student-row'), container)
+    const { container } = render(<StudentsApp />)
+    await screen.findByTestId('student-row')
 
     // Then
     expect(container).toMatchSnapshot()

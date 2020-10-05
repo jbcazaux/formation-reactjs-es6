@@ -1579,7 +1579,7 @@
           <pre class="fragment current-visible"><code data-trim>
             const MyInput = () => {
                 const [value, setValue] = useState('')
-                &lt;input value={value}
+                return &lt;input value={value}
                     onChange={e => setValue(e.target.value)} /&gt;
             }
             </code></pre>
@@ -1588,16 +1588,16 @@
                 const [value, setValue] = useState('')
                 const handleInput = e => setValue(e.target.value)
 
-                &lt;input value={value} onChange={handleInput} /&gt;
+                return &lt;input value={value} onChange={handleInput} /&gt;
             }
             </code></pre>
           <pre class="fragment current-visible"><code data-trim>
             const MyInput = () => {
                 const [value, setValue] = useState('')
                 const handleInput = useCallback(e =>
-                    setValue(e.target.value), [setValue])
+                    setValue(e.target.value), [])
 
-                &lt;input value={value} onChange={handleInput} /&gt;
+                return &lt;input value={value} onChange={handleInput} /&gt;
             }
             </code></pre>
         </section>

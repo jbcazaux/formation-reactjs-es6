@@ -1,6 +1,6 @@
 # Formation react js avec ES6 
 
-Les slides: [http://codox.fr/formation-reactjs-es6/](http://codox.fr/formation-reactjs-es6/)
+Les slides: [https://formation-reactjs.fr](https://formation-reactjs.fr)
 
 La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@gmail.com !
 

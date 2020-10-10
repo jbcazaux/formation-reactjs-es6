@@ -13,23 +13,16 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <link rel="stylesheet" href="reveal/reset.css">
-    <link rel="stylesheet" href="reveal/reveal.css">
-    <link rel="stylesheet" href="reveal/theme/black.css" id="theme">
+    <link rel="stylesheet" href="reveal/reset.css" />
+    <link rel="stylesheet" href="reveal/reveal.css" />
+    <link rel="stylesheet" href="reveal/theme/black.css" id="theme" />
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="reveal/plugin/highlight/monokai.css" id="highlight-theme">
+    <link rel="stylesheet" href="reveal/plugin/highlight/monokai.css" id="highlight-theme" />
 
     <style type="text/css">
       p {
         text-align: left;
-      }
-
-      .fragment.current-visible.visible:not(.current-fragment) {
-        display: none;
-        height: 0px;
-        line-height: 0px;
-        font-size: 0px;
       }
 
       .reveal h3,
@@ -56,13 +49,16 @@
             />React
           </h1>
           <h3>#ES6</h3>
-          <p style="text-align: center"><a target="_blank" href="http://twitter.com/jbcazaux">@jbcazaux</a></p>
-          <p style="text-align: center">
+          <p style="text-align: center;"><a target="_blank" href="http://twitter.com/jbcazaux">@jbcazaux</a></p>
+          <p style="text-align: center;">
             <a href="https://formation-reactjs.fr">https://formation-reactjs.fr</a>
           </p>
-          <a href="https://www.netlify.com" >
-            <img src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg" alt="Deploys by Netlify"
-                 style="border: none; background: none; box-shadow: none; margin: 0; float: right"/>
+          <a href="https://www.netlify.com">
+            <img
+              src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"
+              alt="Deploys by Netlify"
+              style="border: none; background: none; box-shadow: none; margin: 0; float: right;"
+            />
           </a>
         </section>
         <section><img data-src="images/mynameis.jpg" alt="my name is" /></section>
@@ -103,19 +99,19 @@
           <h2>EcmaScript 6/7</h2>
         </section>
         <section>
-          <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
+          <h3><span style="text-decoration: line-through;">var</span>, let, const</h3>
           <pre><code data-trim>
                 let foo = 'bar'
                 const MAX = 10
                 const ttc = addTva(15)
                 </code></pre>
           <p class="fragment">
-            <span style="color: #8cd0d3">let</span> vs. <span style="color: #cc9393">const</span> ?
+            <span style="color: #8cd0d3;">let</span> vs. <span style="color: #cc9393;">const</span> ?
             <span class="fragment">0 var, 44 let, 997 const</span>
           </p>
         </section>
         <section>
-          <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
+          <h3><span style="text-decoration: line-through;">var</span>, let, const</h3>
           <pre><code data-trim>
                 if (true) {
                     var i = 1
@@ -170,13 +166,13 @@
             <li>Transpiler (=>, let, const, ...)</li>
           </ul>
         </section>
-        <section>
+        <section data-visibility="hidden">
           <h3>Immutabilité !</h3>
           <p>Ne mutez pas pendant la formation, s'il vous plaît.</p>
         </section>
         <section>
-            <h3>Spread operator</h3>
-            <pre><code data-trim>
+          <h3>Spread operator</h3>
+          <pre><code data-trim>
               let user = {
                   firstname: 'john',
                   nickname: 'ninja',
@@ -188,9 +184,9 @@
               console.log(user) // ?
             </code></pre>
         </section>
-        <section>
-          <h3>Spread operator</h3>
-          <pre class="fragment current-visible"><code data-trim>
+        <section data-auto-animate data-visibility="hidden">
+          <h3 data-id="code-title">Spread operator</h3>
+          <pre data-id="code-animation"><code class="hljs" data-trim>
                 const odd = [1, 3, 5, 7, 9]
                 const even = [2, 4, 6, 8]
                 const all = [0]
@@ -201,7 +197,10 @@
 
                 console.log(all) // ?
                 </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+        </section>
+        <section data-auto-animate data-visibility="hidden">
+          <h3 data-id="code-title">Spread operator</h3>
+          <pre data-id="code-animation"><code class="hljs" data-trim>
                 const odd = [1, 3, 5, 7, 9]
                 const even = [2, 4, 6, 8]
                 const all = [0]
@@ -215,7 +214,11 @@
                 }
                 console.log(all) // ?
                 </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+        </section>
+        <section data-auto-animate>
+          <h3 data-id="code-title">Spread operator</h3>
+          <pre data-id="code-animation">
+        <code class="hljs" data-trim>
                 const odd = [1, 3, 5, 7, 9]
                 const even = [2, 4, 6, 8]
                 const all = [0, ...odd, ...even]
@@ -453,9 +456,11 @@
         </section>
         <section>
           <h3>Type checking</h3>
-          <p style="font-size: 32px">
-            On peut <i>ne rien faire</i>, utiliser <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a> ,
-            <a target="_blank" href="https://flow.org/">Flow</a>, <a target="_blank" href="https://reasonml.github.io/reason-react/">Reason</a>, ou les
+          <p style="font-size: 32px;">
+            On peut <i>ne rien faire</i>, utiliser
+            <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a> ,
+            <a target="_blank" href="https://flow.org/">Flow</a>,
+            <a target="_blank" href="https://reasonml.github.io/reason-react/">Reason</a>, ou les
             <a target="_blank" href="https://www.npmjs.com/package/prop-types">PropTypes</a>
           </p>
           <pre><code data-trim>
@@ -467,7 +472,7 @@
                 truc: PropTypes.bool
             }
             </code></pre>
-          <p style="font-size: 22px; text-align: left">
+          <p style="font-size: 22px; text-align: left;">
             types: array, bool, func, number, object, string, shape, node, arrayOf(), ...
             <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">
               https://reactjs.org/docs/typechecking-with-proptypes.html
@@ -596,14 +601,15 @@
         <section data-background="#b5533c">
           <h3>TP-02</h3>
           <h4>Shopping list</h4>
-          <ol style="font-size: 34px">
+          <ol style="font-size: 34px;">
             <li>Afficher le titre passé par le parent</li>
             <li>Mettre un état par défaut (liste vide)</li>
             <li>Mettre la liste des items retournée par l'appel au web service</li>
             <li>Afficher les items dans une liste &lt;ul&gt;&lt;/ul&gt;</li>
             <li>Créer un composant dédié pour chaque élément de la liste &lt;li&gt;</li>
             <li>
-              Bonus: Créer un composant qui fait l'appel ajax, et passe le résultat à un composant enfant, qui lui itère sur la liste.
+              Bonus: Créer un composant qui fait l'appel ajax, et passe le résultat à un composant enfant, qui lui itère
+              sur la liste.
             </li>
           </ol>
         </section>
@@ -645,7 +651,7 @@
             </code></pre>
         </section>
         <section>
-          <h3>Utiliser les  fonctions des props</h3>
+          <h3>Utiliser les fonctions des props</h3>
           <pre><code data-trim>
             const ShoppingListInternal = ({title, items, del}) => (
                 &lt;div&gt;
@@ -711,9 +717,9 @@
           <div style="font-size: 30px; text-align: left; margin-left: 50px;">
             <p>Documentation</p>
             <p>
-                <a target="_blank" href="https://ant.design/docs/spec/introduce">
-                    https://ant.design/docs/spec/introduce
-                </a>
+              <a target="_blank" href="https://ant.design/docs/spec/introduce">
+                https://ant.design/docs/spec/introduce
+              </a>
             </p>
           </div>
         </section>
@@ -788,7 +794,7 @@
                     : <div>No User</div>}
             </code></pre>
           <p>
-            <a href="https://angular.io/api/common/NgIf" style="font-size: .5em; ">Pas mieux en angular :)</a>
+            <a href="https://angular.io/api/common/NgIf" style="font-size: 0.5em;">Pas mieux en angular :)</a>
           </p>
         </section>
         <section>
@@ -826,7 +832,8 @@
           <ol>
             <li>Créer un champ "input" qui filtre les éléments de la table</li>
             <li>
-              Afficher le nom de l'étudiant sélectionné (Celui sur lequel on a cliqué), ou un message si aucun étudiant n'est sélectionné (par défaut)
+              Afficher le nom de l'étudiant sélectionné (Celui sur lequel on a cliqué), ou un message si aucun étudiant
+              n'est sélectionné (par défaut)
             </li>
             <li>Bonus : Faire une Pull Request pour faire une <b>jolie</b> correction à ce TP ;)</li>
           </ol>
@@ -1021,7 +1028,7 @@
         <section>
           <h3>Hooks</h3>
 
-          <p style="font-size: 28px">
+          <p style="font-size: 28px;">
             useSelector
           </p>
           <pre><code data-trim>
@@ -1032,10 +1039,10 @@
               return &lt;div&gt;{foo.id} / {foo.info} &lt;/div&gt;
             }
             </code></pre>
-            <p style="font-size: 28px">
-                useDispatch
-            </p>
-            <pre><code data-trim>
+          <p style="font-size: 28px;">
+            useDispatch
+          </p>
+          <pre><code data-trim>
             import { useDispatch } from 'react-redux'
 
             export const MyComponent = () => {
@@ -1045,7 +1052,6 @@
               &lt;/div&gt;
             }
             </code></pre>
-          </section>
         </section>
         <section>
           <h3>Connected component</h3>
@@ -1093,16 +1099,16 @@
         <section data-background="#b5533c">
           <h3>TP-04</h3>
           <h4>Shopping list - bis</h4>
-          <ol style="font-size: 34px">
+          <ol style="font-size: 34px;">
             <li>Installer redux-dev-tools</li>
             <li>
-              Comme le TP-02, mais utiliser le <i>state</i> du store plutot que le <i>state</i> du composant, et initialiser la liste
-              (avec un morceau de code synchrone).
+              Comme le TP-02, mais utiliser le <i>state</i> du store plutot que le <i>state</i> du composant, et
+              initialiser la liste (avec un morceau de code synchrone).
             </li>
             <li>Creer un <i>action creator</i> <b>setItems</b> qui retourne une <b>ItemAction</b></li>
             <li>Créer un reducer <b>items</b> qui prend une <b>ItemAction</b> en entrée</li>
             <li>Créer un global reducer grâce à <b>combineReducer</b></li>
-            <li>Lier le composant au store</i></li>
+            <li>Lier le composant au <i>store</i></li>
             <li>Bonus: Créer un boutton qui ajoute un nouvel item à la liste</li>
           </ol>
         </section>
@@ -1114,8 +1120,8 @@
           <ul>
             <li>Redux permet de ne dispatcher que des objets (les actions)</li>
             <li class="fragment">
-              <b>redux-thunk</b>, <b>redux-saga</b>, <b>mobx</b> permettent de dispacher des fonctions, et donc des actions asynchrones ou des actions
-              avec des conditions. Ces librairies sont des <i>middlewares</i>.
+              <b>redux-thunk</b>, <b>redux-saga</b>, <b>mobx</b> permettent de dispacher des fonctions, et donc des
+              actions asynchrones ou des actions avec des conditions. Ces librairies sont des <i>middlewares</i>.
             </li>
           </ul>
         </section>
@@ -1157,8 +1163,8 @@
           <h3>Pour résumer</h3>
 
           <p>
-            Une <i>ThunkAction</i> est une fonction qui prend <i>dispatch()</i> and <i>getState()</i> comme paramètres, et
-            qui retourne le résultat de l'appel à <i>dispatch()</i>.
+            Une <i>ThunkAction</i> est une fonction qui prend <i>dispatch()</i> and <i>getState()</i> comme paramètres,
+            et qui retourne le résultat de l'appel à <i>dispatch()</i>.
           </p>
         </section>
         <section>
@@ -1175,7 +1181,7 @@
               .then(items => dispatch({type: 'SET_ITEMS', items: items}))
             .catch((error) => console.log(error))
             </code></pre>
-            <pre class="fragment"><code data-trim>
+          <pre class="fragment"><code data-trim>
             export const UserItems = () => {
               const dispatch = useDispatch()
 
@@ -1194,7 +1200,7 @@
           <h4>Shopping list - ter</h4>
           <ol>
             <li>Configurer le "thunk" Middleware dans index.js</li>
-            <li>Comme le  TP-04 mais avec un appel asynchrone (http) pour charger la liste des items</li>
+            <li>Comme le TP-04 mais avec un appel asynchrone (http) pour charger la liste des items</li>
             <li>
               Bonus: Créer une action qui applique un taux de TVA, lorsque l'on ajoute un nouvel élément
             </li>
@@ -1221,12 +1227,16 @@
             <li class="fragment">
               Beaucoup de librairires sont basées la dessus. Ce n'était pas une API officielle avant Mars 2018.
             </li>
-            <li class="fragment"><i>react-redux</i> fonctionne grâce à ça, le store est passé à tous les composants.</li>
+            <li class="fragment">
+              <i>react-redux</i> fonctionne grâce à ça, le store est passé à tous les composants.
+            </li>
           </ul>
         </section>
         <section>
           <h3>Context API</h3>
-          <p>Créer un <i>Context</i>, and et encapsuler l'application à l'interieur du <i>&lt;Context.Provider&gt;</i></p>
+          <p>
+            Créer un <i>Context</i>, and et encapsuler l'application à l'interieur du <i>&lt;Context.Provider&gt;</i>
+          </p>
           <pre><code data-trim>
                 const Context = React.createContext({color: 'green', user: null})
                 export default Context
@@ -1273,7 +1283,7 @@
           <p>L'arrivée des hooks a fait bouger la hiérarchie des outils de test.</p>
           <ul>
             <li>Enzyme: les Hooks ont mis un moment à être supportés</li>
-            <li>React test renderer: Pas de façon simple de tester les évènements </li>
+            <li>React test renderer: Pas de façon simple de tester les évènements</li>
             <li>React testing library: Des nouveaux paradigmes sur la façon de tester</li>
           </ul>
         </section>
@@ -1291,7 +1301,9 @@
             })
             </code></pre>
           <p>
-            <a href="https://testing-library.com/docs/react-testing-library/api#render" target="_blank">React Testing Library</a>
+            <a href="https://testing-library.com/docs/react-testing-library/api#render" target="_blank"
+              >React Testing Library</a
+            >
           </p>
         </section>
         <section>
@@ -1308,20 +1320,20 @@
             </code></pre>
         </section>
         <section>
-            <h3>Assertions Jest</h3>
-            <pre><code data-trim>
+          <h3>Assertions Jest</h3>
+          <pre><code data-trim>
             it('tests', () => {
                 expect(1 + 1).toEqual(2)
                 expect(['a', 'b']).toHaveLength(2)
                 expect(0 / 2).not.toBeNaN()
             })
             </code></pre>
-            <p>.toEqual(value), .toBeNull(), .toBeTruthy(), .toHaveLength(number), .not.toBeNaN(), ...</p>
-            <p><a href="https://jestjs.io/docs/en/expect" target="_blank">Jest</a></p>
+          <p>.toEqual(value), .toBeNull(), .toBeTruthy(), .toHaveLength(number), .not.toBeNaN(), ...</p>
+          <p><a href="https://jestjs.io/docs/en/expect" target="_blank">Jest</a></p>
         </section>
         <section>
-            <h3>Tester le rendu avec des sélecteurs</h3>
-            <pre><code data-trim>
+          <h3>Tester le rendu avec des sélecteurs</h3>
+          <pre><code data-trim>
             it('should display user infos and winner', () => {
                 // Given
                 const { container } = render(&lt;Podium first={player4}
@@ -1426,16 +1438,17 @@
           <h4>Tests</h4>
           <p>L'objectif est d'écrire les tests du TP-03</p>
           <p></p>
-          <ol style="font-size: 32px">
+          <ol style="font-size: 32px;">
             <li>Créer un fichier .test.js pour chaque composant</li>
             <li><i>StudentDetails</i>: Vérifier les textes (avec Student.NULL ou un Student)</li>
             <li><i>Filter</i>: Verifier que le callback est appelé quand l'évènement <i>change</i> est propagé</li>
             <li>
-              <i>StudenstTable</i>: Vérifier le nombre de ligne dans le tableau, suivant le jeu de données. Tester les appels aux callbacks aussi.
+              <i>StudenstTable</i>: Vérifier le nombre de ligne dans le tableau, suivant le jeu de données. Tester les
+              appels aux callbacks aussi.
             </li>
             <li>
-              <i>StudentsApp</i>: Vérifier que les composants sont toujours affichés de la même façon (avec un snapshot) . Tester que
-              <i>filteredStudents()</i> retourne une liste filtrée.
+              <i>StudentsApp</i>: Vérifier que les composants sont toujours affichés de la même façon (avec un snapshot)
+              . Tester que <i>filteredStudents()</i> retourne une liste filtrée.
             </li>
           </ol>
         </section>
@@ -1451,9 +1464,9 @@
             <li><b>HashRouter</b>: /monsite/#/page1/partie2</li>
             <li><b>MemoryRouter</b> : /</li>
           </ul>
-          <p style="font-size: 24px">
-            Pour le BrowserRouter il faut rediriger toutes les requêtes vers index.html, sauf les .css, .js, et les appels aux
-            webservices.
+          <p style="font-size: 24px;">
+            Pour le BrowserRouter il faut rediriger toutes les requêtes vers index.html, sauf les .css, .js, et les
+            appels aux webservices.
           </p>
         </section>
         <section>
@@ -1515,7 +1528,7 @@
           <p>match contient plusieurs données :</p>
           <ul>
             <li><b>params</b>: clé-valeurs des paramètres dans l'url (ex: /user/:id)</li>
-            <li><b>url</b>: l'url qui a matché</li></li>
+            <li><b>url</b>: l'url qui a matché</li>
             <li><b>isExact</b>: true si l'url a matché de façon exacte (non partielle)</li>
             <li><b>path</b>: pattern du match</li>
           </ul>
@@ -1554,9 +1567,10 @@
           <h3>Reconciliation</h3>
           <p>
             Le <b>Virtual DOM</b> est...
-            <span class="fragment" style="font-size: 24px">
-              Une représentation mémoire des composants. Quand le rendu d'un composant est fait à nouveau, le nouveau V-DOM est comparé à
-              l'ancien V-DOM. Si il y a une différence, le DOM du browser est (partiellement) mis à jour.
+            <span class="fragment" style="font-size: 24px;">
+              Une représentation mémoire des composants. Quand le rendu d'un composant est fait à nouveau, le nouveau
+              V-DOM est comparé à l'ancien V-DOM. Si il y a une différence, le DOM du browser est (partiellement) mis à
+              jour.
             </span>
           </p>
         </section>
@@ -1568,16 +1582,19 @@
             <li>useMemo()</li>
           </ul>
         </section>
-        <section>
-          <h3>useCallback()</h3>
-          <pre class="fragment current-visible"><code data-trim>
+        <section data-auto-animate data-visibility="hidden">
+          <h3 data-id="usecallback">useCallback()</h3>
+          <pre data-id="usecallback-code"><code data-trim>
             const MyInput = () => {
                 const [value, setValue] = useState('')
                 return &lt;input value={value}
                     onChange={e => setValue(e.target.value)} /&gt;
             }
             </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+        </section>
+        <section data-auto-animate data-visibility="hidden">
+          <h3 data-id="usecallback">useCallback()</h3>
+          <pre data-id="usecallback-code"><code data-trim>
             const MyInput = () => {
                 const [value, setValue] = useState('')
                 const handleInput = e => setValue(e.target.value)
@@ -1585,7 +1602,10 @@
                 return &lt;input value={value} onChange={handleInput} /&gt;
             }
             </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+        </section>
+        <section data-auto-animate>
+          <h3 data-id="usecallback">useCallback()</h3>
+          <pre data-id="usecallback-code"><code data-trim>
             const MyInput = () => {
                 const [value, setValue] = useState('')
                 const handleInput = useCallback(e =>
@@ -1595,23 +1615,30 @@
             }
             </code></pre>
         </section>
-        <section>
-          <h3>useMemo</h3>
-          <pre><code data-trim>
+        <section data-auto-animate>
+          <h3 data-id="usememo">useMemo</h3>
+          <pre data-id="usememo-code"><code data-trim>
             const User = ({user}) =>  &lt;div&gt;{user.name}&lt;/div&gt;
           </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+        </section>
+        <section data-auto-animate>
+          <h3 data-id="usememo">useMemo</h3>
+          <pre data-id="usememo-code"><code data-trim>
             const MemoizedUser = ({user}) => {
                 return  useMemo(() => &lt;User user={user}&gt;, [user.id])
             }
-           </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+           </code></pre></section>
+        <section data-auto-animate>
+          <h3 data-id="usememo">useMemo</h3>
+          <pre data-id="usememo-code"><code data-trim>
             // inside a component
             const memoizedUser = useMemo(() => &lt;User user={user} /&gt;,
               [user.id])
             return {memoizedUser}
-          </code></pre>
-          <pre class="fragment current-visible"><code data-trim>
+          </code></pre></section>
+        <section data-auto-animate>
+          <h3 data-id="usememo">useMemo</h3>
+          <pre data-id="usememo-code"><code data-trim>
             const MemoizedUser = React.memo(({ user }) =>
               &lt;User user={user} /&gt;)
           </code></pre>
@@ -1637,20 +1664,16 @@
     <script src="reveal/plugin/markdown/markdown.js"></script>
     <script src="reveal/plugin/highlight/highlight.js"></script>
     <script>
-
-      // Also available as an ES module, see:
-      // https://revealjs.com/initialization/
+      console.log('showHiddenSlides', !window.location.search.match(/print-pdf/gi))
       Reveal.initialize({
         controls: true,
         progress: true,
         center: true,
         hash: true,
-
-        // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
-      });
-
+        showHiddenSlides: !window.location.search.match(/print-pdf/gi),
+        pdfSeparateFragments: false,
+        plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight],
+      })
     </script>
-
   </body>
 </html>

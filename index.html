@@ -10,26 +10,16 @@
     />
     <link rel="canonical" href="https://formation-reactjs.fr" />
     <title>Formation react js ES6</title>
-    <link href="https://google.com/+JeanBaptisteCazaux" rel="publisher" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <link rel="stylesheet" href="reveal/css/reveal.css" />
-    <link rel="stylesheet" href="reveal/css/theme/black.css" />
+    <link rel="stylesheet" href="reveal/reset.css">
+    <link rel="stylesheet" href="reveal/reveal.css">
+    <link rel="stylesheet" href="reveal/theme/black.css" id="theme">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="reveal/lib/css/monokai.css" />
+    <link rel="stylesheet" href="reveal/plugin/highlight/monokai.css" id="highlight-theme">
 
-    <!-- Printing and PDF exports -->
-    <script>
-      var link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.type = 'text/css'
-      link.href = window.location.search.match(/print-pdf/gi)
-        ? 'reveal/css/print/pdf.css'
-        : 'reveal/css/print/paper.css'
-      document.getElementsByTagName('head')[0].appendChild(link)
-    </script>
     <style type="text/css">
       p {
         text-align: left;
@@ -1640,24 +1630,27 @@
       </div>
     </div>
 
-    <script src="reveal/js/reveal.js"></script>
-
+    <script src="reveal/reveal.js"></script>
+    <script src="reveal/plugin/zoom/zoom.js"></script>
+    <script src="reveal/plugin/notes/notes.js"></script>
+    <script src="reveal/plugin/search/search.js"></script>
+    <script src="reveal/plugin/markdown/markdown.js"></script>
+    <script src="reveal/plugin/highlight/highlight.js"></script>
     <script>
+
+      // Also available as an ES module, see:
+      // https://revealjs.com/initialization/
       Reveal.initialize({
-        history: true,
-        dependencies: [
-          { src: 'reveal/plugin/markdown/marked.js' },
-          { src: 'reveal/plugin/markdown/markdown.js' },
-          { src: 'reveal/plugin/notes/notes.js', async: true },
-          {
-            src: 'reveal/plugin/highlight/highlight.js',
-            async: true,
-            callback: function() {
-              hljs.initHighlightingOnLoad()
-            },
-          },
-        ],
-      })
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+      });
+
     </script>
+
   </body>
 </html>

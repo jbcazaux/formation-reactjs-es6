@@ -638,9 +638,8 @@
                 const [items, setItems] = useState([])
                 // useEffect({...}, [])
 
-                const deleteItem = () => {
-                    const newItems = items.slice(1)
-                    setItems(newItems)
+                const deleteItem = (itemIdToDelete) => {
+                    setItems(prev => prev.filter(item => item.id !== itemIdToDelete)
                 }
                 return (&lt;ShoppingListInternal
                         title={title}
@@ -658,7 +657,7 @@
                     &lt;h2&gt;{title}&lt;/h2&gt;
                     &lt;ul&gt;
                         {
-                          items.map(item => (&lt;li onClick={del}&gt;
+                          items.map(item => (&lt;li onClick={() => del(item.id)}&gt;
                             {item.label}: {item.price}€ &lt;/li&gt;))
                         }
                     &lt;/ul&gt;

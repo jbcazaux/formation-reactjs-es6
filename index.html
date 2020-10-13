@@ -139,12 +139,12 @@
                 }
             </code></pre>
           <pre class="fragment"><code data-trim>
-                let add = (a, b) => {
+                const add = (a, b) => {
                     return a + b
                 }
                 </code></pre>
           <pre class="fragment"><code data-trim>
-                add = (a, b) => a + b
+                const add = (a, b) => a + b
                 </code></pre>
         </section>
         <section>
@@ -173,15 +173,15 @@
         <section>
           <h3>Spread operator</h3>
           <pre><code data-trim>
-              let user = {
+              const user = {
                   firstname: 'john',
                   nickname: 'ninja',
                   lastname: 'doe',
                   age: 21
               }
 
-              user = {...user, firstname: 'toto'}
-              console.log(user) // ?
+              const updatedUser = {...user, firstname: 'toto'}
+              console.log(updatedUser) // ?
             </code></pre>
         </section>
         <section data-auto-animate data-visibility="hidden">
@@ -228,7 +228,7 @@
           <h3>Destructuring</h3>
           <pre><code data-trim>
                 const foo = {a: 1, b: 2, c: 'bar'}
-                let {a} = foo
+                const {a} = foo
                 console.log(a) // ?
           </code></pre>
         </section>
@@ -290,7 +290,7 @@
                 }
             }
 
-            let getUserAddress = ({address: {num: foo, street: bar}}) =>
+            const getUserAddress = ({address: {num: foo, street: bar}}) =>
                 `${foo} ${bar}`
             </code></pre>
         </section>
@@ -366,7 +366,7 @@
         <section>
           <h3>Rappels - currying</h3>
           <pre><code data-trim>
-            let add = function(x) {
+            const add = function(x) {
                 return function(y) {
                     return x + y
                 }
@@ -378,10 +378,10 @@
                 add2(3) // = ?
             </code></pre>
           <pre class="fragment"><code data-trim>
-                let add = x => y => x + y // WTF ?!
+                const add = x => y => x + y // WTF ?!
             </code></pre>
           <pre class="fragment"><code data-trim>
-                let add = x =>
+                const add = x =>
                     y => (x + y)
                 // easy !
             </code></pre>

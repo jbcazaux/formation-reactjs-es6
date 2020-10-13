@@ -10,8 +10,10 @@ const StudentsApp = () => {
   const [filter, setFilter] = useState('')
   const [selectedStudent, setSelectedStudent] = useState(Student.NULL)
 
-  useEffect(() => {
-    axios.get('./students.json').then(({ data: students }) => setStudents(students))
+  useEffect(async () => {
+    const response = await axios.get('./students.json')
+    setStudents(response.data)
+    // axios.get('./students.json').then(({ data: students }) => setStudents(students))
   }, [])
 
   const handleFilterChange = f => {

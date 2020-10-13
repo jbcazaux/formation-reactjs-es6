@@ -13,7 +13,7 @@ class Student {
 
 export default Student
 
-export const StudentPropTypes = PropTypes.shape({
+Student.propTypes = PropTypes.shape({
   firstname: PropTypes.string.isRequired,
   grades: PropTypes.arrayOf(PropTypes.number).isRequired,
   id: PropTypes.number.isRequired,

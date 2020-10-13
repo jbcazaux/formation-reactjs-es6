@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const ShoppingList = props => {
-  // TODO : define a state to store the items list
+  // TODO : créer un state pour stocker la liste d items
 
   useEffect(() => {
     axios
       .get('./items.json')
       .then(resp => resp.data)
       .then(items => {
-        // TODO: Store the items in the state
+        // TODO: enregistrer les items dans le state
       })
   }, [])
 

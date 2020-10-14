@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
 import { setItems, addItem } from './actions/items'
-import { connect } from 'react-redux'
 
 const ShoppingList = ({ title }) => {
   const [newItemLabel, setNewItemLabel] = useState('')
@@ -34,7 +33,4 @@ const ShoppingList = ({ title }) => {
   )
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ShoppingList)
+export default ShoppingList

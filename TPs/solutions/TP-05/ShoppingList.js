@@ -39,20 +39,6 @@ export const ShoppingList = ({ title }) => {
   )
 }
 
-const mapStateToProps = state => ({
-  items: state.items,
-})
-
-const mapDispatchToProps = {
-  fetchItems,
-  addItemWithVTA,
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ShoppingList)
-
 ShoppingList.propTypes = {
   title: PropTypes.string.isRequired,
 }

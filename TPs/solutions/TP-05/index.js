@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore, compose } from 'redux'
 import { reducer } from './reducers/index'
-import ShoppingList from './ShoppingList'
+import { ShoppingList } from './ShoppingList'
 import thunk from 'redux-thunk'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

@@ -1,28 +1,36 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
+import PropTypes from 'prop-types'
+import Button from './Button'
 
-const User = ({ user }) => <span>{user.name}</span>
+const add = (x, y) => {
+  console.log('une loooongue addition')
+  return x + y
+}
 
-const MemoizedUser2 = () => null // TODO: React.memo(...)
-const MemoizedUser3 = ({ user }) => {
-  // TODO : return useMemo(...) with dependence to user.id
+const Calculator = ({ a, b }) => {
+  console.log('render Calculator')
+  // TODO : Utiliser useMemo pour éviter de refaire le calcul si a et b ne changent pas
+  // TODO : OU utiliser React.memo pour memoizer le composant Calculator
+  const result = add(a, b)
+
+  return <div> {result} </div>
+}
+Calculator.propTypes = {
+  a: PropTypes.number.isRequired,
+  b: PropTypes.number.isRequired,
 }
 
 const App = () => {
-  const [user, setUser] = useState({ id: 1, name: 'userName' })
-  const memoizedUser1 = null // TODO useMemo(...) with dependence to user.id
+  const date = new Date()
+  const [sel, setSel] = useState(0)
 
   return (
-    <>
-      <div>
-        user: <User user={user} />
-      </div>
-      <div>memoizedUser1: {memoizedUser1}</div>
-      <div>memoizedUser2: {/*<MemoizedUser2 user={user} />*/}</div>
-      <div>memoizedUser3: {/*<MemoizedUser3 user={user} />*/}</div>
-
-      <button onClick={() => setUser({ ...user, name: `userName-${Date.now()}` })}>change name</button>
-      <button onClick={() => (user.id = Date.now())}>change id by mutation</button>
-    </>
+    <div>
+      Sel : {sel}
+      {/* TODO : Utiliser useCallback pour ne pas que Button se réaffiche */}
+      <Button onClick={() => setSel(date.getMilliseconds())} />
+      <Calculator a={4} b={2} />
+    </div>
   )
 }
 

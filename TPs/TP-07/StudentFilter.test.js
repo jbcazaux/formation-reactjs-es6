@@ -7,12 +7,12 @@ describe('Filter', () => {
     // Given
     const mockOnChange = jest.fn()
     const { container } = render(<Filter onChange={mockOnChange} />)
-    const input = container.querySelector('input')
+    const input = null // TODO : comment récupérer l'élément input ?
 
     // When
-    fireEvent.change(input, { target: { value: 'name' } })
+    // TODO : enovoyer un événement change sur l'élément input
 
     // Then
-    expect(mockOnChange).toBeCalledWith('name')
+    // TODO : s'assurer que le callback onChange a été appelé avec le bon paramètre
   })
 })

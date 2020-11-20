@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, useParams } from 'react-router-dom'
 
 const App = () => (
   <Router>
@@ -56,13 +56,16 @@ const Users = ({ match }) => (
   </div>
 )
 
-const UserDetail = ({ match }) => (
-  <div>
-    <h3>
-      Details of <b>{match.params.name}</b>
-    </h3>
-    <img src={'/' + match.params.name + '.jpeg'} alt={match.params.name} />
-  </div>
-)
+const UserDetail = () => {
+  const { name } = useParams()
+  return (
+    <div>
+      <h3>
+        Details of <b>{name}</b>
+      </h3>
+      <img src={'/' + name + '.jpeg'} alt={name} />
+    </div>
+  )
+}
 
 export default App

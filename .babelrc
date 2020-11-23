@@ -1,13 +1,19 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "targets": {
-        "chrome": "70"
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": "70"
+        }
       }
-    }],
-    "@babel/preset-react"
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
+    ]
   ],
-  "plugins": [
-    "@babel/plugin-proposal-class-properties","@babel/plugin-syntax-dynamic-import"
-  ]
+  "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-syntax-dynamic-import"]
 }

@@ -50,9 +50,7 @@
           </h1>
           <h3>#ES6</h3>
           <p style="text-align: center"><a target="_blank" href="http://twitter.com/jbcazaux">@jbcazaux</a></p>
-          <p style="text-align: center">
-            <a href="https://formation-reactjs.fr">https://formation-reactjs.fr</a>
-          </p>
+
           <a href="https://www.netlify.com">
             <img
               src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"
@@ -61,9 +59,9 @@
             />
           </a>
         </section>
-        <section><img data-src="images/mynameis.jpg" alt="my name is" /></section>
-        <section><img data-src="images/coffee.gif" alt="coffee break" /></section>
-        <section>
+        <section data-visibility="hidden"><img data-src="images/mynameis.jpg" alt="my name is" /></section>
+        <section data-visibility="hidden"><img data-src="images/coffee.gif" alt="coffee break" /></section>
+        <section data-visibility="hidden">
           <h3>Objectifs</h3>
           <img data-src="images/postits.jpg" alt="goals" />
         </section>
@@ -1341,23 +1339,16 @@
             </code></pre>
         </section>
         <section>
-          <h3>Rechercher des éléments avec les Query RTL</h3>
-          <pre><code data-trim>
-          import {render} from '@testing-library/react'
-
-          it('renders a text', () => {
-            const {getByText, getAllByTestId} = render(&lt;App/&gt;)
-            expect(getByText('Menu Alarme')).toBeTruthy()
-            expect(getAllByTestId('alarme')).toHaveLength(2)
-          })
+          <h3>Rechercher des éléments avec les Queries RTL</h3>
           </code></pre>
           <pre><code data-trim>
           import {render, screen} from '@testing-library/react'
 
-          it('renders a text', () => {
+          it('renders Alarm', () => {
             render(&lt;App/&gt;)
             expect(screen.getByText('Menu Alarme')).toBeTruthy()
             expect(screen.getAllByTestId('alarme')).toHaveLength(2)
+            expect(screen.getAllByRole('button')).toHaveLength(2)
           })
           </code></pre>
         </section>
@@ -1651,9 +1642,6 @@
         </section>
         <section>
           <h3>Let's do it !</h3>
-
-          <h3>help ? <a href="mailto:jbcazaux@gmail.com">jbcazaux@gmail.com</a></h3>
-          <h3><a href="https://formation-reactjs.fr">https://formation-reactjs.fr</a></h3>
         </section>
       </div>
     </div>

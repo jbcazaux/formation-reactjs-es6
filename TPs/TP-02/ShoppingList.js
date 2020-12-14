@@ -8,7 +8,7 @@ const ShoppingList = props => {
     axios
       .get('./items.json')
       .then(resp => resp.data)
-      .then(items => {
+      .then(fetchedItems => {
         // TODO: enregistrer les items dans le state
       })
   }, [])

@@ -590,7 +590,7 @@
 
              useEffect(() => {
               axios.get('/user/' + userId)
-               .then(({response: {data: details}}) => setDetails(details)
+               .then(({data}}) => setDetails(data)
              }, [userId])
 
              return &lt;div&gt;...
@@ -709,7 +709,7 @@
             <p>React Components for desktop applications</p>
           </div>
           <pre><code data-trim>
-            &lt;Button type="primary" onClick={handleCdlick}&gt;Go!&lt;/Button&gt;
+            &lt;Button type="primary" onClick={handleClick}&gt;Go!&lt;/Button&gt;
           </code></pre>
 
           <div style="font-size: 30px; text-align: left; margin-left: 50px">

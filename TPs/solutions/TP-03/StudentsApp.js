@@ -5,32 +5,34 @@ import StudentsTable from './StudentsTable'
 import StudentDetails from './StudentDetails'
 import Student from './Student'
 
+const filterStudents = (students, filter) =>
+  students.filter(s => s.firstname.includes(filter) || s.lastname.includes(filter))
+
 const StudentsApp = () => {
   const [students, setStudents] = useState([])
   const [filter, setFilter] = useState('')
-  const [selectedStudent, setSelectedStudent] = useState(Student.NULL)
+  const [selectedStudent, setSelectedStudent] = useState(null)
 
-  useEffect(async () => {
-    const response = await axios.get('./students.json')
-    setStudents(response.data)
-    // axios.get('./students.json').then(({ data: students }) => setStudents(students))
+  useEffect(() => {
+    const fetchStudents = async () => {
+      const { data } = await axios.get('./students.json')
+      setStudents(data)
+    }
+    fetchStudents()
   }, [])
 
-  const handleFilterChange = f => {
-    setFilter(f)
+  const handleFilterChange = newFilter => {
+    setFilter(newFilter)
   }
 
-  const handleSelectStudent = s => {
-    setSelectedStudent(s)
+  const handleSelectStudent = newSelectedStudent => {
+    setSelectedStudent(newSelectedStudent)
   }
-
-  const filteredStudents = (students, filter) =>
-    students.filter(s => s.firstname.includes(filter) || s.lastname.includes(filter))
 
   return (
     <>
       <Filter onChange={handleFilterChange} />
-      <StudentsTable students={filteredStudents(students, filter)} selectStudent={handleSelectStudent} />
+      <StudentsTable students={filterStudents(students, filter)} onSelectStudent={handleSelectStudent} />
       <StudentDetails student={selectedStudent} />
     </>
   )

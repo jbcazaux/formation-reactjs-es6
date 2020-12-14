@@ -5,35 +5,35 @@ import StudentsTable from './StudentsTable'
 import StudentDetails from './StudentDetails'
 import Student from './Student'
 
+const filterStudents = (students, filter) => {
+  // TODO: retourner une liste filrée des étudiants, plutot que la liste entière
+  return students
+}
+
 const StudentsApp = () => {
-  // TODO define a state to store the students list
-  // TODO define a state to store the filter value
-  // TODO define a state to store the selected Student
+  // TODO créer un state pour stocker la liste des étudiants
+  // TODO créer un state pour stocker le filtre (c'est une chaine de caractères)
+  // TODO créer un state pour stocker l'étudiant actuellement sélectionné (null par défaut)
 
   useEffect(() => {
-    axios.get('./students.json').then(({ data: students }) => {
-      // TODO: store the students list received from the web service in the state
+    axios.get('./students.json').then(({ data }) => {
+      // TODO: mettre le résultat de la requete dans le state 'students'
     })
   }, [])
 
-  const handleFilterChange = f => {
-    // TODO store the new filter value in the state
+  const handleFilterChange = newFilter => {
+    // TODO stocker la nouvelle valeur du filtre
   }
 
-  const handleSelectStudent = s => {
-    // TODO store the new selectedStudent in the state
-  }
-
-  const filteredStudents = (students, filter) => {
-    // TODO: return a filtered list of the students rather than the whole list
-    return students
+  const handleSelectStudent = newSelectedStudent => {
+    // TODO stocker le nouvel étudiant sélectionné
   }
 
   return (
     <>
-      TODO: uncomment the child components one by one
+      TODO: Décommenter les composants enfants au fur et à mesure
       {/*<Filter onChange={handleFilterChange} />*/}
-      {/*<StudentsTable students={filteredStudents(students, filter)} selectStudent={handleSelectStudent} />*/}
+      {/*<StudentsTable students={filterStudents(students, filter)} onSelectStudent={handleSelectStudent} />*/}
       {/*<StudentDetails student={selectedStudent} />*/}
     </>
   )

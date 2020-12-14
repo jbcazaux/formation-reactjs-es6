@@ -10,9 +10,7 @@ const ShoppingList = ({ title }) => {
     axios
       .get('./items.json')
       .then(resp => resp.data)
-      .then(items => {
-        setItems(items)
-      })
+      .then(setItems)
   }, [])
 
   return (

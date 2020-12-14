@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Student from './Student'
 
-const StudentsTable = ({ students, selectStudent }) => {
+const StudentsTable = ({ students, onSelectStudent }) => {
   const style = {
     margin: 'auto',
     marginTop: '20px',
@@ -24,7 +24,7 @@ const StudentsTable = ({ students, selectStudent }) => {
       </TableHead>
       <TableBody>
         {students.map(student => (
-          <TableRow key={student.id} onClick={() => selectStudent(student)}>
+          <TableRow key={student.id} onClick={() => onSelectStudent(student)}>
             <TableCell>{student.id}</TableCell>
             <TableCell>{student.firstname}</TableCell>
             <TableCell>{student.lastname}</TableCell>
@@ -37,7 +37,7 @@ const StudentsTable = ({ students, selectStudent }) => {
 
 StudentsTable.propTypes = {
   students: PropTypes.arrayOf(Student.propTypes).isRequired,
-  selectStudent: PropTypes.func.isRequired,
+  onSelectStudent: PropTypes.func.isRequired,
 }
 
 export default StudentsTable

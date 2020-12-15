@@ -8,13 +8,13 @@ const ShoppingList = ({ title }) => {
   const [newItemPrice, setNewItemPrice] = useState(0)
 
   useEffect(() => {
-    // TODO: dispatch the fetchItems redux action
+    // TODO: dispatcher l'action créée par fetchItems
   }, [])
 
   const createNewItem = e => {
     e.preventDefault()
     const action = addItem(new Item(Date.now(), newItemLabel, newItemPrice))
-    // TODO : dispatch the action
+    // TODO : dispatcher l'action créée par addItem
     setNewItemLabel('')
     setNewItemPrice(0)
   }
@@ -24,7 +24,7 @@ const ShoppingList = ({ title }) => {
       <h2>{title}</h2>
       <ul>
         {/*
-        TODO: iterate on items
+        TODO: itérer sur les items (que l'on a récupérés dans le store redux)
         {items.map(item => (
           <ShoppingItem key={item.id} item={item} />
         ))}

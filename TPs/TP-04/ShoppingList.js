@@ -8,12 +8,12 @@ const ShoppingList = ({ title }) => {
   const [newItemPrice, setNewItemPrice] = useState(0)
 
   useEffect(() => {
-    // TODO: dispatch the setItems action, so a default list will be stored in the redux store
+    // TODO: Créer une action grace à l'action creator 'setItems' puis la dispatcher pour que le store soit mis à jour
     setItems([new Item(1, 'pain', 0.95), new Item(2, 'gel douche', 2.85), new Item(3, 'cahier à spirales', 1.2)])
   }, [])
 
   const handleAddItem = event => {
-    //TODO dispatch the addItem action
+    //TODO dispatcher l'action créée par l'action creator 'addItem'
   }
 
   return (

@@ -1575,34 +1575,6 @@
             </ul>
         </section>
         <section data-auto-animate data-visibility="hidden">
-            <h3 data-id="usememo">useMemo</h3>
-            <p data-id="usememo-p">
-                useMemo permet de <em>memoize</em> une fonction, c'est à dire de mettre en mémoire son résultat afin de
-                le
-                retourner lors d'un futur appel avec les mêmes paramètres.
-            </p>
-            <pre data-id="usememo-pre"><code data-trim>
-            const Calculator = ({a, b}) => {
-             const result = veryLongOperation(a, b)
-             return &lt;div&gt; {result} &lt;/div&gt;
-            }
-          </code></pre>
-        </section>
-        <section data-auto-animate>
-            <h3 data-id="usememo">useMemo</h3>
-            <p data-id="usememo-p">
-                useMemo permet de <em>memoize</em> une fonction, c'est à dire de mettre en mémoire son résultat afin de
-                le
-                retourner lors d'un futur appel avec les mêmes paramètres.
-            </p>
-            <pre data-id="usememo-pre"><code data-trim>
-            const Calculator = ({a, b}) => {
-             const result = useMemo(() => veryLongOperation(a, b), [a, b])
-             return &lt;div&gt; {result} &lt;/div&gt;
-            }
-          </code></pre>
-        </section>
-        <section data-auto-animate data-visibility="hidden">
             <h3 data-id="memo">Perfs - React.memo</h3>
             <p data-id="memo-p">React.memo permet de <em>memoize</em> un composant React.</p>
             <pre data-id="memo-pre"><code data-trim>
@@ -1620,31 +1592,43 @@
            })
           </code></pre>
         </section>
-        <section data-auto-animate>
-            <h3 data-id="callback">useCallback</h3>
+        <section data-auto-animate data-visibility="hidden">
+            <h3 data-id="callback">Perfs - useCallback</h3>
             <p data-id="callback-p">
-                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un
-                composant.
+                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un composant.
+                Ces fonctions sont destinées à être passées comme callback aux composants enfants.
+            </p>
+            <pre data-id="callback-pre"><code data-trim>
+           const MyComponent = () => (
+            &lt;Button onClick={e => console.log(e)}&gt;Click me&lt;/&gt;
+           )
+          </code></pre>
+        </section>
+        <section data-auto-animate data-visibility="hidden">
+            <h3 data-id="callback">Perfs - useCallback</h3>
+            <p data-id="callback-p">
+                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un composant.
                 Ces fonctions sont destinées à être passées comme callback aux composants enfants.
             </p>
             <pre data-id="callback-pre"><code data-trim>
            const MyComponent = () => {
-            return &lt;button onclick={e => console.log(e)}&gt;Click me&lt;/&gt;
+            const handleClick = e => console.log(e)
+
+            return &lt;Button onClick={handleClick}&gt;Click me&lt;/&gt;
            })
           </code></pre>
         </section>
         <section data-auto-animate>
-            <h3 data-id="callback">useCallback</h3>
+            <h3 data-id="callback">Perfs - useCallback</h3>
             <p data-id="callback-p">
-                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un
-                composant.
+                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un composant.
                 Ces fonctions sont destinées à être passées comme callback aux composants enfants.
             </p>
             <pre data-id="callback-pre"><code data-trim>
            const MyComponent = () => {
-            const handleClick = useCallback(e => console.log(e))
+            const handleClick = useCallback(e => console.log(e), [])
 
-            return &lt;button onclick={handleClick}&gt;Click me&lt;/&gt;
+            return &lt;Button onClick={handleClick}&gt;Click me&lt;/&gt;
            })
           </code></pre>
         </section>

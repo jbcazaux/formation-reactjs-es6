@@ -48,9 +48,9 @@
     "build": "webpack --mode production",
     "testci": "webpack --mode=development --config=./webpack.config.ci.js && node ./puppeteer/openpage.js",
     "httpserver": "http-server ./build",
-    "test": "jest --watch --no-cache",
-    "test-coverage": "jest --coverage",
-    "test-all": "jest",
+    "test": "jest src --watch --no-cache",
+    "test-coverage": "jest src --coverage",
+    "test-all": "jest src",
     "ncuu": "ncu -u"
   },
   "jest": {

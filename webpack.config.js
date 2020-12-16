@@ -8,7 +8,7 @@ module.exports = (env, argv = {}) => ({
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name]-[hash].js',
+    filename: '[name]-[fullhash].js',
     publicPath: '/',
   },
   plugins: [

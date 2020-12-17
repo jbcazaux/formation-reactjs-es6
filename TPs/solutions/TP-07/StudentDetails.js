@@ -4,7 +4,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 
 const StudentDetails = ({ student }) => (
   <FormLabel>
-    {student !== Student.NULL ? (
+    {student ? (
       <div style={{ margin: '20px' }}>{[student.firstname, ' ', student.lastname]}</div>
     ) : (
       <div style={{ margin: '20px', backgroundColor: 'red' }}>Aucun étudiant sélectionné !</div>
@@ -13,7 +13,7 @@ const StudentDetails = ({ student }) => (
 )
 
 StudentDetails.propTypes = {
-  student: Student.propTypes.isRequired,
+  student: Student.propTypes,
 }
 
 export default StudentDetails

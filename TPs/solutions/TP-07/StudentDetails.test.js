@@ -6,7 +6,7 @@ import Student from './Student'
 describe('StudentDetails', () => {
   it('renders with no Student', () => {
     // Given
-    render(<StudentDetails student={Student.NULL} />)
+    render(<StudentDetails student={null} />)
 
     // Then
     expect(screen.getByText('Aucun étudiant sélectionné !')).toBeTruthy()

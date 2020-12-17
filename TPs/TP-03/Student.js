@@ -5,8 +5,6 @@ class Student {
     this.firstname = firstname
     this.grades = grades
   }
-
-  static NULL = new Student(0, '', '', [])
 }
 
 export default Student

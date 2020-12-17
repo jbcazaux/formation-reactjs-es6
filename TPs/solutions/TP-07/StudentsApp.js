@@ -11,7 +11,7 @@ export const filteredStudents = (students, filter) =>
 const StudentsApp = () => {
   const [students, setStudents] = useState([])
   const [filter, setFilter] = useState('')
-  const [selectedStudent, setSelectedStudent] = useState(Student.NULL)
+  const [selectedStudent, setSelectedStudent] = useState(null)
 
   useEffect(() => {
     axios.get('./students.json').then(({ data: students }) => setStudents(students))

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Filter from './StudentFilter'
+import StudentFilter from './StudentFilter'
 import StudentsTable from './StudentsTable'
 import StudentDetails from './StudentDetails'
 import Student from './Student'
@@ -32,7 +32,7 @@ const StudentsApp = () => {
   return (
     <>
       TODO: Décommenter les composants enfants au fur et à mesure
-      {/*<Filter onChange={handleFilterChange} />*/}
+      {/*<StudentFilter onChange={handleFilterChange} />*/}
       {/*<StudentsTable students={filterStudents(students, filter)} onSelectStudent={handleSelectStudent} />*/}
       {/*<StudentDetails student={selectedStudent} />*/}
     </>

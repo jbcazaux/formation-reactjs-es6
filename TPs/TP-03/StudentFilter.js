@@ -3,7 +3,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import PropTypes from 'prop-types'
 
-const Filter = ({ onChange }) => {
+const StudentFilter = ({ onChange }) => {
   const onFilterChange = e => {
     //TODO call the callback function provided by the parent
   }
@@ -25,4 +25,4 @@ const Filter = ({ onChange }) => {
   )
 }
 
-export default Filter
+export default StudentFilter

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import Filter from './StudentFilter'
+import StudentFilter from './StudentFilter'
 import StudentsTable from './StudentsTable'
 import StudentDetails from './StudentDetails'
 import Student from './Student'
 
-export default function StudentsApp() {
+const StudentsApp = () => {
   const [students, setStudents] = useState([])
   const [filter, setFilter] = useState('')
   const [selectedStudent, setSelectedStudent] = useState(Student.NULL)
@@ -27,9 +27,11 @@ export default function StudentsApp() {
 
   return (
     <>
-      <Filter onChange={handleFilterChange} />
+      <StudentFilter onChange={handleFilterChange} />
       <StudentsTable students={filteredStudents(students, filter)} selectStudent={handleSelectStudent} />
       <StudentDetails student={selectedStudent} />
     </>
   )
 }
+
+export default StudentsApp

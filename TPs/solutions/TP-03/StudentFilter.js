@@ -3,7 +3,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
 import PropTypes from 'prop-types'
 
-const Filter = ({ onChange }) => {
+const StudentFilter = ({ onChange }) => {
   const onFilterChange = e => {
     onChange(e.target.value)
   }
@@ -25,8 +25,8 @@ const Filter = ({ onChange }) => {
   )
 }
 
-Filter.propTypes = {
+StudentFilter.propTypes = {
   onChange: PropTypes.func.isRequired,
 }
 
-export default Filter
+export default StudentFilter

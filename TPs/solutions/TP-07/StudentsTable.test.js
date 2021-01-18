@@ -1,4 +1,3 @@
-import React from 'react'
 import StudenstTable from './StudentsTable'
 import Student from './Student'
 import { fireEvent, render, screen } from '@testing-library/react'

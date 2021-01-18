@@ -1,4 +1,3 @@
-import React from 'react'
 import Student from './Student'
 import FormLabel from '@material-ui/core/FormLabel'
 

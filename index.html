@@ -410,14 +410,11 @@
         <section>
             <h3>Hello world</h3>
             <pre>Hello.js<code data-trim>
-            import React from "react"
-
             const Hello = (props) => <div>Hello {props.name} !</div>
 
             export default Hello
             </code></pre>
             <pre class="fragment">index.js<code class="jsx" data-trim>
-            import React from "react"
             import ReactDOM from "react-dom"
             import Hello from "./Hello"
 
@@ -1076,7 +1073,6 @@
 
             <p>Tous les composants "redux" de l'application doivent avoir accès au store.</p>
             <pre><code data-trim>
-                import React from 'react'
                 import ReactDOM from 'react-dom'
                 import {Provider} from 'react-redux'
                 import {createStore} from 'redux'
@@ -1248,7 +1244,7 @@
             <h3>Context API</h3>
             <p>Ensuite on récupère le <i>context</i> là ou l'on veut l'utiliser avec le hook <i>useContext()</i></p>
             <pre><code data-trim>
-            import React, {useContext} from 'react'
+            import {useContext} from 'react'
             import MyContext from './Context'
 
             const MyComponent = () => {
@@ -1287,7 +1283,6 @@
             <h3>Faire le rendu d'un composant</h3>
 
             <pre><code data-trim>
-            import React from 'react'
             import { render } from '@testing-library/react'
 
             describe('MyComponent', () => {
@@ -1305,7 +1300,6 @@
         <section>
             <h3>Tester le rendu d'un composant et ses sous-composants, avec les snapshots</h3>
             <pre><code data-trim>
-            import React from 'react'
             import { render } from '@testing-library/react'
 
             it('renders App and its sub components', () => {

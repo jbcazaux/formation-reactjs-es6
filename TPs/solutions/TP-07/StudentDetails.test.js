@@ -1,4 +1,3 @@
-import React from 'react'
 import StudentDetails from './StudentDetails'
 import { render, screen } from '@testing-library/react'
 import Student from './Student'

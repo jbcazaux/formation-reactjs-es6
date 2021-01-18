@@ -1,4 +1,3 @@
-import React from 'react'
 import { ItemPropTypes } from './Item'
 
 const ShoppingItem = ({ item }) => (

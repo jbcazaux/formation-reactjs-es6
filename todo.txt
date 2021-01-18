@@ -1,8 +1,0 @@
-- react.strictMode
-- selectStudent => onSelectStudent
-- ajouter eslint
-- utiliser react hooks + lint
-- circle ci for auto updating packages versions
-- circle ci launching unit tests of TP07
-- demo suspense
-- demo lazy

@@ -1,108 +1,86 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { counter: 0 }
-    this.incrementCounter = this.incrementCounter.bind(this)
-  }
+const App = () => {
+  const [counter, setCounter] = useState(0)
 
-  incrementCounter() {
-    this.setState(prevState => ({
-      counter: prevState.counter + 1,
-    }))
-  }
-
-  render() {
-    return (
-      <div>
-        <button onClick={this.incrementCounter}>Click me !</button>
-        <ComponentToOptimize counter={this.state.counter} />
-      </div>
-    )
-  }
+  return (
+    <div>
+      <button onClick={() => setCounter(c => c + 1)}>Click me !</button>
+      <ComponentToOptimize counter={counter}/>
+    </div>
+  )
 }
 
-class Component1 extends React.Component {
-  componentDidMount() {
+const Component1 = () => {
+  useEffect(() => {
     console.log('Component1 did mount')
-  }
-  componentWillUnmount() {
-    console.log('Component1 will unmount')
-  }
-  render() {
-    return <div style={{ backgroundColor: 'red', height: '100px', width: '100px' }}>Component1</div>
-  }
+    return () => console.log('Component1 will unmount')
+  }, [])
+
+  return (<div style={{ backgroundColor: 'red', height: '100px', width: '100px' }}>
+    Component1
+  </div>)
 }
 
-class Component2 extends React.Component {
-  componentDidMount() {
+const Component2 = () => {
+  useEffect(() => {
     console.log('Component2 did mount')
-  }
-  componentWillUnmount() {
-    console.log('Component2 will unmount')
-  }
-  render() {
-    return <div style={{ backgroundColor: 'green', height: '100px', width: '100px' }}>Component2</div>
-  }
+    return () => console.log('Component2 will unmount')
+  }, [])
+
+  return (<div style={{ backgroundColor: 'green', height: '100px', width: '100px' }}>
+    Component2
+  </div>)
 }
 
 export default App
 
-class ComponentToOptimize extends React.Component {
-  constructor(props) {
-    super(props)
-    this.renderNotOptimized = this.renderNotOptimized.bind(this)
-    this.renderWithNull = this.renderWithNull.bind(this)
-    this.renderWithKey = this.renderWithKey.bind(this)
-  }
+const ComponentToOptimize = ({ counter }) => {
 
-  render() {
-    return this.renderNotOptimized()
-    // return this.renderWithNull();
-    // return this.renderWithKey();
-  }
-
-  renderNotOptimized() {
-    if (this.props.counter % 2 === 0) {
+  const renderNotOptimized = () => {
+    if ( counter % 2 === 0 ) {
       return (
         <div>
-          <Component1 />
-          <Component2 />
+          <Component1/>
+          <Component2/>
         </div>
       )
     }
 
     return (
       <div>
-        <Component2 />
+        <Component2/>
       </div>
     )
   }
 
-  renderWithNull() {
+  const renderWithNull = () => {
     return (
       <div>
-        {this.props.counter % 2 === 0 ? <Component1 /> : null}
-        <Component2 />
+        {counter % 2 === 0 ? <Component1/> : null}
+        <Component2/>
       </div>
     )
   }
 
-  renderWithKey() {
-    if (this.props.counter % 2 === 0) {
+  const renderWithKey = () => {
+    if ( counter % 2 === 0 ) {
       return (
         <div>
-          <Component1 key={'c1'} />
-          <Component2 key={'c2'} />
+          <Component1 key={'c1'}/>
+          <Component2 key={'c2'}/>
         </div>
       )
     }
 
     return (
       <div>
-        <Component2 key={'c2'} />
+        <Component2 key={'c2'}/>
       </div>
     )
   }
+
+  //return renderNotOptimized()
+  // return renderWithNull();
+  return renderWithKey();
 }

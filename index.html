@@ -586,7 +586,7 @@
              const [details, setDetails] = useState(null)
 
              useEffect(() => {
-              axios.get('/user/' + userId)
+              axios.get('/users/' + userId)
                .then(({data}}) => setDetails(data)
              }, [userId])
 
@@ -1356,7 +1356,7 @@
             <h3>Vérifier qu'une méthode a été appelée</h3>
             <pre><code data-trim>
             const mockFunction = jest.fn()
-            expect(mockFunction).toBeCalledWith(42)
+            expect(mockFunction).toHaveBeenCalledWith(42)
           </code></pre>
         </section>
         <section>
@@ -1424,7 +1424,7 @@
             <p></p>
             <ol style="font-size: 32px">
                 <li>Créer un fichier .test.js pour chaque composant</li>
-                <li><i>StudentDetails</i>: Vérifier les textes (avec Student.NULL ou un Student)</li>
+                <li><i>StudentDetails</i>: Vérifier les textes (avec Student null ou non)</li>
                 <li><i>Filter</i>: Verifier que le callback est appelé quand l'évènement <i>change</i> est propagé</li>
                 <li>
                     <i>StudenstTable</i>: Vérifier le nombre de ligne dans le tableau, suivant le jeu de données. Tester

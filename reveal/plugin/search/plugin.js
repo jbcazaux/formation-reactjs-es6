@@ -6,234 +6,238 @@
  */
 
 const Plugin = () => {
-  // The reveal.js instance this plugin is attached to
-  let deck
 
-  let searchElement
-  let searchButton
-  let searchInput
+	// The reveal.js instance this plugin is attached to
+	let deck;
 
-  let matchedSlides
-  let currentMatchedIndex
-  let searchboxDirty
-  let hilitor
+	let searchElement;
+	let searchButton;
+	let searchInput;
 
-  function render() {
-    searchElement = document.createElement('div')
-    searchElement.classList.add('searchbox')
-    searchElement.style.position = 'absolute'
-    searchElement.style.top = '10px'
-    searchElement.style.right = '10px'
-    searchElement.style.zIndex = 10
+	let matchedSlides;
+	let currentMatchedIndex;
+	let searchboxDirty;
+	let hilitor;
 
-    //embedded base64 search icon Designed by Sketchdock - http://www.sketchdock.com/:
-    searchElement.innerHTML = `<input type="search" class="searchinput" placeholder="Search..." style="vertical-align: top;"/>
-		</span>`
+	function render() {
 
-    searchInput = searchElement.querySelector('.searchinput')
-    searchInput.style.width = '240px'
-    searchInput.style.fontSize = '14px'
-    searchInput.style.padding = '4px 6px'
-    searchInput.style.color = '#000'
-    searchInput.style.background = '#fff'
-    searchInput.style.borderRadius = '2px'
-    searchInput.style.border = '0'
-    searchInput.style.outline = '0'
-    searchInput.style.boxShadow = '0 2px 18px rgba(0, 0, 0, 0.2)'
-    searchInput.style['-webkit-appearance'] = 'none'
+		searchElement = document.createElement( 'div' );
+		searchElement.classList.add( 'searchbox' );
+		searchElement.style.position = 'absolute';
+		searchElement.style.top = '10px';
+		searchElement.style.right = '10px';
+		searchElement.style.zIndex = 10;
 
-    deck.getRevealElement().appendChild(searchElement)
+		//embedded base64 search icon Designed by Sketchdock - http://www.sketchdock.com/:
+		searchElement.innerHTML = `<input type="search" class="searchinput" placeholder="Search..." style="vertical-align: top;"/>
+		</span>`;
 
-    // searchButton.addEventListener( 'click', function(event) {
-    // 	doSearch();
-    // }, false );
+		searchInput = searchElement.querySelector( '.searchinput' );
+		searchInput.style.width = '240px';
+		searchInput.style.fontSize = '14px';
+		searchInput.style.padding = '4px 6px';
+		searchInput.style.color = '#000';
+		searchInput.style.background = '#fff';
+		searchInput.style.borderRadius = '2px';
+		searchInput.style.border = '0';
+		searchInput.style.outline = '0';
+		searchInput.style.boxShadow = '0 2px 18px rgba(0, 0, 0, 0.2)';
+		searchInput.style['-webkit-appearance']  = 'none';
 
-    searchInput.addEventListener(
-      'keyup',
-      function (event) {
-        switch (event.keyCode) {
-          case 13:
-            event.preventDefault()
-            doSearch()
-            searchboxDirty = false
-            break
-          default:
-            searchboxDirty = true
-        }
-      },
-      false
-    )
+		deck.getRevealElement().appendChild( searchElement );
 
-    closeSearch()
-  }
+		// searchButton.addEventListener( 'click', function(event) {
+		// 	doSearch();
+		// }, false );
 
-  function openSearch() {
-    if (!searchElement) render()
+		searchInput.addEventListener( 'keyup', function( event ) {
+			switch (event.keyCode) {
+				case 13:
+					event.preventDefault();
+					doSearch();
+					searchboxDirty = false;
+					break;
+				default:
+					searchboxDirty = true;
+			}
+		}, false );
 
-    searchElement.style.display = 'inline'
-    searchInput.focus()
-    searchInput.select()
-  }
+		closeSearch();
 
-  function closeSearch() {
-    if (!searchElement) render()
+	}
 
-    searchElement.style.display = 'none'
-    if (hilitor) hilitor.remove()
-  }
+	function openSearch() {
+		if( !searchElement ) render();
 
-  function toggleSearch() {
-    if (!searchElement) render()
+		searchElement.style.display = 'inline';
+		searchInput.focus();
+		searchInput.select();
+	}
 
-    if (searchElement.style.display !== 'inline') {
-      openSearch()
-    } else {
-      closeSearch()
-    }
-  }
+	function closeSearch() {
+		if( !searchElement ) render();
 
-  function doSearch() {
-    //if there's been a change in the search term, perform a new search:
-    if (searchboxDirty) {
-      var searchstring = searchInput.value
+		searchElement.style.display = 'none';
+		if(hilitor) hilitor.remove();
+	}
 
-      if (searchstring === '') {
-        if (hilitor) hilitor.remove()
-        matchedSlides = null
-      } else {
-        //find the keyword amongst the slides
-        hilitor = new Hilitor('slidecontent')
-        matchedSlides = hilitor.apply(searchstring)
-        currentMatchedIndex = 0
-      }
-    }
+	function toggleSearch() {
+		if( !searchElement ) render();
 
-    if (matchedSlides) {
-      //navigate to the next slide that has the keyword, wrapping to the first if necessary
-      if (matchedSlides.length && matchedSlides.length <= currentMatchedIndex) {
-        currentMatchedIndex = 0
-      }
-      if (matchedSlides.length > currentMatchedIndex) {
-        deck.slide(matchedSlides[currentMatchedIndex].h, matchedSlides[currentMatchedIndex].v)
-        currentMatchedIndex++
-      }
-    }
-  }
+		if (searchElement.style.display !== 'inline') {
+			openSearch();
+		}
+		else {
+			closeSearch();
+		}
+	}
 
-  // Original JavaScript code by Chirp Internet: www.chirp.com.au
-  // Please acknowledge use of this code by including this header.
-  // 2/2013 jon: modified regex to display any match, not restricted to word boundaries.
-  function Hilitor(id, tag) {
-    var targetNode = document.getElementById(id) || document.body
-    var hiliteTag = tag || 'EM'
-    var skipTags = new RegExp('^(?:' + hiliteTag + '|SCRIPT|FORM)$')
-    var colors = ['#ff6', '#a0ffff', '#9f9', '#f99', '#f6f']
-    var wordColor = []
-    var colorIdx = 0
-    var matchRegex = ''
-    var matchingSlides = []
+	function doSearch() {
+		//if there's been a change in the search term, perform a new search:
+		if (searchboxDirty) {
+			var searchstring = searchInput.value;
 
-    this.setRegex = function (input) {
-      input = input.replace(/^[^\w]+|[^\w]+$/g, '').replace(/[^\w'-]+/g, '|')
-      matchRegex = new RegExp('(' + input + ')', 'i')
-    }
+			if (searchstring === '') {
+				if(hilitor) hilitor.remove();
+				matchedSlides = null;
+			}
+			else {
+				//find the keyword amongst the slides
+				hilitor = new Hilitor("slidecontent");
+				matchedSlides = hilitor.apply(searchstring);
+				currentMatchedIndex = 0;
+			}
+		}
 
-    this.getRegex = function () {
-      return matchRegex
-        .toString()
-        .replace(/^\/\\b\(|\)\\b\/i$/g, '')
-        .replace(/\|/g, ' ')
-    }
+		if (matchedSlides) {
+			//navigate to the next slide that has the keyword, wrapping to the first if necessary
+			if (matchedSlides.length && (matchedSlides.length <= currentMatchedIndex)) {
+				currentMatchedIndex = 0;
+			}
+			if (matchedSlides.length > currentMatchedIndex) {
+				deck.slide(matchedSlides[currentMatchedIndex].h, matchedSlides[currentMatchedIndex].v);
+				currentMatchedIndex++;
+			}
+		}
+	}
 
-    // recursively apply word highlighting
-    this.hiliteWords = function (node) {
-      if (node == undefined || !node) return
-      if (!matchRegex) return
-      if (skipTags.test(node.nodeName)) return
+	// Original JavaScript code by Chirp Internet: www.chirp.com.au
+	// Please acknowledge use of this code by including this header.
+	// 2/2013 jon: modified regex to display any match, not restricted to word boundaries.
+	function Hilitor(id, tag) {
 
-      if (node.hasChildNodes()) {
-        for (var i = 0; i < node.childNodes.length; i++) this.hiliteWords(node.childNodes[i])
-      }
-      if (node.nodeType == 3) {
-        // NODE_TEXT
-        var nv, regs
-        if ((nv = node.nodeValue) && (regs = matchRegex.exec(nv))) {
-          //find the slide's section element and save it in our list of matching slides
-          var secnode = node
-          while (secnode != null && secnode.nodeName != 'SECTION') {
-            secnode = secnode.parentNode
-          }
+		var targetNode = document.getElementById(id) || document.body;
+		var hiliteTag = tag || "EM";
+		var skipTags = new RegExp("^(?:" + hiliteTag + "|SCRIPT|FORM)$");
+		var colors = ["#ff6", "#a0ffff", "#9f9", "#f99", "#f6f"];
+		var wordColor = [];
+		var colorIdx = 0;
+		var matchRegex = "";
+		var matchingSlides = [];
 
-          var slideIndex = deck.getIndices(secnode)
-          var slidelen = matchingSlides.length
-          var alreadyAdded = false
-          for (var i = 0; i < slidelen; i++) {
-            if (matchingSlides[i].h === slideIndex.h && matchingSlides[i].v === slideIndex.v) {
-              alreadyAdded = true
-            }
-          }
-          if (!alreadyAdded) {
-            matchingSlides.push(slideIndex)
-          }
+		this.setRegex = function(input)
+		{
+			input = input.replace(/^[^\w]+|[^\w]+$/g, "").replace(/[^\w'-]+/g, "|");
+			matchRegex = new RegExp("(" + input + ")","i");
+		}
 
-          if (!wordColor[regs[0].toLowerCase()]) {
-            wordColor[regs[0].toLowerCase()] = colors[colorIdx++ % colors.length]
-          }
+		this.getRegex = function()
+		{
+			return matchRegex.toString().replace(/^\/\\b\(|\)\\b\/i$/g, "").replace(/\|/g, " ");
+		}
 
-          var match = document.createElement(hiliteTag)
-          match.appendChild(document.createTextNode(regs[0]))
-          match.style.backgroundColor = wordColor[regs[0].toLowerCase()]
-          match.style.fontStyle = 'inherit'
-          match.style.color = '#000'
+		// recursively apply word highlighting
+		this.hiliteWords = function(node)
+		{
+			if(node == undefined || !node) return;
+			if(!matchRegex) return;
+			if(skipTags.test(node.nodeName)) return;
 
-          var after = node.splitText(regs.index)
-          after.nodeValue = after.nodeValue.substring(regs[0].length)
-          node.parentNode.insertBefore(match, after)
-        }
-      }
-    }
+			if(node.hasChildNodes()) {
+				for(var i=0; i < node.childNodes.length; i++)
+					this.hiliteWords(node.childNodes[i]);
+			}
+			if(node.nodeType == 3) { // NODE_TEXT
+				var nv, regs;
+				if((nv = node.nodeValue) && (regs = matchRegex.exec(nv))) {
+					//find the slide's section element and save it in our list of matching slides
+					var secnode = node;
+					while (secnode != null && secnode.nodeName != 'SECTION') {
+						secnode = secnode.parentNode;
+					}
 
-    // remove highlighting
-    this.remove = function () {
-      var arr = document.getElementsByTagName(hiliteTag)
-      var el
-      while (arr.length && (el = arr[0])) {
-        el.parentNode.replaceChild(el.firstChild, el)
-      }
-    }
+					var slideIndex = deck.getIndices(secnode);
+					var slidelen = matchingSlides.length;
+					var alreadyAdded = false;
+					for (var i=0; i < slidelen; i++) {
+						if ( (matchingSlides[i].h === slideIndex.h) && (matchingSlides[i].v === slideIndex.v) ) {
+							alreadyAdded = true;
+						}
+					}
+					if (! alreadyAdded) {
+						matchingSlides.push(slideIndex);
+					}
 
-    // start highlighting at target node
-    this.apply = function (input) {
-      if (input == undefined || !input) return
-      this.remove()
-      this.setRegex(input)
-      this.hiliteWords(targetNode)
-      return matchingSlides
-    }
-  }
+					if(!wordColor[regs[0].toLowerCase()]) {
+						wordColor[regs[0].toLowerCase()] = colors[colorIdx++ % colors.length];
+					}
 
-  return {
-    id: 'search',
+					var match = document.createElement(hiliteTag);
+					match.appendChild(document.createTextNode(regs[0]));
+					match.style.backgroundColor = wordColor[regs[0].toLowerCase()];
+					match.style.fontStyle = "inherit";
+					match.style.color = "#000";
 
-    init: reveal => {
-      deck = reveal
-      deck.registerKeyboardShortcut('CTRL + Shift + F', 'Search')
+					var after = node.splitText(regs.index);
+					after.nodeValue = after.nodeValue.substring(regs[0].length);
+					node.parentNode.insertBefore(match, after);
+				}
+			}
+		};
 
-      document.addEventListener(
-        'keydown',
-        function (event) {
-          if (event.key == 'F' && (event.ctrlKey || event.metaKey)) {
-            //Control+Shift+f
-            event.preventDefault()
-            toggleSearch()
-          }
-        },
-        false
-      )
-    },
+		// remove highlighting
+		this.remove = function()
+		{
+			var arr = document.getElementsByTagName(hiliteTag);
+			var el;
+			while(arr.length && (el = arr[0])) {
+				el.parentNode.replaceChild(el.firstChild, el);
+			}
+		};
 
-    open: openSearch,
-  }
-}
+		// start highlighting at target node
+		this.apply = function(input)
+		{
+			if(input == undefined || !input) return;
+			this.remove();
+			this.setRegex(input);
+			this.hiliteWords(targetNode);
+			return matchingSlides;
+		};
 
-export default Plugin
+	}
+
+	return {
+
+		id: 'search',
+
+		init: reveal => {
+
+			deck = reveal;
+			deck.registerKeyboardShortcut( 'CTRL + Shift + F', 'Search' );
+
+			document.addEventListener( 'keydown', function( event ) {
+				if( event.key == "F" && (event.ctrlKey || event.metaKey) ) { //Control+Shift+f
+					event.preventDefault();
+					toggleSearch();
+				}
+			}, false );
+
+		},
+
+		open: openSearch
+
+	}
+};
+
+export default Plugin;

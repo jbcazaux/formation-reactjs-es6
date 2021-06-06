@@ -5,80 +5,87 @@
  * @author Hakim El Hattab
  */
 const Plugin = () => {
-  // The reveal.js instance this plugin is attached to
-  let deck
 
-  let defaultOptions = {
-    messageStyle: 'none',
-    tex2jax: {
-      inlineMath: [
-        ['$', '$'],
-        ['\\(', '\\)'],
-      ],
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-    },
-    skipStartupTypeset: true,
-  }
+	// The reveal.js instance this plugin is attached to
+	let deck;
 
-  function loadScript(url, callback) {
-    let head = document.querySelector('head')
-    let script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.src = url
+	let defaultOptions = {
+		messageStyle: 'none',
+		tex2jax: {
+			inlineMath: [ [ '$', '$' ], [ '\\(', '\\)' ] ],
+			skipTags: [ 'script', 'noscript', 'style', 'textarea', 'pre' ]
+		},
+		skipStartupTypeset: true
+	};
 
-    // Wrapper for callback to make sure it only fires once
-    let finish = () => {
-      if (typeof callback === 'function') {
-        callback.call()
-        callback = null
-      }
-    }
+	function loadScript( url, callback ) {
 
-    script.onload = finish
+		let head = document.querySelector( 'head' );
+		let script = document.createElement( 'script' );
+		script.type = 'text/javascript';
+		script.src = url;
 
-    // IE
-    script.onreadystatechange = () => {
-      if (this.readyState === 'loaded') {
-        finish()
-      }
-    }
+		// Wrapper for callback to make sure it only fires once
+		let finish = () => {
+			if( typeof callback === 'function' ) {
+				callback.call();
+				callback = null;
+			}
+		}
 
-    // Normal browsers
-    head.appendChild(script)
-  }
+		script.onload = finish;
 
-  return {
-    id: 'math',
+		// IE
+		script.onreadystatechange = () => {
+			if ( this.readyState === 'loaded' ) {
+				finish();
+			}
+		}
 
-    init: function (reveal) {
-      deck = reveal
+		// Normal browsers
+		head.appendChild( script );
 
-      let revealOptions = deck.getConfig().math || {}
+	}
 
-      let options = { ...defaultOptions, ...revealOptions }
-      let mathjax = options.mathjax || 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js'
-      let config = options.config || 'TeX-AMS_HTML-full'
-      let url = mathjax + '?config=' + config
+	return {
+		id: 'math',
 
-      options.tex2jax = { ...defaultOptions.tex2jax, ...revealOptions.tex2jax }
+		init: function( reveal ) {
 
-      options.mathjax = options.config = null
+			deck = reveal;
 
-      loadScript(url, function () {
-        MathJax.Hub.Config(options)
+			let revealOptions = deck.getConfig().math || {};
 
-        // Typeset followed by an immediate reveal.js layout since
-        // the typesetting process could affect slide height
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, deck.getRevealElement()])
-        MathJax.Hub.Queue(deck.layout)
+			let options = { ...defaultOptions, ...revealOptions };
+			let mathjax = options.mathjax || 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js';
+			let config = options.config || 'TeX-AMS_HTML-full';
+			let url = mathjax + '?config=' + config;
 
-        // Reprocess equations in slides when they turn visible
-        deck.on('slidechanged', function (event) {
-          MathJax.Hub.Queue(['Typeset', MathJax.Hub, event.currentSlide])
-        })
-      })
-    },
-  }
-}
+			options.tex2jax = { ...defaultOptions.tex2jax, ...revealOptions.tex2jax };
 
-export default Plugin
+			options.mathjax = options.config = null;
+
+			loadScript( url, function() {
+
+				MathJax.Hub.Config( options );
+
+				// Typeset followed by an immediate reveal.js layout since
+				// the typesetting process could affect slide height
+				MathJax.Hub.Queue( [ 'Typeset', MathJax.Hub, deck.getRevealElement() ] );
+				MathJax.Hub.Queue( deck.layout );
+
+				// Reprocess equations in slides when they turn visible
+				deck.on( 'slidechanged', function( event ) {
+
+					MathJax.Hub.Queue( [ 'Typeset', MathJax.Hub, event.currentSlide ] );
+
+				} );
+
+			} );
+
+		}
+	}
+
+};
+
+export default Plugin;

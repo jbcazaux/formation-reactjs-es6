@@ -15,7 +15,7 @@ const StudentsApp = () => {
 
   useEffect(() => {
     const fetchStudents = async () => {
-      const { data } = await axios.get('./students.json')
+      const { data } = await axios.get('students.json')
       setStudents(data)
     }
     fetchStudents()

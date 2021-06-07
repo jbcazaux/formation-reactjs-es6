@@ -16,7 +16,7 @@ const StudentsApp = () => {
   // TODO créer un state pour stocker l'étudiant actuellement sélectionné (null par défaut)
 
   useEffect(() => {
-    axios.get('./students.json').then(({ data }) => {
+    axios.get('students.json').then(({ data }) => {
       // TODO: mettre le résultat de la requete dans le state 'students'
     })
   }, [])
@@ -32,9 +32,9 @@ const StudentsApp = () => {
   return (
     <>
       TODO: Décommenter les composants enfants au fur et à mesure
-      {/*<StudentFilter onChange={handleFilterChange} />*/}
-      {/*<StudentsTable students={filterStudents(students, filter)} onSelectStudent={handleSelectStudent} />*/}
-      {/*<StudentDetails student={selectedStudent} />*/}
+      <StudentFilter onChange={handleFilterChange} />
+      <StudentsTable students={filterStudents(students, filter)} onSelectStudent={handleSelectStudent} />
+      <StudentDetails student={selectedStudent} />
     </>
   )
 }

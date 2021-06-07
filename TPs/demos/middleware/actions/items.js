@@ -11,7 +11,7 @@ export const addItem = item => ({
   item,
 })
 
-const getItems = () => axios.get('./items.json').then(resp => resp.data)
+const getItems = () => axios.get('items.json').then(resp => resp.data)
 
 export const fetchItems = () => dispatch =>
   getItems()

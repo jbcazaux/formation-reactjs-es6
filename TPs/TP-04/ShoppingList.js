@@ -9,7 +9,11 @@ const ShoppingList = ({ title }) => {
 
   useEffect(() => {
     // TODO: Créer une action grace à l'action creator 'setItems' puis la dispatcher pour que le store soit mis à jour
-    setItems([new Item(1, 'pain', 0.95), new Item(2, 'gel douche', 2.85), new Item(3, 'cahier à spirales', 1.2)])
+    const action = setItems([
+      new Item(1, 'pain', 0.95),
+      new Item(2, 'gel douche', 2.85),
+      new Item(3, 'cahier à spirales', 1.2)])
+    dispatch(action)
   }, [])
 
   const handleAddItem = event => {

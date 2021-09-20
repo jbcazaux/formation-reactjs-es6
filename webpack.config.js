@@ -31,8 +31,7 @@ module.exports = (env, argv = {}) => ({
   },
   devtool: argv.mode === 'development' ? 'source-map' : false,
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
-    publicPath: '/',
+    static: path.resolve(__dirname, 'public'),
     open: true,
     historyApiFallback: true,
   },

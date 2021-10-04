@@ -1,5 +1,4 @@
-import InputLabel from '@material-ui/core/InputLabel'
-import Input from '@material-ui/core/Input'
+import Input from '@mui/material/Input';
 import PropTypes from 'prop-types'
 
 const StudentFilter = ({ onChange }) => {
@@ -8,10 +7,7 @@ const StudentFilter = ({ onChange }) => {
   }
 
   return (
-    <form className="form-inline">
-      <InputLabel htmlFor="filterName" className="control-label">
-        Filtrer:
-      </InputLabel>
+    <form>
       <Input
         id="filterName"
         type="text"

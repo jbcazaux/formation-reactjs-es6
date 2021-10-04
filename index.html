@@ -654,8 +654,12 @@
                     &lt;h2&gt;{title}&lt;/h2&gt;
                     &lt;ul&gt;
                         {
-                          items.map(item => (&lt;li onClick={() => del(item.id)}&gt;
-                            {item.label}: {item.price}€ &lt;/li&gt;))
+                          items.map(item => (&lt;li
+                                    onClick={() => del(item.id)}
+                                    key={item.id}
+                                &gt;
+                            {item.label}: {item.price}€
+                            &lt;/li&gt;))
                         }
                     &lt;/ul&gt;
                 &lt;/div&gt;)

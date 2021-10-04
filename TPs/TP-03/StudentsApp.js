@@ -31,10 +31,10 @@ const StudentsApp = () => {
 
   return (
     <>
-      TODO: Décommenter les composants enfants au fur et à mesure
-      <StudentFilter onChange={handleFilterChange} />
-      <StudentsTable students={filterStudents(students, filter)} onSelectStudent={handleSelectStudent} />
-      <StudentDetails student={selectedStudent} />
+      TODO: Décommenter les composants enfants au fur et à mesure : StudentsTable, StudentFilter puis StudentDetails
+      {/*<StudentFilter onChange={handleFilterChange} />*/}
+      {/*<StudentsTable students={students} onSelectStudent={handleSelectStudent} />*/}
+      {/*<StudentDetails student={selectedStudent} />*/}
     </>
   )
 }

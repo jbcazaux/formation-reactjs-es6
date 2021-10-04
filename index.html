@@ -1657,13 +1657,14 @@
 <script src="reveal/plugin/markdown/markdown.js"></script>
 <script src="reveal/plugin/highlight/highlight.js"></script>
 <script>
-  console.log('showHiddenSlides', !window.location.search.match(/print-pdf/gi))
+  const showHiddenSlides = !window.location.search.match(/print-pdf/gi)
+  console.log('showHiddenSlides', showHiddenSlides)
   Reveal.initialize({
     controls: true,
     progress: true,
     center: true,
     hash: true,
-    showHiddenSlides: !window.location.search.match(/print-pdf/gi),
+    showHiddenSlides,
     pdfSeparateFragments: false,
     plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight],
   })

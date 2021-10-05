@@ -1035,8 +1035,8 @@
             import { useSelector } from 'react-redux'
 
             export const MyComponent = () => {
-              const foo = useSelector(state => state.foo)
-              return &lt;div&gt;{foo.id} / {foo.info} &lt;/div&gt;
+              const user = useSelector(state => state.user)
+              return &lt;div&gt;{user.id} / {user.email} &lt;/div&gt;
             }
             </code></pre>
             <p style="font-size: 28px">useDispatch</p>

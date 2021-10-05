@@ -1,35 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import StudentFilter from './StudentFilter'
 import StudentsTable from './StudentsTable'
 import StudentDetails from './StudentDetails'
-import Student from './Student'
 
-export const filteredStudents = (students, filter) =>
-  students.filter(s => s.firstname.includes(filter) || s.lastname.includes(filter))
+export const filterStudents = (students, filter) => {
+  return students.filter(s => s.firstname.includes(filter) || s.lastname.includes(filter))
+}
 
 const StudentsApp = () => {
   const [students, setStudents] = useState([])
   const [filter, setFilter] = useState('')
-  const [selectedStudent, setSelectedStudent] = useState(null)
+  const [student, setStudent] = useState(null)
 
   useEffect(() => {
-    axios.get('students.json').then(({ data: students }) => setStudents(students))
+    axios.get('students.json').then(({ data }) => {
+      setStudents(data)
+    })
   }, [])
 
-  const handleFilterChange = f => {
-    setFilter(f)
+  const handleFilterChange = newFilter => {
+    setFilter(newFilter)
   }
 
-  const handleSelectStudent = s => {
-    setSelectedStudent(s)
+  const handleSelectStudent = newSelectedStudent => {
+    setStudent(newSelectedStudent)
   }
 
   return (
     <>
       <StudentFilter onChange={handleFilterChange} />
-      <StudentsTable students={filteredStudents(students, filter)} selectStudent={handleSelectStudent} />
-      <StudentDetails student={selectedStudent} />
+      <StudentsTable students={filterStudents(students, filter)} onSelectStudent={handleSelectStudent} />
+      <StudentDetails student={student} />
     </>
   )
 }

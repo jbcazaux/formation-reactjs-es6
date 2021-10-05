@@ -1,4 +1,4 @@
-import StudentsApp, { filteredStudents } from './StudentsApp'
+import StudentsApp, { filterStudents } from './StudentsApp'
 import { render, screen } from '@testing-library/react'
 import axios from 'axios'
 import Student from './Student'
@@ -22,7 +22,7 @@ describe('StudentsApp', () => {
     const students = [new Student(1, 'last1', 'first1', []), new Student(2, 'last2', 'first2', [])]
 
     //when
-    const result = filteredStudents(students, '2')
+    const result = filterStudents(students, '2')
 
     //then
     expect(result).toHaveLength(1)

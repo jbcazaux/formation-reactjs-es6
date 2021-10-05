@@ -1,5 +1,4 @@
-import React from 'react'
-import StudentsApp, { filteredStudents } from './StudentsApp'
+import StudentsApp, { filterStudents } from './StudentsApp'
 import { render, screen } from '@testing-library/react'
 import axios from 'axios'
 import Student from './Student'

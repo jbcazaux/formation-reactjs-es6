@@ -9,11 +9,11 @@ class Student {
   }
 }
 
-export default Student
-
 Student.propTypes = PropTypes.shape({
   firstname: PropTypes.string.isRequired,
   grades: PropTypes.arrayOf(PropTypes.number).isRequired,
   id: PropTypes.number.isRequired,
   lastname: PropTypes.string.isRequired,
 })
+
+export default Student

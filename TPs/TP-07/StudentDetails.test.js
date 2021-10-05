@@ -5,11 +5,11 @@ import Student from './Student'
 describe('StudentDetails', () => {
   it('renders with no Student', () => {
     // Given
-    // Then
+    // Then (snapshot ou getByText)
   })
 
   it('renders with a Student', () => {
     // Given
-    // Then
+    // Then (snapshot ou getByText)
   })
 })

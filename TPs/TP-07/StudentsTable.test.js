@@ -7,7 +7,7 @@ describe('StudenstTable', () => {
     // Given
     // render(<StudentsTable ...} />)
     // Then
-    // expect() ...
+    // expect() ... (use data-testid)
   })
 
   it('callbacks with clicked user', () => {
@@ -16,6 +16,6 @@ describe('StudenstTable', () => {
     // When
     // click
     // Then
-    // expect() ...
+    // expect() ... (use data-testid)
   })
 })

@@ -879,6 +879,14 @@
             <h3>Redux</h3>
         </section>
         <section>
+            <h3>Redux</h3>
+            <pre><code data-trim>
+                const userId = window.current_account.id
+            </code></pre>
+            <p>&laquo; Pourquoi utiliser Redux alors qu'on a déjà les variables globales ? &raquo;</p>
+            <p class="fragment">#TROLL</p>
+        </section>
+        <section>
             <h3>Actions</h3>
             <pre><code data-trim>
                 {type: 'INCREMENT', inc: 3}
@@ -896,14 +904,6 @@
             export const incrementor =
                 (inc) => ({type: 'INCREMENT', inc})
             </code></pre>
-        </section>
-        <section>
-            <h3>Redux</h3>
-            <pre><code data-trim>
-                const userId = window.current_account.id
-            </code></pre>
-            <p>&laquo; Pourquoi utiliser Redux alors qu'on a déjà les variables globales ? &raquo;</p>
-            <p class="fragment">#TROLL</p>
         </section>
         <section>
             <h3>Redux</h3>
@@ -1102,11 +1102,10 @@
                     Comme le TP-02, mais utiliser le <i>state</i> du store plutot que le <i>state</i> du composant, et
                     initialiser la liste (avec un morceau de code synchrone).
                 </li>
-                <li>Creer un <i>action creator</i> <b>setItems</b> qui retourne une <b>ItemAction</b></li>
-                <li>Créer un reducer <b>items</b> qui prend une <b>ItemAction</b> en entrée</li>
+                <li>Creer un <i>action creator</i> <b>setItems</b> qui retourne une <b>action</b></li>
+                <li>Créer un reducer <b>items</b> qui prend une <b>action</b> en entrée</li>
                 <li>Créer un global reducer grâce à <b>combineReducer</b></li>
-                <li>Lier le composant au <i>store</i></li>
-                <li>Bonus: Créer un boutton qui ajoute un nouvel item à la liste</li>
+                <li>Créer un boutton qui ajoute un nouvel item à la liste</li>
             </ol>
         </section>
         <section>

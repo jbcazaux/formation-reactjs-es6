@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
 import { fetchItems, addItemWithVTA } from './actions/items'
-import { connect, useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 
 export const ShoppingList = ({ title }) => {

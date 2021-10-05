@@ -1,13 +1,16 @@
 import axios from 'axios'
 import Item from '../Item'
 
+export const ADD_ITEM = 'ADD_ITEM'
+export const SET_ITEMS = 'SET_ITEMS'
+
 export const setItems = items => ({
-  type: 'SET_ITEMS',
+  type: SET_ITEMS,
   items,
 })
 
 export const addItem = item => ({
-  type: 'ADD_ITEM',
+  type: ADD_ITEM,
   item,
 })
 
@@ -20,7 +23,7 @@ export const fetchItems = () => dispatch =>
       console.log(error)
     })
 
-export const addItemWithTVA = item => dispatch => {
+export const addItemWithVTA = item => dispatch => {
   const newItem = new Item(item.id, item.label, item.price * 1.2)
   return dispatch(addItem(newItem))
 }

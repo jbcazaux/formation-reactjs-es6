@@ -42,12 +42,13 @@
     "typeface-roboto": "1.1.13"
   },
   "scripts": {
-    "start": "webpack serve --mode development",
-    "dev": "webpack --mode development",
     "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "ncuu": "ncu -u",
+    "prepare": "husky install",
+    "start": "webpack serve --mode development",
     "test": "jest src",
-    "test-coverage": "jest src --coverage",
-    "ncuu": "ncu -u"
+    "test-coverage": "jest src --coverage"
   },
   "jest": {
     "rootDir": "./src",
@@ -58,13 +59,7 @@
   },
   "lint-staged": {
     "*.{js,json}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

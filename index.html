@@ -1354,7 +1354,7 @@
             expect(screen.getAllByRole('button')).toHaveLength(2)
           })
           </code></pre>
-          <p><a href="https://testing-library.com/docs/queries/about#types-of-queries" target="_blank">Queries</a></p>
+            <p><a href="https://testing-library.com/docs/queries/about#types-of-queries" target="_blank">Queries</a></p>
         </section>
         <section>
             <h3>Vérifier qu'une méthode a été appelée</h3>
@@ -1452,7 +1452,7 @@
             <ul>
                 <li><b>BrowserRouter</b> : /monsite/page1/partie2</li>
                 <li><b>HashRouter</b>: /monsite/#/page1/partie2</li>
-                <li><b>MemoryRouter</b> : /</li>
+                <li><b>StaticRouter</b>: Utilisé dans le Server Side Rendering</li>
             </ul>
             <p style="font-size: 24px">
                 Pour le BrowserRouter il faut rediriger toutes les requêtes vers index.html, sauf les .css, .js, et les
@@ -1465,85 +1465,99 @@
             <p>Il faut définir le routeur à la racine de l'application.</p>
             <pre><code data-trim>
             import {BrowserRouter as Router,
-                Route} from 'react-router-dom'
+                Routes, Route} from 'react-router-dom'
 
             ReactDOM.render(
               &lt;Router&gt;
-                  &lt;Route exact path="/" component={Home} /&gt;
-                  &lt;Route path="/about" render={() => <h2>About...</h2>} /&gt;
-                  &lt;Route path="/admin" component={Admin} /&gt;
+                &lt;Routes>
+                  &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+                  &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+                  &lt;Route path="/admin/*" element={&lt;Admin /&gt;} &gt;
+                    &lt;Route path="users" element={&lt;UsersAdmin /&gt;} /&gt;
+                    &lt;Route path="articles" element={&lt;ArticlesAdmin /&gt;} /&gt;
+                  &lt;/Route /&gt;
+                  &lt;Route path="*" element={&lt;NotFound /&gt;} /&gt;
+                &lt;/Routes&gt;
               &lt;/Router&gt;,
               document.getElementById('root')
             )
             </code></pre>
         </section>
         <section>
-            <h3>Nested routes !</h3>
-            <pre><code data-trim>
-            const Admin = () => (
-            &lt;div&gt;
-              &lt;h2&gt;Administration&lt;/h2&gt;
-              &lt;Route path={'/admin/users'} component={UsersAdmin}/&gt;
-              &lt;Route path={'/admin/articles'} component={ArticlesAdmin}/&gt;
-            &lt;/div&gt;
-            )
-            </code></pre>
+            <h3>react-router</h3>
+            <p>
+                Plusieurs façons de déclarer les routes :
+            <ul>
+                <li>Déclarer toutes les routes dans un seul composant, comme dans la V3.
+                    <a href="https://reactrouter.com/docs/en/v6/getting-started/overview#multiple-sets-of-routes">Exemple</a>
+                </li>
+                <li>Déclarer les sous routes dans chaque composant, comme dans les V4-V5.
+                    <a href="https://reactrouter.com/docs/en/v6/getting-started/overview#descendant-routes">Exemple</a>
+                </li>
+                <li>Mixer les deux stratégies</li>
+            </ul>
+            </p>
         </section>
         <section>
             <h3>react-router</h3>
             <p>
                 Il est possible de générer les liens automatiquement (voir la documentation)
-                <a target="_blank" href="https://reacttraining.com/react-router/web/api/NavLink">doc</a> pour l'API
+                <a target="_blank" href="https://reactrouter.com/docs/en/v6/api#link">doc</a> pour l'API
             </p>
             <pre><code data-trim>
-            &lt;Link to="/admin/users"&gt;Administration des utilisateurs&lt;/Link&gt;
+            &lt;Link to="/users"&gt;Administration des utilisateurs&lt;/Link&gt;
             </code></pre>
         </section>
         <section>
             <h3>react-router</h3>
             <p>Dynamic urls</p>
             <pre><code data-trim>
-            &lt;Route path={'/admin/users/:userId'} component={UserAdmin}/&gt;
+            &lt;Route path="users/*" element={&lt;Users /&gt;}&gt;
+              &lt;Route path=":userId" element={&lt;UserDetail /&gt;} /&gt;
+            &lt;/Route&gt;
             </code></pre>
             <pre><code data-trim>
-            const UserAdmin = ({match}) => (
-            &lt;div&gt;
-                Manage user {match.params.userId}
-            &lt;/div&gt;
-            )
+            const UserDetail = () => {
+                const { userId } = useParams()
+                return &lt;div&gt;
+                        Manage user {userId}
+                &lt;/div&gt;
+            }
             </code></pre>
         </section>
         <section>
-            <h3>match</h3>
-            <p>match contient plusieurs données :</p>
-            <ul>
-                <li><b>params</b>: clé-valeurs des paramètres dans l'url (ex: /user/:id)</li>
-                <li><b>url</b>: l'url qui a matché</li>
-                <li><b>isExact</b>: true si l'url a matché de façon exacte (non partielle)</li>
-                <li><b>path</b>: pattern du match</li>
-            </ul>
+            <h3>react-router</h3>
+            <p>Lorsque l'on définit les sous routes dans les composants (multiple sets of routes), il faut indiquer
+            dans les composants où doivent apparaitrent leurs sous composants. Cela se fait avec &lt;Outlet /&gt; </p>
             <pre><code data-trim>
-            const Admin = ({match}) => (
-                &lt;Link to={`${match.url}/users`}&gt;
-                    Users
-                &lt;/Link&gt;
-                &lt;Link to={`${match.url}/articles`}&gt;
-                    Articles
-                &lt;/Link&gt;
+            &lt;Route path="/admin/*" element={&lt;Admin /&gt;} &gt;
+              &lt;Route path="users" element={&lt;UsersAdmin /&gt;} /&gt;
+              &lt;Route path="articles" element={&lt;ArticlesAdmin /&gt;} /&gt;
+            &lt;Route /&gt;
+            </code></pre>
+            <pre><code data-trim>
+            const Admin = () => (
+              <div>
+                  Bienvenue sur la page d'administration
+                  &lt;Outlet /&gt;
+              </div>
             )
             </code></pre>
         </section>
         <section data-background="#b5533c">
             <h3>TP-08</h3>
             <h4>React-router</h4>
-            <p>L'objectif est de construire une application avec 3 "pages"</p>
-            <p>Une de ces pages aura un id dans les paramètres d'URL</p>
-            <ol>
-                <li>Créer les liens vers /about et /users</li>
-                <li>Créer les routes pour /about et /users</li>
+            <p>L'objectif est de construire une application avec 3 "pages". </p>
+            <ol style="font-size: 28px">
+                <li>Créer les liens vers /about et /users et les routes pour /about et /users</li>
                 <li>Créer les liens vers /users/elsa et /users/anna</li>
-                <li>Créer la route pour le composant UserDetail</li>
+                <li>Créer la route pour le composant UserDetail (choisir une des deux stratégies)</li>
                 <li>Ecrire le lien pour les images de profil (elsa.jpeg and anna.jpeg)</li>
+                <li>Créer une route * pour gérer les 404</li>
+                <li>Créer une route * pour afficher un message (uniquement) lorsque aucun utilisateur n'est sélectionné</li>
+                <li>Bonus : Utiliser NavLink plutôt que Link pour donner un style au lien actif</li>
+                <li>Bonus : Utiliser l'autre statégie</li>
+
             </ol>
         </section>
         <section>
@@ -1593,7 +1607,8 @@
         <section data-auto-animate data-visibility="hidden">
             <h3 data-id="callback">Perfs - useCallback</h3>
             <p data-id="callback-p">
-                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un composant.
+                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un
+                composant.
                 Ces fonctions sont destinées à être passées comme callback aux composants enfants.
             </p>
             <pre data-id="callback-pre"><code data-trim>
@@ -1605,7 +1620,8 @@
         <section data-auto-animate data-visibility="hidden">
             <h3 data-id="callback">Perfs - useCallback</h3>
             <p data-id="callback-p">
-                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un composant.
+                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un
+                composant.
                 Ces fonctions sont destinées à être passées comme callback aux composants enfants.
             </p>
             <pre data-id="callback-pre"><code data-trim>
@@ -1619,7 +1635,8 @@
         <section data-auto-animate>
             <h3 data-id="callback">Perfs - useCallback</h3>
             <p data-id="callback-p">
-                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un composant.
+                useCallback permet de ne pas recréer une nouvelle fonction à chaque exécution (re-render) d'un
+                composant.
                 Ces fonctions sont destinées à être passées comme callback aux composants enfants.
             </p>
             <pre data-id="callback-pre"><code data-trim>

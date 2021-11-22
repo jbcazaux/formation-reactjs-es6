@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, Routes, useParams } from 'react-router-dom'
 
 const App = () => (
   <Router>
@@ -8,14 +8,16 @@ const App = () => (
         <li>
           <Link to="/">Home</Link>
         </li>
-        {/*TODO: create links*/}
+        {/*TODO: créer les <Link />*/}
         <li>About</li>
         <li>Users</li>
       </ul>
 
       <hr />
-
-      <Route path="/" component={Home} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/*TODO: créer les <Route />*/}
+      </Routes>
     </div>
   </Router>
 )
@@ -38,26 +40,28 @@ const Users = ({ match }) => (
   <div>
     <h2>Users</h2>
     <ul>
+      {/*TODO: créer les <Link />*/}
       <li>
-        <a href="#">anna</a>
+        anna
       </li>
       <li>
-        <a href="#">elsa</a>
+        elsa
       </li>
     </ul>
     <hr />
-    {/*<Route path={'TODO !!'} component={UserDetail}/>*/}
-    <Route exact path={match.url} render={() => <h3>Please select a user.</h3>} />
   </div>
 )
 
-const UserDetail = ({ match }) => (
-  <div>
-    <h3>
-      Details of <b>/!\get name from url/!\</b>
-    </h3>
-    <img src={'/' + match + '.jpeg'} alt={match} />
-  </div>
-)
+const UserDetail = () => {
+  const name = 'name' // TODO: Récupérer le nom
+  return (
+    <div>
+      <h3>
+        Details of <b>{name}</b>
+      </h3>
+      <img src={'/' + name + '.jpeg'} alt={name} />
+    </div>
+  )
+}
 
 export default App

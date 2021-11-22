@@ -1,25 +1,50 @@
-import { BrowserRouter as Router, Link, Route, useParams } from 'react-router-dom'
+import { BrowserRouter as Router, Link, NavLink, Route, useParams, Routes, Outlet } from 'react-router-dom'
 
 const App = () => (
   <Router>
     <div>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <NavLink to="/" style={({ isActive }) => (isActive ? { fontWeight: 'bolder', backgroundColor: 'cyan' } : {})}>
+            Home
+          </NavLink>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <NavLink
+            to="/about"
+            style={({ isActive }) => (isActive ? { fontWeight: 'bolder', backgroundColor: 'pink' } : {})}
+          >
+            About
+          </NavLink>
         </li>
         <li>
-          <Link to="/users">Users</Link>
+          <NavLink
+            to="/users"
+            style={({ isActive }) => (isActive ? { fontWeight: 'bolder', backgroundColor: 'yellow' } : {})}
+          >
+            Users
+          </NavLink>
         </li>
       </ul>
 
       <hr />
 
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/users" component={Users} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="users/*" element={<Users />}>
+          <Route path=":name" element={<UserDetail />} />
+          <Route path="*" element={<h3>Please select a user.</h3>} />
+        </Route>
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: '1rem' }}>
+              <p>Page non trouvée (404) !</p>
+            </main>
+          }
+        />
+      </Routes>
     </div>
   </Router>
 )
@@ -38,25 +63,27 @@ const About = () => (
   </div>
 )
 
-const Users = ({ match }) => (
-  <div>
-    <h2>Users</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/anna`}>Anna</Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/elsa`}>Elsa</Link>
-      </li>
-    </ul>
-    <hr />
-    <Route path={`${match.url}/:name`} component={UserDetail} />
-    <Route exact path={match.url} render={() => <h3>Please select a user.</h3>} />
-  </div>
-)
+const Users = () => {
+  return (
+    <div>
+      <h2>Users</h2>
+      <ul>
+        <li>
+          <Link to="anna">Anna</Link>
+        </li>
+        <li>
+          <Link to="elsa">Elsa</Link>
+        </li>
+      </ul>
+      <hr />
+      <Outlet />
+    </div>
+  )
+}
 
 const UserDetail = () => {
   const { name } = useParams()
+
   return (
     <div>
       <h3>

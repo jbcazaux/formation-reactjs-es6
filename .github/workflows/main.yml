@@ -1,0 +1,33 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.5.0-chrome94-ff93
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm install
+      - name: Cypress
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm run starti
+          wait-on: 'http://localhost:8080'
+          browser: chrome
+      - name: Archive test screenshots
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: screenshots
+          path: cypress/screenshots
+        if: ${{ failure() }}

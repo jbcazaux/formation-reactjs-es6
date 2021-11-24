@@ -16,7 +16,7 @@
     "babel-loader": "8.2.3",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "10.0.0",
-    "cypress": "9.0.0",
+    "cypress": "9.1.0",
     "html-webpack-plugin": "5.5.0",
     "husky": "7.0.4",
     "jest": "27.3.1",

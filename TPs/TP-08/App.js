@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Link, Route, Routes, useParams } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'
 
 const App = () => (
   <Router>
@@ -36,17 +36,13 @@ const About = () => (
   </div>
 )
 
-const Users = ({ match }) => (
+const Users = () => (
   <div>
     <h2>Users</h2>
     <ul>
       {/*TODO: créer les <Link />*/}
-      <li>
-        anna
-      </li>
-      <li>
-        elsa
-      </li>
+      <li>anna</li>
+      <li>elsa</li>
     </ul>
     <hr />
   </div>

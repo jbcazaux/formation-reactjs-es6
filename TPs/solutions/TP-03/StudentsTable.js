@@ -1,10 +1,18 @@
-import Table from '@mui/material/Table'
+import MuiTable from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Student from './Student'
 import PropTypes from 'prop-types'
+import { styled } from '@mui/material'
+
+const Table = styled(MuiTable)(
+  theme => `
+  margin-bottom: 8px;
+  color: ${theme.palette.oxianeBlue};
+`
+)
 
 const StudentsTable = ({ students, onSelectStudent }) => (
   <Table>

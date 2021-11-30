@@ -12,7 +12,8 @@ const ShoppingList = ({ title }) => {
     const action = setItems([
       new Item(1, 'pain', 0.95),
       new Item(2, 'gel douche', 2.85),
-      new Item(3, 'cahier à spirales', 1.2)])
+      new Item(3, 'cahier à spirales', 1.2),
+    ])
     dispatch(action)
   }, [])
 
@@ -24,9 +25,9 @@ const ShoppingList = ({ title }) => {
     <div>
       <h2>{title}</h2>
       <ul>
-        {items.map(item => (
+        {/*items.map(item => (
           <ShoppingItem key={item.id} item={item} />
-        ))}
+        ))*/}
       </ul>
       <form onSubmit={handleAddItem}>
         <input type="text" placeholder="item" onChange={e => setNewItemLabel(e.target.value)} value={newItemLabel} />

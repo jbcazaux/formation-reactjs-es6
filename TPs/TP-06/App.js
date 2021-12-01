@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { InfosContext } from './Context'
 import User from './User'
 
 const Small = () => {

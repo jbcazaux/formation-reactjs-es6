@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8" />
+  <title>GUESS MY NUMB3R</title>
+  <script>
+    let game = {
+      numberToGuess: 5,
+      tries: 0,
+    }
+
+    const computeStatus = answer => {
+      // TODO (4) retourner "WIN", "MINUS" ou "PLUS"
+      return 'TODO'
+    }
+
+    const guess = e => {
+      e.preventDefault()
+
+      // TODO (5): mettre a jour le compteur d'essais (game.tries)
+
+      const answerElement = document.getElementById('answer')
+      const answer = 0 // TODO (2): récuperer la valeur de l input, et la transformer en nombre
+
+      const resultElement = document.getElementById('result')
+      resultElement.innerHTML = '' // TODO (3): appeler la méthode 'computeStatus'
+      const triesElement = document.getElementById('tries')
+      triesElement.innerHTML = ' essais' // TODO (6): afficher le nombre d'essais
+    }
+
+    const reset = () => {
+      game = {} // TODO (7): ré-initialiser les données du jeu
+      const resultElement = document.getElementById('result')
+      resultElement.innerHTML = ''
+      const triesElement = document.getElementById('tries')
+      triesElement.innerHTML = ''
+    }
+
+    const onLoad = () => {
+      document.getElementById('form').addEventListener('submit', guess)
+    }
+  </script>
+</head>
+<body onload="onLoad()">
+<h1>Guess my number</h1>
+<form id="form">
+  <label for="answer">Ma réponse : </label>
+  <!-- TODO (1): créer un champ input qui a comme id "answer" -->
+  <input type="submit" value="Je valide" />
+</form>
+<button onclick="reset()" type="button">Nouvelle partie</button>
+<div id="result"></div>
+<div id="tries"></div>
+</body>
+</html>

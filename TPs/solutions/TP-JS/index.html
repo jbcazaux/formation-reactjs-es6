@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="UTF-8" />
+    <title>GUESS MY NUMB3R</title>
+    <script>
+      let game = {
+        numberToGuess: 5,
+        tries: 0,
+      }
+
+      const computeStatus = answer => {
+        if (answer < game.numberToGuess) return 'PLUS'
+        if (answer > game.numberToGuess) return 'MINUS'
+        return 'WIN'
+      }
+
+      const guess = e => {
+        e.preventDefault()
+        game = { ...game, tries: game.tries + 1 }
+
+        const answer = parseInt(document.getElementById('answer').value)
+        const resultElement = document.getElementById('result')
+        resultElement.innerHTML = computeStatus(answer)
+        const triesElement = document.getElementById('tries')
+        triesElement.innerHTML = `${game.tries} essai(s)`
+      }
+
+      const reset = () => {
+        game = { numberToGuess: Math.floor(Math.random() * 10), tries: 0 }
+        const resultElement = document.getElementById('result')
+        resultElement.innerHTML = ''
+        const triesElement = document.getElementById('tries')
+        triesElement.innerHTML = ''
+      }
+
+      const onLoad = () => {
+        document.getElementById('form').addEventListener('submit', guess)
+      }
+    </script>
+  </head>
+  <body onload="onLoad()">
+    <h1>Guess my number</h1>
+    <form id="form">
+      <label for="answer">Ma réponse : </label><input id="answer" type="number" value="0" min="0" max="10" />
+      <input type="submit" value="Je valide" />
+
+    </form>
+    <button onclick="reset()" type="button">Nouvelle partie</button>
+    <div id="result"></div>
+    <div id="tries"></div>
+  </body>
+</html>

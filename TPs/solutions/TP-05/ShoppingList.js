@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
-import { fetchItems, addItemWithVTA } from './actions/items'
-import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useMutation, useQuery } from 'react-query'
+import itemsApi from './apis/items'
 
 export const ShoppingList = ({ title }) => {
   const [newItemLabel, setNewItemLabel] = useState('')
   const [newItemPrice, setNewItemPrice] = useState(0)
-  const dispatch = useDispatch()
-  const items = useSelector(state => state.items)
 
-  useEffect(() => {
-    dispatch(fetchItems())
-  }, [])
+  const { data: items = [], refetch } = useQuery('items', itemsApi.get, {})
+  const { mutateAsync: addItem } = useMutation(itemsApi.create, {
+    onSuccess: refetch,
+  })
 
-  const createNewItem = e => {
+  const createNewItem = async e => {
     e.preventDefault()
-    dispatch(addItemWithVTA(new Item(Date.now(), newItemLabel, newItemPrice)))
+    await addItem(new Item(new Date().getTime(), newItemLabel, newItemPrice))
     setNewItemLabel('')
     setNewItemPrice(0)
   }

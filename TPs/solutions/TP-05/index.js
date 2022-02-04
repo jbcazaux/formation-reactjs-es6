@@ -1,16 +1,12 @@
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { applyMiddleware, createStore, compose } from 'redux'
-import { reducer } from './reducers/index'
 import { ShoppingList } from './ShoppingList'
-import thunk from 'redux-thunk'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
+const queryClient = new QueryClient()
 
 ReactDOM.render(
-  <Provider store={store}>
+  <QueryClientProvider client={queryClient}>
     <ShoppingList title="liste de courses" />
-  </Provider>,
+  </QueryClientProvider>,
   document.getElementById('root')
 )

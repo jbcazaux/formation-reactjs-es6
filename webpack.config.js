@@ -19,7 +19,12 @@ module.exports = (env, argv = {}) => ({
     }),
     new CleanWebpackPlugin({ verbose: true }),
   ],
-  resolve: { extensions: ['.js'] },
+  resolve: {
+    extensions: ['.js'],
+    alias: {
+      public: path.resolve(__dirname, 'public'),
+    },
+  },
   module: {
     rules: [
       {

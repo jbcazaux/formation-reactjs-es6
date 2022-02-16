@@ -1,6 +1,6 @@
-import itemsArray from '../../public/items.json'
+import itemsArray from 'public/items.json'
 
-const delay = (f, duration) => setTimeout(() => Promise.resolve(f()), duration)
+const delay = async (value, duration) => new Promise(resolve => setTimeout(resolve, duration, value))
 
 let allItems = itemsArray
 
@@ -10,15 +10,14 @@ const items = {
     // return data
 
     // fake implementation :
-    return delay(() => allItems, 2000)
+    return await delay(allItems, 100)
   },
   create: async item => {
     //await axios.post('/items')
 
     // fake implementation :
-    await delay(() => {
-      allItems = allItems.concat({ id: item.id, label: item.label, price: item.price })
-    }, 2000)
+    allItems = allItems.concat({ id: item.id, label: item.label, price: item.price })
+    await delay(null, 100)
   },
 }
 

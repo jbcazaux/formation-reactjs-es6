@@ -1,5 +1,5 @@
 import axios from 'axios'
-import itemsArray from '../../public/items.json'
+import itemsArray from 'public/items.json'
 
 const delay = async (value, duration) => new Promise(resolve => setTimeout(resolve, duration, value))
 

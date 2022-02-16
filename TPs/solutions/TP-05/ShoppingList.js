@@ -10,7 +10,7 @@ export const ShoppingList = ({ title }) => {
   const [newItemLabel, setNewItemLabel] = useState('')
   const [newItemPrice, setNewItemPrice] = useState(0)
 
-  const { data: items = [], refetch, isLoading: isLoadingGet } = useQuery('items', itemsApi.get, {})
+  const { data: items = [], refetch, isLoading: isLoadingGet } = useQuery('items', itemsApi.get)
   const { mutateAsync: addItem, isLoading: isLoadingAdd } = useMutation(itemsApi.create, {
     onSuccess: refetch,
   })

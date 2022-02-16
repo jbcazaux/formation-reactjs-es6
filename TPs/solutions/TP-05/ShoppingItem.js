@@ -1,4 +1,4 @@
-import { ItemPropTypes } from './Item'
+import Item from './Item'
 
 const ShoppingItem = ({ item }) => (
   <li>
@@ -7,7 +7,7 @@ const ShoppingItem = ({ item }) => (
 )
 
 ShoppingItem.propTypes = {
-  item: ItemPropTypes.isRequired,
+  item: Item.propTypes.isRequired,
 }
 
 export default ShoppingItem

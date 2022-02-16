@@ -8,4 +8,8 @@ export default class Item {
   }
 }
 
-export const ItemPropTypes = PropTypes.shape({ label: PropTypes.string.isRequired, price: PropTypes.number.isRequired })
+Item.propTypes = PropTypes.shape({
+  id: PropTypes.number,
+  label: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+})

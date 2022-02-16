@@ -1109,107 +1109,84 @@
             </ol>
         </section>
         <section>
-            <h3>Actions asynchrones</h3>
+            <h3>React Query</h3>
         </section>
         <section>
-            <h3>Jusque là</h3>
-            <ul>
-                <li>Redux permet de ne dispatcher que des objets (les actions)</li>
-                <li class="fragment">
-                    <b>redux-thunk</b>, <b>redux-saga</b>, <b>mobx</b> permettent de dispacher des fonctions, et donc
-                    des
-                    actions asynchrones ou des actions avec des conditions. Ces librairies sont des <i>middlewares</i>.
-                </li>
-            </ul>
-        </section>
-        <section>
-            <h3>redux-thunk</h3>
-        </section>
-        <section>
-            <h3>Configuration</h3>
+            <h3>React Query</h3>
+
+            <p>React Query permet de faire des requêtes et de stocker le résultat afin q'il soit disponible dans toute l'application.</p>
             <pre><code data-trim>
-                import {reducer} from './reducers/index'
-                import {createStore, applyMiddleware} from 'redux'
-                import thunk from 'redux-thunk'
-
-                const store = createStore(
-                reducer,
-                applyMiddleware(thunk)
-                )
-
-                </code></pre>
+            const { data } = useQuery('items', itemsApi.get)
+            </code></pre>
         </section>
         <section>
-            <h3>ThunkActionCreator</h3>
+            <h3>React Query</h3>
+
+            <p>La clé fonctionne également comme un tableau de dépendances.</p>
             <pre><code data-trim>
-            function incrementCreator(inc) {
-                return {
-                    type: 'INCREMENT_COUNTER',
-                    inc: inc
-                }
-            }
-
-            function incrementAsyncCreator(inc) {
-                return dispatch => setTimeout(
-                        () => dispatch(incrementCreator(inc)),
-                        1000)
-            }
+            const { data } =
+                useQuery(['user', userId], () => usersApi.get(userId))
             </code></pre>
         </section>
         <section>
-            <h3>Pour résumer</h3>
+            <h3>React Query</h3>
 
-            <p>
-                Une <i>ThunkAction</i> est une fonction qui prend <i>dispatch()</i> and <i>getState()</i> comme
-                paramètres,
-                et qui retourne le résultat de l'appel à <i>dispatch()</i>.
-            </p>
-        </section>
-        <section>
-            <h3>Example</h3>
+            <p>useQuery retourne bien plus que les données récupérées.</p>
             <pre><code data-trim>
-            const getItems =
-                (userId) => axios.get('users/' + userId + '/items')
-                    .then(resp => resp.data)
-                    .catch(error => console.log(error.toString()))
+            const { data, refetch, isLoading, isError } =
+                useQuery(['user', userId], () => usersApi.get(userId))
             </code></pre>
-            <pre class="fragment"><code data-trim>
-            export const fetchItems = () =>
-              (dispatch, getState) => getItems(getState().userId)
-              .then(items => dispatch({type: 'SET_ITEMS', items: items}))
-            .catch((error) => console.log(error))
+            <p>Voir la <a href="https://react-query.tanstack.com/reference/useQuery" target="_blank">documentation</a>.</p>
+        </section>
+        <section>
+            <h3>React Query</h3>
+
+            <p>Pour faire des mises à jour, on utilise les mutations.</p>
+            <pre><code data-trim>
+            const { mutateAsync: createUser } = useMutation(userApi.create, {
+                onSuccess: () => console.log('c est OK !'),
+            })
             </code></pre>
-            <pre class="fragment"><code data-trim>
-            export const UserItems = () => {
-              const dispatch = useDispatch()
+            <pre><code data-trim>
+                &lt;button onClick={() => createUser(myNewUser)}&gt;CREATE USER&lt;/button&gt;
+            </code></pre>
+            <p>Voir la <a href="https://react-query.tanstack.com/reference/useMutation" target="_blank">documentation</a>.</p>
+        </section>
+        <section>
+            <h3>React Query</h3>
 
-              handleClick = () => {
-                const action = fetchItems()
-                dispatch(action)
-              }
+            <p>Il faut initialiser React Query à la racine de l'application</p>
+            <pre><code data-trim>
+            const queryClient = new QueryClient()
 
-              return ...
-            }
-
+            ReactDOM.render(
+              &lt;QueryClientProvider client={queryClient}&gt;
+                &lt;MyApp/&gt;
+              &lt;/QueryClientProvider&gt;,
+              document.getElementById('root')
+            )
             </code></pre>
         </section>
+        </section>
+
         <section data-background="#b5533c">
             <h3>TP-05</h3>
             <h4>Shopping list - ter</h4>
             <ol>
-                <li>Configurer le "thunk" Middleware dans index.js</li>
-                <li>Comme le TP-04 mais avec un appel asynchrone (http) pour charger la liste des items</li>
-                <li>Bonus: Créer une action qui applique un taux de TVA, lorsque l'on ajoute un nouvel élément</li>
+                <li>Utiliser useQuery pour récupérer la liste des items (se servir de l'api existante)</li>
+                <li>Utiliser useMutation pour ajouter un item à la liste</li>
+                <li>Une fois l'ajout fait, utiliser refetch (renvoyé par useQuery) pour recharger la liste</li>0
+                <li>Utiliser isLoading pour ajouter un loader lors des temps de chargement</li>
             </ol>
         </section>
         <section>
             <h3>Bravo !</h3>
-            <p>C'était la partie la plus compliquée !</p>
             <p>On sait créer des composants et leur passer des données</p>
             <ul>
                 <li>Depuis le composant parent</li>
                 <li>Depuis le <i>LocalState</i></li>
                 <li>Depuis le <b>store</b></li>
+                <li>avec <b>React Query</b></li>
                 <li>Depuis un grand(n)-parent grâce au context...</li>
             </ul>
         </section>

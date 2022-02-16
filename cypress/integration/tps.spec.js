@@ -54,7 +54,7 @@ context('Tps', () => {
     cy.get('input').eq(0).type('foo')
     cy.get('input').eq(1).type('100')
     cy.get('button').click()
-    cy.contains('foo:120€')
+    cy.contains('foo:100€')
     cy.get('ul li').should('have.length', 4)
   })
 
@@ -100,7 +100,6 @@ context('Tps', () => {
     cy.url().should('eq', 'http://localhost:8080/users/elsa')
     cy.contains('Details of elsa')
     cy.get('img[src="/elsa.jpeg"]').should('exist')
-
   })
 
   it('loads TP09', () => {

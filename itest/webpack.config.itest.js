@@ -18,7 +18,7 @@ module.exports = (env, argv = {}) => ({
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js',
-    publicPath: '/'
+    publicPath: '/',
   },
 
   plugins: [
@@ -87,18 +87,23 @@ module.exports = (env, argv = {}) => ({
     }),
     new CleanWebpackPlugin({ verbose: true }),
     new CopyPlugin({
-      patterns: [{ from: 'public'}],
+      patterns: [{ from: 'public' }],
     }),
   ],
-  resolve: {extensions: ['.js']},
+  resolve: {
+    extensions: ['.js'],
+    alias: {
+      public: path.resolve(__dirname, '../public'),
+    },
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
-    ]
+        loader: 'babel-loader',
+      },
+    ],
   },
-  devtool: false
-});
+  devtool: false,
+})

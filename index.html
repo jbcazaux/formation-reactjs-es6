@@ -1159,7 +1159,7 @@
 
           <p>useQuery retourne bien plus que les données récupérées.</p>
           <pre><code data-trim>
-            const { data, refetch, isLoading, isError } =
+            const { data = {}, refetch, isLoading, isError } =
                 useQuery(['user', userId], () => usersApi.get(userId))
             </code></pre>
           <p>
@@ -1205,7 +1205,6 @@
             <li>Utiliser useQuery pour récupérer la liste des items (se servir de l'api existante)</li>
             <li>Utiliser useMutation pour ajouter un item à la liste</li>
             <li>Une fois l'ajout fait, utiliser refetch (renvoyé par useQuery) pour recharger la liste</li>
-            0
             <li>Utiliser isLoading pour ajouter un loader lors des temps de chargement</li>
           </ol>
         </section>

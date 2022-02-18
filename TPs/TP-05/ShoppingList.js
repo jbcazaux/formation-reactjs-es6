@@ -15,9 +15,10 @@ export const ShoppingList = ({ title }) => {
 
   const createNewItem = async e => {
     e.preventDefault()
-    // TODO 3: appeler la mutation qui a été créée
     setNewItemLabel('')
     setNewItemPrice(0)
+
+    // TODO 3: appeler ici la mutation qui a été créée
   }
 
   return (

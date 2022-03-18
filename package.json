@@ -22,7 +22,7 @@
     "jest": "27.5.1",
     "lint-staged": "12.3.6",
     "mini-css-extract-plugin": "2.6.0",
-    "npm-check-updates": "12.5.3",
+    "npm-check-updates": "12.5.4",
     "prettier": "2.6.0",
     "prop-types": "15.8.1",
     "react-test-renderer": "17.0.2",

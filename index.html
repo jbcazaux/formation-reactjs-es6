@@ -947,7 +947,7 @@
         <section>
           <h3>Reducer</h3>
           <pre><code data-trim>
-            export const display = (state = 0, action) => {
+            export const counter = (state = 0, action) => {
                 switch (action.type) {
                     case 'INCREMENT':
                         return state + action.inc
@@ -1012,16 +1012,6 @@
         </section>
         <section>
           <h3>Composition de reducers</h3>
-          <h4>Effet Wahou</h4>
-          <pre><code data-trim>
-            const init = {user: 'nobody', counter: 0}
-            export const myGlobalReducer = (state = init, action) =>
-              ({
-                user: user(state.user, action),
-                counter: counter(state.counter, action)
-              })
-            </code></pre>
-          <p>Et avec un peu de magie...</p>
           <pre><code data-trim>
             import { combineReducers } from 'redux'
             export const myGlobalReducer = combineReducers({

@@ -12,6 +12,6 @@ describe('Filter', () => {
     fireEvent.change(input, { target: { value: 'name' } })
 
     // Then
-    expect(mockOnChange).toBeCalledWith('name')
+    expect(mockOnChange).toHaveBeenCalledWith('name')
   })
 })

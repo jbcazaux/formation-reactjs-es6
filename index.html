@@ -371,7 +371,7 @@
           <h3>Promesses VS. async - await</h3>
           <pre><code data-trim>
             axios.get('/users/42/items')
-                .then(({data : items})) => items.map(item => item.id))
+                .then(({data : items}) => items.map(item => item.id))
                 .then(ids => {/* use the ids */})
                 .catch(error => console.log(error.toString()))
             </code></pre>
@@ -1490,11 +1490,17 @@
           <ul>
             <li>
               Déclarer toutes les routes dans un seul composant, comme dans la V3.
-              <a href="https://reactrouter.com/docs/en/v6/getting-started/overview#multiple-sets-of-routes">Exemple</a>
+              <a
+                href="https://reactrouter.com/docs/en/v6/getting-started/overview#multiple-sets-of-routes"
+                target="_blank"
+                >Exemple</a
+              >
             </li>
             <li>
               Déclarer les sous routes dans chaque composant, comme dans les V4-V5.
-              <a href="https://reactrouter.com/docs/en/v6/getting-started/overview#descendant-routes">Exemple</a>
+              <a href="https://reactrouter.com/docs/en/v6/getting-started/overview#descendant-routes" target="_blank"
+                >Exemple</a
+              >
             </li>
             <li>Mixer les deux stratégies</li>
           </ul>

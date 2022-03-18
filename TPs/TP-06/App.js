@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import User from './User'
 
 const Small = () => {
-  const { color, user } = { color: 'green', user: { id: 0, login: 'not from context' } } //TODO: get the context !
+  const { color, user } = useContext() //TODO: get the context !
 
   return (
     <div style={{ backgroundColor: color, height: '125px', width: '33%' }}>

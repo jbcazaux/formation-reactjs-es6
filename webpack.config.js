@@ -39,5 +39,6 @@ module.exports = (env, argv = {}) => ({
     static: path.resolve(__dirname, 'public'),
     open: true,
     historyApiFallback: true,
+    port: 3000,
   },
 })

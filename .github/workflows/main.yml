@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '16'
       - run: npm set-script prepare ''
-      - run: npm install
+      - run: npm install -f
       - name: Cypress
         uses: cypress-io/github-action@v2
         with:

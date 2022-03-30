@@ -67,7 +67,7 @@
         </section>
         <section>
           <h3>Versions</h3>
-          <pre><code data-trim>"react": "17.0.2"</code></pre>
+          <pre><code data-trim>"react": "18.0.0"</code></pre>
         </section>
         <section>
           <h3>Le programme !</h3>
@@ -441,14 +441,12 @@
             export default Hello
             </code></pre>
           <pre class="fragment">index.js<code class="jsx" data-trim>
-            import ReactDOM from "react-dom"
+            import { createRoot } from 'react-dom/client'
             import Hello from "./Hello"
-
-            ReactDOM.render(
-                &lt;Hello name="world"/&gt;,
-                document.getElementById('root')
-            )
-            </code></pre>
+            const container = document.getElementById('root')
+            const root = createRoot(container)
+            root.render(<Hello name="world" />)
+          </code></pre>
         </section>
         <section>
           <h3>JSX</h3>
@@ -837,10 +835,9 @@
           <h3>Children</h3>
 
           <pre><code data-trim>
-            ReactDOM.render(
-               &lt;ButtonApp title="My Application"&gt;Press Me! &lt;/ButtonApp&gt;,
-               document.getElementById('root')
-            )
+            const container = document.getElementById('root')
+            const root = createRoot(container)
+            root.render(&lt;ButtonApp title="My Application"&gt;Press Me! &lt;/ButtonApp&gt;)
             </code></pre>
           <pre><code data-trim>
             export const ButtonApp = ({title, children}) => {
@@ -1090,20 +1087,18 @@
 
           <p>Tous les composants "redux" de l'application doivent avoir accès au store.</p>
           <pre><code data-trim>
-                import ReactDOM from 'react-dom'
+                import { createRoot } from 'react-dom/client'
                 import {Provider} from 'react-redux'
                 import {createStore} from 'redux'
                 import {reducer} from './reducers/index'
                 import {App} from './components/app'
 
-                const store = createStore(reducer)
-
-                ReactDOM.render(
-                    &lt;Provider store={store}&gt;
+                const container = document.getElementById('root')
+                const root = createRoot(container)
+                root.render(&lt;Provider store={store}&gt;
                         &lt;App/&gt;
-                    &lt;/Provider&gt;,
-                    document.getElementById('app')
-                )
+                    &lt;/Provider&gt;)
+
           </code></pre>
         </section>
         <section data-background="#b5533c">
@@ -1177,15 +1172,17 @@
 
           <p>Il faut initialiser React Query à la racine de l'application</p>
           <pre><code data-trim>
+            import { createRoot } from 'react-dom/client'
+            import { QueryClient, QueryClientProvider } from 'react-query'
+
+            const container = document.getElementById('root')
+            const root = createRoot(container)
             const queryClient = new QueryClient()
 
-            ReactDOM.render(
-              &lt;QueryClientProvider client={queryClient}&gt;
+            root.render(&lt;QueryClientProvider client={queryClient}&gt;
                 &lt;MyApp/&gt;
-              &lt;/QueryClientProvider&gt;,
-              document.getElementById('root')
-            )
-            </code></pre>
+              &lt;/QueryClientProvider&gt;)
+          </code></pre>
         </section>
 
         <section data-background="#b5533c">
@@ -1457,9 +1454,11 @@
           <pre><code data-trim>
             import {BrowserRouter as Router,
                 Routes, Route} from 'react-router-dom'
+            import { createRoot } from 'react-dom/client'
 
-            ReactDOM.render(
-              &lt;Router&gt;
+            const container = document.getElementById('root')
+            const root = createRoot(container)
+            root.render(&lt;Router&gt;
                 &lt;Routes>
                   &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
                   &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
@@ -1469,9 +1468,8 @@
                   &lt;/Route&gt;
                   &lt;Route path="*" element={&lt;NotFound /&gt;} /&gt;
                 &lt;/Routes&gt;
-              &lt;/Router&gt;,
-              document.getElementById('root')
-            )
+              &lt;/Router&gt;)
+
             </code></pre>
         </section>
         <section>

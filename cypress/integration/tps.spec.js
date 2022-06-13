@@ -1,4 +1,4 @@
-context('Tps', () => {
+describe('Tps', () => {
   it('loads TP01', () => {
     cy.visit('/tp01.html')
     cy.contains('Hello world !')

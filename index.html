@@ -590,6 +590,18 @@
             </code></pre>
         </section>
         <section>
+          <h3>Pourquoi les hooks ?</h3>
+          <ul>
+            <li>Réutiliser la logique entre les composants (sans HOC!)</li>
+            <li>
+              Composants trop complexes avec les méthodes du cycle de vie (duplication, symétrie cassée sur les
+              listeners)
+            </li>
+            <li>Difficile de lire les classes : this + bind</li>
+            <li>Classes se "minifient" mal, le hot reloading est instable</li>
+          </ul>
+        </section>
+        <section>
           <h3>Itérer sur un tableau</h3>
           <pre><code data-trim>
             const MyComponent = (props) => (
@@ -916,7 +928,7 @@
 
           <h3>Action Creator</h3>
           <pre><code data-trim>
-            export const incrementor = (inc) => {
+            export const incrementor = inc => {
                 return {type: 'INCREMENT', inc}
             }
             </code></pre>

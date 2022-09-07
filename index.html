@@ -1224,7 +1224,7 @@
         <section>
           <h3>Context API</h3>
           <ul>
-            <li>On peut passer des données aux composants enfant (partout dans la hiérarchie).</li>
+            <li>On peut passer des données aux composants enfants (partout dans la hiérarchie).</li>
             <li class="fragment">
               Beaucoup de librairires sont basées la dessus. Ce n'était pas une API officielle avant Mars 2018.
             </li>
@@ -1401,8 +1401,8 @@
               fetchUser: userId =>
                 Promise.resolve(new User(userId, 'Jennifer')),
             }))
-            describe('UserInfo Component', async () => {
-              it('should display user ', () => {
+            describe('UserInfo Component', () => {
+              it('should display user ', async () => {
                 render(&lt;UserInfo id={42} /&gt;)
                 await screen.getByText('Jennifer')
 

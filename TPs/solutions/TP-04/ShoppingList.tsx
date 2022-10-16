@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import Item from './Item'
 import ShoppingItem from './ShoppingItem'
 import PropTypes from 'prop-types'
-import { setItems, addItem } from './actions/items'
-import { useDispatch, useSelector } from 'react-redux'
+import { setItems, addItems } from './actions/items'
+import { useDispatch } from 'react-redux'
+import { useTypedSelector } from './reducers'
+import Item from './domain/Item'
 
-const ShoppingList = ({ title }) => {
-  const [newItemLabel, setNewItemLabel] = useState('')
-  const [newItemPrice, setNewItemPrice] = useState(0)
+interface Props {
+  title: string
+}
+const ShoppingList = ({ title }: Props) => {
+  const [newItemLabel, setNewItemLabel] = useState<string>('')
+  const [newItemPrice, setNewItemPrice] = useState<number>(0)
   const dispatch = useDispatch()
-  const items = useSelector(state => state.items)
+  const items = useTypedSelector(state => state.items)
 
-  const handleAddItem = event => {
+  const handleAddItem = (event: React.SyntheticEvent) => {
     event.preventDefault()
-    const addItemAction = addItem(new Item(Date.now(), newItemLabel, newItemPrice))
+    const addItemAction = addItems([new Item(Date.now(), newItemLabel, newItemPrice)])
     dispatch(addItemAction)
     setNewItemLabel('')
     setNewItemPrice(0)

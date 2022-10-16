@@ -4,7 +4,7 @@ const path = require('path')
 
 module.exports = (env, argv = {}) => ({
   entry: {
-    bundle: './src/index.js',
+    bundle: './src/index.tsx',
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -20,7 +20,7 @@ module.exports = (env, argv = {}) => ({
     new CleanWebpackPlugin({ verbose: true }),
   ],
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.tsx', '.ts', '.js'],
     alias: {
       public: path.resolve(__dirname, 'public'),
     },
@@ -28,16 +28,16 @@ module.exports = (env, argv = {}) => ({
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
-        loader: 'babel-loader',
       },
     ],
   },
   devtool: argv.mode === 'development' ? 'source-map' : false,
   devServer: {
     static: path.resolve(__dirname, 'public'),
-    open: true,
+    open: false,
     historyApiFallback: true,
     port: 3000,
   },

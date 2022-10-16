@@ -5,15 +5,15 @@ const path = require('path')
 
 module.exports = (env, argv = {}) => ({
   entry: {
-    tp01: './TPs/solutions/TP-01/index.js',
-    tp02: './TPs/solutions/TP-02/index.js',
-    tp03: './TPs/solutions/TP-03/index.js',
-    tp04: './TPs/solutions/TP-04/index.js',
-    tp05: './TPs/solutions/TP-05/index.js',
-    tp06: './TPs/solutions/TP-06/index.js',
-    tp07: './TPs/solutions/TP-07/index.js',
-    tp08: './TPs/solutions/TP-08/index.js',
-    tp09: './TPs/solutions/TP-09/index.js',
+    tp01: './TPs/solutions/TP-01/index.tsx',
+    tp02: './TPs/solutions/TP-02/index.tsx',
+    tp03: './TPs/solutions/TP-03/index.tsx',
+    tp04: './TPs/solutions/TP-04/index.tsx',
+    tp05: './TPs/solutions/TP-05/index.tsx',
+    tp06: './TPs/solutions/TP-06/index.tsx',
+    tp07: './TPs/solutions/TP-07/index.tsx',
+    tp08: './TPs/solutions/TP-08/index.tsx',
+    tp09: './TPs/solutions/TP-09/index.tsx',
   },
   output: {
     path: path.resolve(__dirname, 'build'),

@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import ShoppingItem from './ShoppingItem'
-import PropTypes from 'prop-types'
+import Item from './domain/Item'
 
-const ShoppingList = ({ title }) => {
-  const [items, setItems] = useState([])
+interface Props {
+  title: string
+}
+
+const ShoppingList = ({ title }: Props) => {
+  const [items, setItems] = useState<ReadonlyArray<Item>>([])
 
   useEffect(() => {
     axios
-      .get('./items.json')
+      .get<ReadonlyArray<any>>('./items.json')
       .then(resp => resp.data)
+      .then(data => data.map(d => new Item(d.id, d.label, d.price)))
       .then(setItems)
   }, [])
 
@@ -23,10 +28,6 @@ const ShoppingList = ({ title }) => {
       </ul>
     </div>
   )
-}
-
-ShoppingList.propTypes = {
-  title: PropTypes.string.isRequired,
 }
 
 export default ShoppingList

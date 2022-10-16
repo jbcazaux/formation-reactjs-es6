@@ -3,10 +3,13 @@ import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
-import Student from './Student'
-import PropTypes from 'prop-types'
+import Student from './domain/Student'
 
-const StudentsTable = ({ students, onSelectStudent }) => (
+interface Props {
+  students: ReadonlyArray<Student>
+  onSelectStudent: (s: Student) => void
+}
+const StudentsTable = ({ students, onSelectStudent }: Props) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -26,10 +29,5 @@ const StudentsTable = ({ students, onSelectStudent }) => (
     </TableBody>
   </Table>
 )
-
-StudentsTable.propTypes = {
-  students: PropTypes.arrayOf(Student.propTypes).isRequired,
-  onSelectStudent: PropTypes.func.isRequired,
-}
 
 export default StudentsTable

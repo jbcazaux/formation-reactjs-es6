@@ -1,7 +1,10 @@
-import Student from './Student'
+import Student from './domain/Student'
 import FormLabel from '@mui/material/FormLabel'
 
-const StudentDetails = ({ student }) => (
+interface Props {
+  student: Student | null
+}
+const StudentDetails = ({ student }: Props) => (
   <FormLabel>
     {student ? (
       <div style={{ margin: '20px' }}>
@@ -12,9 +15,5 @@ const StudentDetails = ({ student }) => (
     )}
   </FormLabel>
 )
-
-StudentDetails.propTypes = {
-  student: Student.propTypes,
-}
 
 export default StudentDetails

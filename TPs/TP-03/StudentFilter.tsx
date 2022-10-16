@@ -1,8 +1,11 @@
-import Input from '@mui/material/Input';
-import PropTypes from 'prop-types'
+import Input from '@mui/material/Input'
+import { ChangeEvent } from 'react'
 
-const StudentFilter = ({ onChange }) => {
-  const onFilterChange = e => {
+interface Props {
+  onChange: (s: string) => void
+}
+const StudentFilter = ({ onChange }: Props) => {
+  const onFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value)
   }
 
@@ -18,10 +21,6 @@ const StudentFilter = ({ onChange }) => {
       />
     </form>
   )
-}
-
-StudentFilter.propTypes = {
-  onChange: PropTypes.func.isRequired,
 }
 
 export default StudentFilter

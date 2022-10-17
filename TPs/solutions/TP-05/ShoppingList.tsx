@@ -1,21 +1,24 @@
-import React, { useState } from 'react'
-import Item from './Item'
+import React, { SyntheticEvent, useState } from 'react'
 import ShoppingItem from './ShoppingItem'
 import PropTypes from 'prop-types'
 import { useMutation, useQuery } from 'react-query'
 import itemsApi from './apis/items'
 import { CircularProgress } from '@mui/material'
+import Item from './domain/Item'
 
-export const ShoppingList = ({ title }) => {
+interface Props {
+  title: string
+}
+export const ShoppingList = ({ title }: Props) => {
   const [newItemLabel, setNewItemLabel] = useState('')
   const [newItemPrice, setNewItemPrice] = useState(0)
 
   const { data: items = [], refetch, isLoading: isLoadingGet } = useQuery('items', itemsApi.get)
   const { mutateAsync: addItem, isLoading: isLoadingAdd } = useMutation(itemsApi.create, {
-    onSuccess: refetch,
+    onSuccess: () => refetch(),
   })
 
-  const createNewItem = async e => {
+  const createNewItem = async (e: SyntheticEvent) => {
     e.preventDefault()
     await addItem(new Item(new Date().getTime(), newItemLabel, newItemPrice))
     setNewItemLabel('')

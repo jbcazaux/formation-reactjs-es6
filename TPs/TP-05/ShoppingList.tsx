@@ -1,24 +1,27 @@
-import React, { useState } from 'react'
-import Item from './Item'
+import React, { SyntheticEvent, useState } from 'react'
 import ShoppingItem from './ShoppingItem'
 import PropTypes from 'prop-types'
 import { useMutation, useQuery } from 'react-query'
 import itemsApi from './apis/items'
 import { CircularProgress } from '@mui/material'
+import Item from './domain/Item'
 
-export const ShoppingList = ({ title }) => {
+interface Props {
+  title: string
+}
+export const ShoppingList = ({ title }: Props) => {
   const [newItemLabel, setNewItemLabel] = useState('')
   const [newItemPrice, setNewItemPrice] = useState(0)
 
-  const items = [] // TODO 1: Utiliser useQuery pour récupérer la liste des items
+  const items: ReadonlyArray<Item> = [] // TODO 1: Utiliser useQuery pour récupérer la liste des items
   // TODO 2: rajouter une mutation avec useMutation
 
-  const createNewItem = async e => {
-    e.preventDefault()
-    setNewItemLabel('')
-    setNewItemPrice(0)
+  const createNewItem = async (e: SyntheticEvent) => {
+      e.preventDefault()
+      setNewItemLabel('')
+      setNewItemPrice(0)
 
-    // TODO 3: appeler ici la mutation qui a été créée
+      // TODO 3: appeler ici la mutation qui a été créée
   }
 
   return (

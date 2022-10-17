@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { InfosContext } from './Context'
-import User from './User'
+import User from './domain/User'
 
 const Small = () => {
-  const { color, user } = useContext(InfosContext)
+  const { color, user } = { color: '', user: new User(0, '') } // useContext(...) //TODO: récupérer le context !
 
   return (
     <div style={{ backgroundColor: color, height: '125px', width: '33%' }}>
@@ -27,9 +27,8 @@ const Large = () => (
 )
 
 const App = () => (
-  <InfosContext.Provider value={{ color: 'purple', user: new User(1, 'admin') }}>
-    <Large />
-  </InfosContext.Provider>
+  /* TODO: Mettre un contexte autour de 'Large'*/
+  <Large />
 )
 
 export default App

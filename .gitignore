@@ -16,7 +16,6 @@ npm-debug.log
 .idea/
 yarn.lock
 yarn-error.log
-package-lock.json
 *.iml
 /cypress/videos/
 /cypress/screenshots/

@@ -11,18 +11,18 @@ jobs:
   test:
     name: Tests
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.5.0-chrome94-ff93
+    container: cypress/browsers:node16.17.0-chrome106
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: npm set-script prepare ''
-      - run: npm install -f
       - name: Cypress
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
+          config-file: cypress/cypress.config.js
+          install-command: npm ci -f --no-audit --ignore-scripts
           start: npm run starti
           wait-on: 'http://localhost:8080'
           browser: chrome

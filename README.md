@@ -4,6 +4,8 @@ Les slides: [https://formation-reactjs.fr](https://formation-reactjs.fr)
 
 La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@gmail.com !
 
+![TPs](https://github.com/jbcazaux/formation-reactjs-es6/actions/workflows/main.yml/badge.svg)
+
 ## Objectifs de la formation
 
 - Savoir développer et tester des fonctionnalités sur une application ReactJS.
@@ -64,7 +66,7 @@ La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@g
 
 Ce(tte) œuvre est mise à disposition selon les termes de la [Licence Creative Commons. Attribution - Partage dans les Mêmes Conditions 3.0 non transposé](http://creativecommons.org/licenses/by-sa/3.0/deed.fr).
 
-Copyright (C) 2016-2020 Jean-Baptiste CAZAUX.
+Copyright (C) 2016-2022 Jean-Baptiste CAZAUX.
 
 ### Explications licence CC BY-SA 3.0
 

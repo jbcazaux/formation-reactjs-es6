@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - run: npm ci -f --no-audit --ignore-scripts
+      - run: ./node_modules/.bin/jest --roots TPs/solutions/TP-07
       - name: Cypress
         uses: cypress-io/github-action@v4
         with:

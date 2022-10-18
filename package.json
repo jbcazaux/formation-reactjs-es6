@@ -62,7 +62,6 @@
     "test-coverage": "jest src --coverage"
   },
   "jest": {
-    "rootDir": "./src",
     "transform": {
       "^.+\\.js$": "babel-jest"
     },

@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
-import store from './reducers/index'
+import store from './store/index'
 import ShoppingList from './ShoppingList'
 
 const container = document.getElementById('root')

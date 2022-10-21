@@ -5,7 +5,11 @@ const App = () => (
     <div>
       <ul>
         <li>
-          <NavLink to="/" style={({ isActive }) => (isActive ? { fontWeight: 'bolder', backgroundColor: 'cyan' } : {})}>
+          <NavLink
+            to="/"
+            style={({ isActive }) => (isActive ? { fontWeight: 'bolder', backgroundColor: 'cyan' } : {})}
+            end
+          >
             Home
           </NavLink>
         </li>

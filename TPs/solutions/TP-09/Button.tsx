@@ -1,7 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({ onClick }) => {
+interface Props {
+  onClick: () => void
+}
+
+const Button = ({ onClick }: Props) => {
   console.log('render Button')
   return <button onClick={onClick}>re-render App</button>
 }

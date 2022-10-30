@@ -2,12 +2,16 @@ import React, { useState, useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import Button from './Button'
 
-const add = (x, y) => {
+const add = (x: number, y: number): number => {
   console.log('une loooongue addition')
   return x + y
 }
 
-const Calculator = ({ a, b }) => {
+interface CalculatorProps {
+  a: number
+  b: number
+}
+const Calculator = ({ a, b }: CalculatorProps) => {
   console.log('render Calculator')
   // TODO : Utiliser useMemo pour éviter de refaire le calcul si a et b ne changent pas
   // TODO : OU utiliser React.memo pour memoizer le composant Calculator

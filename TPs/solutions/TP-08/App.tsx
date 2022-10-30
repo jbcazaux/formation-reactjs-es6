@@ -1,11 +1,19 @@
 import { BrowserRouter as Router, Link, NavLink, Route, useParams, Routes, Outlet } from 'react-router-dom'
+import Home from './Home'
+import About from './About'
+import Users from './users/Users'
+import UserDetails from './users/UserDetails'
 
 const App = () => (
   <Router>
     <div>
       <ul>
         <li>
-          <NavLink to="/" style={({ isActive }) => (isActive ? { fontWeight: 'bolder', backgroundColor: 'cyan' } : {})}>
+          <NavLink
+            to="/"
+            style={({ isActive }) => (isActive ? { fontWeight: 'bolder', backgroundColor: 'cyan' } : {})}
+            end
+          >
             Home
           </NavLink>
         </li>
@@ -33,7 +41,7 @@ const App = () => (
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="users/*" element={<Users />}>
-          <Route path=":name" element={<UserDetail />} />
+          <Route path=":name" element={<UserDetails />} />
           <Route path="*" element={<h3>Please select a user.</h3>} />
         </Route>
         <Route
@@ -48,50 +56,5 @@ const App = () => (
     </div>
   </Router>
 )
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-    Welcome !
-  </div>
-)
-
-const About = () => (
-  <div>
-    <h2>About</h2>
-    About this application...
-  </div>
-)
-
-const Users = () => {
-  return (
-    <div>
-      <h2>Users</h2>
-      <ul>
-        <li>
-          <Link to="anna">Anna</Link>
-        </li>
-        <li>
-          <Link to="elsa">Elsa</Link>
-        </li>
-      </ul>
-      <hr />
-      <Outlet />
-    </div>
-  )
-}
-
-const UserDetail = () => {
-  const { name } = useParams()
-
-  return (
-    <div>
-      <h3>
-        Details of <b>{name}</b>
-      </h3>
-      <img src={'/' + name + '.jpeg'} alt={name} />
-    </div>
-  )
-}
 
 export default App

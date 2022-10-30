@@ -6,7 +6,7 @@ describe('Filter', () => {
     // Given
     const mockOnChange = jest.fn()
     const { container } = render(<Filter onChange={mockOnChange} />)
-    const input = container.querySelector('input')
+    const input = container.querySelector('input')!
 
     // When
     fireEvent.change(input, { target: { value: 'name' } })

@@ -1,7 +1,7 @@
 import StudentsApp, { filterStudents } from './StudentsApp'
 import { render, screen } from '@testing-library/react'
 import axios from 'axios'
-import Student from './Student'
+import Student from './domain/Student'
 
 describe('StudentsApp', () => {
   beforeEach(() => {

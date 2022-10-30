@@ -1,5 +1,5 @@
 import StudentsTable from './StudentsTable'
-import Student from './Student'
+import Student from './domain/Student'
 import { fireEvent, render, screen } from '@testing-library/react'
 
 describe('StudenstTable', () => {

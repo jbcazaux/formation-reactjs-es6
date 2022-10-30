@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StudentsApp renders studentsApp and its sub components 1`] = `
+<div>
+  <form>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary form-control css-1tcs2i1-MuiInputBase-root-MuiInput-root"
+      style="margin-left: 5px;"
+    >
+      <input
+        class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
+        id="filterName"
+        placeholder="Tapez un nom..."
+        type="text"
+        value=""
+      />
+    </div>
+  </form>
+  <table
+    class="MuiTable-root css-rqglhn-MuiTable-root"
+  >
+    <thead
+      class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+    >
+      <tr
+        class="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+      >
+        <th
+          class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+          scope="col"
+        >
+          #
+        </th>
+        <th
+          class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+          scope="col"
+        >
+          Firstname
+        </th>
+        <th
+          class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+          scope="col"
+        >
+          Lastname
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+    >
+      <tr
+        class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+        data-testid="student-row"
+      >
+        <td
+          class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          1
+        </td>
+        <td
+          class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          first
+        </td>
+        <td
+          class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          last
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <label
+    class="MuiFormLabel-root MuiFormLabel-colorPrimary css-u4tvz2-MuiFormLabel-root"
+  >
+    <div
+      style="margin: 20px; background-color: red;"
+    >
+      Aucun étudiant sélectionné !
+    </div>
+  </label>
+</div>
+`;

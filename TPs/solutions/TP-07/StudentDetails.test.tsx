@@ -1,6 +1,6 @@
 import StudentDetails from './StudentDetails'
 import { render, screen } from '@testing-library/react'
-import Student from './Student'
+import Student from './domain/Student'
 
 describe('StudentDetails', () => {
   it('renders with no Student', () => {

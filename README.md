@@ -4,16 +4,18 @@ Les slides: [https://formation-reactjs.fr](https://formation-reactjs.fr)
 
 La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@gmail.com !
 
+![TPs](https://github.com/jbcazaux/formation-reactjs-es6/actions/workflows/main.yml/badge.svg)
+
 ## Objectifs de la formation
 
 - Savoir développer et tester des fonctionnalités sur une application ReactJS.
-- Connaître l'état de l'art des bonnes pratiques React et javascript, notamment savoir utiliser les hooks.
+- Connaître l'état de l'art et les bonnes pratiques React et javascript, notamment savoir utiliser les hooks.
 - Avoir les connaissances suffisantes pour démarrer le développement d'une application ReactJS.
 - Comprendre et anticiper les évolutions de ReactJS qui vont arriver dans les prochains mois.
 
 ## Prérequis 
 
-- Avoir déjà développé sur un projet en JS (jQuery, Angular, Backbone, ...).
+- Avoir déjà développé sur un projet en JS (Angular, Vue, jQuery, ...).
 - Connaissances de base de HTML / CSS.
 
 ## Plan de formation:
@@ -21,20 +23,20 @@ La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@g
 #### Rappels 
 
 <ins>objectif</ins> : Avoir un vocabulaire commun et connaitre les éléments du langage les plus couramment utilisés. 
--  ES6-7 (nouveautés du langage)
--  Programmation fonctionnelle (High order function, ...)
+-  ES7-ES2022 (nouveautés du langage).
+-  Programmation fonctionnelle (High order function, ...).
 
 ### React
     
 #### Principes de base 
 
-<ins>objectif</ins> : Comprendre l'intérêt de react par rapport à ses concurents et la façon dont il a été pensé. 
+<ins>objectif</ins> : Comprendre l'intérêt de react par rapport à ses concurrents et la façon dont il a été pensé. 
 
-#### Composants (functionnal components, class components et cycle de vie) 
+#### Composants (functionnal components, hooks et cycle de vie) 
 
-<ins>objectif</ins> : Les composants sont les éléments de base de la librairie. Apprendre à les écrire et découper sa page en composants réutilisables. 
+<ins>objectif</ins> : Les composants sont les éléments de base de la librairie. Apprendre à les écrire et découper sa page en composants réutilisables. Savoir écrire les composants sous forme de fonctions en utilisant les hooks.
 
-#### Etats des composants (data, useState)  
+#### Etats des composants  
 
 <ins>objectif</ins> : Comment garder de la donnée au sein d'un composant ou l'échanger entre composants.
 
@@ -42,17 +44,21 @@ La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@g
 
 <ins>objectifs</ins> : 
 - Comprendre les limites de l'utilisation des états des composants, 
-- Échanger de la donnée entre plusieurs composants, séparer la Donnée de la Vue, 
+- Échanger de la donnée entre plusieurs composants, 
 - Comprendre l intérêt du pattern redux par rapport aux concurrents (two-way binding par exemple)
 - Principes du pattern (flux unidirectionnel, store, reducer, actions, ...)
 
+#### React-query
+  
+<ins>objectif</ins> : Utiliser ReactQuery plutôt que Redux pour gérer les données de l'application.
+
 #### React-router 
   
-<ins>objectif</ins> : Construire une Single Page Application
+<ins>objectif</ins> : Construire une Single Page Application.
   
 #### Tests / debugging 
 
-<ins>objectif</ins> : Produire une application de qualité avec des tests unitaires et des tests de composants 
+<ins>objectif</ins> : Produire une application de qualité avec des tests unitaires et des tests de composants.
 
 #### Optimisations des applications (vitesse, mémoire, ...)
 
@@ -64,7 +70,7 @@ La formation se déroule sur 3 jours, n'hésitez pas à me contacter: jbcazaux@g
 
 Ce(tte) œuvre est mise à disposition selon les termes de la [Licence Creative Commons. Attribution - Partage dans les Mêmes Conditions 3.0 non transposé](http://creativecommons.org/licenses/by-sa/3.0/deed.fr).
 
-Copyright (C) 2016-2020 Jean-Baptiste CAZAUX.
+Copyright (C) 2016-2022 Jean-Baptiste CAZAUX.
 
 ### Explications licence CC BY-SA 3.0
 

@@ -91,7 +91,7 @@ module.exports = (env, argv = {}) => ({
     }),
   ],
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.tsx', '.ts', '.js'],
     alias: {
       public: path.resolve(__dirname, '../public'),
     },
@@ -99,11 +99,16 @@ module.exports = (env, argv = {}) => ({
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
-        loader: 'babel-loader',
       },
     ],
   },
   devtool: false,
+  devServer: {
+    static: path.resolve(__dirname, 'public'),
+    open: false,
+    historyApiFallback: true,
+  },
 })

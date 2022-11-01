@@ -355,7 +355,7 @@
                 .catch(error => console.log(error.toString()))
             </code></pre>
           <pre class="fragment"><code data-trim>
-            async function fetchItems {
+            const fetchItems = async () => {
                 try {
                     const response = await axios.get('/users/42/items')
                     const items = response.data
@@ -376,7 +376,7 @@
                 .catch(error => console.log(error.toString()))
             </code></pre>
           <pre><code data-trim>
-            async function fetchItems {
+            const fetchItems = async () => {
               try {
                 const {data: items} = await axios.get('/users/42/items')
                 const itemIds = items.map(item => item.id))
@@ -1107,6 +1107,7 @@
 
                 const container = document.getElementById('root')
                 const root = createRoot(container)
+                const store = createStore(reducer)
                 root.render(&lt;Provider store={store}&gt;
                         &lt;App/&gt;
                     &lt;/Provider&gt;)

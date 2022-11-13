@@ -9,13 +9,13 @@
       content="formation react, formation reactjs, freelance, flux, redux, es6, props, state, jsx"
     />
     <link rel="canonical" href="https://formation-reactjs.fr" />
-    <title>Formation react js ES6</title>
+    <title>Formation react js ESNext</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <link rel="stylesheet" href="reveal/reset.css" />
     <link rel="stylesheet" href="reveal/reveal.css" />
-    <link rel="stylesheet" href="reveal/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="reveal/theme/sky.css" id="theme" />
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal/plugin/highlight/monokai.css" id="highlight-theme" />
@@ -48,7 +48,7 @@
               style="border: none; background: none; box-shadow: none; margin: 0"
             />React
           </h1>
-          <h3>#ES6</h3>
+          <h3>#ES Next</h3>
           <p style="text-align: center"><a target="_blank" href="http://twitter.com/jbcazaux">@jbcazaux</a></p>
 
           <a href="https://www.netlify.com">
@@ -67,15 +67,15 @@
         </section>
         <section>
           <h3>Versions</h3>
-          <pre><code data-trim>"react": "18.0.0"</code></pre>
+          <pre><code data-trim>"react": "18.2.0"</code></pre>
         </section>
         <section>
           <h3>Le programme !</h3>
           <ul>
             <li>
-              ES6/7
+              Javascript avancé
               <ul>
-                <li>ES6/7</li>
+                <li>ES Next</li>
                 <li>Programmation fonctionnelle</li>
               </ul>
             </li>
@@ -94,18 +94,18 @@
           </ul>
         </section>
         <section>
-          <h2>EcmaScript 6/7</h2>
+          <h2>EcmaScript Next</h2>
         </section>
         <section>
           <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
           <pre><code data-trim>
                 let foo = 'bar'
                 const MAX = 10
-                const ttc = addTva(15)
+                const ttc = addTva(100, 20)
                 </code></pre>
           <p class="fragment">
             <span style="color: #8cd0d3">let</span> vs. <span style="color: #cc9393">const</span> ?
-            <span class="fragment">0 var, 44 let, 997 const</span>
+            <span class="fragment">0-5 let / application</span>
           </p>
         </section>
         <section>
@@ -164,10 +164,6 @@
             <li>Transpiler (=>, let, const, ...)</li>
           </ul>
         </section>
-        <section data-visibility="hidden">
-          <h3>Immutabilité !</h3>
-          <p>Ne mutez pas pendant la formation, s'il vous plaît.</p>
-        </section>
         <section>
           <h3>Spread operator</h3>
           <pre><code data-trim>
@@ -222,6 +218,10 @@
                 const all = [0, ...odd, ...even]
                 </code>
             </pre>
+        </section>
+        <section data-visibility="hidden">
+          <h3>Immutabilité !</h3>
+          <p>Ne mutez pas pendant la formation, s'il vous plaît.</p>
         </section>
         <section data-auto-animate data-visibility="hidden">
           <h3>Éviter les mutations</h3>
@@ -465,7 +465,7 @@
             )
           </code></pre>
         </section>
-        <section data-background="#b5533c">
+        <section data-background="#DEE6F7">
           <h3>TP-01</h3>
           <h4>Hello World</h4>
           <ol>
@@ -477,9 +477,7 @@
           <h3>Type checking</h3>
           <p style="font-size: 32px">
             On peut <i>ne rien faire</i>, utiliser
-            <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a> ,
-            <a target="_blank" href="https://flow.org/">Flow</a>,
-            <a target="_blank" href="https://reasonml.github.io/reason-react/">Reason</a>, ou les
+            <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a>, ou les
             <a target="_blank" href="https://www.npmjs.com/package/prop-types">PropTypes</a>
           </p>
           <pre><code data-trim>
@@ -630,7 +628,7 @@
             }
           </code></pre>
         </section>
-        <section data-background="#b5533c">
+        <section data-background="#DEE6F7">
           <h3>TP-02</h3>
           <h4>Shopping list</h4>
           <ol style="font-size: 34px">
@@ -860,7 +858,7 @@
             }
             </code></pre>
         </section>
-        <section data-background="#b5533c">
+        <section data-background="#DEE6F7">
           <h3>TP-03</h3>
           <h4>Liste des étudiants</h4>
           <ol>
@@ -1114,7 +1112,7 @@
 
           </code></pre>
         </section>
-        <section data-background="#b5533c">
+        <section data-background="#DEE6F7">
           <h3>TP-04</h3>
           <h4>Shopping list - bis</h4>
           <ol style="font-size: 34px">
@@ -1198,7 +1196,7 @@
           </code></pre>
         </section>
 
-        <section data-background="#b5533c">
+        <section data-background="#DEE6F7">
           <h3>TP-05</h3>
           <h4>Shopping list - ter</h4>
           <ol>
@@ -1265,7 +1263,7 @@
             }
             </code></pre>
         </section>
-        <section data-background="#b5533c">
+        <section data-background="#DEE6F7">
           <h3>TP-06</h3>
           <h4>Context API</h4>
           <p>L'objectif et de passer une couleur et un utilisateur d'un composant parent à un composant 'petit-fils'</p>
@@ -1279,12 +1277,12 @@
         </section>
         <section>
           <h3>Jest, Enzyme, React Test Renderer, React Testing Library, ...</h3>
-          <p>L'idée est de tester les <i>composants</i>, avec leurs états et leurs props.</p>
-          <p>L'arrivée des hooks a fait bouger la hiérarchie des outils de test.</p>
+          <p style="font-size: 36px">L'idée est de tester les <i>composants</i>, avec leurs états et leurs props.</p>
+          <p style="font-size: 36px">L'arrivée des hooks a fait bouger la hiérarchie des outils de test.</p>
           <ul>
-            <li>Enzyme: les Hooks ont mis un moment à être supportés</li>
-            <li>React test renderer: Pas de façon simple de tester les évènements</li>
-            <li>React testing library: Des nouveaux paradigmes sur la façon de tester</li>
+            <li style="font-size: 36px">Enzyme: les Hooks ont mis un moment à être supportés</li>
+            <li style="font-size: 36px">React test renderer: Pas de façon simple de tester les évènements</li>
+            <li style="font-size: 36px">React testing library: Des nouveaux paradigmes sur la façon de tester</li>
           </ul>
         </section>
         <section>
@@ -1424,7 +1422,7 @@
             sur 'describe' dans les sources.
           </aside>
         </section>
-        <section data-background="#b5533c">
+        <section data-background="#DEE6F7">
           <h3>TP-07</h3>
           <h4>Tests</h4>
           <p>L'objectif est d'écrire les tests du TP-03</p>
@@ -1554,7 +1552,7 @@
             )
             </code></pre>
         </section>
-        <section data-background="#b5533c">
+        <section data-background="#DEE6F7">
           <h3>TP-08</h3>
           <h4>React-router</h4>
           <p>L'objectif est de construire une application avec 3 "pages".</p>
@@ -1653,7 +1651,7 @@
            })
           </code></pre>
         </section>
-        <section data-background="#b5533c">
+        <section data-background="#DEE6F7">
           <h3>TP-09</h3>
           <h4>Optimisations</h4>
           <ul>

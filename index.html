@@ -41,8 +41,8 @@
         <section>
           <h1>
             <img
-              width="75"
-              height="75"
+              width="105px"
+              height="auto"
               data-src="images/react.svg"
               alt="react"
               style="border: none; background: none; box-shadow: none; margin: 0"
@@ -669,7 +669,9 @@
                 // useEffect({...}, [])
 
                 const deleteItem = (itemIdToDelete) => {
-                    setItems(prev => prev.filter(item => item.id !== itemIdToDelete)
+                 setItems(prev =>
+                   prev.filter(item => item.id !== itemIdToDelete)
+                 )
                 }
                 return (&lt;ShoppingListInternal
                         title={title}
@@ -847,7 +849,9 @@
           <pre><code data-trim>
             const container = document.getElementById('root')
             const root = createRoot(container)
-            root.render(&lt;ButtonApp title="My Application"&gt;Press Me! &lt;/ButtonApp&gt;)
+            root.render(
+              &lt;ButtonApp title="My Application"&gt;Press Me! &lt;/ButtonApp&gt;
+            )
             </code></pre>
           <pre><code data-trim>
             export const ButtonApp = ({title, children}) => {
@@ -1074,22 +1078,22 @@
         <section>
           <h3>Connected component</h3>
           <pre><code data-trim>
-            export const SelectPostalCode = () => {
-              const dispatch = useDispatch()
-              const currentPc = useSelector(state => state.currentPc)
-              const postalCodes = useSelector(state => state.postalCodes)
+          export const SelectPostalCode = () => {
+           const dispatch = useDispatch()
+           const currentPc = useSelector(state => state.currentPc)
+           const postalCodes = useSelector(state => state.postalCodes)
 
-              const handleOnChange = e => {
-                const action = setCurrentPc(e.target.value)
-                dispatch(action)
-              }
-              &lt;select onChange={handleOnChange} value={currentPc}&gt;
-              {
-                postalCodes.map(pc =>
-                    &lt;option key={pc} value={pc}&gt;{pc}&lt;/option&gt; )
-              }
-            &lt;/select&gt;
-            )
+           const handleOnChange = e => {
+            const action = setCurrentPc(e.target.value)
+            dispatch(action)
+           }
+           return (&lt;select onChange={handleOnChange} value={currentPc}&gt;
+           {
+            postalCodes.map(pc =>
+                &lt;option key={pc} value={pc}&gt;{pc}&lt;/option&gt; )
+           }
+         &lt;/select&gt;)
+        }
           </code></pre>
         </section>
         <section>

@@ -9,7 +9,7 @@
       content="formation react, formation reactjs, freelance, flux, redux, es6, props, state, jsx"
     />
     <link rel="canonical" href="https://formation-reactjs.fr" />
-    <title>Formation react js ESNext</title>
+    <title>Formation reactjs x typescript</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -48,13 +48,9 @@
               style="border: none; background: none; box-shadow: none; margin: 0"
             />React
           </h1>
-          <h3>#ES Next</h3>
-          <p style="text-align: center"><a target="_blank" href="https://github.com/jbcazaux">jbcazaux</a></p>
-          <a href="typescript.html">
-            <p style="font-size: 20px; display: flex; justify-content: flex-end; align-items: baseline">
-              version&nbsp;<img width="25px" height="auto" data-src="images/ts.svg" />
-            </p>
-          </a>
+          <h3>#Typescript</h3>
+          <p style="text-align: center"><a target="_blank" href="http://twitter.com/jbcazaux">@jbcazaux</a></p>
+
           <a href="https://www.netlify.com">
             <img
               src="https://www.netlify.com/img/global/badges/netlify-color-bg.svg"
@@ -71,15 +67,20 @@
         </section>
         <section>
           <h3>Versions</h3>
-          <pre><code data-trim>"react": "18.2.0"</code></pre>
+          <pre>
+              <code data-trim>
+                  "react": "18.2.0"
+                  "typescript": "4.8.4"
+          </code>
+          </pre>
         </section>
         <section>
           <h3>Le programme !</h3>
           <ul>
             <li>
-              Javascript avancé
+              Typescript avancé
               <ul>
-                <li>ES Next</li>
+                <li>Typescript</li>
                 <li>Programmation fonctionnelle</li>
               </ul>
             </li>
@@ -98,10 +99,10 @@
           </ul>
         </section>
         <section>
-          <h2>EcmaScript Next</h2>
+          <h2>Typescript</h2>
         </section>
         <section>
-          <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
+          <h3>let, const</h3>
           <pre><code data-trim>
                 let foo = 'bar'
                 const MAX = 10
@@ -113,16 +114,8 @@
           </p>
         </section>
         <section>
-          <h3><span style="text-decoration: line-through">var</span>, let, const</h3>
+          <h3>let, const</h3>
           <pre><code data-trim>
-                if (true) {
-                    var i = 1
-                } else {
-                    var j = 2
-                }
-                console.log(i, j)
-                </code></pre>
-          <pre class="fragment fade-up"><code data-trim>
                 const user = {}
                 user.name = 'john' // (1)
                 user = {name: 'lea'} // (2)
@@ -136,17 +129,17 @@
         <section>
           <h3>Arrow functions</h3>
           <pre><code data-trim>
-                function addOldSchool(a, b) {
+                function addOldSchool(a: number, b: number): number {
                     return a + b
                 }
             </code></pre>
           <pre class="fragment"><code data-trim>
-                const add = (a, b) => {
+                const add = (a:number, b: number): number => {
                     return a + b
                 }
                 </code></pre>
           <pre class="fragment"><code data-trim>
-                const add = (a, b) => a + b
+                const add = (a:number, b: number): number => a + b
                 </code></pre>
         </section>
         <section>
@@ -155,18 +148,6 @@
                 const squares = [0, 1, 2, 3, 4].map(x => x * x)
                 console.log(squares)
                 </code></pre>
-        </section>
-        <section>
-          <h3>Attention !</h3>
-          <p>
-            <a target="_blank" href="http://www.webbrowsercompatibility.com/es6/desktop/"
-              >Tout n'est pas encore supporté par les navigateurs</a
-            >
-          </p>
-          <ul>
-            <li>Polyfill (Array.flatMap(), Array.reduce(), ...)</li>
-            <li>Transpiler (=>, let, const, ...)</li>
-          </ul>
         </section>
         <section>
           <h3>Spread operator</h3>
@@ -217,9 +198,9 @@
           <h3 data-id="code-title">Spread operator</h3>
           <pre data-id="code-animation">
                 <code class="hljs" data-trim>
-                const odd = [1, 3, 5, 7, 9]
-                const even = [2, 4, 6, 8]
-                const all = [0, ...odd, ...even]
+                const odd: ReadonlyArray&lt;number&gt; = [1, 3, 5, 7, 9]
+                const even: ReadonlyArray&lt;number&gt; = [2, 4, 6, 8]
+                const all: ReadonlyArray&lt;number&gt; = [0, ...odd, ...even]
                 </code>
             </pre>
         </section>
@@ -263,32 +244,32 @@
         <section>
           <h3>Destructuring</h3>
           <pre><code data-trim>
-            const user = {
+            const user: User = {
                 firstname: 'john',
                 nickname: 'ninja',
                 lastname: 'doe',
                 age: 21
             }
 
-            function getUserName(user) {
+            function getUserName(user: User) {
                 return `${user.firstname} ${user.lastname}`
             }
             console.log(getUserName(user))
             </code></pre>
           <pre class="fragment"><code data-trim>
-            function getUserName({firstname, lastname}) {
+            function getUserName({firstname, lastname}: User) {
                 return `${firstname} ${lastname}`
             }
             </code></pre>
           <pre class="fragment"><code data-trim>
-            const getUserName = ({firstname, lastname}) =>
+            const getUserName = ({firstname, lastname}: User) =>
                 `${firstname} ${lastname}`
             </code></pre>
         </section>
         <section>
           <h3>Destructuring - nested</h3>
           <pre><code data-trim>
-            const user = {
+            const user: User = {
                 firstname: 'john',
                 lastname: 'doe',
                 address: {
@@ -297,19 +278,19 @@
                 }
             }
 
-            function getUserAddress(user) {
+            function getUserAddress(user: User) {
              return `${user.address.num} ${user.address.street}`
             }
             </code></pre>
           <pre class="fragment"><code data-trim>
-            const getUserAddress = ({address: {num, street}}) =>
+            const getUserAddress = ({address: {num, street}}: User) =>
                 `${num} ${street}`
             </code></pre>
         </section>
         <section>
           <h3>Destructuring - alias</h3>
           <pre><code data-trim>
-            const user = {
+            const user: User = {
                 firstname: 'john',
                 lastname: 'doe',
                 address: {
@@ -318,7 +299,7 @@
                 }
             }
 
-            const getUserAddress = ({address: {num: foo, street: bar}}) =>
+            const getUserAddress = ({address: {num: foo, street: bar}}: User) =>
                 `${foo} ${bar}`
             </code></pre>
         </section>
@@ -439,15 +420,18 @@
         </section>
         <section>
           <h3>Hello world</h3>
-          <pre>Hello.js<code data-trim>
-            const Hello = (props) => <div>Hello {props.name} !</div>
+          <pre>Hello.tsx<code data-trim>
+            interface Props {
+                name: string
+            }
+            const Hello = (props: Props) => <div>Hello {props.name} !</div>
 
             export default Hello
             </code></pre>
-          <pre class="fragment">index.js<code class="jsx" data-trim>
+          <pre class="fragment">index.tsx<code class="jsx" data-trim>
             import { createRoot } from 'react-dom/client'
             import Hello from "./Hello"
-            const container = document.getElementById('root')
+            const container = document.getElementById('root')!
             const root = createRoot(container)
             root.render(&lt;Hello name="world" /&gt;)
           </code></pre>
@@ -455,14 +439,14 @@
         <section>
           <h3>JSX</h3>
           <pre><code data-trim>
-            (props) => (
+            (props: Props) => (
                  &lt;li className="contact"&gt;
                     &lt;h2 className="contact-name"&gt;{props.name}&lt;/h2&gt;
                  &lt;/li&gt;
             )
             </code></pre>
           <pre><code data-trim>
-            (props) => React.createElement('li', {className: 'contact'},
+            (props: Props) => React.createElement('li', {className: 'contact'},
                     React.createElement('h2',
                         {className: 'contact-name'}, props.name)
                     )
@@ -476,29 +460,6 @@
             <li>Installer l'environnement</li>
             <li>Ecrire le composant Hello</li>
           </ol>
-        </section>
-        <section>
-          <h3>Type checking</h3>
-          <p style="font-size: 32px">
-            On peut <i>ne rien faire</i>, utiliser
-            <a target="_blank" href="https://www.typescriptlang.org/">Typescript</a>, ou les
-            <a target="_blank" href="https://www.npmjs.com/package/prop-types">PropTypes</a>
-          </p>
-          <pre><code data-trim>
-            import PropTypes from 'prop-types'
-            const Hello = ({name}) => <h1>Hello {name}!</h1>
-
-            Hello.propTypes = {
-                name: PropTypes.string.isRequired,
-                truc: PropTypes.bool
-            }
-            </code></pre>
-          <p style="font-size: 22px; text-align: left">
-            types: array, bool, func, number, object, string, shape, node, arrayOf(), ...
-            <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">
-              https://reactjs.org/docs/typechecking-with-proptypes.html
-            </a>
-          </p>
         </section>
         <section>
           <h3>Attributs dans les composants</h3>
@@ -517,9 +478,9 @@
           <h3>State</h3>
           <pre><code data-trim>
            const ComponentWithState = (props) => {
-            const [count, setCount] = useState(0)
-            const [user, setUser] = useState(null)
-            const [color, setColor] = useState('green')
+            const [count, setCount] = useState&lt;number&gt;(0)
+            const [user, setUser] = useState&lt;User | null&gt;(null)
+            const [color, setColor] = useState&lt;string&gt;('green')
 
             return ...
            }
@@ -530,17 +491,17 @@
           <h3>State</h3>
           <p>Pour mettre un état par défaut, on passe un paramètre à useState()</p>
           <pre><code data-trim>
-            const [count, setCount] = useState(42)
+            const [count, setCount] = useState&lt;number&gt;(42)
           </code></pre>
           <p>Mettre à jour un état</p>
           <pre><code data-trim>
-            const [count, setCount] = useState(0)
+            const [count, setCount] = useState&lt;number&gt;(0)
             setCount(10)
             setCount(prevState => prevState + 1)
             </code></pre>
           <p>Récupérer l'état courant</p>
           <pre><code data-trim>
-            const [count, setCount] = useState(0)
+            const [count, setCount] = useState&lt;number&gt;(0)
             count
           </code></pre>
         </section>
@@ -548,7 +509,7 @@
           <h3>State</h3>
           <pre><code data-trim>
             const Counter = () =>  {
-              const [count, setCount] = useState(0)
+              const [count, setCount] = useState&lt;number&gt;(0)
               return &lt;div onClick={() => setCount(prev => prev + 1)}&gt;
                   Count: {count}
               &lt;/div&gt;
@@ -606,7 +567,7 @@
         <section>
           <h3>Itérer sur un tableau</h3>
           <pre><code data-trim>
-            const MyComponent = (props) => (
+            const MyComponent = (props: Props) => (
                 &lt;ul&gt;
                 {
                     props.items.map(item =>
@@ -620,11 +581,11 @@
           <h3>useEffect</h3>
           <p>Déclenche un traitement lorsque des données (issues des props ou des states) changent</p>
           <pre><code data-trim>
-            const UserDetails = ({userId}) => {
-             const [details, setDetails] = useState(null)
+            const UserDetails = ({userId}: Props) => {
+             const [details, setDetails] = useState&lt;User | null&gt;(null)
 
              useEffect(() => {
-              axios.get('/users/' + userId)
+              axios.get&lt;ReadonlyArray&lt;User&gt;&gt;('/users/' + userId)
                .then(({data})) => setDetails(data)
              }, [userId])
 
@@ -650,13 +611,13 @@
         <section>
           <h3>Bonus TP-02</h3>
           <pre><code data-trim>
-            const ShoppingList = ({title}) => {
-               const [items, setItems] = useState([])
+            const ShoppingList = ({title}: Props) => {
+               const [items, setItems] = useState&lt;ReadonlyArray&lt;Item&gt;&gt;([])
                // useEffect({...}, [])
                return &lt;ShoppingListInternal title={title}
                         items={items}/&gt;
             }
-            const ShoppingListInternal = ({title, items}) =>
+            const ShoppingListInternal = ({title, items}: Props) =>
             &lt;div&gt;
                 &lt;h2&gt;{title}&lt;/h2&gt;
                 &lt;ul&gt;{items.map(item =>
@@ -668,13 +629,13 @@
         <section>
           <h3>Passer des fonctions dans les props</h3>
           <pre><code data-trim>
-            const ShoppingList = ({title}) => {
-                const [items, setItems] = useState([])
+            const ShoppingList = ({title}: Props) => {
+                const [items, setItems] = useState&lt;ReadonlyArray&lt;User&gt;&gt;([])
                 // useEffect({...}, [])
 
-                const deleteItem = (itemIdToDelete) => {
+                const deleteItem = (itemIdToDelete: number) => {
                  setItems(prev =>
-                   prev.filter(item => item.id !== itemIdToDelete)
+                    prev.filter(item => item.id !== itemIdToDelete)
                  )
                 }
                 return (&lt;ShoppingListInternal
@@ -688,7 +649,7 @@
         <section>
           <h3>Utiliser les fonctions des props</h3>
           <pre><code data-trim>
-            const ShoppingListInternal = ({title, items, del}) => (
+            const ShoppingListInternal = ({title, items, del}: Props) => (
                 &lt;div&gt;
                     &lt;h2&gt;{title}&lt;/h2&gt;
                     &lt;ul&gt;
@@ -708,7 +669,7 @@
           <h3>Récupérer l'évènement JS</h3>
           <pre><code data-trim>
             const ClickableApp = () => {
-                const handleClick = e => {
+                const handleClick = (e: React.MouseEvent&lt;HTMLDivElement&gt;) => {
                     console.log('click !', e)
                 }
                 return &lt;div onClick={handleClick}&gt;Click me !&lt;/div&gt;
@@ -717,7 +678,9 @@
           <pre class="fragment"><code data-trim>
             const ClickableApp = () => (
               &lt;div
-                onClick={e => console.log('click !', e)}&gt;
+                onClick={(e: React.MouseEvent&lt;HTMLDivElement&gt;) =>
+                 console.log('click !', e)}
+              &gt;
                 Click me !
               &lt;/div&gt;
             )
@@ -851,14 +814,14 @@
           <h3>Children</h3>
 
           <pre><code data-trim>
-            const container = document.getElementById('root')
+            const container = document.getElementById('root')!
             const root = createRoot(container)
             root.render(
               &lt;ButtonApp title="My Application"&gt;Press Me! &lt;/ButtonApp&gt;
             )
             </code></pre>
           <pre><code data-trim>
-            export const ButtonApp = ({title, children}) => {
+            export const ButtonApp = ({title, children}: Props) => {
                 return &lt;div&gt;
                     &lt;div&gt;{title}&lt;/div&gt;
                     &lt;button&gt;{children}&lt;/button&gt;
@@ -934,13 +897,13 @@
 
           <h3>Action Creator</h3>
           <pre><code data-trim>
-            export const incrementor = inc => {
+            export const incrementor = (inc: number): IncAction => {
                 return {type: 'INCREMENT', inc}
             }
             </code></pre>
           <pre><code data-trim>
             export const incrementor =
-                (inc) => ({type: 'INCREMENT', inc})
+                (inc: number): IncAction => ({type: 'INCREMENT', inc})
             </code></pre>
         </section>
         <section>
@@ -962,7 +925,7 @@
         <section>
           <h3>Reducer</h3>
           <pre><code data-trim>
-            export const counter = (state = 0, action) => {
+            export const counter = (state: number = 0, action: IncAction) => {
                 switch (action.type) {
                     case 'INCREMENT':
                         return state + action.inc
@@ -983,9 +946,9 @@
           <h3>Composition de Reducers</h3>
           <h4>Approche naïve</h4>
           <pre><code data-trim>
-            const initialState = {user: '', counter: 0}
+            const initialState: State = {user: '', counter: 0}
             export const myGlobalReducer =
-                (state = initialState, action) => {
+                (state:State = initialState, action: Action): State => {
                     switch (action.type) {
                         case 'SET_USER':
                            return {...state, user: action.user}
@@ -1004,7 +967,7 @@
           <h3>Composition de reducers</h3>
           <pre><code data-trim>
             export const user =
-                (state = null, action) => {
+                (state:User|null = null, action: UserAction): User|null => {
                     switch (action.type) {
                         case 'SET_USER':
                             return action.user
@@ -1013,7 +976,7 @@
                     }
                 }
             export const counter =
-                (state = 0, action) => {
+                (state:number = 0, action: IncAction): number => {
                     switch (action.type) {
                         case 'INCREMENT':
                             return state + 1
@@ -1060,10 +1023,10 @@
 
           <p style="font-size: 28px">useSelector</p>
           <pre><code data-trim>
-            import { useSelector } from 'react-redux'
+            import { useTypedSelector } from './reducers'
 
             export const MyComponent = () => {
-              const user = useSelector(state => state.user)
+              const user = useTypedSelector(state => state.user)
               return &lt;div&gt;{user.id} / {user.email} &lt;/div&gt;
             }
             </code></pre>
@@ -1084,10 +1047,11 @@
           <pre><code data-trim>
           export const SelectPostalCode = () => {
            const dispatch = useDispatch()
-           const currentPc = useSelector(state => state.currentPc)
-           const postalCodes = useSelector(state => state.postalCodes)
+           const currentPc = useTypedSelector(state => state.currentPc)
+           const postalCodes = useTypedSelector(state => state.postalCodes)
 
-           const handleOnChange = e => {
+           const handleOnChange =
+              (e: React.ChangeEvent&lt;HTMLSelectElement&gt;) => {
             const action = setCurrentPc(e.target.value)
             dispatch(action)
            }
@@ -1096,8 +1060,8 @@
             postalCodes.map(pc =>
                 &lt;option key={pc} value={pc}&gt;{pc}&lt;/option&gt; )
            }
-         &lt;/select&gt;)
-        }
+           &lt;/select&gt;)
+          }
           </code></pre>
         </section>
         <section>
@@ -1107,11 +1071,11 @@
           <pre><code data-trim>
                 import { createRoot } from 'react-dom/client'
                 import {Provider} from 'react-redux'
-                import {createStore} from 'redux'
+                import { legacy_createStore as createStore} from 'redux'
                 import {reducer} from './reducers/index'
                 import {App} from './components/app'
 
-                const container = document.getElementById('root')
+                const container = document.getElementById('root')!
                 const root = createRoot(container)
                 const store = createStore(reducer)
                 root.render(&lt;Provider store={store}&gt;
@@ -1194,7 +1158,7 @@
             import { createRoot } from 'react-dom/client'
             import { QueryClient, QueryClientProvider } from 'react-query'
 
-            const container = document.getElementById('root')
+            const container = document.getElementById('root')!
             const root = createRoot(container)
             const queryClient = new QueryClient()
 
@@ -1236,7 +1200,7 @@
               Beaucoup de librairires sont basées la dessus. Ce n'était pas une API officielle avant Mars 2018.
             </li>
             <li class="fragment">
-              <i>react-redux</i> fonctionne grâce à ça, le store est passé à tous les composants.
+              <i>React-redux</i> fonctionne grâce à ça, le store est passé à tous les composants.
             </li>
           </ul>
         </section>
@@ -1244,15 +1208,18 @@
           <h3>Context API</h3>
           <p>Créer un <i>Context</i>, et encapsuler l'application à l'interieur du <i>&lt;Context.Provider&gt;</i></p>
           <pre><code data-trim>
-                const Context = React.createContext()
-                export default Context
+                export interface MyContext {
+                    color: string
+                }
+                const MyContext = React.createContext&lt;MyContext&gt;({name: 'red'})
+                export default MyContext
             </code></pre>
           <pre><code data-trim>
                 ...
-                return &lt;Context.Provider
-                            value={{color: 'purple', user: new User(1, 'admin')}}&gt;
-                    &lt;App/&gt;
-                &lt;/Context.Provider&gt;
+                return &lt;MyContext.Provider
+                            value={{color: 'blue'}}&gt;
+                    &lt;SomeComponent/&gt;
+                &lt;/MyContext.Provider&gt;
             </code></pre>
         </section>
         <section>
@@ -1260,7 +1227,7 @@
           <p>Ensuite on récupère le <i>context</i> là ou l'on veut l'utiliser avec le hook <i>useContext()</i></p>
           <pre><code data-trim>
             import {useContext} from 'react'
-            import MyContext from './Context'
+            import MyContext from './MyContext'
 
             const MyComponent = () => {
                 const ctx = useContext(MyContext)
@@ -1639,7 +1606,7 @@
           </p>
           <pre data-id="callback-pre"><code data-trim>
            const MyComponent = () => {
-            const handleClick = e => console.log(e)
+            const handleClick = (e: SyntheticEvent) => console.log(e)
 
             return &lt;Button onClick={handleClick}&gt;Click me&lt;/&gt;
            })

@@ -10,8 +10,8 @@ interface Props {
   title: string
 }
 export const ShoppingList = ({ title }: Props) => {
-  const [newItemLabel, setNewItemLabel] = useState('')
-  const [newItemPrice, setNewItemPrice] = useState(0)
+  const [newItemLabel, setNewItemLabel] = useState<string>('')
+  const [newItemPrice, setNewItemPrice] = useState<number>(0)
 
   const { data: items = [], refetch, isLoading: isLoadingGet } = useQuery('items', itemsApi.get)
   const { mutateAsync: addItem, isLoading: isLoadingAdd } = useMutation(itemsApi.create, {

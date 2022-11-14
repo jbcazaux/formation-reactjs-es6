@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState, SyntheticEvent } from 'react'
 import ShoppingItem from './ShoppingItem'
-import PropTypes from 'prop-types'
 import { setItems, addItems } from './actions/items'
 import { useDispatch } from 'react-redux'
 import { useTypedSelector } from './reducers'
@@ -15,7 +14,7 @@ const ShoppingList = ({ title }: Props) => {
   const dispatch = useDispatch()
   const items = useTypedSelector(state => state.items)
 
-  const handleAddItem = (event: React.SyntheticEvent) => {
+  const handleAddItem = (event: SyntheticEvent) => {
     event.preventDefault()
     const addItemAction = addItems([new Item(Date.now(), newItemLabel, newItemPrice)])
     dispatch(addItemAction)
@@ -50,7 +49,3 @@ const ShoppingList = ({ title }: Props) => {
 }
 
 export default ShoppingList
-
-ShoppingList.propTypes = {
-  title: PropTypes.string.isRequired,
-}

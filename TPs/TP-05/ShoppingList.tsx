@@ -10,8 +10,8 @@ interface Props {
   title: string
 }
 export const ShoppingList = ({ title }: Props) => {
-  const [newItemLabel, setNewItemLabel] = useState('')
-  const [newItemPrice, setNewItemPrice] = useState(0)
+  const [newItemLabel, setNewItemLabel] = useState<string>('')
+  const [newItemPrice, setNewItemPrice] = useState<number>(0)
 
   const items: ReadonlyArray<Item> = [] // TODO 1: Utiliser useQuery pour récupérer la liste des items
   // TODO 2: rajouter une mutation avec useMutation

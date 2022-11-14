@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState, SyntheticEvent } from 'react'
 import ShoppingItem from './ShoppingItem'
-import PropTypes from 'prop-types'
 import { setItems } from './actions/items'
 import { useDispatch } from 'react-redux'
 import Item from './domain/Item'
@@ -14,7 +13,7 @@ const ShoppingList = ({ title }: Props) => {
   const dispatch = useDispatch()
   const items: ReadonlyArray<Item> = [] // TODO 2: Récupérer les items depuis le store redux
 
-  const handleAddItem = (event: React.SyntheticEvent) => {
+  const handleAddItem = (event: SyntheticEvent) => {
     //TODO 3: dispatcher l'action créée par l'action creator 'addItems'
   }
 
@@ -43,7 +42,3 @@ const ShoppingList = ({ title }: Props) => {
 }
 
 export default ShoppingList
-
-ShoppingList.propTypes = {
-  title: PropTypes.string.isRequired,
-}

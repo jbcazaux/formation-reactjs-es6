@@ -1211,7 +1211,7 @@
                 export interface MyContext {
                     color: string
                 }
-                const MyContext = React.createContext&lt;MyContext&gt;({name: 'red'})
+                const MyContext = React.createContext&lt;MyContext&gt;({color: 'red'})
                 export default MyContext
             </code></pre>
           <pre><code data-trim>
@@ -1442,7 +1442,7 @@
                 Routes, Route} from 'react-router-dom'
             import { createRoot } from 'react-dom/client'
 
-            const container = document.getElementById('root')
+            const container = document.getElementById('root')!
             const root = createRoot(container)
             root.render(&lt;Router&gt;
                 &lt;Routes>

@@ -8,14 +8,14 @@ const delay = async <T>(value: any, duration: number): Promise<T> =>
 let allItems = itemsArray
 
 const items = {
-  get: async () => {
+  get: async (): Promise<ReadonlyArray<Item>> => {
     //const { data } = await axios.get('items.json')
     // return data
 
     // fake implementation :
     return await delay<ReadonlyArray<Item>>(allItems, 1000)
   },
-  create: async (item: Item) => {
+  create: async (item: Item): Promise<void> => {
     // await axios.post('/items', {item})
 
     // fake implementation :

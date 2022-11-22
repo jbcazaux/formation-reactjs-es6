@@ -3,10 +3,10 @@ import { render, screen } from '@testing-library/react'
 import axios from 'axios'
 import Student from './domain/Student'
 
+jest.mock('axios', () => ({
+  get: jest.fn().mockImplementationOnce(() => Promise.resolve({ data: [new Student(1, 'last', 'first', [])] })),
+}))
 describe('StudentsApp', () => {
-  beforeEach(() => {
-    axios.get = jest.fn().mockImplementationOnce(() => Promise.resolve({ data: [new Student(1, 'last', 'first', [])] }))
-  })
 
   it('renders studentsApp and its sub components', async () => {
     // Given

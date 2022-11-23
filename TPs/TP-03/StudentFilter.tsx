@@ -6,7 +6,7 @@ interface Props {
 }
 const StudentFilter = ({ onChange }: Props) => {
   const onFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value)
+   // TODO: rappeler le callback onChange
   }
 
   return (

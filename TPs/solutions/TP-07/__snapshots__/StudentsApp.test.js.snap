@@ -4,7 +4,7 @@ exports[`StudentsApp renders studentsApp and its sub components 1`] = `
 <div>
   <form>
     <div
-      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary form-control css-1tcs2i1-MuiInputBase-root-MuiInput-root"
+      class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary form-control css-q0jhri-MuiInputBase-root-MuiInput-root"
       style="margin-left: 5px;"
     >
       <input

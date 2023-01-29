@@ -22,14 +22,23 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+      - name: Cache node modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: npm-cache-${{ hashFiles('package-lock.json') }}
       - name: Cache Cypress Binary
         id: cache-cypress-binary
         uses: actions/cache@v3
         with:
           path: ~/cache/Cypress
           key: cypress-cache-${{ hashFiles('package-lock.json') }}
-      - run: npm ci -f --no-audit --ignore-scripts
-      - run: ./node_modules/.bin/jest --roots TPs/solutions/TP-07
+      - name: Install Dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm ci -f --no-audit --ignore-scripts
+      - name: Run unit tests of TP07
+        run: ./node_modules/.bin/jest --roots TPs/solutions/TP-07
       - name: Cypress
         uses: cypress-io/github-action@v5
         with:

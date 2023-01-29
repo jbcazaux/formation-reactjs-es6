@@ -1393,7 +1393,7 @@
 
            it('loads data on creation', async () => {
             render(&lt;UserInfo id={42} /&gt;)
-            await screen.getByText('Jennifer')
+            await screen.findByText('Jennifer')
 
             // expect(...)
           })
@@ -1411,7 +1411,7 @@
             describe('UserInfo Component', () => {
               it('should display user ', async () => {
                 render(&lt;UserInfo id={42} /&gt;)
-                await screen.getByText('Jennifer')
+                await screen.findByText('Jennifer')
 
                 // expect...
               }

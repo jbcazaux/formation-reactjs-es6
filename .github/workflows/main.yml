@@ -7,6 +7,9 @@ on:
     branches:
       - master
 
+env:
+  CYPRESS_CACHE_FOLDER: ~/cache/Cypress npm install
+
 jobs:
   test:
     name: Tests
@@ -18,28 +21,20 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-          node-cache: 'npm'
-      - name: Cache Node Modules
-        id: cache-node-modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: modules-${{ hashFiles('package-lock.json') }}
+          cache: 'npm'
       - name: Cache Cypress Binary
         id: cache-cypress-binary
         uses: actions/cache@v3
         with:
-          path: ~/.cache/Cypress
-          key: binary-${{ hashFiles('package-lock.json') }}
-      - name: Install Dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run:
-          npm ci -f --no-audit --ignore-scripts
+          path: ~/cache/Cypress
+          key: cypress-cache-${{ hashFiles('package-lock.json') }}
+      - run: npm ci -f --no-audit --ignore-scripts
       - run: ./node_modules/.bin/jest --roots TPs/solutions/TP-07
       - name: Cypress
         uses: cypress-io/github-action@v5
         with:
           config-file: cypress/cypress.config.js
+          install-command: npx cypress install
           start: npm run starti
           wait-on: 'http://localhost:8080'
           browser: chrome

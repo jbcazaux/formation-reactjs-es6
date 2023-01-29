@@ -11,7 +11,7 @@ jobs:
   test:
     name: Tests
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.17.0-chrome106
+    container: cypress/browsers:node18.12.0-chrome107
 
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
       - run: npm ci -f --no-audit --ignore-scripts
       - run: ./node_modules/.bin/jest --roots TPs/solutions/TP-07
       - name: Cypress
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v5
         with:
           config-file: cypress/cypress.config.js
           install-command: npm ci -f --no-audit --ignore-scripts

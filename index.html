@@ -625,7 +625,7 @@
 
              useEffect(() => {
               axios.get('/users/' + userId)
-               .then(({data})) => setDetails(data)
+               .then(({data}) => setDetails(data))
              }, [userId])
 
              return &lt;div&gt;...

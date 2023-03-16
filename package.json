@@ -28,7 +28,7 @@
     "prop-types": "15.8.1",
     "react-test-renderer": "18.2.0",
     "source-map-loader": "4.0.1",
-    "webpack": "5.75.0",
+    "webpack": "5.76.2",
     "webpack-cli": "5.0.1",
     "webpack-dev-server": "4.11.1"
   },

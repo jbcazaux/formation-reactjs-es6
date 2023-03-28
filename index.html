@@ -1146,7 +1146,10 @@
             l'application.
           </p>
           <pre><code data-trim>
-            const { data } = useQuery('items', itemsApi.get)
+            const { data } = useQuery({
+              queryKey: ['items'],
+              queryFn: itemsApi.get
+            })
             </code></pre>
         </section>
         <section>
@@ -1154,8 +1157,10 @@
 
           <p>La clé fonctionne également comme un tableau de dépendances.</p>
           <pre><code data-trim>
-            const { data } =
-                useQuery(['user', userId], () => usersApi.get(userId))
+            const { data } = useQuery({
+              queryKey: ['user', userId],
+              queryFn: () => usersApi.get(userId)
+            })
             </code></pre>
         </section>
         <section>
@@ -1163,11 +1168,13 @@
 
           <p>useQuery retourne bien plus que les données récupérées.</p>
           <pre><code data-trim>
-            const { data = {}, refetch, isLoading, isError } =
-                useQuery(['user', userId], () => usersApi.get(userId))
+            const { data = {}, refetch, isLoading, isError } = useQuery({
+              queryKey: ['user', userId],
+              queryFn: () => usersApi.get(userId)
+            })
             </code></pre>
           <p>
-            Voir la <a href="https://react-query.tanstack.com/reference/useQuery" target="_blank">documentation</a>.
+            Voir la <a href="https://tanstack.com/query/v4/docs/react/reference/useQuery" target="_blank">documentation</a>.
           </p>
         </section>
         <section>
@@ -1175,15 +1182,18 @@
 
           <p>Pour faire des mises à jour, on utilise les mutations.</p>
           <pre><code data-trim>
-            const { mutateAsync: createUser } = useMutation(userApi.create, {
+            const { mutateAsync: createUser } = useMutation({
+                mutationFn: userApi.create,
                 onSuccess: () => console.log('c est OK !'),
             })
             </code></pre>
           <pre><code data-trim>
-                &lt;button onClick={() => createUser(myNewUser)}&gt;CREATE USER&lt;/button&gt;
+              &lt;button onClick={() => createUser(myNewUser)}&gt;
+                    CREATE USER
+              &lt;/button&gt;
             </code></pre>
           <p>
-            Voir la <a href="https://react-query.tanstack.com/reference/useMutation" target="_blank">documentation</a>.
+            Voir la <a href="https://tanstack.com/query/v4/docs/react/reference/useMutation" target="_blank">documentation</a>.
           </p>
         </section>
         <section>
@@ -1192,7 +1202,7 @@
           <p>Il faut initialiser React Query à la racine de l'application</p>
           <pre><code data-trim>
             import { createRoot } from 'react-dom/client'
-            import { QueryClient, QueryClientProvider } from 'react-query'
+            import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
             const container = document.getElementById('root')
             const root = createRoot(container)

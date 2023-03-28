@@ -11,14 +11,14 @@ const items = {
     // return data
 
     // fake implementation :
-    return await delay(allItems, 1000)
+    return await delay(allItems, 2000)
   },
   create: async item => {
     // await axios.post('/items', {item})
 
     // fake implementation :
     allItems = allItems.concat({ id: item.id, label: item.label, price: item.price })
-    await delay(null, 1000)
+    await delay(null, 2000)
   },
 }
 

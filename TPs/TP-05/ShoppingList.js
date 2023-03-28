@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
 import PropTypes from 'prop-types'
-import { useMutation, useQuery } from 'react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import itemsApi from './apis/items'
 import { CircularProgress } from '@mui/material'
 

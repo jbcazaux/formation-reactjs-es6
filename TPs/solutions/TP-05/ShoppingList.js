@@ -2,16 +2,24 @@ import React, { useState } from 'react'
 import Item from './Item'
 import ShoppingItem from './ShoppingItem'
 import PropTypes from 'prop-types'
-import { useMutation, useQuery } from 'react-query'
 import itemsApi from './apis/items'
 import { CircularProgress } from '@mui/material'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 export const ShoppingList = ({ title }) => {
   const [newItemLabel, setNewItemLabel] = useState('')
   const [newItemPrice, setNewItemPrice] = useState(0)
 
-  const { data: items = [], refetch, isLoading: isLoadingGet } = useQuery('items', itemsApi.get)
-  const { mutateAsync: addItem, isLoading: isLoadingAdd } = useMutation(itemsApi.create, {
+  const {
+    data: items = [],
+    refetch,
+    isLoading: isLoadingGet,
+  } = useQuery({
+    queryKey: ['items'],
+    queryFn: itemsApi.get,
+  })
+  const { mutateAsync: addItem, isLoading: isLoadingAdd } = useMutation({
+    mutationFn: itemsApi.create,
     onSuccess: refetch,
   })
 

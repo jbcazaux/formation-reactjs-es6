@@ -1347,7 +1347,7 @@
 
           it('fires events', () => {
             render(&lt;NiceInput /&gt;)
-            const input = screen.getByRole('input')
+            const input = screen.getByRole('textbox')
 
             fireEvent.change(input, {target: {value: 'new text'}})
           })

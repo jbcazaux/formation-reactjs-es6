@@ -16,6 +16,6 @@ describe('StudenstTable', () => {
     // When
     // click
     // Then
-    // expect() ... (use data-testid)
+    // expect() ...
   })
 })

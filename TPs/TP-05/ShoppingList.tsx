@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useState } from 'react'
 import ShoppingItem from './ShoppingItem'
 import PropTypes from 'prop-types'
-import { useMutation, useQuery } from 'react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import itemsApi from './apis/items'
 import { CircularProgress } from '@mui/material'
 import Item from './domain/Item'
@@ -18,10 +18,11 @@ export const ShoppingList = ({ title }: Props) => {
 
   const createNewItem = async (e: SyntheticEvent) => {
       e.preventDefault()
-      setNewItemLabel('')
-      setNewItemPrice(0)
 
       // TODO 3: appeler ici la mutation qui a été créée
+
+      setNewItemLabel('')
+      setNewItemPrice(0)
   }
 
   return (

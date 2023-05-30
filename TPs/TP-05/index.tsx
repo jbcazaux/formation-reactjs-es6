@@ -1,5 +1,5 @@
 import { ShoppingList } from './ShoppingList'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createRoot } from 'react-dom/client'
 
 const queryClient = new QueryClient()
